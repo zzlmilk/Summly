@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
-
-#import "SummlyScrollView.h"
+#import "MainSummlyView.h"
 
 @interface MainViewController : UIViewController
 {
-    SummlyScrollView *summlyScrollView;
+    MainSummlyView *mainSummlyView;
 }
+
 @end

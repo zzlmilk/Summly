@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,6 +18,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     MainViewController *summlyVC = [[MainViewController alloc]init];
+    
+    
+    
     [self.window setRootViewController:summlyVC];
     
     [self.window makeKeyAndVisible];

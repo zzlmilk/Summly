@@ -14,3 +14,7 @@
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <SystemConfiguration/SystemConfiguration.h>
 #endif
+
+
+//debug 1 开启  0 关闭
+#define debug 1

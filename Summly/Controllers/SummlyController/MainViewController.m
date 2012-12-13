@@ -7,8 +7,15 @@
 //
 
 #import "MainViewController.h"
-@interface MainViewController ()
+#import "Topic.h"
+#import "SummlyScrollView.h"
+#import "FrontSummlyView.h"
 
+@interface MainViewController ()<ItemSummlyActionDelegate>
+{
+    FrontSummlyView* frontView;
+    SummlyScrollView* summlyScrollView;
+}
 @end
 
 @implementation MainViewController
@@ -26,21 +33,47 @@
 {
     [super viewDidLoad];
     
-    UIImageView  *scrollImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    scrollImageView.image =[UIImage imageNamed:@"1346345396832@2x.jpg"];
-    [self.view addSubview:scrollImageView];
-
+    self.view.backgroundColor =[UIColor clearColor];
+    
 	// Do any additional setup after loading the view.
-    SummlyScrollView *summluScrollView = [[SummlyScrollView alloc]initWithFrame:self.view.bounds];
-   // summluScrollView.dataSource =self;
-    [self.view addSubview:summluScrollView];
-
+        
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    bgImageView.image = [UIImage imageNamed:@"1346344762863@2x.jpg"];
+    [self.view addSubview:bgImageView];
+    
+        
+    frontView = [[FrontSummlyView  alloc]initWithFrame:self.view.bounds];
+    summlyScrollView = [[SummlyScrollView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 0, self.self.view.bounds.size.width, self.view.bounds.size.height) delegate:self];
+    mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
+    [self.view addSubview:mainSummlyView];
+    
+    
+    [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
+        if (topics) {
+            [summlyScrollView generateItems:topics];
+        }
+    }];
     
 }
 
 
 
-#pragma mark--
+
+#pragma mark ---- ItemSummlyActionDelegate
+-(void)ItemSummlydidTap:(ItemSummly *)itemSummly{
+    if (itemSummly.itemSummlyType == home) {
+        [mainSummlyView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
+    else if(itemSummly.itemSummlyType ==add){
+        NSLog(@"add");
+        Topic *t = [[Topic alloc]init];
+        t.title =@"test";        
+        [summlyScrollView generateOneItem:t];
+    }
+    else{
+        NSLog(@"other item idex = %d",itemSummly.index);
+    }
+}
 
 
 - (void)didReceiveMemoryWarning

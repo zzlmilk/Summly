@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemSummly.h"
+@class FrontSummlyView,SummlyScrollView;
 
 @interface MainSummlyView : UIScrollView
+{
+  
 
+    
+}
+
+-(id)initWithFrame:(CGRect)frame summlyScrollView:(SummlyScrollView*)summlyScrollView AndFrontSummlyView:(FrontSummlyView*)frontView;
+
+
+@property(nonatomic,strong)    SummlyScrollView * summlyScrollView;
+@property(nonatomic,strong)      FrontSummlyView *frontView;
 @end

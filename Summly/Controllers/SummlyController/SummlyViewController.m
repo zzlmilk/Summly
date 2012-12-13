@@ -101,6 +101,7 @@
      
         
     [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width , frame.size.height+frame.origin.y+10)];
+        
     [_scrollView scrollRectToVisible:CGRectMake(_scrollView.frame.origin.x, _scrollView.frame.origin.y+row*frame.size.height,_scrollView.frame.size.width, _scrollView.frame.size.height) animated:YES];
     
 

@@ -10,6 +10,8 @@
 #import "ItemSummly.h"
 #import "UIGestureRecognizer+SummlyScrollerViewAdditions.h"
 #import "Summly.h"
+#import "Topic.h"
+
 #define  INVALID_POSITION -1
 static const CGFloat kDefaultAnimationDuration = 0.3;
 static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction;
@@ -36,7 +38,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 - (void)longPressGestureUpdated:(UILongPressGestureRecognizer *)longPressGesture;
 -(void)itemSummlyDidMoveEndGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer;
 -(void)itemSummlyDidMovedGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer;
-
+-(void)itemSummlyDidMoveStartGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer;
 
 
 
@@ -47,49 +49,100 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 -(CGRect )_defaulItemSize:(NSInteger)index;
 @end
 
+
 @implementation SummlyScrollView
 
 -(CGRect )_defaulItemSize:(NSInteger)index{
     return CGRectMake(self.itemSpacing, self.itemSpacing+index*(self.itemSize.height+self.itemSpacing), self.itemSize.width, self.itemSize.height);
 }
 
--(void)generateItems{
+-(void)generateItems:(NSMutableArray *)topics{
+    
+        
+    Topic *homeTopic = [[Topic alloc]init];
+    homeTopic.title = @"封面页";
+    homeTopic.subTitle=@"了解最新及趋势摘要";
+    homeTopic.status = 0;
     
     
-    ItemSummly * homeItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:0]];
+    ItemSummly * homeItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:0]] ;
+    homeItemSummly.index = 0;
+    homeItemSummly.topic  = homeTopic;
+    homeItemSummly.itemSummlyType  = home;
+    homeItemSummly.actionDelegate = delegate;
     [self addSubview:homeItemSummly];
-    [summlyItems addObject:homeItemSummly];
-
+    [self.summlyItems addObject:homeItemSummly];
     
-    
-//    NSArray *colors = [NSArray arrayWithObjects:[UIColor orangeColor],[UIColor blackColor],[UIColor blueColor],[UIColor brownColor],[UIColor yellowColor], nil];
-    for (int i =1; i<5;i++) {
-        ItemSummly *item = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:i]];
-        item.index =i;        
-        //item.backgroundColor = [colors objectAtIndex:i];
+    for (int i=0;i<  topics.count ;i++) {
+        ItemSummly *item = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:i+1]];
+        item.index =i+1;
+        item.topic = [topics objectAtIndex:i];
+        item.actionDelegate =delegate;
         [self addSubview:item];
-        [summlyItems addObject:item];
-        self.contentSize = CGSizeMake(self.bounds.size.width,item.frame.size.height+item.frame.origin.y+self.itemSpacing);
-
+        [self.summlyItems addObject:item];
     }
     
-    for (int i =0 ; i<summlyItems.count; i++) {
-        Summly *s = [[Summly alloc]init];
-      [(ItemSummly *)[summlyItems objectAtIndex:i] setSummly:s];
+    
+    Topic *addtopic = [[Topic alloc]init];
+    addItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
+    addItemSummly.index=self.summlyItems.count;
+    addItemSummly.itemSummlyType = add;
+    addItemSummly.topic  = addtopic;
+    addItemSummly.actionDelegate =delegate;
+    [self addSubview:addItemSummly];
+    [self.summlyItems addObject:addItemSummly];
+    
+    
+        
+    self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
+
+    
+}
+
+
+
+-(void)generateOneItem:(Topic *)topic{
+     //add item is the last item
+    ItemSummly *itemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:self.summlyItems.count-1]];
+    itemSummly.topic =topic;
+    itemSummly.actionDelegate = delegate;
+    itemSummly.index = self.summlyItems.count-1;
+    [self addSubview:itemSummly];
+    [self.summlyItems insertObject:itemSummly atIndex:self.summlyItems.count];
+    
+        
+    //move add item
+    addItemSummly.index+=1;
+    [UIView animateWithDuration:0.2f animations:^{
+        [addItemSummly setFrame:[self _defaulItemSize:addItemSummly.index]];
+    }];
+    
+    self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
+    
+    
+    if (self.contentSize.height - self.bounds.size.height>0) {
+        [self setContentOffset:CGPointMake(0, self.contentSize.height - self.bounds.size.height) animated:YES];
     }
+    
+    /*
+     In Your case,[myscroll scrollRectToVisible:myview.frame animated:YES]; will not work because of myview is a sub-view of myscroll. myview.frame will return the CGRect which is only related to the myscroll.
+     [self scrollRectToVisible:CGRectMake(self.frame.origin.x, self.frame.origin.y+itemSummly.index * itemSummly.frame.size.height,self.frame.size.width, self.frame.size.height) animated:YES];
+     */
 
 
 }
 
 
 
-- (id)initWithFrame:(CGRect)frame
+
+
+- (id)initWithFrame:(CGRect)frame delegate:(id)Adelegate
 {
     self = [super initWithFrame:frame];
     if (self) {
+        delegate = Adelegate;
         
-               
-        
+        self.backgroundColor = [UIColor clearColor];
         self.showsVerticalScrollIndicator =NO;
         // Initialization code
         _longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGestureUpdated:)];
@@ -97,18 +150,21 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         _longPressGesture.delegate = self;
         [self addGestureRecognizer:_longPressGesture];
         
-        summlyItems = [[NSMutableArray alloc]init];
+        _summlyItems = [[NSMutableArray alloc]init];
         self.itemSize = CGSizeMake(320, 100);
         self.itemSpacing = 10;
         
-        [self generateItems];
+        
+        //[self generateItems];
+        
+       
         
         
-
-
     }
     return self;
 }
+
+
 
 #pragma mark---  gestures
 
@@ -127,44 +183,20 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 
 
-- (void)longPressGestureUpdated:(UILongPressGestureRecognizer *)gestureRecognizer{
-    switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:
-            [self itemSummlyDidMoveStartGestureRecongnzier:gestureRecognizer];
-            
-            break;
-        case UIGestureRecognizerStateEnded:
-            [self itemSummlyDidMoveEndGestureRecongnzier:gestureRecognizer];
-            break;
-        case UIGestureRecognizerStateFailed:
-            NSLog(@"press long failed");
-            break;
-        case UIGestureRecognizerStateChanged:
-            [self itemSummlyDidMovedGestureRecongnzier:gestureRecognizer];
-            break;
-        default:
-            NSLog(@"press long else");
-            break;
-    }
-
-}
-
-
-
-
-
 //Private
 -(void)itemSummlyDidMoveStartGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer{
     
     CGPoint location = [gestureRecognizer locationInView:self];
     NSInteger position = [self itemPositionFromLocation:location];
-
-    ItemSummly *item = [summlyItems objectAtIndex:position];
+    ItemSummly *item = [_summlyItems objectAtIndex:position];
+    if (!item.canMove) {
+        return;
+    }
+    
+    
     [self bringSubviewToFront:item];
-    
-    _sortMovingItem = item;
-    
-   _sortFuturePosition = position; 
+    _sortMovingItem = item;    
+    _sortFuturePosition = position;
     
     
     CGRect frameInMainView = [self convertRect:_sortMovingItem.frame toView:self];
@@ -173,13 +205,14 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self addSubview:_sortMovingItem];
     
     
+    
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
-                         _sortMovingItem.backgroundColor = [UIColor orangeColor];
+                         //_sortMovingItem.backgroundColor = [UIColor orangeColor];
                          _sortMovingItem.transform = CGAffineTransformScale(self.transform, 1.02,1.02);
-                        //_sortMovingItem.layer.shadowOpacity = 0.7;
+                         //_sortMovingItem.layer.shadowOpacity = 0.7;
                      }
                      completion:nil
      ];
@@ -194,10 +227,10 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     if (toIndex !=-1 || toIndex != _sortFuturePosition) {
         if (_sortMovingItem)
         {
-            ItemSummly *itemSummly = [summlyItems objectAtIndex:toIndex];
+            ItemSummly *itemSummly = [_summlyItems objectAtIndex:toIndex];
             
             CGPoint origin = [self originForItemAtPosition:_sortFuturePosition];
-                        
+            
             [UIView animateWithDuration:kDefaultAnimationDuration
                                   delay:0
                                 options:kDefaultAnimationOptions
@@ -210,14 +243,14 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
              ];
             
             
-           
-            [summlyItems exchangeObjectAtIndex:_sortFuturePosition withObjectAtIndex:toIndex];
-           _sortFuturePosition = toIndex;
+            
+            [_summlyItems exchangeObjectAtIndex:_sortFuturePosition withObjectAtIndex:toIndex];
+            _sortFuturePosition = toIndex;
             
         }
-            
+        
     }
-
+    
     
 }
 
@@ -231,8 +264,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     _sortMovingItem.frame = frameInScroll;
     [self addSubview:_sortMovingItem];
     
-        
-                
+    
+    
     CGPoint newOrigin = [self originForItemAtPosition:_sortFuturePosition];
     
     CGRect newFrame = CGRectMake(newOrigin.x, newOrigin.y, _itemSize.width, _itemSize.height);
@@ -243,7 +276,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
                         options:0
                      animations:^{
                          _sortMovingItem.transform = CGAffineTransformIdentity;
-                        
+                         
                          _sortMovingItem.frame = newFrame;
                      }
                      completion:^(BOOL finished){
@@ -251,16 +284,16 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
                                                delay:0
                                              options:UIViewAnimationOptionAllowUserInteraction
                                           animations:^{
-                                              _sortMovingItem.backgroundColor = [UIColor redColor];
+                                              //  _sortMovingItem.backgroundColor = [UIColor redColor];
                                               // cell.contentView.layer.shadowOpacity = 0;
                                           }
                                           completion:nil
                           ];
                          
-
+                         
                      }
      ];
-
+    
     
 }
 
@@ -274,19 +307,36 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     
     return origin;
-
+    
 }
 
 -(NSInteger )itemPositionFromLocation:(CGPoint)point{
     
     NSInteger row =  point.y / (self.itemSize.height + self.itemSpacing);
-    
-    NSInteger index = row;
-    
-    
+    NSInteger index = row;            
     return index;
 }
 
+
+- (void)longPressGestureUpdated:(UILongPressGestureRecognizer *)gestureRecognizer{
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self itemSummlyDidMoveStartGestureRecongnzier:gestureRecognizer];            
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self itemSummlyDidMoveEndGestureRecongnzier:gestureRecognizer];
+            break;
+        case UIGestureRecognizerStateFailed:
+            NSLog(@"press long failed");
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self itemSummlyDidMovedGestureRecongnzier:gestureRecognizer];
+            break;
+        default:
+            NSLog(@"press long else");
+            break;
+    }
+}
 
 
 @end

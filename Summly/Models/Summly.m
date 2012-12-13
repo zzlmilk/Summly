@@ -13,10 +13,13 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
     if (self) {
-        
+
         self.title = @"title a";
         self.describe = @"describe a";
+
+        
     }
+    
     return self;
 }
 @end

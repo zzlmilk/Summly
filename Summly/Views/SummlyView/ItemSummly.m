@@ -8,6 +8,8 @@
 
 #import "ItemSummly.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Topic.h"
+#import "SVProgressHUD.h"
 
 @interface ItemSummly() <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
@@ -25,6 +27,7 @@
 
 }
 
+
 //Gestures
 - (void)tapGesture:(UITapGestureRecognizer *)tapGesture;
 
@@ -34,6 +37,42 @@
 
 @implementation ItemSummly
 
+
+
+-(void)setTopic:(Topic *)topic{
+    _topic = topic;
+    
+    [titleLabel setText:_topic.title];
+    [describeLabel setText:_topic.subTitle];
+    
+}
+
+-(void)setItemSummlyType:(ItemSummlyType)itemSummlyType{
+    _itemSummlyType= itemSummlyType;
+    
+    switch (self.itemSummlyType) {
+        case home:
+        {
+            self.canMove = NO;
+            bgImageView.image = [UIImage imageNamed:@"cell-cover-page@2x"];
+            
+        }
+            break;
+        case add:
+        {
+            self.canMove = NO;
+            bgImageView.image = [UIImage imageNamed:@"action-cell@2x"];
+            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon@2x"]];
+            addImageView.frame =CGRectMake(self.frame.size.width/2-34/2, self.frame.size.height/2-34/2, 34, 34);
+            [bgImageView addSubview:addImageView];
+        }
+            break;
+        default:
+            break;
+    }
+
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -42,18 +81,18 @@
         
                
         [self commonInit];
+    
         
         
         bgImageView= [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
         bgImageView.image = [UIImage imageNamed:@"cell-keyword@2x"];
         [self addSubview:bgImageView];
         
-              
-                    
         
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 45, 300, 20)];
         titleLabel.text = @"titile";
         titleLabel.font = [UIFont systemFontOfSize:18];
+        titleLabel.textColor = [UIColor whiteColor];
         titleLabel.backgroundColor = [UIColor clearColor];
         [bgImageView addSubview:titleLabel];
         
@@ -62,12 +101,15 @@
         describeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 65, 300, 20)];
         describeLabel.text = @"describeLabel";
         describeLabel.font = [UIFont systemFontOfSize:16];
+        describeLabel.textColor = [UIColor whiteColor];
         describeLabel.backgroundColor = [UIColor clearColor];
         [bgImageView addSubview:describeLabel];
         
         
         
-      
+        
+       
+        
         
         /*
         layer1 = [[CALayer alloc]init];
@@ -108,12 +150,9 @@
     self.canRefish =YES;
     self.canMove  =YES;
     
-    
-   // self.bgroundColor =[UIColor colorWithRed:0.584 green:0.875 blue:0.200 alpha:1.0];
+
     
     // Transforming control vars
-    
-
     _lastScale = 1.0;
     
 }
@@ -122,20 +161,34 @@
 -(void)reloadSummly{
     NSLog(@"reload");
     
-    //overBgImageView.frame =CGRectMake(-300, 0, 300,100);
-    bgImageView.image = [UIImage imageNamed:@"action-cell"];
+  //  [SVProgressHUD show];
     
-    CALayer *layerProcess = [[CALayer alloc]init];
+    //此办法有点取巧 以后修改成ProcessView
+    CALayer *layer = [[CALayer alloc]init];
+    layer.contents = (id)[UIImage imageNamed:@"action-cell"].CGImage;
+    layer.frame= CGRectMake(0, 0, 300, 100);
+    [bgImageView setClipsToBounds:YES];
+    [bgImageView.layer insertSublayer:layer atIndex:0];
     
     
+        CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
+        animation.toValue=[NSNumber numberWithInt:300];
+        animation.duration=1.5f;
+        animation.removedOnCompletion=NO;
+        animation.fillMode=kCAFillModeForwards;
+       [layer addAnimation:animation forKey:nil];
+    
+    
+
     
 }
 
 
 #pragma mark---  gestures
 - (void)tapGesture:(UITapGestureRecognizer *)tapGesture{
+    
     if( [self.actionDelegate respondsToSelector:@selector(ItemSummlydidTap:)]){
-        [self.actionDelegate ItemSummlydidTap:self];
+         [self.actionDelegate ItemSummlydidTap:self];
     }
 }
 
@@ -144,8 +197,7 @@
 #pragma mark --- UIScrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if( scrollView.contentOffset.x <= -self.maxOffset){
-        
+    if( scrollView.contentOffset.x <= -self.maxOffset){        
         [self reloadSummly];
     }
 }
@@ -157,8 +209,8 @@
     }
 }
 
--(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{    
     return self.canRefish;
 }
 

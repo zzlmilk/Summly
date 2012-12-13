@@ -8,7 +8,20 @@
 
 #import <UIKit/UIKit.h>
 @protocol ItemSummlyActionDelegate;
-@class Summly;
+//@class Summly;
+@class Topic;
+
+typedef enum {
+    keywordEmpty = 0,
+    keywordUnsubscribed=1,
+    keyword = 2,
+    predefinedUnsubscribed = 3,
+    saved = 4,
+    home = 5,
+    add = 6,
+} ItemSummlyType;  //不同的类型有不同的背景图片
+
+
 @interface ItemSummly : UIScrollView
 {
     UILabel *titleLabel;
@@ -18,13 +31,16 @@
     UIImageView *overBgImageView;
     
     
+    
     CGColorRef itemColorRef;
     CALayer *layer1;
     CALayer *layer2;
 }
 
 
-@property(nonatomic,strong)Summly *summly;
+@property(nonatomic,strong)Topic *topic;
+
+@property(nonatomic)ItemSummlyType  itemSummlyType;
 
 @property(nonatomic)NSInteger index;
 @property(nonatomic)BOOL canRefish;  //是否可拖拉刷新 default Yes
@@ -37,6 +53,8 @@
 
 
 -(void)reloadSummly;
+
+
 
 @end
 

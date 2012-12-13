@@ -10,24 +10,33 @@
 
 @protocol SummlyScrollViewSource;
 @class ItemSummly;
-
+@class Topic;
 @interface SummlyScrollView : UIScrollView
 {
-    NSMutableArray *summlyItems;
-   
     
+    id delegate;
+    
+    ItemSummly * addItemSummly;
 }
 
 //@property (nonatomic, weak) id<SummlyScrollViewSource> dataSource;
+
+-(id)initWithFrame:(CGRect)frame delegate:(id)Adelegate;
+
 
 
 @property(nonatomic) CGSize itemSize;
 @property(nonatomic) NSInteger itemSpacing;
 
+@property(nonatomic,strong)NSMutableArray *summlyItems;    
+
+-(void)generateItems:(NSMutableArray *)topics;
+
+-(void)generateOneItem:(Topic*)topic;
 
 
 // Actions
-
+-(void)itemSummlyDidMoveStartGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer;
 
 @end
 
