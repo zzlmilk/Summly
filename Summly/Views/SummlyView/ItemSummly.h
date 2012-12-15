@@ -35,6 +35,7 @@ typedef enum {
     CGColorRef itemColorRef;
     CALayer *layer1;
     CALayer *layer2;
+    
 }
 
 
@@ -47,15 +48,12 @@ typedef enum {
 @property(nonatomic)BOOL canMove;    //是否可移动    default Yes
 
 
+
 @property (nonatomic, weak) id<ItemSummlyActionDelegate>  actionDelegate;
 @property(nonatomic)CGSize itemContentSize;   //default (400,100)
 @property(nonatomic)NSInteger maxOffset;
 
-
 -(void)reloadSummly;
-
-
-
 @end
 
 #pragma mark Protocol ItemSummlyActionDelegate

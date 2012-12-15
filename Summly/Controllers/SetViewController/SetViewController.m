@@ -1,18 +1,18 @@
 //
-//  TopicViewController.m
+//  SetViewController.m
 //  Summly
 //
-//  Created by zzlmilk on 12-12-13.
+//  Created by zzlmilk on 12-12-15.
 //  Copyright (c) 2012年 zzlmilk. All rights reserved.
 //
 
-#import "TopicViewController.h"
+#import "SetViewController.h"
 
-@interface TopicViewController ()
+@interface SetViewController ()
 
 @end
 
-@implementation TopicViewController
+@implementation SetViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,14 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   self.title =@"添加话题";
 	// Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(set)];
-    
-}
-
--(void)set{
-    
 }
 
 - (void)didReceiveMemoryWarning

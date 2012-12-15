@@ -15,6 +15,7 @@
 		0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435E0E21679B99B00992946 /* SummlyListViewController.m */; };
 		0460465316737D6100FA9F03 /* SummlyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460465216737D6100FA9F03 /* SummlyScrollView.m */; };
 		0460466916738E7F00FA9F03 /* ItemSummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460466816738E7E00FA9F03 /* ItemSummly.m */; };
+		04831CC2167C525A00BE99AB /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC1167C525A00BE99AB /* SetViewController.m */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
 		049A8B46166CFF7400569250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B45166CFF7400569250 /* UIKit.framework */; };
 		049A8B48166CFF7400569250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B47166CFF7400569250 /* Foundation.framework */; };
@@ -126,6 +127,8 @@
 		0460465216737D6100FA9F03 /* SummlyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyScrollView.m; sourceTree = "<group>"; };
 		0460466716738E7E00FA9F03 /* ItemSummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSummly.h; sourceTree = "<group>"; };
 		0460466816738E7E00FA9F03 /* ItemSummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSummly.m; sourceTree = "<group>"; };
+		04831CC0167C525A00BE99AB /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
+		04831CC1167C525A00BE99AB /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		049A77DC166DCE1900DF8742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		049A8B41166CFF7400569250 /* Summly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A8B45166CFF7400569250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -286,6 +289,15 @@
 				0435E0E21679B99B00992946 /* SummlyListViewController.m */,
 			);
 			path = SummlyListViewController;
+			sourceTree = "<group>";
+		};
+		04831CBE167C524B00BE99AB /* SetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04831CC0167C525A00BE99AB /* SetViewController.h */,
+				04831CC1167C525A00BE99AB /* SetViewController.m */,
+			);
+			path = SetViewController;
 			sourceTree = "<group>";
 		};
 		049A8B36166CFF7400569250 = {
@@ -465,6 +477,7 @@
 		04A47EBA1671DC920035B2AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04831CBE167C524B00BE99AB /* SetViewController */,
 				0435E0E01679B98D00992946 /* SummlyListViewController */,
 				0435E0DB1679B83100992946 /* TopicViewController */,
 				049B8FCA167707B200C48250 /* FrameworkController */,
@@ -712,6 +725,7 @@
 				04A095DE167973F4000424D8 /* Topic.m in Sources */,
 				0435E0DF1679B84D00992946 /* TopicViewController.m in Sources */,
 				0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */,
+				04831CC2167C525A00BE99AB /* SetViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
