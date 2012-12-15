@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Topic.h"
 @interface SummlyListViewController : UIViewController
 
+@property(nonatomic,strong)Topic *topic;
 @end

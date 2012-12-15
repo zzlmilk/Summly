@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 
-
-
-
 @interface Summly : NSObject
 
 @property(nonatomic,strong)NSString *title;
@@ -20,5 +17,7 @@
 
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
+
++(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *summlys))block;
 
 @end

@@ -11,6 +11,8 @@
 		0418DF481678315C007BADC2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0418DF451678315C007BADC2 /* SVProgressHUD.bundle */; };
 		0418DF491678315C007BADC2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418DF471678315C007BADC2 /* SVProgressHUD.m */; };
 		0434DF3316784EE700BD4821 /* cell-add-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434DF3216784EE700BD4821 /* cell-add-icon@2x.png */; };
+		0435E0DF1679B84D00992946 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435E0DE1679B84D00992946 /* TopicViewController.m */; };
+		0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435E0E21679B99B00992946 /* SummlyListViewController.m */; };
 		0460465316737D6100FA9F03 /* SummlyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460465216737D6100FA9F03 /* SummlyScrollView.m */; };
 		0460466916738E7F00FA9F03 /* ItemSummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460466816738E7E00FA9F03 /* ItemSummly.m */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
@@ -116,6 +118,10 @@
 		0418DF461678315C007BADC2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		0418DF471678315C007BADC2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		0434DF3216784EE700BD4821 /* cell-add-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-add-icon@2x.png"; sourceTree = "<group>"; };
+		0435E0DD1679B84D00992946 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
+		0435E0DE1679B84D00992946 /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
+		0435E0E11679B99B00992946 /* SummlyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummlyListViewController.h; sourceTree = "<group>"; };
+		0435E0E21679B99B00992946 /* SummlyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyListViewController.m; sourceTree = "<group>"; };
 		0460465116737D6100FA9F03 /* SummlyScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummlyScrollView.h; sourceTree = "<group>"; };
 		0460465216737D6100FA9F03 /* SummlyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyScrollView.m; sourceTree = "<group>"; };
 		0460466716738E7E00FA9F03 /* ItemSummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSummly.h; sourceTree = "<group>"; };
@@ -262,6 +268,24 @@
 				0418DF471678315C007BADC2 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		0435E0DB1679B83100992946 /* TopicViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0435E0DD1679B84D00992946 /* TopicViewController.h */,
+				0435E0DE1679B84D00992946 /* TopicViewController.m */,
+			);
+			path = TopicViewController;
+			sourceTree = "<group>";
+		};
+		0435E0E01679B98D00992946 /* SummlyListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0435E0E11679B99B00992946 /* SummlyListViewController.h */,
+				0435E0E21679B99B00992946 /* SummlyListViewController.m */,
+			);
+			path = SummlyListViewController;
 			sourceTree = "<group>";
 		};
 		049A8B36166CFF7400569250 = {
@@ -441,6 +465,8 @@
 		04A47EBA1671DC920035B2AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0435E0E01679B98D00992946 /* SummlyListViewController */,
+				0435E0DB1679B83100992946 /* TopicViewController */,
 				049B8FCA167707B200C48250 /* FrameworkController */,
 				04A47EBE1671DCFF0035B2AA /* SummlyController */,
 			);
@@ -684,6 +710,8 @@
 				049B8FD616771F2200C48250 /* MainSummlyView.m in Sources */,
 				0418DF491678315C007BADC2 /* SVProgressHUD.m in Sources */,
 				04A095DE167973F4000424D8 /* Topic.m in Sources */,
+				0435E0DF1679B84D00992946 /* TopicViewController.m in Sources */,
+				0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

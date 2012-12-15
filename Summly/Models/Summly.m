@@ -7,7 +7,7 @@
 //
 
 #import "Summly.h"
-
+#import "SummlyAPIClient.h"
 @implementation Summly
 
 -(id)initWithAttributes:(NSDictionary *)attributes{
@@ -21,5 +21,16 @@
     }
     
     return self;
+}
+
++(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
+    
+    [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+        NSLog(@"%@",responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+    }];
+    
 }
 @end

@@ -21,8 +21,9 @@
     return self;
 }
 
+
 +(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
-    [[SummlyAPIClient sharedClient] getPath:@"home/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (debug) {
             //NSLog(@"%@",responseObject);
         }
@@ -37,10 +38,12 @@
          
             block(topics);
      }
+        
+        
      
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (debug) {
-            //NSLog(@"%@",error);
+            NSLog(@"%@",error);
         }
         block(nil);
     }];

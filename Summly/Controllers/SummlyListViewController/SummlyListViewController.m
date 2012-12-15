@@ -7,6 +7,7 @@
 //
 
 #import "SummlyListViewController.h"
+#import "Summly.h"
 
 @interface SummlyListViewController ()
 
@@ -19,6 +20,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"5",@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+                
+        }];
     }
     return self;
 }
@@ -26,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = self.topic.title;
 	// Do any additional setup after loading the view.
 }
 

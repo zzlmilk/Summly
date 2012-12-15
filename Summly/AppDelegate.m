@@ -18,14 +18,16 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     MainViewController *summlyVC = [[MainViewController alloc]init];
+    _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
-    
-    
-    [self.window setRootViewController:summlyVC];
+    [self.window setRootViewController:_navController];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   self.title =@"添加话题";
 	// Do any additional setup after loading the view.
 }
 

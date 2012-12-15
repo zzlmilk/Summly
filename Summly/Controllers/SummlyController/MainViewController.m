@@ -7,9 +7,13 @@
 //
 
 #import "MainViewController.h"
-#import "Topic.h"
+
 #import "SummlyScrollView.h"
 #import "FrontSummlyView.h"
+#import "Topic.h"
+#import "TopicViewController.h"
+#import "SummlyListViewController.h"
+
 
 @interface MainViewController ()<ItemSummlyActionDelegate>
 {
@@ -25,6 +29,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
+        
     }
     return self;
 }
@@ -57,6 +63,16 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+     [self.navigationController setNavigationBarHidden:YES];        
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 
 
 #pragma mark ---- ItemSummlyActionDelegate
@@ -65,13 +81,21 @@
         [mainSummlyView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
     else if(itemSummly.itemSummlyType ==add){
-        NSLog(@"add");
+        TopicViewController *topViewController = [[TopicViewController alloc]init];
+        [self.navigationController pushViewController:topViewController animated:YES];        
+        /*
         Topic *t = [[Topic alloc]init];
         t.title =@"test";        
         [summlyScrollView generateOneItem:t];
+         */
     }
+    
+    
+    
     else{
-        NSLog(@"other item idex = %d",itemSummly.index);
+        SummlyListViewController *summlyListViewController = [[SummlyListViewController alloc]init];
+        summlyListViewController.topic = itemSummly.topic;
+        [self.navigationController pushViewController:summlyListViewController animated:YES];
     }
 }
 

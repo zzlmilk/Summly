@@ -24,6 +24,7 @@
         [self addSubview:label];
       
     }
+    
     return self;
 }
 
