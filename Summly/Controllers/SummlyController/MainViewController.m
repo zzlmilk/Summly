@@ -31,6 +31,12 @@
         // Custom initialization
 
         
+        
+
+
+        
+        //int value = (arc4random() % x) + 1;
+        
     }
     return self;
 }
@@ -40,18 +46,21 @@
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor clearColor];
-    
+
+                                
 	// Do any additional setup after loading the view.
-        
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    bgImageView.image = [UIImage imageNamed:@"1346344762863@2x.jpg"];
+    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
+    bgImageView.image = [UIImage imageNamed:randomImageName];
     [self.view addSubview:bgImageView];
     
-        
+    
+    
     frontView = [[FrontSummlyView  alloc]initWithFrame:self.view.bounds];
     summlyScrollView = [[SummlyScrollView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 0, self.self.view.bounds.size.width, self.view.bounds.size.height) delegate:self];
     mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
     [self.view addSubview:mainSummlyView];
+    
     
     
     [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {

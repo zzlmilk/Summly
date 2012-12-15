@@ -12,3 +12,4 @@
 @interface SummlyAPIClient : AFHTTPClient
 +(SummlyAPIClient *) sharedClient;
 @end
+

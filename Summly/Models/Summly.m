@@ -28,6 +28,7 @@
     [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 
         NSLog(@"%@",responseObject);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
     }];

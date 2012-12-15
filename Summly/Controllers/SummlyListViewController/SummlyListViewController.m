@@ -20,8 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"5",@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
-                
+        [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"6",@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {                
         }];
     }
     return self;
