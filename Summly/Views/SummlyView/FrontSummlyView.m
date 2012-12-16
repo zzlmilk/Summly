@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        int y = self.frame.size.height-225;
         
         //设定当前日期
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
@@ -51,7 +52,7 @@
         
         //标题内容
         UITextView *titleLabel=[[UITextView
-                         alloc] initWithFrame:CGRectMake(left-10, 230, 200, 220)];
+                         alloc] initWithFrame:CGRectMake(left-10, y, 200, 220)];
         titleLabel.scrollEnabled = YES;
         titleLabel.editable = NO;//禁止编辑
         titleLabel.text = @"Mailbox：Sparrow 和 Clear 附身的 iPhone 邮件客户端";
@@ -62,13 +63,15 @@
         [self addSubview: titleLabel];
         
         
+        
+        
         //分隔按钮
-        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,360,100,20)];
+        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,y + 130,100,20)];
         trendingImageView.image = [UIImage imageNamed:@"trending-label@2x.png"];//加载入图片
         [self addSubview:trendingImageView];
         
         
-        UILabel *consourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 370, 120, 13)];
+        UILabel *consourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y +140, 120, 13)];
         consourceLabel.backgroundColor = [UIColor clearColor];
         consourceLabel.text = @"内容来源";
         consourceLabel.font = [UIFont systemFontOfSize:12];
@@ -76,7 +79,7 @@
         [self addSubview:consourceLabel];
         
         
-        UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 390, 140, 13)];
+        UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y + 155, 140, 13)];
         mediaLabel.backgroundColor = [UIColor clearColor];
         mediaLabel.text = @"http://www.ifanr.com";
         mediaLabel.font = [UIFont systemFontOfSize:12];
@@ -84,7 +87,7 @@
         [self addSubview:mediaLabel];
         
         
-        UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 410, 120, 13)];
+        UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y + 170, 120, 13)];
         typeLabel.backgroundColor = [UIColor clearColor];
         typeLabel.text = @"Technology";
         typeLabel.font = [UIFont systemFontOfSize:12];
