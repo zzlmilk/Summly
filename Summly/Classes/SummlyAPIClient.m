@@ -10,9 +10,9 @@
 
 #import "AFJSONRequestOperation.h"
 
-//static NSString *const  kAFSummlyAPIBaseURLString  =http://zzlmilk.herokuapp.com/ ;
+static NSString *const  kAFSummlyAPIBaseURLString  =@"http://zzlmilk.herokuapp.com/";
 
-static NSString * const kAFSummlyAPIBaseURLString = @"http://localhost:3000/";
+//static NSString * const kAFSummlyAPIBaseURLString = @"http://localhost:3000/";
 
 
 @implementation SummlyAPIClient

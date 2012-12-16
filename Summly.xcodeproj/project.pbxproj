@@ -111,6 +111,15 @@
 		04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
 		04E0595D1674EF6300C919DE /* SummlyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */; };
+		896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA704167DE6C2006DBE88 /* petal-email@2x.png */; };
+		896AA70A167DE6C2006DBE88 /* petal-facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */; };
+		896AA70B167DE6C2006DBE88 /* petal-save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA706167DE6C2006DBE88 /* petal-save@2x.png */; };
+		896AA70C167DE6C2006DBE88 /* petal-twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA707167DE6C2006DBE88 /* petal-twitter@2x.png */; };
+		896AA70D167DE6C2006DBE88 /* petal-unsave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA708167DE6C2006DBE88 /* petal-unsave@2x.png */; };
+		896AA717167DE7E3006DBE88 /* FAFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 896AA714167DE7E3006DBE88 /* FAFancyButton.m */; };
+		896AA718167DE7E3006DBE88 /* FAFancyMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */; };
+		896AA71F167DEA76006DBE88 /* cover-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */; };
+		896AA725167DF741006DBE88 /* trending-label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA724167DF741006DBE88 /* trending-label@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +256,17 @@
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
 		04E0595B1674EF6300C919DE /* SummlyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SummlyAppDelegate.h; path = ../SummlyAppDelegate.h; sourceTree = "<group>"; };
 		04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SummlyAppDelegate.m; path = ../SummlyAppDelegate.m; sourceTree = "<group>"; };
+		896AA704167DE6C2006DBE88 /* petal-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-email@2x.png"; sourceTree = "<group>"; };
+		896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-facebook@2x.png"; sourceTree = "<group>"; };
+		896AA706167DE6C2006DBE88 /* petal-save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-save@2x.png"; sourceTree = "<group>"; };
+		896AA707167DE6C2006DBE88 /* petal-twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-twitter@2x.png"; sourceTree = "<group>"; };
+		896AA708167DE6C2006DBE88 /* petal-unsave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-unsave@2x.png"; sourceTree = "<group>"; };
+		896AA713167DE7E3006DBE88 /* FAFancyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyButton.h; sourceTree = "<group>"; };
+		896AA714167DE7E3006DBE88 /* FAFancyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyButton.m; sourceTree = "<group>"; };
+		896AA715167DE7E3006DBE88 /* FAFancyMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyMenuView.h; sourceTree = "<group>"; };
+		896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuView.m; sourceTree = "<group>"; };
+		896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-arrow@2x.png"; sourceTree = "<group>"; };
+		896AA724167DF741006DBE88 /* trending-label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trending-label@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +394,8 @@
 		049B8F2D1675FCD700C48250 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				896AA71D167DEA63006DBE88 /* button */,
+				896AA702167DE66C006DBE88 /* FAFancyMenu */,
 				0434DF3216784EE700BD4821 /* cell-add-icon@2x.png */,
 				049B8F721676D94800C48250 /* summlyBackground */,
 				049B8F521675FD5700C48250 /* grad */,
@@ -471,6 +493,7 @@
 		04A47EB81671DC800035B2AA /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				896AA712167DE7C4006DBE88 /* FancyMenu */,
 				0418DF441678315C007BADC2 /* SVProgressHUD */,
 				04A47EC7167233B60035B2AA /* AFNetworking */,
 			);
@@ -571,6 +594,38 @@
 				04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		896AA702167DE66C006DBE88 /* FAFancyMenu */ = {
+			isa = PBXGroup;
+			children = (
+				896AA704167DE6C2006DBE88 /* petal-email@2x.png */,
+				896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */,
+				896AA706167DE6C2006DBE88 /* petal-save@2x.png */,
+				896AA707167DE6C2006DBE88 /* petal-twitter@2x.png */,
+				896AA708167DE6C2006DBE88 /* petal-unsave@2x.png */,
+			);
+			name = FAFancyMenu;
+			sourceTree = "<group>";
+		};
+		896AA712167DE7C4006DBE88 /* FancyMenu */ = {
+			isa = PBXGroup;
+			children = (
+				896AA713167DE7E3006DBE88 /* FAFancyButton.h */,
+				896AA714167DE7E3006DBE88 /* FAFancyButton.m */,
+				896AA715167DE7E3006DBE88 /* FAFancyMenuView.h */,
+				896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */,
+			);
+			name = FancyMenu;
+			sourceTree = "<group>";
+		};
+		896AA71D167DEA63006DBE88 /* button */ = {
+			isa = PBXGroup;
+			children = (
+				896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */,
+				896AA724167DF741006DBE88 /* trending-label@2x.png */,
+			);
+			name = button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -696,6 +751,13 @@
 				049B8FC51676D95400C48250 /* cover_41@2x.jpg in Resources */,
 				0418DF481678315C007BADC2 /* SVProgressHUD.bundle in Resources */,
 				0434DF3316784EE700BD4821 /* cell-add-icon@2x.png in Resources */,
+				896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */,
+				896AA70A167DE6C2006DBE88 /* petal-facebook@2x.png in Resources */,
+				896AA70B167DE6C2006DBE88 /* petal-save@2x.png in Resources */,
+				896AA70C167DE6C2006DBE88 /* petal-twitter@2x.png in Resources */,
+				896AA70D167DE6C2006DBE88 /* petal-unsave@2x.png in Resources */,
+				896AA71F167DEA76006DBE88 /* cover-arrow@2x.png in Resources */,
+				896AA725167DF741006DBE88 /* trending-label@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +794,8 @@
 				0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */,
 				04831CC2167C525A00BE99AB /* SetViewController.m in Sources */,
 				04831CC8167C692D00BE99AB /* Cover.m in Sources */,
+				896AA717167DE7E3006DBE88 /* FAFancyButton.m in Sources */,
+				896AA718167DE7E3006DBE88 /* FAFancyMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

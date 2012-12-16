@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FAFancyMenuView.h"
+@interface SetViewController : UIViewController<FAFancyMenuViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
-@interface SetViewController : UIViewController
+
+@property (nonatomic, retain) UITableView *listTable;
 
 @end
