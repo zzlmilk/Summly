@@ -31,7 +31,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(set)];
     
 }
-
 -(void)set{
     
 }

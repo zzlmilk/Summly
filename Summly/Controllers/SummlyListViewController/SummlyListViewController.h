@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
-@interface SummlyListViewController : UIViewController
-
+@interface SummlyListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    
+}
 @property(nonatomic,strong)Topic *topic;
+@property(nonatomic,strong) NSMutableArray *summlysArr;
 @end

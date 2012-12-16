@@ -13,7 +13,10 @@
 
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *describe;
-
+@property(nonatomic,strong)NSString *scource;
+@property(nonatomic,strong)NSDate * summlyTime;
+@property(nonatomic,strong)NSString *imageUrl;
+@property(nonatomic,strong)NSString *sourceUrl;
 
 
 

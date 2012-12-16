@@ -18,6 +18,7 @@ typedef enum {
 
 @interface Topic : NSObject
 
+@property(nonatomic) NSInteger topicId;
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *subTitle;
 @property(nonatomic,strong)NSString *source;

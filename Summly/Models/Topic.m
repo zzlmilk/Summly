@@ -13,6 +13,7 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self= [super init];
     if (self) {
+        self.topicId = [[attributes objectForKey:@"topic_id"] integerValue];
         self.title = [attributes objectForKey:@"title"];
         self.subTitle = [attributes objectForKey:@"subTitle"];
         self.source = [attributes objectForKey:@"source"];
