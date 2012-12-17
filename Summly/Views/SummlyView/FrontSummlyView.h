@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FrontSummlyViewDelegate <NSObject>
+-(void)backbuttonDidSelect;
+@end
+
 @interface FrontSummlyView : UIView
+
+@property(nonatomic,weak)id delegate;
 
 @end

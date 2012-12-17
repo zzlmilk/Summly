@@ -15,7 +15,7 @@
 #import "SummlyListViewController.h"
 
 
-@interface MainViewController ()<ItemSummlyActionDelegate>
+@interface MainViewController ()<ItemSummlyActionDelegate,FrontSummlyViewDelegate>
 {
     FrontSummlyView* frontView;
     SummlyScrollView* summlyScrollView;
@@ -53,6 +53,8 @@
     
     
     frontView = [[FrontSummlyView  alloc]initWithFrame:self.view.bounds];
+    frontView.delegate= self;
+    
     summlyScrollView = [[SummlyScrollView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 0, self.self.view.bounds.size.width, self.view.bounds.size.height) delegate:self];
     mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
     [self.view addSubview:mainSummlyView];
@@ -60,7 +62,7 @@
     
     
     [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
-        if (topics) {
+        if (topics) {            
             [summlyScrollView generateItems:topics];
         }
     }];
@@ -79,6 +81,10 @@
 }
 
 
+#pragma mark ----FrontSummlyViewDelegate
+-(void)backbuttonDidSelect{
+    [mainSummlyView setContentOffset:CGPointMake(320, 0) animated:YES];
+}
 
 #pragma mark ---- ItemSummlyActionDelegate
 -(void)ItemSummlydidTap:(ItemSummly *)itemSummly{

@@ -13,7 +13,7 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self= [super init];
     if (self) {
-        self.topicId = [[attributes objectForKey:@"topic_id"] integerValue];
+        self.topicId = [[attributes objectForKey:@"id"] integerValue];
         self.title = [attributes objectForKey:@"title"];
         self.subTitle = [attributes objectForKey:@"subTitle"];
         self.source = [attributes objectForKey:@"source"];
@@ -26,7 +26,7 @@
 +(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
     [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (debug) {
-            //NSLog(@"%@",responseObject);
+            NSLog(@"%@",responseObject);
         }
           
      NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];

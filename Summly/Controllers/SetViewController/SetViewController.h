@@ -11,6 +11,9 @@
 @interface SetViewController : UIViewController<FAFancyMenuViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 
+@property (nonatomic, retain) NSDictionary *countLitsDic;
+@property (nonatomic, retain) NSDictionary *nameDic;
+@property (nonatomic, retain) NSArray *keys;
 @property (nonatomic, retain) UITableView *listTable;
 
 @end
