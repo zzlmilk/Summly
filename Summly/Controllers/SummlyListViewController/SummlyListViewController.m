@@ -88,7 +88,7 @@
     cell.detailTextLabel.shadowColor = [UIColor blackColor];
     cell.detailTextLabel.shadowOffset = CGSizeMake(0, 0.8);
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tablebackground.png"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1tablebackground.png"]];
     cell.backgroundView=imageView;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

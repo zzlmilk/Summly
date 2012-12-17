@@ -15,6 +15,7 @@
 #import "SummlyListViewController.h"
 
 
+
 @interface MainViewController ()<ItemSummlyActionDelegate,FrontSummlyViewDelegate>
 {
     FrontSummlyView* frontView;
@@ -29,11 +30,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
-        
-        
-
-
         
         //int value = (arc4random() % x) + 1;
         
@@ -58,6 +54,7 @@
     summlyScrollView = [[SummlyScrollView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 0, self.self.view.bounds.size.width, self.view.bounds.size.height) delegate:self];
     mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
     [self.view addSubview:mainSummlyView];
+    
     
     
     

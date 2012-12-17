@@ -10,7 +10,9 @@
 #import "SummlyDetailView.h"
 
 @interface DetailScrollViewController ()
-
+{
+    
+}
 @end
 
 @implementation DetailScrollViewController
@@ -27,16 +29,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    swipUpGesture  = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
+    swipUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipUpGesture];
+    
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); //这里写的好哦
     [self.view addSubview:scrollView];
     
     
     [self createDetailView:self.summlyArr];
+}
+
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+-(void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)createDetailView:(NSArray *)summlys{
