@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Summly.h"
+#import "FAFancyMenuView.h"
 
-@interface DetailScrollViewController : UIViewController
+@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate>
 {
     
     UIScrollView *scrollView;
