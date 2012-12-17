@@ -31,21 +31,31 @@
 	// Do any additional setup after loading the view.
     
     
-
+    NSArray *accountArray = [NSArray arrayWithObjects:@"Facebook", nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:@"共享个性化设置", nil];
+    NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
+    NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
     
+    _countLitsDic = [NSDictionary dictionaryWithObjectsAndKeys:accountArray,@"0", shareArray,@"1", informationArray,@"2",aboutArray,@"3",nil];
     
-    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 360, 600) style:UITableViewStyleGrouped];
+    _keys = [[_countLitsDic allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    
+    _nameDic = [NSDictionary dictionaryWithObjectsAndKeys:@"账户",@"0", @"",@"1", @"传递消息",@"2",@"",@"3",nil];
+    
+    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-30) style:UITableViewStyleGrouped];
     listTable.backgroundColor = [UIColor whiteColor];
+    listTable.dataSource = self;
+    listTable.delegate = self;
     [self.view addSubview:listTable];
     
     
     
-    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-    self.menu = [[FAFancyMenuView alloc] init];
-    self.menu.delegate = self;
-    self.menu.buttonImages = images;
-    [self.view addSubview:self.menu];
-    
+    //    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
+    //    self.menu = [[FAFancyMenuView alloc] init];
+    //    self.menu.delegate = self;
+    //    self.menu.buttonImages = images;
+    //    [self.view addSubview:self.menu];
+    //
 }
 
 
@@ -53,6 +63,77 @@
     NSLog(@"%i",index);
 }
 
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return [_keys count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSString *key = [_keys objectAtIndex:section];
+    NSArray *nameSection = [_countLitsDic objectForKey:key];
+    return [nameSection count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *SecionsTableIdentifier = @"SecionsTableIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SecionsTableIdentifier];
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SecionsTableIdentifier];
+    }
+    NSUInteger seciton = [indexPath section];
+    NSUInteger row = [indexPath row];
+    
+    NSString *key = [_keys objectAtIndex:seciton];
+    NSArray *nameSection = [_countLitsDic objectForKey:key];
+    
+    if (seciton ==0 && row == 0) {
+        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+        switchView.on = YES;//设置初始为ON的一边
+        [switchView addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+        [cell addSubview:switchView];
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    cell.textLabel.text = [nameSection objectAtIndex:row];
+    //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return  cell;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    
+    NSString *key = [_keys objectAtIndex:section];
+    
+    return [_nameDic objectForKey:key];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    首先是用indexPath获取当前行的内容
+    NSInteger row = [indexPath row];
+    NSInteger section = [indexPath section];
+    
+    NSString *key = [_keys objectAtIndex:section];
+    NSArray *nameSection = [_countLitsDic objectForKey:key];
+    
+    NSString *sting = [nameSection objectAtIndex:row];
+    NSLog(@"%@",sting);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)switchAction
+{
+    
+}
 
 
 - (void)didReceiveMemoryWarning
