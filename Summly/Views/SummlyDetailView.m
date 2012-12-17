@@ -14,7 +14,7 @@
 
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)_summly
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
         
         self.summly =_summly;
@@ -28,16 +28,17 @@
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setNumberOfLines:0];
         [titleLabel setFont:[UIFont systemFontOfSize:20]];
+        [titleLabel setTextColor:[UIColor whiteColor]];
         titleLabel.shadowColor = [UIColor blackColor];
         titleLabel.shadowOffset = CGSizeMake(0, 0.8);
         titleLabel.text = self.summly.title;
         [self addSubview:titleLabel];
         
         //文章
-        UIView *acticleView = [[UIView alloc] initWithFrame:CGRectMake(0, titleLabel.frame.origin.y+titleLabel.frame.size.height, frame.size.width, self.frame.size.height-imageBackView.frame.size.height)];
-        [self addSubview:acticleView];
+        UIView *acticleView = [[UIView alloc] initWithFrame:CGRectMake(0, imageBackView.frame.size.height, frame.size.width, frame.size.height-imageBackView.frame.size.height)];
+        [acticleView setBackgroundColor:[UIColor whiteColor]];
         
-        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MarginDic, 22, 22, 22)];
+        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MarginDic, 18, 22, 22)];
         [iconImageView setImage:[UIImage imageNamed:@"publisherIcon.png"]];
         [acticleView addSubview:iconImageView];
         
@@ -60,14 +61,22 @@
         [timeIntervalLabel sizeToFit];
         [acticleView addSubview:timeIntervalLabel];
         
-        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic, self.frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-25)];
+        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-25)];
         [articleLabel setFont:[UIFont systemFontOfSize:15]];
-        articleLabel.text = self.summly.describe;
+        articleLabel.text = [self removeSpace:self.summly.describe];
+        articleLabel.numberOfLines = 0;
         [acticleView addSubview:articleLabel];
-        
+     
+    
+        [self addSubview:acticleView];
+
     }
     return self;
 }
 
+- (NSString *)removeSpace:(NSString *)text{
 
+    NSString *temp = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return temp;
+}
 @end

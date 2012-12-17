@@ -26,11 +26,34 @@
         self.summlyTime =  [self stringDateToNSDate:[attributes objectForKey:@"time"]];
         self.imageUrl = [attributes objectForKey:@"imageUrl"];
         
+        self.interval = [self timeIntervalFromNow:self.summlyTime];
+        
     }
     
     return self;
 }
 
+//时间差
+- (NSString *)timeIntervalFromNow:(NSDate *)_summlyTime{
+    NSString *intervalStr;
+    double timeInterval = 0.0f;
+    timeInterval = [[NSDate date] timeIntervalSinceDate:_summlyTime];
+    NSInteger _interval = (int)timeInterval/3600;
+    
+    if (_interval >=24) {
+        _interval = (int)_interval/24;
+        intervalStr = [NSString stringWithFormat:@"%d 天前",_interval];
+        return intervalStr;
+    }
+    else if(_interval <24 && _interval>1){
+        intervalStr = [NSString stringWithFormat:@"%d 小时前",_interval];
+        
+        return intervalStr;
+    }
+    return nil;
+}
+
+//stringFromDate
 -(NSDate *)stringDateToNSDate:(NSString *)string {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone localTimeZone];

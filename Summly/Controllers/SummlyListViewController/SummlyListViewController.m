@@ -83,7 +83,7 @@
     cell.textLabel.text = summly.title;
     [cell.textLabel setTextColor:[UIColor whiteColor]];
      
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", summly.scource,[self timeIntervalFromNow:summly.summlyTime]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", summly.scource,summly.interval];
     [cell.detailTextLabel setTextColor:[UIColor colorWithRed:180/255.0f green:180/255.0f blue:180/255.0f alpha:1.0f]];
     cell.detailTextLabel.shadowColor = [UIColor blackColor];
     cell.detailTextLabel.shadowOffset = CGSizeMake(0, 0.8);
@@ -113,24 +113,6 @@
     
 }
 
-- (NSString *)timeIntervalFromNow:(NSDate *)summlyTime{
-    NSString *intervalStr;
-    double timeInterval = 0.0f;
-    timeInterval = [[NSDate date] timeIntervalSinceDate:summlyTime];
-    NSInteger interval = (int)timeInterval/3600;
-
-    if (interval >=24) {
-        interval = (int)interval/24;
-        intervalStr = [NSString stringWithFormat:@"%d 天前",interval];
-        return intervalStr;
-    }
-    else if(interval <24 && interval>1){
-        intervalStr = [NSString stringWithFormat:@"%d 小时前",interval];
-
-        return intervalStr;
-    }
-    return nil;
-}
 
 - (void)didReceiveMemoryWarning
 {

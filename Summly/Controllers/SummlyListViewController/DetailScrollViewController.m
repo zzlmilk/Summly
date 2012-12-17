@@ -31,6 +31,7 @@
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.showsHorizontalScrollIndicator = YES;
+    scrollView.pagingEnabled=YES;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
     [self.view addSubview:scrollView];
     
@@ -41,7 +42,7 @@
 - (void)createDetailView:(NSArray *)summlys{
     
     for (int i=0; i<summlys.count; i++) {
-        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height)summly:[summlys objectAtIndex:i]];
+        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         [scrollView addSubview:detailView];
     }
 
