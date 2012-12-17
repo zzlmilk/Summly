@@ -38,7 +38,7 @@
     
     
     
-    NSArray *accountArray = [NSArray arrayWithObjects:@"Facebook", nil];
+    NSArray *accountArray = [NSArray arrayWithObjects:@"Sina Weibo", nil];
     NSArray *shareArray = [NSArray arrayWithObjects:@"共享个性化设置", nil];
     NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
     NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
@@ -56,7 +56,7 @@
     listTable.backgroundView = nil;
     [listTable setBackgroundColor:[UIColor clearColor]];
     //[listTable setSeparatorColor:[UIColor clearColor]];
-    //[listTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [listTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:listTable];
     
     
@@ -74,6 +74,14 @@
     NSLog(@"%i",index);
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    NSString *key = [_keys objectAtIndex:section];
+    NSString *sting =  [_nameDic objectForKey:key];
+    
+    int nub = [sting isEqualToString:@""]?15:30;
+    return nub;
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -95,36 +103,52 @@
     if(cell == nil)
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SecionsTableIdentifier];
+        NSUInteger seciton = [indexPath section];
+        NSUInteger row = [indexPath row];
+        
+        NSString *key = [_keys objectAtIndex:seciton];
+        NSArray *nameSection = [_countLitsDic objectForKey:key];
+        
+        if (seciton ==0 && row == 0) {
+            //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+            switchView.on = YES;//设置初始为ON的一边
+            [switchView addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+            [cell addSubview:switchView];
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        
+        cell.textLabel.text = [nameSection objectAtIndex:row];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.backgroundView = nil;
+        cell.backgroundColor = [UIColor clearColor];
     }
-    NSUInteger seciton = [indexPath section];
-    NSUInteger row = [indexPath row];
-    
-    NSString *key = [_keys objectAtIndex:seciton];
-    NSArray *nameSection = [_countLitsDic objectForKey:key];
-    
-    if (seciton ==0 && row == 0) {
-        //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
-        switchView.on = YES;//设置初始为ON的一边
-        [switchView addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
-        [cell addSubview:switchView];
-    }
-    else
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    
-    cell.textLabel.text = [nameSection objectAtIndex:row];
+
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return  cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
     NSString *key = [_keys objectAtIndex:section];
     
-    return [_nameDic objectForKey:key];
+    //return [_nameDic objectForKey:key];
+    
+    UIView* myView = [[UIView alloc] init];
+    //myView.backgroundColor = [UIColor colorWithRed:0.10 green:0.68 blue:0.94 alpha:0.7];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 22)];
+    titleLabel.textColor=[UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.text=[_nameDic objectForKey:key];
+    [myView addSubview:titleLabel];
+    return myView;
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

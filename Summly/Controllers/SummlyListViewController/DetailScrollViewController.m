@@ -14,6 +14,7 @@
 {
     
 }
+@property (nonatomic, strong) FAFancyMenuView *menu;
 @end
 
 @implementation DetailScrollViewController
@@ -51,6 +52,12 @@ static DetailScrollViewController *detailInstance=nil;
     [self.view addSubview:scrollView];
     
     [self createDetailView:self.summlyArr];
+    
+    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
+    self.menu = [[FAFancyMenuView alloc] init];
+    self.menu.delegate = self;
+    self.menu.buttonImages = images;
+    [self.view addSubview:self.menu];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -90,6 +97,12 @@ static DetailScrollViewController *detailInstance=nil;
 
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width*summlys.count, self.view.frame.size.height);
 }
+
+//花瓣按钮回调
+- (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
+    NSLog(@"%i",index);
+}
+
 
 - (void)didReceiveMemoryWarning
 {
