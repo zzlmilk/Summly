@@ -9,6 +9,7 @@
 #import "SummlyListViewController.h"
 #import "Summly.h"
 #import "DetailScrollViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SummlyListViewController ()
 
@@ -34,8 +35,6 @@
     [super viewDidLoad];
     self.title = self.topic.title;
     
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-
     self.view.backgroundColor = [UIColor clearColor];
     
     UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -63,6 +62,14 @@
     }];
 
       
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.navigationController.navigationBar.isHidden==YES) {
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -107,10 +114,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    DetailScrollViewController *detailScrollVC = [[DetailScrollViewController alloc] init];
-    detailScrollVC.summlyArr = self.summlysArr;
-    [self.navigationController pushViewController:detailScrollVC animated:YES];
+    DetailScrollViewController *detailScrollVC;
+    if (topicId == self.topic.topicId) {
+        detailScrollVC = [DetailScrollViewController sharedInstance];
+    }
+    else{
+        detailScrollVC = [[DetailScrollViewController alloc] init];
+        detailScrollVC.summlyArr = self.summlysArr;
+    }
+    topicId = self.topic.topicId;
     
+//    detailScrollVC.index = indexPath.row;
+    [detailScrollVC setScrollOffset:indexPath.row];
+    //controller推入动画
+    [self pushControllerAnimate];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController pushViewController:detailScrollVC animated:NO];
+}
+
+- (void)pushControllerAnimate{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromBottom;
+    transition.delegate = self;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+
 }
 
 

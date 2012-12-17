@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
 
+//        self.topicId = [[attributes objectForKey:@"topic_id"] intValue];
         self.title = [attributes objectForKey:@"title"];
         self.describe = [attributes objectForKey:@"content"];
         if (self.scource.length==0) {
@@ -66,7 +67,7 @@
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
     
-    NSLog(@"%@",parameters);
+//    NSLog(@"%@",parameters);
     [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
@@ -81,7 +82,7 @@
         if (block) {
             block(summlyArr);
         }
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);

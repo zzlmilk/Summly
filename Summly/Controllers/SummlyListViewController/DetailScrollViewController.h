@@ -17,5 +17,10 @@
     UISwipeGestureRecognizer *swipUpGesture;  //up to back 
 
 }
+
++(id)sharedInstance;
+- (void)setScrollOffset:(NSInteger)index;
+
 @property(nonatomic,strong) NSArray *summlyArr;
+@property(nonatomic) NSInteger index;
 @end

@@ -10,7 +10,7 @@
 #import "Topic.h"
 @interface SummlyListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    
+    NSInteger topicId;
 }
 @property(nonatomic,strong)Topic *topic;
 @property(nonatomic,strong) NSMutableArray *summlysArr;

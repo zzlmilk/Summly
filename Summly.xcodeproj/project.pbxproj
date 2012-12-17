@@ -129,7 +129,6 @@
 		C81DFEDF167F09C80040F35B /* DetailScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81DFEDE167F09C80040F35B /* DetailScrollViewController.m */; };
 		C81DFEE2167F0B8A0040F35B /* SummlyDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C81DFEE1167F0B8A0040F35B /* SummlyDetailView.m */; };
 		C81DFEE5167F124A0040F35B /* publisherIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEE4167F124A0040F35B /* publisherIcon@2x.png */; };
-		C81DFEE7167F32D10040F35B /* detail.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEE6167F32D10040F35B /* detail.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,7 +288,6 @@
 		C81DFEE0167F0B8A0040F35B /* SummlyDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummlyDetailView.h; sourceTree = "<group>"; };
 		C81DFEE1167F0B8A0040F35B /* SummlyDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyDetailView.m; sourceTree = "<group>"; };
 		C81DFEE4167F124A0040F35B /* publisherIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publisherIcon@2x.png"; sourceTree = "<group>"; };
-		C81DFEE6167F32D10040F35B /* detail.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = detail.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,7 +663,6 @@
 		C81DFEB5167EB4810040F35B /* tableView */ = {
 			isa = PBXGroup;
 			children = (
-				C81DFEE6167F32D10040F35B /* detail.jpg */,
 				C81DFEB6167EB4910040F35B /* tablebackground@2x.png */,
 				C81DFEB7167EB4910040F35B /* tableseparator@2x.png */,
 			);
@@ -816,7 +813,6 @@
 				C81DFED6167EEB400040F35B /* navigation-background@2x.png in Resources */,
 				C81DFED8167EEBA00040F35B /* navigation-back-button@2x.png in Resources */,
 				C81DFEE5167F124A0040F35B /* publisherIcon@2x.png in Resources */,
-				C81DFEE7167F32D10040F35B /* detail.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

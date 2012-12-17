@@ -11,6 +11,7 @@
 
 @interface Summly : NSObject
 
+//@property(nonatomic) NSInteger topicId;
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *describe;
 @property(nonatomic,strong)NSString *scource;
