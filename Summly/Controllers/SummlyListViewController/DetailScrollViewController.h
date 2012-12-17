@@ -13,6 +13,8 @@
 {
     
     UIScrollView *scrollView;
+    
+    UISwipeGestureRecognizer *swipUpGesture;  //up to back 
 
 }
 @property(nonatomic,strong) NSArray *summlyArr;
