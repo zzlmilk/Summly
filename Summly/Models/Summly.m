@@ -27,7 +27,10 @@
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
     
+    NSLog(@"%@",parameters);
     [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
         NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
         NSArray *responseArr = (NSArray*)responseObject;
         
@@ -39,7 +42,7 @@
         if (block) {
             block(summlyArr);
         }
-       // NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);

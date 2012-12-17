@@ -34,8 +34,10 @@
     tableView.dataSource = self;
     [self.view addSubview:tableView];
 
-   // NSDictionary *dic = [NSDictionary dictionaryWithObject:self.topic.topicId forKey:@"topic_id"];
-    [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:@"6",@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+
+    
+    [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.topic.topicId] ,@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+        
         
         self.summlysArr=summlys;
         [tableView reloadData];

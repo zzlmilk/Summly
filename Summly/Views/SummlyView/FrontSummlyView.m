@@ -112,7 +112,7 @@
 
 -(void)backbuttonCheck
 {
-    NSLog(@"返回");
+    [self.delegate backbuttonDidSelect];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
