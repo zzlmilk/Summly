@@ -9,6 +9,7 @@
 #import "Summly.h"
 #import "SummlyAPIClient.h"
 @implementation Summly
+@synthesize title,describe,scource,imageUrl,interval,sourceUrl,summlyTime;
 
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
@@ -16,13 +17,28 @@
 
         self.title = [attributes objectForKey:@"title"];
         self.describe = [attributes objectForKey:@"content"];
-        self.scource = [attributes objectForKey:@"source"];//来源
+        if (self.scource.length==0) {
+            self.scource = @"雅虎通讯";
+        }else{
+            self.scource = [attributes objectForKey:@"source"];//来源
+        }
         self.sourceUrl = [attributes objectForKey:@"url"];
-        self.summlyTime = [attributes objectForKey:@"time"];
+        self.summlyTime =  [self stringDateToNSDate:[attributes objectForKey:@"time"]];
         self.imageUrl = [attributes objectForKey:@"imageUrl"];
+        
     }
     
     return self;
+}
+
+-(NSDate *)stringDateToNSDate:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone localTimeZone];
+    [formatter setTimeZone:timeZone];
+    [formatter setDateFormat: @"yyyy-MM-dd"];
+    NSDate *date = [formatter dateFromString:string];
+
+    return date;
 }
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{

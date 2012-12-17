@@ -30,7 +30,6 @@
     self.title =@"添加话题";
 	// Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:self action:@selector(set)];
-    
 }
 -(void)set{
     SetViewController *topViewController = [[SetViewController alloc]init];

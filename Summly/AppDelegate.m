@@ -16,13 +16,21 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor clearColor];
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
+    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
+    bgImageView.image = [UIImage imageNamed:randomImageName];
+    [self.window addSubview:bgImageView];
+
     MainViewController *summlyVC = [[MainViewController alloc]init];
     _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
     [self.window setRootViewController:_navController];
     
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
+
     return YES;
 }
 

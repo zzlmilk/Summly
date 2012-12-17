@@ -17,7 +17,7 @@
 @property(nonatomic,strong)NSDate * summlyTime;
 @property(nonatomic,strong)NSString *imageUrl;
 @property(nonatomic,strong)NSString *sourceUrl;
-
+@property(nonatomic,strong)NSString *interval;
 
 
 - (id)initWithAttributes:(NSDictionary *)attributes;

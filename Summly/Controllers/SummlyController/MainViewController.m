@@ -49,11 +49,7 @@
 
                                 
 	// Do any additional setup after loading the view.
-    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
-    bgImageView.image = [UIImage imageNamed:randomImageName];
-    [self.view addSubview:bgImageView];
-    
+       
     
     
     frontView = [[FrontSummlyView  alloc]initWithFrame:self.view.bounds];
@@ -102,6 +98,7 @@
     
     
     else{
+        
         SummlyListViewController *summlyListViewController = [[SummlyListViewController alloc]init];
         summlyListViewController.topic = itemSummly.topic;
         [self.navigationController pushViewController:summlyListViewController animated:YES];
