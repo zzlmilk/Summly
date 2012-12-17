@@ -30,6 +30,13 @@
     self.title =@"设置";
 	// Do any additional setup after loading the view.
     
+    UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_button setBackgroundImage:[UIImage imageNamed:@"navigation-back-button.png"] forState:UIControlStateNormal];
+    [_button setFrame:CGRectMake(0, 0, 50.0f, 30.0f)];
+    [_button addTarget:self action:@selector(bactToTopic) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]initWithCustomView:_button];
+    
+    
     
     NSArray *accountArray = [NSArray arrayWithObjects:@"Facebook", nil];
     NSArray *shareArray = [NSArray arrayWithObjects:@"共享个性化设置", nil];
@@ -46,6 +53,10 @@
     listTable.backgroundColor = [UIColor whiteColor];
     listTable.dataSource = self;
     listTable.delegate = self;
+    listTable.backgroundView = nil;
+    [listTable setBackgroundColor:[UIColor clearColor]];
+    //[listTable setSeparatorColor:[UIColor clearColor]];
+    //[listTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:listTable];
     
     
@@ -135,6 +146,11 @@
     
 }
 
+
+- (void)bactToTopic
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
