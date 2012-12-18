@@ -11,6 +11,8 @@
 #import "Topic.h"
 #import "SVProgressHUD.h"
 
+
+
 @interface ItemSummly() <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
     
@@ -36,6 +38,7 @@
 @end
 
 @implementation ItemSummly
+
 
 
 
@@ -73,14 +76,34 @@
 
 }
 
+-(void)_initVoice{
+    NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"sms-received6"
+                                                withExtension: @"caf"];
+    
+    // Store the URL as a CFURLRef instance
+    soundFileURLRef = (__bridge CFURLRef) tapSound ;
+    
+    // Create a system sound object representing the sound file.
+    AudioServicesCreateSystemSoundID (
+                                      
+                                      soundFileURLRef,
+                                      &soundFileObject
+                                      );
+    
+
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         
+              
                
         [self commonInit];
+        [self _initVoice];
+        
     
         
         
@@ -110,19 +133,7 @@
         
        
         
-        
-        /*
-        layer1 = [[CALayer alloc]init];
-        layer1.frame = view.bounds;
-        [view.layer insertSublayer:layer1 atIndex:0];
-        itemColorRef = layer1.backgroundColor;
-        
-        layer2 = [[CALayer alloc]init];
-        layer2.frame = CGRectMake(0, 0, 0, 100);
-        layer2.backgroundColor = itemColorRef;
-        [view.layer insertSublayer:layer2 atIndex:0];
-        
-        */
+
         
         
                     
@@ -158,8 +169,14 @@
 }
 
 
+
+
 -(void)reloadSummly{
     NSLog(@"reload");
+    
+    //add voice
+    AudioServicesPlaySystemSound (soundFileObject);
+    
     
   //  [SVProgressHUD show];
     

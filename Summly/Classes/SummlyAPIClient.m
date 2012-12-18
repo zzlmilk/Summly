@@ -12,7 +12,7 @@
 
 static NSString *const  kAFSummlyAPIBaseURLString  =@"http://zzlmilk.herokuapp.com/";
 
-//static NSString * const kAFSummlyAPIBaseURLString = @"http://10.26.50.18/";
+//static NSString * const kAFSummlyAPIBaseURLString = @"http://127.0.0.1:3000/";
 
 
 @implementation SummlyAPIClient

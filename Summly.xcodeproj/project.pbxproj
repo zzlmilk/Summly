@@ -15,6 +15,7 @@
 		0435E0E31679B99B00992946 /* SummlyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435E0E21679B99B00992946 /* SummlyListViewController.m */; };
 		0460465316737D6100FA9F03 /* SummlyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460465216737D6100FA9F03 /* SummlyScrollView.m */; };
 		0460466916738E7F00FA9F03 /* ItemSummly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460466816738E7E00FA9F03 /* ItemSummly.m */; };
+		047FF8691680B9F400A990C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047FF8681680B9F400A990C6 /* AudioToolbox.framework */; };
 		04831CC2167C525A00BE99AB /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC1167C525A00BE99AB /* SetViewController.m */; };
 		04831CC8167C692D00BE99AB /* Cover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC7167C692C00BE99AB /* Cover.m */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
@@ -109,6 +110,7 @@
 		04A47EE6167234F80035B2AA /* SummlyAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A47EE5167234F80035B2AA /* SummlyAPIClient.m */; };
 		04A47EE816730B090035B2AA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A47EE716730B090035B2AA /* SystemConfiguration.framework */; };
 		04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */; };
+		04AA94981680BE0700DC2CA5 /* sms-received6.caf in Resources */ = {isa = PBXBuildFile; fileRef = 04AA94921680BBD800DC2CA5 /* sms-received6.caf */; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
 		04E0595D1674EF6300C919DE /* SummlyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */; };
 		896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA704167DE6C2006DBE88 /* petal-email@2x.png */; };
@@ -146,6 +148,8 @@
 		0460465216737D6100FA9F03 /* SummlyScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyScrollView.m; sourceTree = "<group>"; };
 		0460466716738E7E00FA9F03 /* ItemSummly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemSummly.h; sourceTree = "<group>"; };
 		0460466816738E7E00FA9F03 /* ItemSummly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemSummly.m; sourceTree = "<group>"; };
+		047FF8611680B52D00A990C6 /* refresh_pulled.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = refresh_pulled.caf; sourceTree = "<group>"; };
+		047FF8681680B9F400A990C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		04831CC0167C525A00BE99AB /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		04831CC1167C525A00BE99AB /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		04831CC6167C692C00BE99AB /* Cover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cover.h; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 		04A47EE5167234F80035B2AA /* SummlyAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyAPIClient.m; sourceTree = "<group>"; };
 		04A47EE716730B090035B2AA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		04AA94921680BBD800DC2CA5 /* sms-received6.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sms-received6.caf"; sourceTree = "<group>"; };
 		04E05958167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.h"; sourceTree = "<group>"; };
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
 		04E0595B1674EF6300C919DE /* SummlyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SummlyAppDelegate.h; path = ../SummlyAppDelegate.h; sourceTree = "<group>"; };
@@ -295,6 +300,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047FF8691680B9F400A990C6 /* AudioToolbox.framework in Frameworks */,
 				04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */,
 				04A47EE816730B090035B2AA /* SystemConfiguration.framework in Frameworks */,
 				049A8B46166CFF7400569250 /* UIKit.framework in Frameworks */,
@@ -349,6 +355,7 @@
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
+				047FF8681680B9F400A990C6 /* AudioToolbox.framework */,
 				049A8B4B166CFF7400569250 /* Summly */,
 				049A8B44166CFF7400569250 /* Frameworks */,
 				049A8B42166CFF7400569250 /* Products */,
@@ -394,6 +401,8 @@
 		049A8B4C166CFF7400569250 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04AA94921680BBD800DC2CA5 /* sms-received6.caf */,
+				047FF8611680B52D00A990C6 /* refresh_pulled.caf */,
 				049B8F501675FD0100C48250 /* Default-568h@2x.png */,
 				049B8F4C1675FCF800C48250 /* Default.png */,
 				049B8F4D1675FCF800C48250 /* Default@2x.png */,
@@ -728,6 +737,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AA94981680BE0700DC2CA5 /* sms-received6.caf in Resources */,
 				049A8B50166CFF7400569250 /* InfoPlist.strings in Resources */,
 				049B8F3D1675FCD700C48250 /* action-cell@2x.png in Resources */,
 				049B8F3E1675FCD700C48250 /* article-image-overlay@2x.png in Resources */,

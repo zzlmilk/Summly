@@ -32,7 +32,7 @@
         timeLabel.font = [UIFont boldSystemFontOfSize:40];
         timeLabel.textColor = [UIColor whiteColor];
         [self addSubview:timeLabel];
-
+        
         
         UILabel *unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 60, 170, 13)];
         unreadLabel.backgroundColor = [UIColor clearColor];
@@ -41,7 +41,7 @@
         unreadLabel.textColor = [UIColor whiteColor];
         [self addSubview:unreadLabel];
         
-    
+        
         UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 80, 170, 13)];
         summaryLabel.backgroundColor = [UIColor clearColor];
         summaryLabel.text = @"网站或文章概要";
@@ -52,7 +52,7 @@
         
         //标题内容
         UITextView *titleLabel=[[UITextView
-                         alloc] initWithFrame:CGRectMake(left-10, y, 200, 220)];
+                                 alloc] initWithFrame:CGRectMake(left-10, y-15, 200, 220)];
         titleLabel.scrollEnabled = YES;
         titleLabel.editable = NO;//禁止编辑
         titleLabel.text = @"Mailbox：Sparrow 和 Clear 附身的 iPhone 邮件客户端";
@@ -96,9 +96,9 @@
         
         
         //回退按钮
-//        UIImageView  *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(270,10,34,34)];
-//        backImageView.image = [UIImage imageNamed:@"cover-arrow@2x.png"];//加载入图片
-//        [self addSubview:backImageView];
+        //        UIImageView  *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(270,10,34,34)];
+        //        backImageView.image = [UIImage imageNamed:@"cover-arrow@2x.png"];//加载入图片
+        //        [self addSubview:backImageView];
         
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,10,34,34)];
@@ -115,12 +115,12 @@
     [self.delegate backbuttonDidSelect];
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
