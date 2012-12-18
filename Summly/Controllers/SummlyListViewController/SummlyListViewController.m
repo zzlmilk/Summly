@@ -95,10 +95,11 @@
     cell.detailTextLabel.shadowColor = [UIColor blackColor];
     cell.detailTextLabel.shadowOffset = CGSizeMake(0, 0.8);
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1tablebackground.png"]];
-    cell.backgroundView=imageView;
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tablebackground.png"]];
+    cell.selectedBackgroundView=imageView;
+    
     
     UIImageView *tableSeparator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tableseparator.png"]];
     [tableSeparator setFrame:CGRectMake(0, 90,320, 2)];
