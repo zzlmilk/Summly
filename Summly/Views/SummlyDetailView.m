@@ -20,7 +20,7 @@
         self.summly =_summly;
         //标题
         UIImageView *imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
-        NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10];
+        NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", (arc4random()+1) % 10];
         imageBackView.image = [UIImage imageNamed:randomImageName];
         [self addSubview:imageBackView];
         
