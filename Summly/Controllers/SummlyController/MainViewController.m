@@ -24,7 +24,7 @@
 @end
 
 @implementation MainViewController
-
+@synthesize topicsArr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -59,7 +59,8 @@
     
     
     [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
-        if (topics) {            
+        if (topics) {
+            topicsArr = topics;
             [summlyScrollView generateItems:topics];
         }
     }];
@@ -90,6 +91,7 @@
     }
     else if(itemSummly.itemSummlyType ==add){
         TopicViewController *topViewController = [[TopicViewController alloc]init];
+        topViewController.topicsArr=topicsArr;
         [self.navigationController pushViewController:topViewController animated:YES];        
         /*
         Topic *t = [[Topic alloc]init];

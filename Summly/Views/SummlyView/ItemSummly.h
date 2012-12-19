@@ -22,6 +22,8 @@ typedef enum {
     saved = 4,
     home = 5,
     add = 6,
+    manage=7,
+    manageAdd =8
 } ItemSummlyType;  //不同的类型有不同的背景图片
 
 

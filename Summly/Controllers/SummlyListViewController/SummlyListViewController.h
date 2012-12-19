@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Topic.h"
-@interface SummlyListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "BaseViewController.h"
+
+@interface SummlyListViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSInteger topicId;
 }

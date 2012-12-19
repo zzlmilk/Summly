@@ -15,4 +15,5 @@
     MainSummlyView *mainSummlyView;
 }
 
+@property(nonatomic,strong) NSArray *topicsArr;
 @end

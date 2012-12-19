@@ -69,6 +69,7 @@
 
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin,pulisherLabel.frame.size.height+pulisherLabel.frame.origin.y+Margin , self.view.frame.size.width-Margin*2, 400)];
+    [textLabel setBackgroundColor:[UIColor clearColor]];
     [textLabel setFont:[UIFont systemFontOfSize:13]];
     textLabel.numberOfLines=0;
     textLabel.text = self.summly.describe;

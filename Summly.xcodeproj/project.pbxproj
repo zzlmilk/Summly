@@ -122,6 +122,13 @@
 		896AA718167DE7E3006DBE88 /* FAFancyMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */; };
 		896AA71F167DEA76006DBE88 /* cover-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */; };
 		896AA725167DF741006DBE88 /* trending-label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA724167DF741006DBE88 /* trending-label@2x.png */; };
+		C8058785168198080017233F /* check-box-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058782168198080017233F /* check-box-checked@2x.png */; };
+		C8058786168198080017233F /* check-box-shadowed-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058783168198080017233F /* check-box-shadowed-checked@2x.png */; };
+		C8058787168198080017233F /* check-box-shadowed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058784168198080017233F /* check-box-shadowed@2x.png */; };
+		C805878A168198E50017233F /* navigation-bar-settings-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058788168198E50017233F /* navigation-bar-settings-icon@2x.png */; };
+		C805878B168198E50017233F /* navigation-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058789168198E50017233F /* navigation-button@2x.png */; };
+		C805878E16819AA40017233F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C805878D16819AA40017233F /* BaseViewController.m */; };
+		C80587941681B1060017233F /* check-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C80587931681B1060017233F /* check-box@2x.png */; };
 		C81DFEB4167EB4460040F35B /* summly_close_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */; };
 		C81DFEB8167EB4910040F35B /* tablebackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB6167EB4910040F35B /* tablebackground@2x.png */; };
 		C81DFEB9167EB4910040F35B /* tableseparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB7167EB4910040F35B /* tableseparator@2x.png */; };
@@ -283,6 +290,14 @@
 		896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuView.m; sourceTree = "<group>"; };
 		896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-arrow@2x.png"; sourceTree = "<group>"; };
 		896AA724167DF741006DBE88 /* trending-label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trending-label@2x.png"; sourceTree = "<group>"; };
+		C8058782168198080017233F /* check-box-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-checked@2x.png"; sourceTree = "<group>"; };
+		C8058783168198080017233F /* check-box-shadowed-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-shadowed-checked@2x.png"; sourceTree = "<group>"; };
+		C8058784168198080017233F /* check-box-shadowed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-shadowed@2x.png"; sourceTree = "<group>"; };
+		C8058788168198E50017233F /* navigation-bar-settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-bar-settings-icon@2x.png"; sourceTree = "<group>"; };
+		C8058789168198E50017233F /* navigation-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-button@2x.png"; sourceTree = "<group>"; };
+		C805878C16819AA40017233F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		C805878D16819AA40017233F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		C80587931681B1060017233F /* check-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box@2x.png"; sourceTree = "<group>"; };
 		C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summly_close_x@2x.png"; sourceTree = "<group>"; };
 		C81DFEB6167EB4910040F35B /* tablebackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablebackground@2x.png"; sourceTree = "<group>"; };
 		C81DFEB7167EB4910040F35B /* tableseparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableseparator@2x.png"; sourceTree = "<group>"; };
@@ -362,7 +377,6 @@
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
-				047FF8681680B9F400A990C6 /* AudioToolbox.framework */,
 				049A8B4B166CFF7400569250 /* Summly */,
 				049A8B44166CFF7400569250 /* Frameworks */,
 				049A8B42166CFF7400569250 /* Products */,
@@ -380,6 +394,7 @@
 		049A8B44166CFF7400569250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				047FF8681680B9F400A990C6 /* AudioToolbox.framework */,
 				04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */,
 				04A47EE716730B090035B2AA /* SystemConfiguration.framework */,
 				049A77DC166DCE1900DF8742 /* QuartzCore.framework */,
@@ -551,6 +566,8 @@
 				0435E0DB1679B83100992946 /* TopicViewController */,
 				049B8FCA167707B200C48250 /* FrameworkController */,
 				04A47EBE1671DCFF0035B2AA /* SummlyController */,
+				C805878C16819AA40017233F /* BaseViewController.h */,
+				C805878D16819AA40017233F /* BaseViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -667,6 +684,12 @@
 		896AA71D167DEA63006DBE88 /* button */ = {
 			isa = PBXGroup;
 			children = (
+				C8058788168198E50017233F /* navigation-bar-settings-icon@2x.png */,
+				C8058789168198E50017233F /* navigation-button@2x.png */,
+				C8058782168198080017233F /* check-box-checked@2x.png */,
+				C8058783168198080017233F /* check-box-shadowed-checked@2x.png */,
+				C8058784168198080017233F /* check-box-shadowed@2x.png */,
+				C80587931681B1060017233F /* check-box@2x.png */,
 				C81DFED7167EEBA00040F35B /* navigation-back-button@2x.png */,
 				C81DFED5167EEB400040F35B /* navigation-background@2x.png */,
 				C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */,
@@ -832,6 +855,12 @@
 				C81DFED8167EEBA00040F35B /* navigation-back-button@2x.png in Resources */,
 				C81DFEE5167F124A0040F35B /* publisherIcon@2x.png in Resources */,
 				C8EAF5CB16805FD70018B28E /* webviewBtn@2x.png in Resources */,
+				C8058785168198080017233F /* check-box-checked@2x.png in Resources */,
+				C8058786168198080017233F /* check-box-shadowed-checked@2x.png in Resources */,
+				C8058787168198080017233F /* check-box-shadowed@2x.png in Resources */,
+				C805878A168198E50017233F /* navigation-bar-settings-icon@2x.png in Resources */,
+				C805878B168198E50017233F /* navigation-button@2x.png in Resources */,
+				C80587941681B1060017233F /* check-box@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +903,7 @@
 				C81DFEDF167F09C80040F35B /* DetailScrollViewController.m in Sources */,
 				C81DFEE2167F0B8A0040F35B /* SummlyDetailView.m in Sources */,
 				C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */,
+				C805878E16819AA40017233F /* BaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

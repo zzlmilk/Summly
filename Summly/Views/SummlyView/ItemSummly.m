@@ -11,7 +11,7 @@
 #import "Topic.h"
 #import "SVProgressHUD.h"
 
-
+#define LeftMargin 20
 
 @interface ItemSummly() <UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
@@ -57,21 +57,64 @@
         case home:
         {
             self.canMove = NO;
-            bgImageView.image = [UIImage imageNamed:@"cell-cover-page@2x"];
+            bgImageView.image = [UIImage imageNamed:@"cell-cover-page"];
             
         }
             break;
         case add:
         {
             self.canMove = NO;
-            bgImageView.image = [UIImage imageNamed:@"action-cell@2x"];
+            bgImageView.image = [UIImage imageNamed:@"action-cell"];
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon@2x"]];
-            addImageView.frame =CGRectMake(self.frame.size.width/2-34/2, self.frame.size.height/2-34/2, 34, 34);
+            addImageView.frame =CGRectMake(self.frame.size.width/2-34, self.frame.size.height/2-34/2, 34, 34);
             [bgImageView addSubview:addImageView];
         }
             break;
-        default:
+        case manage:{
+            self.canMove = NO;
+            self.canRefish=NO;
+            
+           // titleLabel.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
+            describeLabel.text=nil;
+            
+            bgImageView.image = [UIImage imageNamed:@"action-cell"];
+            
+            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
+            addImageView.frame =CGRectMake(0, 0, 280, 88);
+            [bgImageView addSubview:addImageView];
+
+//            UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//
+//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-checked"] forState:UIControlStateNormal];
+//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-shadowed-checked"] forState:UIControlStateHighlighted];
+//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-shadowed"] forState:UIControlStateHighlighted];
+//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box"] forState:UIControlStateHighlighted];
+//            [bgImageView addSubview:selectBtn];
+            
+        }
             break;
+        case manageAdd:{
+            self.canMove = NO;
+            self.canRefish=NO;
+
+            titleLabel.text=nil;
+            describeLabel.text=nil;
+            bgImageView.image = [UIImage imageNamed:@"action-cell"];
+            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
+            addImageView.frame =CGRectMake(20, 25, 34, 34);
+            [bgImageView addSubview:addImageView];
+            
+            UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 32, 160, 20)];
+            [defineLabel setFont:[UIFont systemFontOfSize:16]];
+            [defineLabel setText:@"点击这里创建新话题"];
+            [defineLabel setBackgroundColor:[UIColor clearColor]];
+            [defineLabel setTextColor:[UIColor colorWithRed:98/255.0f green:98/255.0f blue:98/255.0f alpha:1.0f]];
+            [bgImageView addSubview:defineLabel];
+
+        }
+        break;
+        default:
+        break;
     }
 
 }
@@ -106,8 +149,9 @@
         
     
         
-        
+        self.userInteractionEnabled=YES;
         bgImageView= [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
+        bgImageView.userInteractionEnabled=YES;
         bgImageView.image = [UIImage imageNamed:@"cell-keyword@2x"];
         [self addSubview:bgImageView];
         
@@ -221,8 +265,17 @@
 
 //这个事件只是为了阻住swrollerview往左移动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.x > 0) {
-        [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
+    if (_itemSummlyType!=manage) {
+        if (scrollView.contentOffset.x > 0) {
+            [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
+        }
+    }
+    else{
+        
+        if (scrollView.contentOffset.x < 0) {
+            [scrollView setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
+        }
+
     }
 }
 

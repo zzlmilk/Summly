@@ -57,6 +57,7 @@ static DetailScrollViewController *detailInstance=nil;
     //[self.navigationController setNavigationBarHidden:YES animated:NO];
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); 
@@ -168,26 +169,27 @@ static DetailScrollViewController *detailInstance=nil;
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-//    
+    
 //    if (!_scrollView.dragging==YES ) {
 //        return;
 //    }
 //    for (int i=1; i<self.summlyArr.count; i++) {
-//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:i+10];
+//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:11+i];
 //      //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
-//        detailView.imageBackView.frame = CGRectMake(_scrollView.contentOffset.x/5,0, scrollView.frame.size.width, 183.5);
-//
+//        detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-i*320)/5,0, scrollView.frame.size.width, 183.5);
 //    }
-//}
-//
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
-//
+//    NSLog(@"contentOffset---%f--- %f",_scrollView.contentOffset.x,_scrollView.contentOffset.x/5);
+    self.index=[self calculateIndexFromScrollViewOffSet];
+
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
+
 //    for (int i=1; i<self.summlyArr.count; i++) {
-//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:i+10];
+//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+i];
 //        //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
 //        detailView.imageBackView.frame = CGRectMake(0,0, scrollView.frame.size.width, 183.5);
 //    }
-    self.index=[self calculateIndexFromScrollViewOffSet];
 }
 
 - (void)didReceiveMemoryWarning
