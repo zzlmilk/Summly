@@ -150,6 +150,7 @@ static DetailScrollViewController *detailInstance=nil;
 -(void)pushToWebView{
 
     //push webviewcontroller
+    
 }
 
 - (void)showDetailViewAnimate{
