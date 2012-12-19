@@ -10,7 +10,15 @@
 #import "Summly.h"
 
 @interface SummlyDetailView : UIView
+{
+}
 
+@property(nonatomic,strong) UILabel *titleLabel;
+@property(nonatomic,strong) UIView *acticleView;
+@property(nonatomic,strong) UIImageView *imageBackView;
 @property(nonatomic,strong) Summly *summly;
+
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)summly;
+- (void)dismissDetailViewAnimate:(void (^)())block;
+- (void)showDetailViewAnimate;
 @end

@@ -19,6 +19,7 @@
     return self;
 }
 
+
 - (void)drawRect:(CGRect)rect
 {
     self.backgroundColor = [UIColor clearColor];

@@ -38,17 +38,29 @@ static DetailScrollViewController *detailInstance=nil;
 {
     [super viewDidLoad];
     
+    self.index=[self calculateIndexFromScrollViewOffSet];
+    self.view.backgroundColor = [UIColor whiteColor];
+    //上滑返回
+    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
+    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipUpGestureUp];
     
-    swipUpGesture  = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
-    swipUpGesture.direction = UISwipeGestureRecognizerDirectionUp;
-    [self.view addGestureRecognizer:swipUpGesture];
+    //下滑wbview
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToWebView)];
+    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
+   [self.view addGestureRecognizer:swipUpGestureDown];
+
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.view addGestureRecognizer:doubleTap];
     
     //[self.navigationController setNavigationBarHidden:YES animated:NO];
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); //这里写的好哦
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); 
+    scrollView.delegate=self;
     [self.view addSubview:scrollView];
     
     [self createDetailView:self.summlyArr];
@@ -62,9 +74,20 @@ static DetailScrollViewController *detailInstance=nil;
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (self.navigationController.navigationBarHidden == YES) {
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-    }    
+    if (self.navigationController.navigationBarHidden == NO) {
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+    }
+}
+//生成详情
+- (void)createDetailView:(NSArray *)summlys{
+    
+    for (int i=0; i<summlys.count; i++) {
+        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
+        detailView.tag = i+10;
+        [scrollView addSubview:detailView];
+    }
+    
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width*summlys.count, self.view.frame.size.height);
 }
 
 //到达某篇文章
@@ -74,40 +97,105 @@ static DetailScrollViewController *detailInstance=nil;
 
 - (void)popControllerAnimate{
     CATransition *transition = [CATransition animation];
-    transition.duration = 0.3f;
+    transition.duration = 0.5f;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromTop;
     transition.delegate = self;
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    
 }
+
+- (void)popControllerFadeAnimate{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.type = @"fade";
+    transition.subtype = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+}
+
+
+//计算第几个详情
+- (NSInteger)calculateIndexFromScrollViewOffSet{
+    NSInteger index = 0;
+    
+    index =(int)scrollView.contentOffset.x/320;
+    
+    return index;
+}
+#pragma mark--
+#pragma mark-- 手势方法
+//上滑
 -(void)back {
     //pop动画
     [self popControllerAnimate];
     [self.navigationController popViewControllerAnimated:NO];
 }
 
-- (void)createDetailView:(NSArray *)summlys{
+//双击
+- (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
     
-    for (int i=0; i<summlys.count; i++) {
-        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
-        [scrollView addSubview:detailView];
-    }
-
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width*summlys.count, self.view.frame.size.height);
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+[self calculateIndexFromScrollViewOffSet]];
+    [detailView dismissDetailViewAnimate:^{
+        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
+        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
+        articleVC.delegate=self;
+        [self popControllerFadeAnimate];
+        [self.navigationController pushViewController:articleVC animated:NO];
+    }];
 }
+//下滑
+-(void)pushToWebView{
+
+    //push webviewcontroller
+}
+
+- (void)showDetailViewAnimate{
+
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    
+    [detailView showDetailViewAnimate];
+
+}
+
+
 
 //花瓣按钮回调
 - (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
     NSLog(@"%i",index);
 }
 
+#pragma mark--
+#pragma mark-- ScrollViewDelegate
+//- (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
+//    
+//    if (!_scrollView.dragging==YES ) {
+//        return;
+//    }
+//    for (int i=1; i<self.summlyArr.count; i++) {
+//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:i+10];
+//      //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
+//        detailView.imageBackView.frame = CGRectMake(_scrollView.contentOffset.x/5,0, scrollView.frame.size.width, 183.5);
+//
+//    }
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
+//
+//    for (int i=1; i<self.summlyArr.count; i++) {
+//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:i+10];
+//        //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
+//        detailView.imageBackView.frame = CGRectMake(0,0, scrollView.frame.size.width, 183.5);
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 @end

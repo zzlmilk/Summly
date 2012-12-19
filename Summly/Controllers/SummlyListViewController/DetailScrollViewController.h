@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Summly.h"
 #import "FAFancyMenuView.h"
+#import "ArticleViewController.h"
 
-@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate>
+@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
     UIScrollView *scrollView;
     
-    UISwipeGestureRecognizer *swipUpGesture;  //up to back 
 
 }
 

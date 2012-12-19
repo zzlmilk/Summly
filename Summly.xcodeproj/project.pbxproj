@@ -129,6 +129,8 @@
 		C81DFEDF167F09C80040F35B /* DetailScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C81DFEDE167F09C80040F35B /* DetailScrollViewController.m */; };
 		C81DFEE2167F0B8A0040F35B /* SummlyDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C81DFEE1167F0B8A0040F35B /* SummlyDetailView.m */; };
 		C81DFEE5167F124A0040F35B /* publisherIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEE4167F124A0040F35B /* publisherIcon@2x.png */; };
+		C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EAF5C416804F740018B28E /* ArticleViewController.m */; };
+		C8EAF5CB16805FD70018B28E /* webviewBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8EAF5CA16805FD70018B28E /* webviewBtn@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -288,6 +290,9 @@
 		C81DFEE0167F0B8A0040F35B /* SummlyDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummlyDetailView.h; sourceTree = "<group>"; };
 		C81DFEE1167F0B8A0040F35B /* SummlyDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummlyDetailView.m; sourceTree = "<group>"; };
 		C81DFEE4167F124A0040F35B /* publisherIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publisherIcon@2x.png"; sourceTree = "<group>"; };
+		C8EAF5C316804F740018B28E /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		C8EAF5C416804F740018B28E /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		C8EAF5CA16805FD70018B28E /* webviewBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "webviewBtn@2x.png"; path = "grad/webviewBtn@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +338,8 @@
 				0435E0E21679B99B00992946 /* SummlyListViewController.m */,
 				C81DFEDD167F09C80040F35B /* DetailScrollViewController.h */,
 				C81DFEDE167F09C80040F35B /* DetailScrollViewController.m */,
+				C8EAF5C316804F740018B28E /* ArticleViewController.h */,
+				C8EAF5C416804F740018B28E /* ArticleViewController.m */,
 			);
 			path = SummlyListViewController;
 			sourceTree = "<group>";
@@ -656,6 +663,7 @@
 				C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */,
 				896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */,
 				896AA724167DF741006DBE88 /* trending-label@2x.png */,
+				C8EAF5CA16805FD70018B28E /* webviewBtn@2x.png */,
 			);
 			name = button;
 			sourceTree = "<group>";
@@ -813,6 +821,7 @@
 				C81DFED6167EEB400040F35B /* navigation-background@2x.png in Resources */,
 				C81DFED8167EEBA00040F35B /* navigation-back-button@2x.png in Resources */,
 				C81DFEE5167F124A0040F35B /* publisherIcon@2x.png in Resources */,
+				C8EAF5CB16805FD70018B28E /* webviewBtn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +863,7 @@
 				C81DFECC167ECDAD0040F35B /* CustomNavigationBar.m in Sources */,
 				C81DFEDF167F09C80040F35B /* DetailScrollViewController.m in Sources */,
 				C81DFEE2167F0B8A0040F35B /* SummlyDetailView.m in Sources */,
+				C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,8 +890,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -896,8 +906,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -929,13 +939,14 @@
 		049A8B60166CFF7400569250 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ms zou (W9A4GXK446)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
+				PROVISIONING_PROFILE = "66E5959B-7022-4770-A0B4-CB852E90C70D";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -943,13 +954,14 @@
 		049A8B61166CFF7400569250 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ms zou (W9A4GXK446)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
+				PROVISIONING_PROFILE = "66E5959B-7022-4770-A0B4-CB852E90C70D";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

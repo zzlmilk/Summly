@@ -17,7 +17,7 @@
 
 //        self.topicId = [[attributes objectForKey:@"topic_id"] intValue];
         self.title = [attributes objectForKey:@"title"];
-        self.describe = [attributes objectForKey:@"content"];
+        self.describe =  [self removeSpace:[attributes objectForKey:@"content"]];
         if (self.scource.length==0) {
             self.scource = @"雅虎通讯";
         }else{
@@ -34,6 +34,12 @@
     return self;
 }
 
+
+- (NSString *)removeSpace:(NSString *)text{
+    
+    NSString *temp = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return temp;
+}
 //时间差
 - (NSString *)timeIntervalFromNow:(NSDate *)_summlyTime{
     NSString *intervalStr;
@@ -67,7 +73,6 @@
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
     
-//    NSLog(@"%@",parameters);
     [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         

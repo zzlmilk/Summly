@@ -30,6 +30,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)setTitle:(NSString *)title
+{
+    [super setTitle:title];
+    UILabel *titleView = (UILabel *)self.navigationItem.titleView;
+    if (!titleView) {
+        titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+        titleView.backgroundColor = [UIColor clearColor];
+        titleView.font = [UIFont systemFontOfSize:19.f];
+        titleView.textColor = [UIColor whiteColor];
+        self.navigationItem.titleView = titleView;
+    }
+    
+    titleView.text = title;
+    [titleView sizeToFit];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -95,8 +111,6 @@
     cell.detailTextLabel.shadowColor = [UIColor blackColor];
     cell.detailTextLabel.shadowOffset = CGSizeMake(0, 0.8);
 
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tablebackground.png"]];
     cell.selectedBackgroundView=imageView;
     
@@ -135,7 +149,7 @@
 
 - (void)pushControllerAnimate{
     CATransition *transition = [CATransition animation];
-    transition.duration = 0.3f;
+    transition.duration = 0.5f;
     transition.type = kCATransitionPush;
     transition.subtype = kCATransitionFromBottom;
     transition.delegate = self;
