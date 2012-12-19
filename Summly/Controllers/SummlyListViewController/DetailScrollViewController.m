@@ -9,6 +9,7 @@
 #import "DetailScrollViewController.h"
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WebViewController.h"
 
 @interface DetailScrollViewController ()
 {
@@ -146,10 +147,24 @@ static DetailScrollViewController *detailInstance=nil;
         [self.navigationController pushViewController:articleVC animated:NO];
     }];
 }
+
+//动画
+- (void)pushControllerAnimate{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5f;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromBottom;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+}
 //下滑
 -(void)pushToWebView{
 
     //push webviewcontroller
+    [self pushControllerAnimate];
+    WebViewController *webViewController = [[WebViewController alloc] init];
+    webViewController.summly=[self.summlyArr objectAtIndex:self.index];
+    [self.navigationController pushViewController:webViewController animated:NO];
 }
 
 - (void)showDetailViewAnimate{
