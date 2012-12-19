@@ -9,6 +9,7 @@
 #import "ArticleViewController.h"
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WebViewController.h"
 
 #define Margin 15
 
@@ -44,7 +45,6 @@
     [scrollView setBackgroundColor:[UIColor whiteColor]];
     scrollView.showsVerticalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
-//    scrollView.delegate=self;
     [self.view addSubview:scrollView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin, Margin, self.view.frame.size.width-Margin*2, 100)];
@@ -95,9 +95,21 @@
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, textLabel.frame.size.height+textLabel.frame.origin.y+Margin);
 }
 
+- (void)pushControllerAnimate{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5f;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromBottom;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+}
+
+//下滑跳转web
 - (void)webViewBtnClick:(id)sender{
-    NSLog(@"push---webview");
-//    [self.navigationController popViewControllerAnimated:NO];
+    [self pushControllerAnimate];
+    WebViewController *webViewController = [[WebViewController alloc] init];
+    webViewController.summly=self.summly;
+    [self.navigationController pushViewController:webViewController animated:NO];
 
 }
 
@@ -106,9 +118,8 @@
     [self popToDetailScrollVC];
 }
 
-//双击
+//下滑跳转web
 - (void)handleSwipUpTap:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"push---webview");
 
     [self webViewBtnClick:nil];
 }

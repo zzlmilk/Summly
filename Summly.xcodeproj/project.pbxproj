@@ -122,6 +122,16 @@
 		896AA718167DE7E3006DBE88 /* FAFancyMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */; };
 		896AA71F167DEA76006DBE88 /* cover-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */; };
 		896AA725167DF741006DBE88 /* trending-label@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA724167DF741006DBE88 /* trending-label@2x.png */; };
+		AECCDD9F16814B7C00D202E0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AECCDD9E16814B7B00D202E0 /* WebViewController.m */; };
+		AECCDDAA1681507000D202E0 /* web-navigate-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA11681507000D202E0 /* web-navigate-back@2x.png */; };
+		AECCDDAB1681507000D202E0 /* web-navigate-forwards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA21681507000D202E0 /* web-navigate-forwards@2x.png */; };
+		AECCDDAC1681507000D202E0 /* web-navigate-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA31681507000D202E0 /* web-navigate-refresh@2x.png */; };
+		AECCDDAD1681507000D202E0 /* web-toolbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA41681507000D202E0 /* web-toolbar@2x.png */; };
+		AECCDDAE1681507000D202E0 /* webview-back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA51681507000D202E0 /* webview-back-button@2x.png */; };
+		AECCDDAF1681507000D202E0 /* webview-close-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA61681507000D202E0 /* webview-close-button@2x.png */; };
+		AECCDDB01681507000D202E0 /* webview-loading-backround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA71681507000D202E0 /* webview-loading-backround@2x.png */; };
+		AECCDDB11681507000D202E0 /* webview-navigation-backround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA81681507000D202E0 /* webview-navigation-backround@2x.png */; };
+		AECCDDB21681507000D202E0 /* webview-open-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AECCDDA91681507000D202E0 /* webview-open-button@2x.png */; };
 		C8058785168198080017233F /* check-box-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058782168198080017233F /* check-box-checked@2x.png */; };
 		C8058786168198080017233F /* check-box-shadowed-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058783168198080017233F /* check-box-shadowed-checked@2x.png */; };
 		C8058787168198080017233F /* check-box-shadowed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058784168198080017233F /* check-box-shadowed@2x.png */; };
@@ -290,6 +300,17 @@
 		896AA716167DE7E3006DBE88 /* FAFancyMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuView.m; sourceTree = "<group>"; };
 		896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-arrow@2x.png"; sourceTree = "<group>"; };
 		896AA724167DF741006DBE88 /* trending-label@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trending-label@2x.png"; sourceTree = "<group>"; };
+		AECCDD9D16814B7B00D202E0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		AECCDD9E16814B7B00D202E0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		AECCDDA11681507000D202E0 /* web-navigate-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-navigate-back@2x.png"; sourceTree = "<group>"; };
+		AECCDDA21681507000D202E0 /* web-navigate-forwards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-navigate-forwards@2x.png"; sourceTree = "<group>"; };
+		AECCDDA31681507000D202E0 /* web-navigate-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-navigate-refresh@2x.png"; sourceTree = "<group>"; };
+		AECCDDA41681507000D202E0 /* web-toolbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web-toolbar@2x.png"; sourceTree = "<group>"; };
+		AECCDDA51681507000D202E0 /* webview-back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-back-button@2x.png"; sourceTree = "<group>"; };
+		AECCDDA61681507000D202E0 /* webview-close-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-close-button@2x.png"; sourceTree = "<group>"; };
+		AECCDDA71681507000D202E0 /* webview-loading-backround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-loading-backround@2x.png"; sourceTree = "<group>"; };
+		AECCDDA81681507000D202E0 /* webview-navigation-backround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-navigation-backround@2x.png"; sourceTree = "<group>"; };
+		AECCDDA91681507000D202E0 /* webview-open-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-open-button@2x.png"; sourceTree = "<group>"; };
 		C8058782168198080017233F /* check-box-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-checked@2x.png"; sourceTree = "<group>"; };
 		C8058783168198080017233F /* check-box-shadowed-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-shadowed-checked@2x.png"; sourceTree = "<group>"; };
 		C8058784168198080017233F /* check-box-shadowed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-shadowed@2x.png"; sourceTree = "<group>"; };
@@ -361,6 +382,8 @@
 				C81DFEDE167F09C80040F35B /* DetailScrollViewController.m */,
 				C8EAF5C316804F740018B28E /* ArticleViewController.h */,
 				C8EAF5C416804F740018B28E /* ArticleViewController.m */,
+				AECCDD9D16814B7B00D202E0 /* WebViewController.h */,
+				AECCDD9E16814B7B00D202E0 /* WebViewController.m */,
 			);
 			path = SummlyListViewController;
 			sourceTree = "<group>";
@@ -450,6 +473,7 @@
 		049B8F2D1675FCD700C48250 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AECCDDA01681505A00D202E0 /* webpng */,
 				C81DFEB5167EB4810040F35B /* tableView */,
 				896AA71D167DEA63006DBE88 /* button */,
 				896AA702167DE66C006DBE88 /* FAFancyMenu */,
@@ -700,6 +724,22 @@
 			name = button;
 			sourceTree = "<group>";
 		};
+		AECCDDA01681505A00D202E0 /* webpng */ = {
+			isa = PBXGroup;
+			children = (
+				AECCDDA11681507000D202E0 /* web-navigate-back@2x.png */,
+				AECCDDA21681507000D202E0 /* web-navigate-forwards@2x.png */,
+				AECCDDA31681507000D202E0 /* web-navigate-refresh@2x.png */,
+				AECCDDA41681507000D202E0 /* web-toolbar@2x.png */,
+				AECCDDA51681507000D202E0 /* webview-back-button@2x.png */,
+				AECCDDA61681507000D202E0 /* webview-close-button@2x.png */,
+				AECCDDA71681507000D202E0 /* webview-loading-backround@2x.png */,
+				AECCDDA81681507000D202E0 /* webview-navigation-backround@2x.png */,
+				AECCDDA91681507000D202E0 /* webview-open-button@2x.png */,
+			);
+			name = webpng;
+			sourceTree = "<group>";
+		};
 		C81DFEB5167EB4810040F35B /* tableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +901,15 @@
 				C805878A168198E50017233F /* navigation-bar-settings-icon@2x.png in Resources */,
 				C805878B168198E50017233F /* navigation-button@2x.png in Resources */,
 				C80587941681B1060017233F /* check-box@2x.png in Resources */,
+				AECCDDAA1681507000D202E0 /* web-navigate-back@2x.png in Resources */,
+				AECCDDAB1681507000D202E0 /* web-navigate-forwards@2x.png in Resources */,
+				AECCDDAC1681507000D202E0 /* web-navigate-refresh@2x.png in Resources */,
+				AECCDDAD1681507000D202E0 /* web-toolbar@2x.png in Resources */,
+				AECCDDAE1681507000D202E0 /* webview-back-button@2x.png in Resources */,
+				AECCDDAF1681507000D202E0 /* webview-close-button@2x.png in Resources */,
+				AECCDDB01681507000D202E0 /* webview-loading-backround@2x.png in Resources */,
+				AECCDDB11681507000D202E0 /* webview-navigation-backround@2x.png in Resources */,
+				AECCDDB21681507000D202E0 /* webview-open-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +953,7 @@
 				C81DFEE2167F0B8A0040F35B /* SummlyDetailView.m in Sources */,
 				C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */,
 				C805878E16819AA40017233F /* BaseViewController.m in Sources */,
+				AECCDD9F16814B7C00D202E0 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -983,7 +1033,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "66E5959B-7022-4770-A0B4-CB852E90C70D";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -998,7 +1048,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "66E5959B-7022-4770-A0B4-CB852E90C70D";
 				TARGETED_DEVICE_FAMILY = 1;

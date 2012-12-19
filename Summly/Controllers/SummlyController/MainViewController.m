@@ -70,6 +70,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    summlyScrollView.contentOffset=CGPointMake(0, 0);
      [self.navigationController setNavigationBarHidden:YES];        
 }
 

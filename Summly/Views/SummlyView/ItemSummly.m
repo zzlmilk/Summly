@@ -72,16 +72,17 @@
             break;
         case manage:{
             self.canMove = NO;
-            self.canRefish=NO;
+//            self.canRefish=NO;
             
            // titleLabel.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
             describeLabel.text=nil;
             
-            bgImageView.image = [UIImage imageNamed:@"action-cell"];
+            bgImageView.image = [UIImage imageNamed:@"cell-keyword"];
             
-            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
-            addImageView.frame =CGRectMake(0, 0, 280, 88);
-            [bgImageView addSubview:addImageView];
+//            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
+//            addImageView.frame =CGRectMake(0, 0, 280, 88);
+            
+//            [bgImageView insertSubview:bgImageView belowSubview:titleLabel];
 
 //            UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //
@@ -95,7 +96,7 @@
             break;
         case manageAdd:{
             self.canMove = NO;
-            self.canRefish=NO;
+//            self.canRefish=NO;
 
             titleLabel.text=nil;
             describeLabel.text=nil;

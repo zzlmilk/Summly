@@ -25,7 +25,7 @@
         [self addSubview:imageBackView];
 
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, imageBackView.frame.size.height-110, frame.size.width-20, 100)];
-        [titleLabel setBackgroundColor:[UIColor yellowColor]];
+        [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setNumberOfLines:0];
         [titleLabel setFont:[UIFont systemFontOfSize:20]];
         [titleLabel setTextColor:[UIColor whiteColor]];

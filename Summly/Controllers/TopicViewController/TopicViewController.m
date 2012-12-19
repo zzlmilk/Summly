@@ -41,9 +41,8 @@
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.userInteractionEnabled=YES;
     [scrollView setBackgroundColor:[UIColor clearColor]];
-    scrollView.showsHorizontalScrollIndicator = YES;
+    scrollView.showsVerticalScrollIndicator= YES;
     scrollView.pagingEnabled=YES;
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
     [self.view addSubview:scrollView];
 
     
@@ -69,7 +68,7 @@
         item.actionDelegate =self;
         [scrollView addSubview:item];
     }
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2));
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2)-30);
 }
 
 
@@ -87,7 +86,7 @@
     }
     else if(itemSummly.itemSummlyType==manage){
         
-    
+        NSLog(@"选中未选中");
     }
     
 }

@@ -135,7 +135,8 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    
+    [scrollView setBackgroundColor:[UIColor whiteColor]];
+
     SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
     [detailView dismissDetailViewAnimate:^{
         ArticleViewController *articleVC = [[ArticleViewController alloc] init];
