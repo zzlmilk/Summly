@@ -14,6 +14,7 @@
 #import "TopicViewController.h"
 #import "SummlyListViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface MainViewController ()<ItemSummlyActionDelegate,FrontSummlyViewDelegate>
@@ -52,16 +53,27 @@
     frontView.delegate= self;
     
     summlyScrollView = [[SummlyScrollView alloc]initWithFrame:CGRectMake(self.view.bounds.size.width, 0, self.self.view.bounds.size.width, self.view.bounds.size.height) delegate:self];
+    
     mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
+    
     [self.view addSubview:mainSummlyView];
     
-    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationCurveLinear |UIViewAnimationOptionBeginFromCurrentState animations:^{
+        mainSummlyView.center =CGPointMake(mainSummlyView.center.x-100, mainSummlyView.center.y);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3 animations:^{
+            mainSummlyView.center =CGPointMake(mainSummlyView.center.x+100, mainSummlyView.center.y);
+        }];
+    }];
+
     
     
     [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
         if (topics) {
             topicsArr = topics;
             [summlyScrollView generateItems:topics];
+            
+            
         }
     }];
     
