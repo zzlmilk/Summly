@@ -5,6 +5,7 @@
 //  Created by zzlmilk on 12-12-13.
 //  Copyright (c) 2012年 zzlmilk. All rights reserved.
 //
+//
 
 #import "SummlyListViewController.h"
 #import "Summly.h"
@@ -147,6 +148,9 @@
     [self.navigationController pushViewController:detailScrollVC animated:NO];
 }
 
+
+
+
 - (void)pushControllerAnimate{
     CATransition *transition = [CATransition animation];
     transition.duration = 0.5f;
@@ -156,6 +160,7 @@
     [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
 
+    
 }
 
 

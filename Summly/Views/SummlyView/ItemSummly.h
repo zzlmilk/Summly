@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+
+
 @protocol ItemSummlyActionDelegate;
 //@class Summly;
 @class Topic;
@@ -33,8 +36,11 @@ typedef enum {
     
     
     CGColorRef itemColorRef;
-    CALayer *layer1;
-    CALayer *layer2;
+    
+    
+    
+    CFURLRef		soundFileURLRef;
+	SystemSoundID	soundFileObject;
     
 }
 

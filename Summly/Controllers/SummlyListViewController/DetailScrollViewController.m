@@ -95,6 +95,7 @@ static DetailScrollViewController *detailInstance=nil;
     [scrollView setContentOffset:CGPointMake(self.view.frame.size.width*index, 0)];
 }
 
+//pop动画
 - (void)popControllerAnimate{
     CATransition *transition = [CATransition animation];
     transition.duration = 0.5f;
@@ -134,7 +135,7 @@ static DetailScrollViewController *detailInstance=nil;
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
     
-    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+[self calculateIndexFromScrollViewOffSet]];
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
     [detailView dismissDetailViewAnimate:^{
         ArticleViewController *articleVC = [[ArticleViewController alloc] init];
         articleVC.summly =[self.summlyArr objectAtIndex:self.index];
@@ -166,7 +167,7 @@ static DetailScrollViewController *detailInstance=nil;
 
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
-//- (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
 //    
 //    if (!_scrollView.dragging==YES ) {
 //        return;
@@ -186,7 +187,8 @@ static DetailScrollViewController *detailInstance=nil;
 //        //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
 //        detailView.imageBackView.frame = CGRectMake(0,0, scrollView.frame.size.width, 183.5);
 //    }
-//}
+    self.index=[self calculateIndexFromScrollViewOffSet];
+}
 
 - (void)didReceiveMemoryWarning
 {
