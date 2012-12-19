@@ -22,12 +22,13 @@
         self.pagingEnabled =YES;
         
           
-                
+        
+        
         [self addSubview:frontView];
         [self addSubview:summlyScrollView];
 
         
-        [self setContentOffset:CGPointMake(self.frame.size.width, 0) animated:YES];
+        [self setContentOffset:CGPointMake(0, 0) animated:YES];
         
               // Initialization code
     }

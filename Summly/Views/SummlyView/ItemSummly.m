@@ -9,7 +9,6 @@
 #import "ItemSummly.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Topic.h"
-#import "SVProgressHUD.h"
 
 #define LeftMargin 20
 
@@ -83,6 +82,10 @@
 //            addImageView.frame =CGRectMake(0, 0, 280, 88);
             
 //            [bgImageView insertSubview:bgImageView belowSubview:titleLabel];
+            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
+            addImageView.frame =CGRectMake(0, 0, 280, 88);
+            [bgImageView addSubview:addImageView];
+            
 
 //            UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //
@@ -91,6 +94,7 @@
 //            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-shadowed"] forState:UIControlStateHighlighted];
 //            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box"] forState:UIControlStateHighlighted];
 //            [bgImageView addSubview:selectBtn];
+            
             
         }
             break;
@@ -101,7 +105,9 @@
             titleLabel.text=nil;
             describeLabel.text=nil;
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
+            bgImageView.userInteractionEnabled =YES;
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
+                        addImageView.userInteractionEnabled =YES;
             addImageView.frame =CGRectMake(20, 25, 34, 34);
             [bgImageView addSubview:addImageView];
             
