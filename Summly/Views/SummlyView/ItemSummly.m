@@ -82,6 +82,8 @@
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
             addImageView.frame =CGRectMake(0, 0, 280, 88);
             [bgImageView addSubview:addImageView];
+            
+            
 
 //            UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 //
@@ -91,16 +93,19 @@
 //            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box"] forState:UIControlStateHighlighted];
 //            [bgImageView addSubview:selectBtn];
             
+            
         }
             break;
         case manageAdd:{
             self.canMove = NO;
-            self.canRefish=NO;
+           // self.canRefish=NO;
 
             titleLabel.text=nil;
             describeLabel.text=nil;
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
+            bgImageView.userInteractionEnabled =YES;
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
+                        addImageView.userInteractionEnabled =YES;
             addImageView.frame =CGRectMake(20, 25, 34, 34);
             [bgImageView addSubview:addImageView];
             

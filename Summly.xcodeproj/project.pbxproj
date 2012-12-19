@@ -295,8 +295,8 @@
 		C8058784168198080017233F /* check-box-shadowed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box-shadowed@2x.png"; sourceTree = "<group>"; };
 		C8058788168198E50017233F /* navigation-bar-settings-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-bar-settings-icon@2x.png"; sourceTree = "<group>"; };
 		C8058789168198E50017233F /* navigation-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-button@2x.png"; sourceTree = "<group>"; };
-		C805878C16819AA40017233F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		C805878D16819AA40017233F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		C805878C16819AA40017233F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../BaseViewController.h; sourceTree = "<group>"; };
+		C805878D16819AA40017233F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../BaseViewController.m; sourceTree = "<group>"; };
 		C80587931681B1060017233F /* check-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box@2x.png"; sourceTree = "<group>"; };
 		C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summly_close_x@2x.png"; sourceTree = "<group>"; };
 		C81DFEB6167EB4910040F35B /* tablebackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablebackground@2x.png"; sourceTree = "<group>"; };
@@ -544,6 +544,8 @@
 		049B8FCA167707B200C48250 /* FrameworkController */ = {
 			isa = PBXGroup;
 			children = (
+				C805878C16819AA40017233F /* BaseViewController.h */,
+				C805878D16819AA40017233F /* BaseViewController.m */,
 			);
 			path = FrameworkController;
 			sourceTree = "<group>";
@@ -566,8 +568,6 @@
 				0435E0DB1679B83100992946 /* TopicViewController */,
 				049B8FCA167707B200C48250 /* FrameworkController */,
 				04A47EBE1671DCFF0035B2AA /* SummlyController */,
-				C805878C16819AA40017233F /* BaseViewController.h */,
-				C805878D16819AA40017233F /* BaseViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
