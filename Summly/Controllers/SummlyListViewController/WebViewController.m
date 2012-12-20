@@ -36,7 +36,7 @@
     
     loadLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-144)/2,10 , 144, 26)];
     loadLabel.text=@"加载中...";
-    [loadLabel setTextAlignment:UITextAlignmentCenter];
+    [loadLabel setTextAlignment:NSTextAlignmentCenter];
     [navigationBar addSubview:loadLabel];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];

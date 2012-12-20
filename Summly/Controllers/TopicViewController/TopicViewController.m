@@ -58,6 +58,7 @@
     ItemSummly *addItemSummly = [[ItemSummly alloc] initWithFrame:CGRectMake(LeftMargin, 15, 280, ItemSummlyHeight)];
     addItemSummly.itemSummlyType=manageAdd;
     addItemSummly.actionDelegate=self;
+    [addItemSummly setContentSize:CGSizeMake(280, ItemSummlyHeight)];
     [scrollView addSubview:addItemSummly];
     
     
@@ -67,6 +68,7 @@
         item.topic = [self.topicsArr objectAtIndex:i];
         item.itemSummlyType=manage;
         item.actionDelegate =self;
+        [item setContentSize:CGSizeMake(280, ItemSummlyHeight)];
         [scrollView addSubview:item];
     }
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2)-30);
@@ -84,11 +86,13 @@
 #pragma mark-- ItemSummlydelegate
 -(void)ItemSummlydidTap:(ItemSummly * )itemSummly{
     if (itemSummly.itemSummlyType==manageAdd) {
+        
         NSLog(@"产生新话题");
     }
     else if(itemSummly.itemSummlyType==manage){
-        
-        NSLog(@"选中未选中");
+        BOOL isSelect = !itemSummly.isSelect;
+        itemSummly.isSelect=isSelect;
+        [itemSummly changeBackView:isSelect];
     }
     
 }
