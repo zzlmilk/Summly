@@ -74,13 +74,10 @@
             
             titleLabel.frame=CGRectMake(50, 35, 300, 20);
             describeLabel.text=nil;
-            
-            self.isSelect=YES;
-            
-            selectImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"check-box-checked.png"]];
-            selectImageView.frame =CGRectMake(15, 32, 23, 24);
+                        
+            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 32, 23, 24)];
             [bgImageView addSubview:selectImageView];
-            
+            [self changeBackView:self.isSelect];
         }
             break;
         case manageAdd:{
@@ -105,6 +102,10 @@
 
         }
         break;
+        case saved:{
+            bgImageView.image = [UIImage imageNamed:@"cell-saved"];
+
+        }
         default:
         break;
     }
@@ -148,7 +149,7 @@
     if (self) {
         // Initialization code
         
-              
+        
                
         [self commonInit];
         [self _initVoice];
@@ -210,7 +211,7 @@
     self.index = 0;
     self.canRefish =YES;
     self.canMove  =YES;
-    
+    self.isSelect=YES;
 
     
     // Transforming control vars
