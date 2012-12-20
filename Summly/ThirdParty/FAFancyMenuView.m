@@ -71,6 +71,7 @@
     if (self.delegate){
         if ([self.delegate respondsToSelector:@selector(fancyMenu:didSelectedButtonAtIndex:)]){
             [self.delegate fancyMenu:self didSelectedButtonAtIndex:button.tag - 292];
+            [self hide];
         }
     }
 }

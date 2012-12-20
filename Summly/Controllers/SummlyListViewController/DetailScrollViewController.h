@@ -11,12 +11,18 @@
 #import "FAFancyMenuView.h"
 #import "ArticleViewController.h"
 
-@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate>
+#import "SinaWeibo.h"
+#import "SinaWeiboRequest.h"
+
+@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate,SinaWeiboDelegate, SinaWeiboRequestDelegate>
 {
     
     UIScrollView *scrollView;
     
-
+    NSDictionary *userInfo;
+    NSArray *statuses;
+    NSString *postStatusText;
+    NSString *postImageStatusText;
 }
 
 +(id)sharedInstance;
