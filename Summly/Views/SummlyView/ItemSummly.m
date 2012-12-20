@@ -84,6 +84,7 @@
             self.canMove = NO;
 //            self.canRefish=NO;
 
+            
             titleLabel.text=nil;
             describeLabel.text=nil;
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
