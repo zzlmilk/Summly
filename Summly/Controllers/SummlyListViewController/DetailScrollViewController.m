@@ -161,14 +161,11 @@ static DetailScrollViewController *detailInstance=nil;
 -(void)pushToWebView{
 
     //push webviewcontroller
-<<<<<<< HEAD
     
-=======
     [self pushControllerAnimate];
     WebViewController *webViewController = [[WebViewController alloc] init];
     webViewController.summly=[self.summlyArr objectAtIndex:self.index];
     [self.navigationController pushViewController:webViewController animated:NO];
->>>>>>> aa89f5788e9402430db6191e2e4a10f010dd4f54
 }
 
 - (void)showDetailViewAnimate{

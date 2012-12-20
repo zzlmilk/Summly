@@ -12,7 +12,7 @@
 
 #define LeftMargin 20
 #define DistanceMargin 10
-#define ItemSummlyHeight 88
+#define ItemSummlyHeight 100
 
 @interface TopicViewController ()
 
@@ -41,8 +41,7 @@
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     scrollView.userInteractionEnabled=YES;
     [scrollView setBackgroundColor:[UIColor clearColor]];
-    scrollView.showsVerticalScrollIndicator= YES;
-    scrollView.pagingEnabled=YES;
+    //scrollView.showsVerticalScrollIndicator= YES;
     [self.view addSubview:scrollView];
 
     
@@ -54,11 +53,13 @@
     [_button addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc]initWithCustomView:_button];
 
+    
     //自定义summly
     ItemSummly *addItemSummly = [[ItemSummly alloc] initWithFrame:CGRectMake(LeftMargin, 15, 280, ItemSummlyHeight)];
     addItemSummly.itemSummlyType=manageAdd;
     addItemSummly.actionDelegate=self;
     [scrollView addSubview:addItemSummly];
+    
     
     //产生固定topic
     for (int i=0;i< self.topicsArr.count ;i++) {
@@ -70,6 +71,7 @@
     }
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2)-30);
 }
+
 
 
 //设置
