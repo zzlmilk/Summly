@@ -24,7 +24,7 @@
     // Transforming control vars
         CGFloat _lastScale;
     BOOL _inFullSizeMode;  //进度模式
-    
+
 
 }
 
@@ -37,8 +37,7 @@
 @end
 
 @implementation ItemSummly
-
-
+@synthesize isSelect;
 
 
 -(void)setTopic:(Topic *)topic{
@@ -73,28 +72,14 @@
             self.canMove = NO;
 //            self.canRefish=NO;
             
-           // titleLabel.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
+            titleLabel.frame=CGRectMake(50, 35, 300, 20);
             describeLabel.text=nil;
             
-            bgImageView.image = [UIImage imageNamed:@"cell-keyword"];
+            self.isSelect=YES;
             
-//            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
-//            addImageView.frame =CGRectMake(0, 0, 280, 88);
-            
-//            [bgImageView insertSubview:bgImageView belowSubview:titleLabel];
-            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-keyword.png"]];
-            addImageView.frame =CGRectMake(0, 0, 280, 88);
-            [bgImageView addSubview:addImageView];
-            
-
-//            UIButton *selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//
-//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-checked"] forState:UIControlStateNormal];
-//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-shadowed-checked"] forState:UIControlStateHighlighted];
-//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box-shadowed"] forState:UIControlStateHighlighted];
-//            [selectBtn setBackgroundImage:[UIImage imageNamed:@"check-box"] forState:UIControlStateHighlighted];
-//            [bgImageView addSubview:selectBtn];
-            
+            selectImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"check-box-checked.png"]];
+            selectImageView.frame =CGRectMake(15, 32, 23, 24);
+            [bgImageView addSubview:selectImageView];
             
         }
             break;
@@ -124,6 +109,20 @@
         break;
     }
 
+}
+
+- (void)changeBackView:(BOOL)isSelected{
+    
+    if (isSelected==YES) {
+        bgImageView.image = [UIImage imageNamed:@"cell-keyword"];
+        [selectImageView setImage:[UIImage imageNamed:@"check-box-checked.png"]];
+
+    }
+    else{
+        bgImageView.image = [UIImage imageNamed:@"action-cell"];
+        [selectImageView setImage:[UIImage imageNamed:@"check-box.png"]];
+    }
+  
 }
 
 -(void)_initVoice{

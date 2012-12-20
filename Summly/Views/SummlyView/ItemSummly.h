@@ -34,7 +34,7 @@ typedef enum {
     
     UIImageView *bgImageView;
     UIImageView *overBgImageView;
-    
+    UIImageView *selectImageView ;
     
     
     CGColorRef itemColorRef;
@@ -54,7 +54,7 @@ typedef enum {
 @property(nonatomic)NSInteger index;
 @property(nonatomic)BOOL canRefish;  //是否可拖拉刷新 default Yes
 @property(nonatomic)BOOL canMove;    //是否可移动    default Yes
-
+@property(nonatomic)BOOL isSelect; //是否选中
 
 
 @property (nonatomic, weak) id<ItemSummlyActionDelegate>  actionDelegate;
@@ -62,6 +62,8 @@ typedef enum {
 @property(nonatomic)NSInteger maxOffset;
 
 -(void)reloadSummly;
+- (void)changeBackView:(BOOL)isSelect;
+
 @end
 
 #pragma mark Protocol ItemSummlyActionDelegate
