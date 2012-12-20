@@ -75,7 +75,7 @@
             titleLabel.frame=CGRectMake(50, 39, 300, 20);
             describeLabel.text=nil;
                         
-            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 35, 23, 24)];
+            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
             [self changeBackView:self.isSelect];
         }
@@ -90,10 +90,10 @@
             bgImageView.userInteractionEnabled =YES;
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
                         addImageView.userInteractionEnabled =YES;
-            addImageView.frame =CGRectMake(20, 25, 34, 34);
+            addImageView.frame =CGRectMake(20, 32, 34, 34);
             [bgImageView addSubview:addImageView];
             
-            UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 32, 160, 20)];
+            UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 39, 160, 20)];
             [defineLabel setFont:[UIFont systemFontOfSize:16]];
             [defineLabel setText:@"点击这里创建新话题"];
             [defineLabel setBackgroundColor:[UIColor clearColor]];
