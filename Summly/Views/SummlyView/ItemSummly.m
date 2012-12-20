@@ -72,10 +72,10 @@
             self.canMove = NO;
 //            self.canRefish=NO;
             
-            titleLabel.frame=CGRectMake(50, 35, 300, 20);
+            titleLabel.frame=CGRectMake(50, 39, 300, 20);
             describeLabel.text=nil;
                         
-            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 32, 23, 24)];
+            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 35, 23, 24)];
             [bgImageView addSubview:selectImageView];
             [self changeBackView:self.isSelect];
         }
