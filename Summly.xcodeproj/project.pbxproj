@@ -113,6 +113,7 @@
 		04AA94981680BE0700DC2CA5 /* sms-received6.caf in Resources */ = {isa = PBXBuildFile; fileRef = 04AA94921680BBD800DC2CA5 /* sms-received6.caf */; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
 		04E0595D1674EF6300C919DE /* SummlyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */; };
+		894557511682D96600175BF8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 894557501682D96600175BF8 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA704167DE6C2006DBE88 /* petal-email@2x.png */; };
 		896AA70A167DE6C2006DBE88 /* petal-facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */; };
 		896AA70B167DE6C2006DBE88 /* petal-save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA706167DE6C2006DBE88 /* petal-save@2x.png */; };
@@ -289,6 +290,8 @@
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
 		04E0595B1674EF6300C919DE /* SummlyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SummlyAppDelegate.h; path = ../SummlyAppDelegate.h; sourceTree = "<group>"; };
 		04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SummlyAppDelegate.m; path = ../SummlyAppDelegate.m; sourceTree = "<group>"; };
+		8945574F1682D96600175BF8 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		894557501682D96600175BF8 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		896AA704167DE6C2006DBE88 /* petal-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-email@2x.png"; sourceTree = "<group>"; };
 		896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-facebook@2x.png"; sourceTree = "<group>"; };
 		896AA706167DE6C2006DBE88 /* petal-save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-save@2x.png"; sourceTree = "<group>"; };
@@ -577,6 +580,7 @@
 		04A47EB81671DC800035B2AA /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				8945574D1682D95900175BF8 /* JSONKit */,
 				896AA712167DE7C4006DBE88 /* FancyMenu */,
 				0418DF441678315C007BADC2 /* SVProgressHUD */,
 				04A47EC7167233B60035B2AA /* AFNetworking */,
@@ -680,6 +684,15 @@
 				04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */,
 			);
 			path = Additions;
+			sourceTree = "<group>";
+		};
+		8945574D1682D95900175BF8 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				8945574F1682D96600175BF8 /* JSONKit.h */,
+				894557501682D96600175BF8 /* JSONKit.m */,
+			);
+			name = JSONKit;
 			sourceTree = "<group>";
 		};
 		896AA702167DE66C006DBE88 /* FAFancyMenu */ = {
@@ -954,6 +967,7 @@
 				C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */,
 				C805878E16819AA40017233F /* BaseViewController.m in Sources */,
 				AECCDD9F16814B7C00D202E0 /* WebViewController.m in Sources */,
+				894557511682D96600175BF8 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
