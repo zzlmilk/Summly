@@ -10,13 +10,14 @@
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "WebViewController.h"
-#import "AppDelegate.h"
+
+
 
 @interface DetailScrollViewController ()
 {
-    
+
 }
-@property (nonatomic, strong) FAFancyMenuView *menu;
+
 @end
 
 @implementation DetailScrollViewController
@@ -42,6 +43,8 @@ static DetailScrollViewController *detailInstance=nil;
     
     self.index=[self calculateIndexFromScrollViewOffSet];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
     //上滑返回
     UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
     swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
@@ -58,10 +61,8 @@ static DetailScrollViewController *detailInstance=nil;
     [doubleTap setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTap];
     
-    //[self.navigationController setNavigationBarHidden:YES animated:NO];
-    
-    
-    
+ 
+
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -69,14 +70,14 @@ static DetailScrollViewController *detailInstance=nil;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); 
     scrollView.delegate=self;
     [self.view addSubview:scrollView];
-    
     [self createDetailView:self.summlyArr];
     
-    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-    self.menu = [[FAFancyMenuView alloc] init];
-    self.menu.delegate = self;
-    self.menu.buttonImages = images;
-    [self.view addSubview:self.menu];
+    
+
+    
+    menu = [[FAFancyMenuView alloc] init];
+    faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:menu];
+    [self.view addSubview:menu];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -184,23 +185,6 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
--(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    
-}
-
-/*花瓣按钮回调
-- (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    if (index == 0) {
-        SinaWeibo *sinaweibo = [self sinaweibo];
-        BOOL flag = [sinaweibo isLoggedIn];
-        if ( flag == YES ) {
-            [self postStatusSina];
-        }else{
-            SinaWeibo *sinaweibo = [self sinaweibo];
-            [sinaweibo logIn];
-        }
-    }
-}
 
 
 
@@ -238,64 +222,4 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
-
-
-#pragma mark - SinaWeiboRequest Delegate 
-- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-{
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-//        [userInfo release], userInfo = nil;
-    }
-    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
-    {
-//        [statuses release], statuses = nil;
-    }
-    else if ([request.url hasSuffix:@"statuses/update.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" failed!", postStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        
-        NSLog(@"Post status failed with error : %@", error);
-    }
-    else if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" failed!", postImageStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        
-        NSLog(@"Post image status failed with error : %@", error);
-    }
-}
-
-
-- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
-{
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        userInfo = result;
-    }
-    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
-    {
-        statuses = [result objectForKey:@"statuses"];
-    }
-    else if ([request.url hasSuffix:@"statuses/update.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-    }
-    else if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-    }
-}
-*/
 @end

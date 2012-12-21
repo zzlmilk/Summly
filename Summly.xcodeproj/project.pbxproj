@@ -19,7 +19,7 @@
 		04831CC2167C525A00BE99AB /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC1167C525A00BE99AB /* SetViewController.m */; };
 		04831CC8167C692D00BE99AB /* Cover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC7167C692C00BE99AB /* Cover.m */; };
 		0491D5391683163700317C99 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491D5381683163700317C99 /* Icon@2x.png */; };
-		0491D5451683FBE000317C99 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491D5441683FBDF00317C99 /* Share.m */; };
+		0491D54D168408B600317C99 /* FAFancyMenuViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491D54C168408B600317C99 /* FAFancyMenuViewDataSource.m */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
 		049A8B46166CFF7400569250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B45166CFF7400569250 /* UIKit.framework */; };
 		049A8B48166CFF7400569250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B47166CFF7400569250 /* Foundation.framework */; };
@@ -179,12 +179,12 @@
 		04831CC6167C692C00BE99AB /* Cover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cover.h; sourceTree = "<group>"; };
 		04831CC7167C692C00BE99AB /* Cover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cover.m; sourceTree = "<group>"; };
 		0491D5381683163700317C99 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		0491D5431683FBDF00317C99 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
-		0491D5441683FBDF00317C99 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		0491D5461683FF4800317C99 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
 		0491D5471683FF4800317C99 /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		0491D5481683FF4800317C99 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		0491D5491683FF4800317C99 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		0491D54B168408B600317C99 /* FAFancyMenuViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyMenuViewDataSource.h; sourceTree = "<group>"; };
+		0491D54C168408B600317C99 /* FAFancyMenuViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuViewDataSource.m; sourceTree = "<group>"; };
 		049A77DC166DCE1900DF8742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		049A8B41166CFF7400569250 /* Summly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A8B45166CFF7400569250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -418,6 +418,8 @@
 		0491D54A1684079100317C99 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				0491D54B168408B600317C99 /* FAFancyMenuViewDataSource.h */,
+				0491D54C168408B600317C99 /* FAFancyMenuViewDataSource.m */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -646,8 +648,6 @@
 				04A47EE5167234F80035B2AA /* SummlyAPIClient.m */,
 				C81DFECA167ECDAD0040F35B /* CustomNavigationBar.h */,
 				C81DFECB167ECDAD0040F35B /* CustomNavigationBar.m */,
-				0491D5431683FBDF00317C99 /* Share.h */,
-				0491D5441683FBDF00317C99 /* Share.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1013,7 +1013,7 @@
 				8945575C1682DAC500175BF8 /* SinaWeibo.m in Sources */,
 				8945575D1682DAC500175BF8 /* SinaWeiboAuthorizeView.m in Sources */,
 				8945575E1682DAC500175BF8 /* SinaWeiboRequest.m in Sources */,
-				0491D5451683FBE000317C99 /* Share.m in Sources */,
+				0491D54D168408B600317C99 /* FAFancyMenuViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

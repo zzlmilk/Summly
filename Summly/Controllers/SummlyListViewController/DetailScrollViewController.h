@@ -10,11 +10,10 @@
 #import "Summly.h"
 #import "FAFancyMenuView.h"
 #import "ArticleViewController.h"
+#import "FAFancyMenuViewDataSource.h"
 
-#import "SinaWeibo.h"
-#import "SinaWeiboRequest.h"
 
-@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate>
+@interface DetailScrollViewController : UIViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
     UIScrollView *scrollView;
@@ -23,9 +22,14 @@
     NSArray *statuses;
     NSString *postStatusText;
     NSString *postImageStatusText;
+    
+    FAFancyMenuView *menu;
+    FAFancyMenuViewDataSource *faFancyMenuDataSource;
+    
 }
 
 +(id)sharedInstance;
+
 - (void)setScrollOffset:(NSInteger)index;
 
 @property(nonatomic,strong) NSArray *summlyArr;
