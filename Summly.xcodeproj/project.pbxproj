@@ -19,6 +19,7 @@
 		04831CC2167C525A00BE99AB /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC1167C525A00BE99AB /* SetViewController.m */; };
 		04831CC8167C692D00BE99AB /* Cover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC7167C692C00BE99AB /* Cover.m */; };
 		0491D5391683163700317C99 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491D5381683163700317C99 /* Icon@2x.png */; };
+		0491D5451683FBE000317C99 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491D5441683FBDF00317C99 /* Share.m */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
 		049A8B46166CFF7400569250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B45166CFF7400569250 /* UIKit.framework */; };
 		049A8B48166CFF7400569250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B47166CFF7400569250 /* Foundation.framework */; };
@@ -113,8 +114,6 @@
 		04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */; };
 		04AA94981680BE0700DC2CA5 /* sms-received6.caf in Resources */ = {isa = PBXBuildFile; fileRef = 04AA94921680BBD800DC2CA5 /* sms-received6.caf */; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
-		04E0595D1674EF6300C919DE /* SummlyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */; };
-		894557511682D96600175BF8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 894557501682D96600175BF8 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8945575B1682DAC500175BF8 /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 894557531682DAC500175BF8 /* SinaWeibo.bundle */; };
 		8945575C1682DAC500175BF8 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 894557551682DAC500175BF8 /* SinaWeibo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8945575D1682DAC500175BF8 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 894557571682DAC500175BF8 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -180,6 +179,12 @@
 		04831CC6167C692C00BE99AB /* Cover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cover.h; sourceTree = "<group>"; };
 		04831CC7167C692C00BE99AB /* Cover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cover.m; sourceTree = "<group>"; };
 		0491D5381683163700317C99 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		0491D5431683FBDF00317C99 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
+		0491D5441683FBDF00317C99 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
+		0491D5461683FF4800317C99 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
+		0491D5471683FF4800317C99 /* JSONKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		0491D5481683FF4800317C99 /* JSONKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		0491D5491683FF4800317C99 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		049A77DC166DCE1900DF8742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		049A8B41166CFF7400569250 /* Summly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A8B45166CFF7400569250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -294,10 +299,6 @@
 		04AA94921680BBD800DC2CA5 /* sms-received6.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sms-received6.caf"; sourceTree = "<group>"; };
 		04E05958167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.h"; sourceTree = "<group>"; };
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
-		04E0595B1674EF6300C919DE /* SummlyAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SummlyAppDelegate.h; path = ../SummlyAppDelegate.h; sourceTree = "<group>"; };
-		04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SummlyAppDelegate.m; path = ../SummlyAppDelegate.m; sourceTree = "<group>"; };
-		8945574F1682D96600175BF8 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		894557501682D96600175BF8 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		894557531682DAC500175BF8 /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
 		894557541682DAC500175BF8 /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
 		894557551682DAC500175BF8 /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
@@ -414,6 +415,13 @@
 			path = SetViewController;
 			sourceTree = "<group>";
 		};
+		0491D54A1684079100317C99 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +456,7 @@
 		049A8B4B166CFF7400569250 /* Summly */ = {
 			isa = PBXGroup;
 			children = (
+				0491D54A1684079100317C99 /* DataSource */,
 				04A47EBC1671DCCC0035B2AA /* Classes */,
 				04A47EBB1671DCB30035B2AA /* Models */,
 				04A47EBA1671DC920035B2AA /* Controllers */,
@@ -632,13 +641,13 @@
 		04A47EBC1671DCCC0035B2AA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				04E0595B1674EF6300C919DE /* SummlyAppDelegate.h */,
-				04E0595C1674EF6300C919DE /* SummlyAppDelegate.m */,
 				04E059561674838F00C919DE /* Additions */,
 				04A47EE4167234F80035B2AA /* SummlyAPIClient.h */,
 				04A47EE5167234F80035B2AA /* SummlyAPIClient.m */,
 				C81DFECA167ECDAD0040F35B /* CustomNavigationBar.h */,
 				C81DFECB167ECDAD0040F35B /* CustomNavigationBar.m */,
+				0491D5431683FBDF00317C99 /* Share.h */,
+				0491D5441683FBDF00317C99 /* Share.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -705,8 +714,10 @@
 		8945574D1682D95900175BF8 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
-				8945574F1682D96600175BF8 /* JSONKit.h */,
-				894557501682D96600175BF8 /* JSONKit.m */,
+				0491D5461683FF4800317C99 /* CHANGELOG.md */,
+				0491D5471683FF4800317C99 /* JSONKit.h */,
+				0491D5481683FF4800317C99 /* JSONKit.m */,
+				0491D5491683FF4800317C99 /* README.md */,
 			);
 			name = JSONKit;
 			sourceTree = "<group>";
@@ -954,11 +965,8 @@
 				AECCDDB01681507000D202E0 /* webview-loading-backround@2x.png in Resources */,
 				AECCDDB11681507000D202E0 /* webview-navigation-backround@2x.png in Resources */,
 				AECCDDB21681507000D202E0 /* webview-open-button@2x.png in Resources */,
-<<<<<<< HEAD
 				0491D5391683163700317C99 /* Icon@2x.png in Resources */,
-=======
 				8945575B1682DAC500175BF8 /* SinaWeibo.bundle in Resources */,
->>>>>>> 0e25a3846cfd64c71e760a9944a2375623bcf58c
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,7 +993,6 @@
 				0460466916738E7F00FA9F03 /* ItemSummly.m in Sources */,
 				0402F7761673A23800F5117A /* MainViewController.m in Sources */,
 				04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */,
-				04E0595D1674EF6300C919DE /* SummlyAppDelegate.m in Sources */,
 				049B8F081675B3C400C48250 /* Summly.m in Sources */,
 				049B8FD316771D3600C48250 /* FrontSummlyView.m in Sources */,
 				049B8FD616771F2200C48250 /* MainSummlyView.m in Sources */,
@@ -1003,10 +1010,10 @@
 				C8EAF5C516804F740018B28E /* ArticleViewController.m in Sources */,
 				C805878E16819AA40017233F /* BaseViewController.m in Sources */,
 				AECCDD9F16814B7C00D202E0 /* WebViewController.m in Sources */,
-				894557511682D96600175BF8 /* JSONKit.m in Sources */,
 				8945575C1682DAC500175BF8 /* SinaWeibo.m in Sources */,
 				8945575D1682DAC500175BF8 /* SinaWeiboAuthorizeView.m in Sources */,
 				8945575E1682DAC500175BF8 /* SinaWeiboRequest.m in Sources */,
+				0491D5451683FBE000317C99 /* Share.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

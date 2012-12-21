@@ -52,11 +52,15 @@ static DetailScrollViewController *detailInstance=nil;
     swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
    [self.view addGestureRecognizer:swipUpGestureDown];
 
+    
+    
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTap];
     
     //[self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    
     
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
@@ -159,18 +163,17 @@ static DetailScrollViewController *detailInstance=nil;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
 }
 
+
 //下滑pushWebView
 -(void)pushToWebView{
-<<<<<<< HEAD
-
     //push webviewcontroller
-=======
->>>>>>> 0e25a3846cfd64c71e760a9944a2375623bcf58c
     [self pushControllerAnimate];
     WebViewController *webViewController = [[WebViewController alloc] init];
     webViewController.summly=[self.summlyArr objectAtIndex:self.index];
     [self.navigationController pushViewController:webViewController animated:NO];
 }
+
+
 
 - (void)showDetailViewAnimate{
 
@@ -181,10 +184,12 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
+-(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
+    
+}
 
-//花瓣按钮回调
+/*花瓣按钮回调
 - (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    NSLog(@"%i",index);
     if (index == 0) {
         SinaWeibo *sinaweibo = [self sinaweibo];
         BOOL flag = [sinaweibo isLoggedIn];
@@ -196,6 +201,7 @@ static DetailScrollViewController *detailInstance=nil;
         }
     }
 }
+
 
 
 
@@ -232,22 +238,7 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
-- (SinaWeibo *)sinaweibo
-{
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return delegate.sinaweibo;
-}
 
-//登入
-- (void)postStatusSina
-{
-    SinaWeibo *sinaweibo = [self sinaweibo];
-    postStatusText = [[NSString alloc] initWithFormat:@"hello summy :  %@", [NSDate date]];
-    [sinaweibo requestWithURL:@"statuses/update.json"
-                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:postStatusText, @"status", nil]
-                   httpMethod:@"POST"
-                     delegate:self];
-}
 
 #pragma mark - SinaWeiboRequest Delegate 
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
@@ -306,5 +297,5 @@ static DetailScrollViewController *detailInstance=nil;
         [alertView show];
     }
 }
-
+*/
 @end

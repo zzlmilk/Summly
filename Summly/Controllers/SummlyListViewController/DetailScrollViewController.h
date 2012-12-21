@@ -14,7 +14,7 @@
 #import "SinaWeibo.h"
 #import "SinaWeiboRequest.h"
 
-@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate,SinaWeiboDelegate, SinaWeiboRequestDelegate>
+@interface DetailScrollViewController : UIViewController<FAFancyMenuViewDelegate,UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
     UIScrollView *scrollView;
