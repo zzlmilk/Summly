@@ -51,7 +51,7 @@ static DetailScrollViewController *detailInstance=nil;
     [self.view addGestureRecognizer:swipUpGestureUp];
     
     //下滑wbview
-    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToWebView)];
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
     swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
    [self.view addGestureRecognizer:swipUpGestureDown];
 
@@ -142,16 +142,8 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    [scrollView setBackgroundColor:[UIColor whiteColor]];
 
-    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
-    [detailView dismissDetailViewAnimate:^{
-        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
-        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
-        articleVC.delegate=self;
-        [self popControllerFadeAnimate];
-        [self.navigationController pushViewController:articleVC animated:NO];
-    }];
+    [self pushToArticleDetail];
 }
 
 //动画
@@ -165,13 +157,24 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
-//下滑pushWebView
--(void)pushToWebView{
+//下滑push文章页
+-(void)pushToArticleView{
+    [self pushToArticleDetail];
+}
 
-    [self pushControllerAnimate];
-    WebViewController *webViewController = [[WebViewController alloc] init];
-    webViewController.summly=[self.summlyArr objectAtIndex:self.index];
-    [self.navigationController pushViewController:webViewController animated:NO];
+//推送到文章页
+- (void)pushToArticleDetail{
+    [scrollView setBackgroundColor:[UIColor whiteColor]];
+    
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    [detailView dismissDetailViewAnimate:^{
+        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
+        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
+        articleVC.delegate=self;
+        [self popControllerFadeAnimate];
+        [self.navigationController pushViewController:articleVC animated:NO];
+    }];
+
 }
 
 
