@@ -478,7 +478,6 @@
 			children = (
 				C82B86481682AF5400C91F4E /* test.plist */,
 				0491D5381683163700317C99 /* Icon@2x.png */,
->>>>>>> bdc8e358cb753a7a672aaac288f63d36e11ca595
 				04AA94921680BBD800DC2CA5 /* sms-received6.caf */,
 				047FF8611680B52D00A990C6 /* refresh_pulled.caf */,
 				049B8F501675FD0100C48250 /* Default-568h@2x.png */,
@@ -971,7 +970,6 @@
 				AECCDDB21681507000D202E0 /* webview-open-button@2x.png in Resources */,
 				C82B86491682AF5400C91F4E /* test.plist in Resources */,
 				0491D5391683163700317C99 /* Icon@2x.png in Resources */,
->>>>>>> bdc8e358cb753a7a672aaac288f63d36e11ca595
 				8945575B1682DAC500175BF8 /* SinaWeibo.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1101,7 +1099,6 @@
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
->>>>>>> bdc8e358cb753a7a672aaac288f63d36e11ca595
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1118,7 +1115,6 @@
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
->>>>>>> bdc8e358cb753a7a672aaac288f63d36e11ca595
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "296DC669-F8B6-4552-9173-36C6B8AFDD60";
 				TARGETED_DEVICE_FAMILY = 1;
