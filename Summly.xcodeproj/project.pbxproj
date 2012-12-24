@@ -20,6 +20,8 @@
 		04831CC8167C692D00BE99AB /* Cover.m in Sources */ = {isa = PBXBuildFile; fileRef = 04831CC7167C692C00BE99AB /* Cover.m */; };
 		0491D5391683163700317C99 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0491D5381683163700317C99 /* Icon@2x.png */; };
 		0491D54D168408B600317C99 /* FAFancyMenuViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491D54C168408B600317C99 /* FAFancyMenuViewDataSource.m */; };
+		0491D559168443EC00317C99 /* REXMail.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491D558168443EC00317C99 /* REXMail.m */; };
+		0491D55B1684443B00317C99 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0491D55A1684443A00317C99 /* MessageUI.framework */; };
 		049A77DD166DCE1900DF8742 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A77DC166DCE1900DF8742 /* QuartzCore.framework */; };
 		049A8B46166CFF7400569250 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B45166CFF7400569250 /* UIKit.framework */; };
 		049A8B48166CFF7400569250 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049A8B47166CFF7400569250 /* Foundation.framework */; };
@@ -185,6 +187,9 @@
 		0491D5491683FF4800317C99 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		0491D54B168408B600317C99 /* FAFancyMenuViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAFancyMenuViewDataSource.h; sourceTree = "<group>"; };
 		0491D54C168408B600317C99 /* FAFancyMenuViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAFancyMenuViewDataSource.m; sourceTree = "<group>"; };
+		0491D557168443EC00317C99 /* REXMail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REXMail.h; sourceTree = "<group>"; };
+		0491D558168443EC00317C99 /* REXMail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REXMail.m; sourceTree = "<group>"; };
+		0491D55A1684443A00317C99 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		049A77DC166DCE1900DF8742 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		049A8B41166CFF7400569250 /* Summly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Summly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A8B45166CFF7400569250 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -359,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0491D55B1684443B00317C99 /* MessageUI.framework in Frameworks */,
 				047FF8691680B9F400A990C6 /* AudioToolbox.framework in Frameworks */,
 				04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */,
 				04A47EE816730B090035B2AA /* SystemConfiguration.framework in Frameworks */,
@@ -424,6 +430,39 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		0491D552168443B900317C99 /* Shares */ = {
+			isa = PBXGroup;
+			children = (
+				0491D55C168449CD00317C99 /* Services */,
+				0491D554168443D700317C99 /* Actions */,
+			);
+			path = Shares;
+			sourceTree = "<group>";
+		};
+		0491D554168443D700317C99 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				0491D555168443D700317C99 /* Email */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		0491D555168443D700317C99 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				0491D557168443EC00317C99 /* REXMail.h */,
+				0491D558168443EC00317C99 /* REXMail.m */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		0491D55C168449CD00317C99 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +483,7 @@
 		049A8B44166CFF7400569250 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0491D55A1684443A00317C99 /* MessageUI.framework */,
 				047FF8681680B9F400A990C6 /* AudioToolbox.framework */,
 				04A47EE916730B1B0035B2AA /* MobileCoreServices.framework */,
 				04A47EE716730B090035B2AA /* SystemConfiguration.framework */,
@@ -643,6 +683,7 @@
 		04A47EBC1671DCCC0035B2AA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0491D552168443B900317C99 /* Shares */,
 				04E059561674838F00C919DE /* Additions */,
 				04A47EE4167234F80035B2AA /* SummlyAPIClient.h */,
 				04A47EE5167234F80035B2AA /* SummlyAPIClient.m */,
@@ -1014,6 +1055,7 @@
 				8945575D1682DAC500175BF8 /* SinaWeiboAuthorizeView.m in Sources */,
 				8945575E1682DAC500175BF8 /* SinaWeiboRequest.m in Sources */,
 				0491D54D168408B600317C99 /* FAFancyMenuViewDataSource.m in Sources */,
+				0491D559168443EC00317C99 /* REXMail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

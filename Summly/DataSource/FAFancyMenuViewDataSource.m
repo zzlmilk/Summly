@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 zzlmilk. All rights reserved.
 //
 
+
 #import "FAFancyMenuViewDataSource.h"
 
 @implementation FAFancyMenuViewDataSource
@@ -41,44 +42,6 @@
  }
  }
  }
- 
- 
- 
-
- #pragma mark--
- #pragma mark-- ScrollViewDelegate
- - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
- 
- //    if (!_scrollView.dragging==YES ) {
- //        return;
- //    }
- //    for (int i=1; i<self.summlyArr.count; i++) {
- //        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:11+i];
- //      //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
- //        detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-i*320)/5,0, scrollView.frame.size.width, 183.5);
- //    }
- //    NSLog(@"contentOffset---%f--- %f",_scrollView.contentOffset.x,_scrollView.contentOffset.x/5);
- self.index=[self calculateIndexFromScrollViewOffSet];
- 
- }
- 
- - (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
- 
- //    for (int i=1; i<self.summlyArr.count; i++) {
- //        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+i];
- //        //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
- //        detailView.imageBackView.frame = CGRectMake(0,0, scrollView.frame.size.width, 183.5);
- //    }
- }
- 
- - (void)didReceiveMemoryWarning
- {
- [super didReceiveMemoryWarning];
- // Dispose of any resources that can be recreated.
- }
- 
- 
- 
  
  #pragma mark - SinaWeiboRequest Delegate
  - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error

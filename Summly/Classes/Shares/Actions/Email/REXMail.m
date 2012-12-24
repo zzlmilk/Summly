@@ -10,4 +10,12 @@
 
 @implementation REXMail
 
+
+- (BOOL)sendMail
+{
+	
+    return YES;
+    
+}
+
 @end
