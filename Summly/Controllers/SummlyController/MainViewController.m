@@ -58,24 +58,25 @@
     
     [self.view addSubview:mainSummlyView];
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationCurveLinear |UIViewAnimationOptionBeginFromCurrentState animations:^{
-        mainSummlyView.center =CGPointMake(mainSummlyView.center.x-100, mainSummlyView.center.y);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3 animations:^{
-            mainSummlyView.center =CGPointMake(mainSummlyView.center.x+100, mainSummlyView.center.y);
-        }];
-    }];
-
-    
-    
     [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
         if (topics) {
             topicsArr = topics;
             [summlyScrollView generateItems:topics];
             
-            
         }
     }];
+
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseOut |UIViewAnimationOptionBeginFromCurrentState animations:^{
+        
+        summlyScrollView.center =CGPointMake(summlyScrollView.center.x-100, summlyScrollView.center.y);
+        frontView.center =CGPointMake(frontView.center.x-100, frontView.center.y);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            summlyScrollView.center =CGPointMake(summlyScrollView.center.x+100, summlyScrollView.center.y);
+            frontView.center =CGPointMake(frontView.center.x+100, frontView.center.y);
+        }];
+    }];
+
     
 }
 

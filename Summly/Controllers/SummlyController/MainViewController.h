@@ -13,6 +13,7 @@
 @interface MainViewController : UIViewController
 {
     MainSummlyView *mainSummlyView;
+
 }
 
 @property(nonatomic,strong) NSArray *topicsArr;

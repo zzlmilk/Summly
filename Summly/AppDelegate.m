@@ -8,21 +8,25 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-#import "SinaWeibo.h"
 
 @implementation AppDelegate
-@synthesize sinaweibo;
+
+-(UIImageView*)_randomBackground{
+    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
+    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
+    bgImageView.image = [UIImage imageNamed:randomImageName];
+    return bgImageView;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor clearColor];
-    UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
-    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
-    bgImageView.image = [UIImage imageNamed:randomImageName];
-    [self.window addSubview:bgImageView];
+   
+    [self.window addSubview:[self _randomBackground]];
 
+    
     MainViewController *summlyVC = [[MainViewController alloc]init];
     _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
@@ -33,15 +37,7 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
     
-    sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:_navController];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
-    if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] && [sinaweiboInfo objectForKey:@"UserIDKey"])
-    {
-        sinaweibo.accessToken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
-        sinaweibo.expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
-        sinaweibo.userID = [sinaweiboInfo objectForKey:@"UserIDKey"];
-    }
+       
     return YES;
 }
 
@@ -68,23 +64,12 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self.sinaweibo applicationDidBecomeActive];
+ 
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    return [self.sinaweibo handleOpenURL:url];
-}
-
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [self.sinaweibo handleOpenURL:url];
 }
 
 

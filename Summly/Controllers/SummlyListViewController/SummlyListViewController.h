@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Topic.h"
 #import "BaseViewController.h"
+#import "DetailScrollViewController.h"
 
 @interface SummlyListViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 {
     NSInteger topicId;
+    DetailScrollViewController *detailScrollVC;
+
 }
 @property(nonatomic,strong)Topic *topic;
 @property(nonatomic,strong) NSMutableArray *summlysArr;

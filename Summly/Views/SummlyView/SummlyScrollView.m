@@ -93,7 +93,19 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self.summlyItems addObject:addItemSummly];
     
     
-        
+    Topic *starTopic = [[Topic alloc]init];
+    starTopic.title = @"已保存摘要";
+    starTopic.subTitle=@"了解最新及趋势摘要";
+    starTopic.status = 0;
+
+    ItemSummly *starSummly = [[ItemSummly alloc] initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
+    starSummly.index=self.summlyItems.count;
+    starSummly.topic  = starTopic;
+    starSummly.itemSummlyType=saved;
+    starSummly.actionDelegate =delegate;
+    [self addSubview:addItemSummly];
+    [self.summlyItems addObject:addItemSummly];
+    
     self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
 
     

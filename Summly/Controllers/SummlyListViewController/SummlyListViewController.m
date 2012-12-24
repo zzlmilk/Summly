@@ -9,7 +9,6 @@
 
 #import "SummlyListViewController.h"
 #import "Summly.h"
-#import "DetailScrollViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SummlyListViewController ()
@@ -52,7 +51,12 @@
         
         self.summlysArr=summlys;
         [tableView reloadData];
+        
+        detailScrollVC = [[DetailScrollViewController alloc] init];
+        detailScrollVC.summlyArr = self.summlysArr;
     }];
+
+  
 
       
 }
@@ -106,15 +110,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    DetailScrollViewController *detailScrollVC;
-    if (topicId == self.topic.topicId) {
-        detailScrollVC = [DetailScrollViewController sharedInstance];
-    }
-    else{
-        detailScrollVC = [[DetailScrollViewController alloc] init];
-        detailScrollVC.summlyArr = self.summlysArr;
-    }
-    topicId = self.topic.topicId;
+//    DetailScrollViewController *detailScrollVC;
+//    if (topicId == self.topic.topicId) {
+//        detailScrollVC = [DetailScrollViewController sharedInstance];
+//    }
+//    else{
+//        detailScrollVC = [[DetailScrollViewController alloc] init];
+//        detailScrollVC.summlyArr = self.summlysArr;
+//    }
+//    topicId = self.topic.topicId;
     
 //    detailScrollVC.index = indexPath.row;
     [detailScrollVC setScrollOffset:indexPath.row];

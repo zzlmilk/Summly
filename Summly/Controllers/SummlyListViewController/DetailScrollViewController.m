@@ -10,13 +10,14 @@
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "WebViewController.h"
-#import "AppDelegate.h"
+
+
 
 @interface DetailScrollViewController ()
 {
-    
+
 }
-@property (nonatomic, strong) FAFancyMenuView *menu;
+
 @end
 
 @implementation DetailScrollViewController
@@ -42,22 +43,26 @@ static DetailScrollViewController *detailInstance=nil;
     
     self.index=[self calculateIndexFromScrollViewOffSet];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
     //上滑返回
     UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
     swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
     [self.view addGestureRecognizer:swipUpGestureUp];
     
     //下滑wbview
-    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToWebView)];
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
     swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
    [self.view addGestureRecognizer:swipUpGestureDown];
 
+    
+    
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     [doubleTap setNumberOfTapsRequired:2];
+    [doubleTap setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:doubleTap];
     
-    //[self.navigationController setNavigationBarHidden:YES animated:NO];
-    
+
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
     scrollView.showsHorizontalScrollIndicator = YES;
@@ -66,13 +71,12 @@ static DetailScrollViewController *detailInstance=nil;
     scrollView.delegate=self;
     [self.view addSubview:scrollView];
     
+    //生成详情
     [self createDetailView:self.summlyArr];
     
-    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-    self.menu = [[FAFancyMenuView alloc] init];
-    self.menu.delegate = self;
-    self.menu.buttonImages = images;
-    [self.view addSubview:self.menu];
+    menu = [[FAFancyMenuView alloc] init];
+    faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:menu];
+    [self.view addSubview:menu];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -137,16 +141,8 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    [scrollView setBackgroundColor:[UIColor whiteColor]];
 
-    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
-    [detailView dismissDetailViewAnimate:^{
-        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
-        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
-        articleVC.delegate=self;
-        [self popControllerFadeAnimate];
-        [self.navigationController pushViewController:articleVC animated:NO];
-    }];
+    [self pushToArticleDetail];
 }
 
 //动画
@@ -159,13 +155,28 @@ static DetailScrollViewController *detailInstance=nil;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
 }
 
-//下滑pushWebView
--(void)pushToWebView{
-    [self pushControllerAnimate];
-    WebViewController *webViewController = [[WebViewController alloc] init];
-    webViewController.summly=[self.summlyArr objectAtIndex:self.index];
-    [self.navigationController pushViewController:webViewController animated:NO];
+
+//下滑push文章页
+-(void)pushToArticleView{
+    [self pushToArticleDetail];
 }
+
+//推送到文章页
+- (void)pushToArticleDetail{
+    [scrollView setBackgroundColor:[UIColor whiteColor]];
+    
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    [detailView dismissDetailViewAnimate:^{
+        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
+        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
+        articleVC.delegate=self;
+        [self popControllerFadeAnimate];
+        [self.navigationController pushViewController:articleVC animated:NO];
+    }];
+
+}
+
+
 
 - (void)showDetailViewAnimate{
 
@@ -177,28 +188,13 @@ static DetailScrollViewController *detailInstance=nil;
 
 
 
-//花瓣按钮回调
-- (void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    NSLog(@"%i",index);
-    if (index == 0) {
-        SinaWeibo *sinaweibo = [self sinaweibo];
-        BOOL flag = [sinaweibo isLoggedIn];
-        if ( flag == YES ) {
-            [self postStatusSina];
-        }else{
-            SinaWeibo *sinaweibo = [self sinaweibo];
-            [sinaweibo logIn];
-        }
-    }
-}
 
 
 
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-    
-//    if (!_scrollView.dragging==YES ) {
+    //    if (!_scrollView.dragging==YES ) {
 //        return;
 //    }
 //    for (int i=1; i<self.summlyArr.count; i++) {
@@ -226,80 +222,5 @@ static DetailScrollViewController *detailInstance=nil;
     // Dispose of any resources that can be recreated.
 }
 
-
-- (SinaWeibo *)sinaweibo
-{
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return delegate.sinaweibo;
-}
-
-//登入
-- (void)postStatusSina
-{
-    SinaWeibo *sinaweibo = [self sinaweibo];
-    postStatusText = [[NSString alloc] initWithFormat:@"hello summy :  %@", [NSDate date]];
-    [sinaweibo requestWithURL:@"statuses/update.json"
-                       params:[NSMutableDictionary dictionaryWithObjectsAndKeys:postStatusText, @"status", nil]
-                   httpMethod:@"POST"
-                     delegate:self];
-}
-
-#pragma mark - SinaWeiboRequest Delegate 
-- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-{
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-//        [userInfo release], userInfo = nil;
-    }
-    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
-    {
-//        [statuses release], statuses = nil;
-    }
-    else if ([request.url hasSuffix:@"statuses/update.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" failed!", postStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        
-        NSLog(@"Post status failed with error : %@", error);
-    }
-    else if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" failed!", postImageStatusText]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-        
-        NSLog(@"Post image status failed with error : %@", error);
-    }
-}
-
-
-- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
-{
-    if ([request.url hasSuffix:@"users/show.json"])
-    {
-        userInfo = result;
-    }
-    else if ([request.url hasSuffix:@"statuses/user_timeline.json"])
-    {
-        statuses = [result objectForKey:@"statuses"];
-    }
-    else if ([request.url hasSuffix:@"statuses/update.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-    }
-    else if ([request.url hasSuffix:@"statuses/upload.json"])
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Post image status \"%@\" succeed!", [result objectForKey:@"text"]]
-                                                           delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alertView show];
-    }
-}
 
 @end
