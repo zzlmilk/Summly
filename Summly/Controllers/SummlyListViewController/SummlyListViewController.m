@@ -27,8 +27,6 @@
 }
 
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,6 +50,8 @@
         self.summlysArr=summlys;
         [tableView reloadData];
         
+
+        //生成detailView
         detailScrollVC = [[DetailScrollViewController alloc] init];
         detailScrollVC.summlyArr = self.summlysArr;
     }];
@@ -119,8 +119,9 @@
 //        detailScrollVC.summlyArr = self.summlysArr;
 //    }
 //    topicId = self.topic.topicId;
-    
+
 //    detailScrollVC.index = indexPath.row;
+    
     [detailScrollVC setScrollOffset:indexPath.row];
     //controller推入动画
     [self pushControllerAnimate];

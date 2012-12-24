@@ -8,6 +8,8 @@
 
 #import "Topic.h"
 #import "SummlyAPIClient.h"
+#import "BundleHelp.h"
+
 @implementation Topic
 
 -(id)initWithAttributes:(NSDictionary *)attributes{
@@ -24,8 +26,8 @@
 
 
 +(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
-        
-    NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:@"/Users/zoe/Desktop/Summly/Summly/test.plist"];  //读取数据
+    
+    NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
 
     if ([dic isKindOfClass:[NSDictionary class]]) {
         NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
@@ -33,12 +35,13 @@
             NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
             for (NSDictionary *attributes in arr){
                 Topic *t = [[Topic alloc]initWithAttributes:attributes];
-                [topics addObject:t];
+                if (t.status==1) {
+                    [topics addObject:t];
+                }
             }
             
             block(topics);
         }
-
     }
     
     else{ [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -51,7 +54,9 @@
         NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
          for (NSDictionary *attributes in arr){
              Topic *t = [[Topic alloc]initWithAttributes:attributes];
-             [topics addObject:t];
+             if (t.status==1) {
+                 [topics addObject:t];
+             }
          }
          
             block(topics);

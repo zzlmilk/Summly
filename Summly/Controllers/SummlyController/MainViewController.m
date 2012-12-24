@@ -13,7 +13,7 @@
 #import "Topic.h"
 #import "TopicViewController.h"
 #import "SummlyListViewController.h"
-
+#import "BundleHelp.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -57,14 +57,8 @@
     mainSummlyView = [[MainSummlyView alloc]initWithFrame:self.view.bounds summlyScrollView:summlyScrollView AndFrontSummlyView:frontView];
     
     [self.view addSubview:mainSummlyView];
-    
-    [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
-        if (topics) {
-            topicsArr = topics;
-            [summlyScrollView generateItems:topics];
-            
-        }
-    }];
+   
+    self.isRestUI =YES;
 
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseOut |UIViewAnimationOptionBeginFromCurrentState animations:^{
         
@@ -83,6 +77,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    
+    if (self.isRestUI) {
+        [summlyScrollView  restUI];
+        [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
+            if (topics) {
+                topicsArr = topics;
+                [summlyScrollView generateItems:topics];
+                self.isRestUI = NO;
+            }
+        }];
+    }
+
+    
     summlyScrollView.contentOffset=CGPointMake(0, 0);
      [self.navigationController setNavigationBarHidden:YES];        
 }
@@ -105,7 +113,25 @@
     }
     else if(itemSummly.itemSummlyType ==add){
         TopicViewController *topViewController = [[TopicViewController alloc]init];
-        topViewController.topicsArr=topicsArr;
+        
+        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:@"test.plist"];
+        NSMutableArray *topics = [NSMutableArray array];
+
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+            NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
+            if (arr.count>0){
+                for (NSDictionary *attributes in arr){
+                    Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                    [topics addObject:t];
+                }
+            }
+            
+        }
+
+        topViewController.topicsArr=topics;
+
+//        topViewController.topicsArr=topicsArr;
+        
         [self.navigationController pushViewController:topViewController animated:YES];        
         /*
         Topic *t = [[Topic alloc]init];

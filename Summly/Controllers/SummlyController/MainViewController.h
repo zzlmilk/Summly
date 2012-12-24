@@ -17,4 +17,5 @@
 }
 
 @property(nonatomic,strong) NSArray *topicsArr;
+@property(nonatomic)BOOL isRestUI;
 @end

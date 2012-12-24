@@ -65,6 +65,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     homeTopic.status = 0;
     
     
+    
     ItemSummly * homeItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:0]] ;
     homeItemSummly.index = 0;
     homeItemSummly.topic  = homeTopic;
@@ -106,6 +107,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self addSubview:addItemSummly];
     [self.summlyItems addObject:addItemSummly];
     
+    
     self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
 
     
@@ -122,9 +124,9 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self addSubview:itemSummly];
     [self.summlyItems insertObject:itemSummly atIndex:self.summlyItems.count];
     
-        
+    
     //move add item
-    addItemSummly.index+=1;
+    addItemSummly.index=1;
     [UIView animateWithDuration:0.2f animations:^{
         [addItemSummly setFrame:[self _defaulItemSize:addItemSummly.index]];
     }];
@@ -144,6 +146,22 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 }
 
+
+-(void)removeItem:(Topic *)topic{
+    [self.summlyItems removeObject:topic];
+    [self restUI];
+}
+
+-(void)restUI{
+    for (UIView *v in self.subviews) {
+        if ([v isKindOfClass:[ItemSummly class]]) {
+            [v removeFromSuperview];
+        }
+    }
+    
+    [self.summlyItems removeAllObjects];
+    [self setContentSize:CGSizeMake(self.bounds.size.width,0)];
+}
 
 
 
@@ -352,3 +370,4 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 
 @end
+    
