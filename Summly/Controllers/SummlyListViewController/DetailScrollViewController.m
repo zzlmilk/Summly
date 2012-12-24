@@ -65,6 +65,7 @@ static DetailScrollViewController *detailInstance=nil;
 
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
+    scrollView.userInteractionEnabled=YES;
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); 

@@ -9,7 +9,6 @@
 
 #import "SummlyListViewController.h"
 #import "Summly.h"
-#import "DetailScrollViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SummlyListViewController ()
@@ -26,8 +25,6 @@
            }
     return self;
 }
-
-
 
 
 - (void)viewDidLoad
@@ -52,6 +49,10 @@
         
         self.summlysArr=summlys;
         [tableView reloadData];
+        
+        //生成detailView
+        detailScrollVC = [[DetailScrollViewController alloc] init];
+        detailScrollVC.summlyArr = self.summlysArr;
     }];
 
       
@@ -106,17 +107,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    DetailScrollViewController *detailScrollVC;
-    if (topicId == self.topic.topicId) {
-        detailScrollVC = [DetailScrollViewController sharedInstance];
-    }
-    else{
-        detailScrollVC = [[DetailScrollViewController alloc] init];
-        detailScrollVC.summlyArr = self.summlysArr;
-    }
-    topicId = self.topic.topicId;
-    
+//    DetailScrollViewController *detailScrollVC;
+//    if (topicId == self.topic.topicId) {
+//        detailScrollVC = [DetailScrollViewController sharedInstance];
+//    }
+//    else{
+//        detailScrollVC = [[DetailScrollViewController alloc] init];
+//        detailScrollVC.summlyArr = self.summlysArr;
+//    }
+//    topicId = self.topic.topicId;
 //    detailScrollVC.index = indexPath.row;
+    
     [detailScrollVC setScrollOffset:indexPath.row];
     //controller推入动画
     [self pushControllerAnimate];

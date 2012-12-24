@@ -9,6 +9,8 @@
 #import "TopicViewController.h"
 #import "SetViewController.h"
 #import "Topic.h"
+#import "MainViewController.h"
+#import "BundleHelp.h"
 
 #define LeftMargin 20
 #define DistanceMargin 10
@@ -33,6 +35,10 @@
 {
     [super viewDidLoad];
     self.title =@"添加话题";
+    
+    
+    MainViewController* m = (MainViewController*)[self.navigationController.viewControllers objectAtIndex:0];
+    m.isRestUI = YES;
     
     self.view.backgroundColor=[UIColor clearColor];
     
@@ -61,7 +67,6 @@
     [addItemSummly setContentSize:CGSizeMake(280, ItemSummlyHeight)];
     [scrollView addSubview:addItemSummly];
     
-    
     //产生固定topic
     for (int i=0;i< self.topicsArr.count ;i++) {
         ItemSummly *item = [[ItemSummly alloc]initWithFrame:CGRectMake(LeftMargin, addItemSummly.frame.size.height+addItemSummly.frame.origin.y+(i+1)*DistanceMargin+i*ItemSummlyHeight,280, ItemSummlyHeight)];
@@ -69,6 +74,8 @@
         item.itemSummlyType=manage;
         item.actionDelegate =self;
         [item setContentSize:CGSizeMake(280, ItemSummlyHeight)];
+        [item changeBackView:item.topic.status];
+        item.tag=i;
         [scrollView addSubview:item];
     }
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2)-30);
@@ -90,11 +97,29 @@
         NSLog(@"产生新话题");
     }
     else if(itemSummly.itemSummlyType==manage){
-        BOOL isSelect = !itemSummly.isSelect;
-        itemSummly.isSelect=isSelect;
+        itemSummly.topic.status = !itemSummly.topic.status;
+        BOOL isSelect = itemSummly.topic.status;
         [itemSummly changeBackView:isSelect];
+        
+        [self updatePlist:isSelect tag:itemSummly.tag];
     }
     
+}
+
+//更新status状态--更新plist
+- (void)updatePlist:(BOOL)isSelect tag:(NSInteger)tag{
+
+    NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[dic objectForKey:@"topics"]];
+    
+    NSMutableDictionary *dicManage =  [NSMutableDictionary dictionaryWithDictionary:[arr objectAtIndex:tag]];
+    [dicManage setObject:[NSNumber numberWithBool:isSelect] forKey:@"status"];
+    
+    [arr removeObjectAtIndex:tag];
+    [arr insertObject:dicManage atIndex:tag];
+    NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
+    
+    [lastDic writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];
 }
 
 - (void)didReceiveMemoryWarning

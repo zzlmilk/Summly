@@ -10,9 +10,12 @@
 #import "BaseViewController.h"
 #import "ItemSummly.h"
 
+
 @interface TopicViewController : BaseViewController<ItemSummlyActionDelegate>{
     UIScrollView *scrollView;
 }
 
+
 @property(nonatomic,strong) NSArray *topicsArr;
+
 @end

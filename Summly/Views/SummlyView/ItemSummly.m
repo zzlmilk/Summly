@@ -37,7 +37,6 @@
 @end
 
 @implementation ItemSummly
-@synthesize isSelect;
 
 
 -(void)setTopic:(Topic *)topic{
@@ -77,7 +76,6 @@
                         
             selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
-            [self changeBackView:self.isSelect];
         }
             break;
         case manageAdd:{
@@ -212,7 +210,6 @@
     self.index = 0;
     self.canRefish =YES;
     self.canMove  =YES;
-    self.isSelect=YES;
 
     
     // Transforming control vars
