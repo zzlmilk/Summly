@@ -11,6 +11,7 @@
 #import "FAFancyMenuView.h"
 #import "ArticleViewController.h"
 #import "FAFancyMenuViewDataSource.h"
+#import "SummlyDetailView.h"
 
 
 @interface DetailScrollViewController : UIViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
@@ -26,6 +27,7 @@
     FAFancyMenuView *menu;
     FAFancyMenuViewDataSource *faFancyMenuDataSource;
     
+    NSInteger _index;
 }
 
 +(id)sharedInstance;

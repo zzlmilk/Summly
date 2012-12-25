@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Summly.h"
 
+
+
+
 @interface SummlyDetailView : UIView
 {
 }
