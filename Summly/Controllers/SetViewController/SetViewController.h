@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FAFancyMenuView.h"
 @interface SetViewController : UIViewController<FAFancyMenuViewDelegate,UITableViewDataSource,UITableViewDelegate>
+{
+    UISwitch *WeiboSwitchView;
+    UISwitch *WeixingSwitchView;
+}
 
 
 @property (nonatomic, retain) NSDictionary *countLitsDic;
