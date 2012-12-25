@@ -9,7 +9,7 @@
 #import "Summly.h"
 #import "SummlyAPIClient.h"
 @implementation Summly
-@synthesize title,describe,scource,imageUrl,interval,sourceUrl,summlyTime;
+@synthesize title,describe,scource,imageUrl,interval,sourceUrl;
 
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
@@ -24,10 +24,10 @@
             self.scource = [attributes objectForKey:@"source"];//来源
         }
         self.sourceUrl = [attributes objectForKey:@"url"];
-        self.summlyTime =  [self stringDateToNSDate:[attributes objectForKey:@"time"]];
         self.imageUrl = [attributes objectForKey:@"imageUrl"];
         
-        self.interval = [self timeIntervalFromNow:self.summlyTime];
+        _summlyTime =  [self stringDateToNSDate:[attributes objectForKey:@"time"]];
+        self.interval = [self timeIntervalFromNow:_summlyTime];
         
     }
     
@@ -44,7 +44,7 @@
 - (NSString *)timeIntervalFromNow:(NSDate *)_summlyTime{
     NSString *intervalStr;
     double timeInterval = 0.0f;
-    timeInterval = [[NSDate date] timeIntervalSinceDate:_summlyTime];
+    timeInterval = [[NSDate date] timeIntervalSinceDate:self.summlyTime];
     NSInteger _interval = (int)timeInterval/3600;
     
     if (_interval >=24) {

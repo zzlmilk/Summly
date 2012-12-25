@@ -19,4 +19,5 @@
 @property (nonatomic) BOOL onScreen;
 - (void)show;
 - (void)hide;
+- (void)handleTap:(UITapGestureRecognizer *)tap;
 @end

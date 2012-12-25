@@ -13,7 +13,7 @@
 
 
 
-@interface DetailScrollViewController ()
+@interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
 
 }
@@ -42,27 +42,8 @@ static DetailScrollViewController *detailInstance=nil;
     [super viewDidLoad];
     
     self.index=[self calculateIndexFromScrollViewOffSet];
-    self.view.backgroundColor = [UIColor whiteColor];
+       
     
-    
-//    //上滑返回
-//    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
-//    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
-//    [self.view addGestureRecognizer:swipUpGestureUp];
-//    
-//    //下滑wbview
-//    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
-//    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
-//   [self.view addGestureRecognizer:swipUpGestureDown];
-
-    
-//    
-//    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-//    [doubleTap setNumberOfTapsRequired:2];
-//    [doubleTap setNumberOfTouchesRequired:2];
-//    [self.view addGestureRecognizer:doubleTap];
-    
-
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
     scrollView.userInteractionEnabled=YES;
@@ -70,14 +51,33 @@ static DetailScrollViewController *detailInstance=nil;
     scrollView.pagingEnabled=YES;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
     scrollView.delegate=self;
+    scrollView.tag=99;
     [self.view addSubview:scrollView];
-    
+
     //生成详情
     [self createDetailView:self.summlyArr];
     
-    menu = [[FAFancyMenuView alloc] init];
-    faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:menu];
-    [self.view addSubview:menu];
+  
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [scrollView addGestureRecognizer:doubleTap];
+  
+    //上滑返回
+    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
+    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [scrollView addGestureRecognizer:swipUpGestureUp];
+    
+    //下滑wbview
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
+    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [scrollView addGestureRecognizer:swipUpGestureDown];
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    window.userInteractionEnabled=YES;
+  
+   
+
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -90,7 +90,7 @@ static DetailScrollViewController *detailInstance=nil;
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
     
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<summlys.count; i++) {
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
         [scrollView addSubview:detailView];
@@ -135,8 +135,16 @@ static DetailScrollViewController *detailInstance=nil;
 }
 #pragma mark--
 #pragma mark-- 手势方法
+
+-(void)followerDismiss{
+    
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    [detailView.menu handleTap:nil];
+}
+
 //上滑
 -(void)back {
+    [self followerDismiss];
     //pop动画
     [self popControllerAnimate];
     [self.navigationController popViewControllerAnimated:NO];
@@ -144,6 +152,7 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+    [self followerDismiss];
 
     [self pushToArticleDetail];
 }
@@ -190,14 +199,21 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
 
 
 
 
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-    //    if (!_scrollView.dragging==YES ) {
+    [self followerDismiss];
+
+    
+//    if (!_scrollView.dragging==YES ) {
 //        return;
 //    }
 //    for (int i=1; i<self.summlyArr.count; i++) {
@@ -207,6 +223,7 @@ static DetailScrollViewController *detailInstance=nil;
 //    }
 //    NSLog(@"contentOffset---%f--- %f",_scrollView.contentOffset.x,_scrollView.contentOffset.x/5);
     self.index=[self calculateIndexFromScrollViewOffSet];
+
 
 }
 
@@ -224,6 +241,8 @@ static DetailScrollViewController *detailInstance=nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 @end

@@ -22,6 +22,7 @@
     return self;
 }
 
+
 -(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
         NSLog(@"%d",index);
 }
