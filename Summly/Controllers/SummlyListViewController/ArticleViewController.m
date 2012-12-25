@@ -106,10 +106,10 @@
 
 //下滑跳转web
 - (void)webViewBtnClick:(id)sender{
-    [self pushControllerAnimate];
-    WebViewController *webViewController = [[WebViewController alloc] init];
-    webViewController.summly=self.summly;
-    [self.navigationController pushViewController:webViewController animated:NO];
+//    [self pushControllerAnimate];
+//    WebViewController *webViewController = [[WebViewController alloc] init];
+//    webViewController.summly=self.summly;
+//    [self.navigationController pushViewController:webViewController animated:NO];
 
 }
 

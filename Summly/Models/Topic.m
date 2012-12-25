@@ -8,6 +8,8 @@
 
 #import "Topic.h"
 #import "SummlyAPIClient.h"
+#import "BundleHelp.h"
+
 @implementation Topic
 
 -(id)initWithAttributes:(NSDictionary *)attributes{
@@ -24,29 +26,60 @@
 
 
 +(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
-    [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *filename = [BundleHelp getBundlePath:Plist];
+    
+    //路径下document下是否存在 存在读取，不存在写入
+    if ([fileManager fileExistsAtPath:filename]) {
+        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
+        
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+            NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
+            if (arr.count>0){
+                NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+                for (NSDictionary *attributes in arr){
+                    Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                    if (t.status==1) {
+                        [topics addObject:t];
+                    }
+                }
+                
+                block(topics);
+            }
+        }
+
+    }
+      
+    else{ [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (debug) {
             NSLog(@"%@",responseObject);
         }
-          
-     NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
-     if (arr.count>0){
-        NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
-         for (NSDictionary *attributes in arr){
-             Topic *t = [[Topic alloc]initWithAttributes:attributes];
-             [topics addObject:t];
+        //路径下document下是否存在
+        if (![fileManager fileExistsAtPath:filename]) {
+            BOOL success = [responseObject writeToFile:filename atomically:YES];
+            NSLog(@"filewrite--success%d",success);
+        }
+    
+         NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
+         if (arr.count>0){
+            NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+             for (NSDictionary *attributes in arr){
+                 Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                 if (t.status==1) {
+                     [topics addObject:t];
+                 }
+             }
+             
+                block(topics);
          }
-         
-            block(topics);
-     }
         
-        
-     
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (debug) {
             NSLog(@"%@",error);
         }
         block(nil);
     }];
+    }
 }
 @end

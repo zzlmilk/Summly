@@ -45,35 +45,35 @@ static DetailScrollViewController *detailInstance=nil;
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    //上滑返回
-    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
-    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
-    [self.view addGestureRecognizer:swipUpGestureUp];
-    
-    //下滑wbview
-    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToWebView)];
-    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
-   [self.view addGestureRecognizer:swipUpGestureDown];
+//    //上滑返回
+//    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
+//    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
+//    [self.view addGestureRecognizer:swipUpGestureUp];
+//    
+//    //下滑wbview
+//    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
+//    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
+//   [self.view addGestureRecognizer:swipUpGestureDown];
 
     
+//    
+//    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+//    [doubleTap setNumberOfTapsRequired:2];
+//    [doubleTap setNumberOfTouchesRequired:2];
+//    [self.view addGestureRecognizer:doubleTap];
     
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-    [doubleTap setNumberOfTapsRequired:2];
-    [self.view addGestureRecognizer:doubleTap];
-    
- 
 
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
+    scrollView.userInteractionEnabled=YES;
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.pagingEnabled=YES;
-    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0); 
+    scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
     scrollView.delegate=self;
     [self.view addSubview:scrollView];
+    
+    //生成详情
     [self createDetailView:self.summlyArr];
-    
-    
-
     
     menu = [[FAFancyMenuView alloc] init];
     faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:menu];
@@ -86,13 +86,15 @@ static DetailScrollViewController *detailInstance=nil;
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
 }
+
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
     
-    for (int i=0; i<summlys.count; i++) {
+    for (int i=0; i<3; i++) {
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
         [scrollView addSubview:detailView];
+        detailView=nil;
     }
     
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width*summlys.count, self.view.frame.size.height);
@@ -142,16 +144,8 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
-    [scrollView setBackgroundColor:[UIColor whiteColor]];
 
-    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
-    [detailView dismissDetailViewAnimate:^{
-        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
-        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
-        articleVC.delegate=self;
-        [self popControllerFadeAnimate];
-        [self.navigationController pushViewController:articleVC animated:NO];
-    }];
+    [self pushToArticleDetail];
 }
 
 //动画
@@ -165,13 +159,24 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
-//下滑pushWebView
--(void)pushToWebView{
-    //push webviewcontroller
-    [self pushControllerAnimate];
-    WebViewController *webViewController = [[WebViewController alloc] init];
-    webViewController.summly=[self.summlyArr objectAtIndex:self.index];
-    [self.navigationController pushViewController:webViewController animated:NO];
+//下滑push文章页
+-(void)pushToArticleView{
+    [self pushToArticleDetail];
+}
+
+//推送到文章页
+- (void)pushToArticleDetail{
+    [scrollView setBackgroundColor:[UIColor whiteColor]];
+    
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    [detailView dismissDetailViewAnimate:^{
+        ArticleViewController *articleVC = [[ArticleViewController alloc] init];
+        articleVC.summly =[self.summlyArr objectAtIndex:self.index];
+        articleVC.delegate=self;
+        [self popControllerFadeAnimate];
+        [self.navigationController pushViewController:articleVC animated:NO];
+    }];
+
 }
 
 
@@ -192,8 +197,7 @@ static DetailScrollViewController *detailInstance=nil;
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-    
-//    if (!_scrollView.dragging==YES ) {
+    //    if (!_scrollView.dragging==YES ) {
 //        return;
 //    }
 //    for (int i=1; i<self.summlyArr.count; i++) {

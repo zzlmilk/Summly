@@ -37,7 +37,6 @@
 @end
 
 @implementation ItemSummly
-@synthesize isSelect;
 
 
 -(void)setTopic:(Topic *)topic{
@@ -72,31 +71,28 @@
             self.canMove = NO;
 //            self.canRefish=NO;
             
-            titleLabel.frame=CGRectMake(50, 35, 300, 20);
+            titleLabel.frame=CGRectMake(50, 39, 300, 20);
             describeLabel.text=nil;
-            
-            self.isSelect=YES;
-            
-            selectImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"check-box-checked.png"]];
-            selectImageView.frame =CGRectMake(15, 32, 23, 24);
+                        
+            selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
-            
         }
             break;
         case manageAdd:{
             self.canMove = NO;
 //            self.canRefish=NO;
 
+            
             titleLabel.text=nil;
             describeLabel.text=nil;
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
             bgImageView.userInteractionEnabled =YES;
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
                         addImageView.userInteractionEnabled =YES;
-            addImageView.frame =CGRectMake(20, 25, 34, 34);
+            addImageView.frame =CGRectMake(20, 32, 34, 34);
             [bgImageView addSubview:addImageView];
             
-            UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 32, 160, 20)];
+            UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 39, 160, 20)];
             [defineLabel setFont:[UIFont systemFontOfSize:16]];
             [defineLabel setText:@"点击这里创建新话题"];
             [defineLabel setBackgroundColor:[UIColor clearColor]];
@@ -105,6 +101,10 @@
 
         }
         break;
+        case saved:{
+            bgImageView.image = [UIImage imageNamed:@"cell-saved"];
+
+        }
         default:
         break;
     }
@@ -148,7 +148,7 @@
     if (self) {
         // Initialization code
         
-              
+        
                
         [self commonInit];
         [self _initVoice];
@@ -210,7 +210,6 @@
     self.index = 0;
     self.canRefish =YES;
     self.canMove  =YES;
-    
 
     
     // Transforming control vars

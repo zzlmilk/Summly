@@ -49,7 +49,7 @@
     
     _nameDic = [NSDictionary dictionaryWithObjectsAndKeys:@"账户",@"0", @"",@"1", @"传递消息",@"2",@"",@"3",nil];
     
-    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-30) style:UITableViewStyleGrouped];
+    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     listTable.backgroundColor = [UIColor whiteColor];
     listTable.dataSource = self;
     listTable.delegate = self;
@@ -58,15 +58,6 @@
     //[listTable setSeparatorColor:[UIColor clearColor]];
     [listTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:listTable];
-    
-    
-    
-    //    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-    //    self.menu = [[FAFancyMenuView alloc] init];
-    //    self.menu.delegate = self;
-    //    self.menu.buttonImages = images;
-    //    [self.view addSubview:self.menu];
-    //
 }
 
 
@@ -112,8 +103,8 @@
         if (seciton ==0 && row == 0) {
             //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
-            switchView.on = YES;//设置初始为ON的一边
-            [switchView addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+            switchView.on = NO;//设置初始为ON的一边
+            [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:switchView];
         }
         else
@@ -165,9 +156,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)switchAction
+- (void)switchAction:(id)sender
 {
-    
+    UISwitch *sinaSwitch = (UISwitch *)sender;
+    if (sinaSwitch.on) {
+        
+    }
+    else{
+        
+    }
 }
 
 

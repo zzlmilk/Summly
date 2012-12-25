@@ -36,7 +36,7 @@
     
     loadLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.view.frame.size.width-144)/2,10 , 144, 26)];
     loadLabel.text=@"加载中...";
-    [loadLabel setTextAlignment:NSTextAlignmentCenter];
+    [loadLabel setTextAlignment:UITextAlignmentCenter];
     [navigationBar addSubview:loadLabel];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -74,7 +74,7 @@
     activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     [tabbar addSubview:activity];
 
-//    UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeInfoDark];
 //    [exportBtn setFrame:CGRectMake(leftBtn.frame.size.width+leftBtn.frame.origin.x+60, 11, 37/2, 23)];
 //    [exportBtn setBackgroundImage:[UIImage imageNamed:@"web-navigate-forwards"] forState:UIControlStateNormal];
 //    [exportBtn addTarget:self action:@selector(export:) forControlEvents:UIControlEventTouchUpInside];

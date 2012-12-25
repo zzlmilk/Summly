@@ -25,6 +25,7 @@
 
 
 
+
 @property(nonatomic) CGSize itemSize;
 @property(nonatomic) NSInteger itemSpacing;
 
@@ -34,7 +35,7 @@
 
 -(void)generateOneItem:(Topic*)topic;
 
-
+-(void)restUI;
 // Actions
 -(void)itemSummlyDidMoveStartGestureRecongnzier:(UILongPressGestureRecognizer*)gestureRecognizer;
 

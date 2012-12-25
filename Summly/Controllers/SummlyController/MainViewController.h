@@ -13,7 +13,9 @@
 @interface MainViewController : UIViewController
 {
     MainSummlyView *mainSummlyView;
+
 }
 
 @property(nonatomic,strong) NSArray *topicsArr;
+@property(nonatomic)BOOL isRestUI;
 @end
