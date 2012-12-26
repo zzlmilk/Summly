@@ -10,16 +10,21 @@
 #import "Summly.h"
 
 
+#import "FAFancyMenuView.h"
+#import "FAFancyMenuViewDataSource.h"
 
 
 @interface SummlyDetailView : UIView
 {
+    FAFancyMenuViewDataSource *faFancyMenuDataSource;
 }
 
 @property(nonatomic,strong) UILabel *titleLabel;
 @property(nonatomic,strong) UIView *acticleView;
 @property(nonatomic,strong) UIImageView *imageBackView;
 @property(nonatomic,strong) Summly *summly;
+@property(nonatomic,strong)  FAFancyMenuView *menu;
+
 
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)summly;
 - (void)dismissDetailViewAnimate:(void (^)())block;

@@ -19,13 +19,13 @@
     
     UIScrollView *scrollView;
     
+    
     NSDictionary *userInfo;
     NSArray *statuses;
     NSString *postStatusText;
     NSString *postImageStatusText;
     
-    FAFancyMenuView *menu;
-    FAFancyMenuViewDataSource *faFancyMenuDataSource;
+  
     
     NSInteger _index;
 }

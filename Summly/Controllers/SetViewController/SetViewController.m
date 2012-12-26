@@ -7,7 +7,6 @@
 //
 
 #import "SetViewController.h"
-
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -30,6 +29,8 @@
     self.title =@"设置";
 	// Do any additional setup after loading the view.
     
+    shareSina = [[DDShare alloc]init];
+
     UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
     [_button setBackgroundImage:[UIImage imageNamed:@"navigation-back-button.png"] forState:UIControlStateNormal];
     [_button setFrame:CGRectMake(0, 0, 50.0f, 30.0f)];
@@ -49,7 +50,7 @@
     
     _nameDic = [NSDictionary dictionaryWithObjectsAndKeys:@"账号设置",@"0",@"其他",@"1",nil];
     
-    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-30) style:UITableViewStyleGrouped];
+    listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     listTable.backgroundColor = [UIColor whiteColor];
     listTable.dataSource = self;
     listTable.delegate = self;
@@ -58,15 +59,6 @@
     //[listTable setSeparatorColor:[UIColor clearColor]];
     [listTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:listTable];
-    
-    
-    
-    //    NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-    //    self.menu = [[FAFancyMenuView alloc] init];
-    //    self.menu.delegate = self;
-    //    self.menu.buttonImages = images;
-    //    [self.view addSubview:self.menu];
-    //
 }
 
 
@@ -111,11 +103,21 @@
         
         if (seciton ==0 && row == 0) {
             //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+            switchView.on = NO;//设置初始为ON的一边
+            [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+            [cell addSubview:switchView];
+            
+            if (shareSina.sinaWeibo.accessToken!=nil) {
+                switchView.on = YES;
+            }
+            /*
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             WeiboSwitchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
             WeiboSwitchView.on = YES;//设置初始为ON的一边
             [WeiboSwitchView addTarget:self action:@selector(WeiboSwitchAction) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:WeiboSwitchView];
+             */
         }
         else if(seciton ==0 && row == 1)
         {
@@ -135,6 +137,7 @@
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.backgroundView = nil;
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
     }
 
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -190,6 +193,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)switchAction:(id)sender
+{
+    UISwitch *sinaSwitch = (UISwitch *)sender;
+    if (sinaSwitch.on) {
+        
+        [shareSina sinaLogin];
+        
+    }
+    else{
+        [shareSina sinaLoginOut];
+    }
+
+}
 //微博绑定开关
 - (void)WeiboSwitchAction
 {
@@ -203,6 +219,7 @@
 //微信绑定开关
 - (void)WeixingSwitchAction
 {
+    
     if (WeixingSwitchView.on) {
         NSLog(@"login");
     }else{
@@ -226,13 +243,19 @@
 //关于
 -(void)About
 {
-    
 }
 
 //关注@
 -(void)Attention
 {
-
+    if (shareSina.sinaWeibo.accessToken==nil) {
+        [shareSina sinaLogin];
+    }
+    else{
+        [shareSina attentionUs];
+    }
+    
+    [switchView setOn:YES];
 }
 
 

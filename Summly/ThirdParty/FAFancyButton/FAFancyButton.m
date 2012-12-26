@@ -18,7 +18,6 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        self.backgroundColor=[UIColor redColor];
         self.layer.anchorPoint = CGPointMake(0.5,1.f);
         self.layer.position = CGPointMake(frame.size.width/2 + frame.origin.x, frame.size.height);
     }

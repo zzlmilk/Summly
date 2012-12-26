@@ -12,7 +12,7 @@
 
 
 
-@interface DetailScrollViewController ()
+@interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
 
 }
@@ -41,6 +41,7 @@ static DetailScrollViewController *detailInstance=nil;
     [super viewDidLoad];
     
     self.index=[self calculateIndexFromScrollViewOffSet];
+
     _index=self.index;
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -69,14 +70,14 @@ static DetailScrollViewController *detailInstance=nil;
     scrollView.pagingEnabled=YES;
     scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, self.view.frame.size.height-10, 0);
     scrollView.delegate=self;
+    scrollView.tag=99;
     [self.view addSubview:scrollView];
-    
+
     //生成详情
     [self createDetailView:self.summlyArr];
+  
+
     
-    menu = [[FAFancyMenuView alloc] init];
-    faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:menu];
-    [self.view addSubview:menu];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -89,7 +90,7 @@ static DetailScrollViewController *detailInstance=nil;
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
     
-    for (int i=0; i<3; i++) {
+    for (int i=0; i<summlys.count; i++) {
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
         [scrollView insertSubview:detailView atIndex:3-i];
@@ -133,8 +134,16 @@ static DetailScrollViewController *detailInstance=nil;
 }
 #pragma mark--
 #pragma mark-- 手势方法
+
+-(void)followerDismiss{
+    
+    SummlyDetailView *detailView = (SummlyDetailView*)[scrollView viewWithTag:10+self.index];
+    [detailView.menu handleTap:nil];
+}
+
 //上滑
 -(void)back {
+    [self followerDismiss];
     //pop动画
     [self popControllerAnimate];
     [self.navigationController popViewControllerAnimated:NO];
@@ -142,6 +151,7 @@ static DetailScrollViewController *detailInstance=nil;
 
 //双击
 - (void)handleDoubleTap:(UIGestureRecognizer *)gestureRecognizer {
+    [self followerDismiss];
 
     [self pushToArticleDetail];
 }
@@ -188,14 +198,31 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
 
 
 
 
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
+    [self followerDismiss];
+
+    
+//    if (!_scrollView.dragging==YES ) {
+//        return;
+//    }
+//    for (int i=1; i<self.summlyArr.count; i++) {
+//        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:11+i];
+//      //  detailView.titleLabel.frame = CGRectMake(_scrollView.contentOffset.x/5, 183.5-110,scrollView.frame.size.width ,100 );
+//        detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-i*320)/5,0, scrollView.frame.size.width, 183.5);
+//    }
+//    NSLog(@"contentOffset---%f--- %f",_scrollView.contentOffset.x,_scrollView.contentOffset.x/5);
     self.index=[self calculateIndexFromScrollViewOffSet];
+
 
     if (self.index==_index) {
         NSLog(@"_index%d",_index);
@@ -227,14 +254,14 @@ static DetailScrollViewController *detailInstance=nil;
     if (self.index==_index) {
         NSLog(@"_index%d",_index);
         SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+self.index-1];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
             detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*self.index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
             detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*self.index))/4,0, scrollView.frame.size.width, 183.5);
 
         }];
               
         SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
 
         detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
         detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
@@ -246,7 +273,7 @@ static DetailScrollViewController *detailInstance=nil;
         NSLog(@"else  _index%d",_index);
         
         SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+_index-1];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
             
         detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,300,100);
         detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
@@ -254,7 +281,7 @@ static DetailScrollViewController *detailInstance=nil;
         }];
         
         SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-            [UIView animateWithDuration:0.3f animations:^{
+            [UIView animateWithDuration:0.1f animations:^{
 
         detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,scrollView.frame.size.width-20,100 );
         detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
@@ -268,6 +295,8 @@ static DetailScrollViewController *detailInstance=nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 @end

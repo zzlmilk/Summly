@@ -10,18 +10,13 @@
 #import "FAFancyButton.h"
 @implementation FAFancyMenuView
 - (void)addButtons{
-    self.backgroundColor=[UIColor clearColor];
-    
     self.frame = CGRectMake(100, 100, ((UIImage *)[self.buttonImages lastObject]).size.height * 2, ((UIImage *)[self.buttonImages lastObject]).size.height * 2);
-    self.userInteractionEnabled=YES;
-
     if (self.subviews.count > 0)
         [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger i = 0;
     CGFloat degree = 360.f/self.buttonImages.count;
     for (UIImage *image in self.buttonImages){
         FAFancyButton *fancyButton = [[FAFancyButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - image.size.width/2, 0, image.size.width, image.size.height)];
-        fancyButton.userInteractionEnabled=YES;
         [fancyButton setBackgroundImage:image forState:UIControlStateNormal];
         fancyButton.degree = i*degree;
         fancyButton.hidden = YES;
@@ -56,7 +51,6 @@
 - (void)handleTap:(UITapGestureRecognizer *)tap{
     if (!self.onScreen) return;
     [self hide];
-    
 }
 
 - (void)addGestureRecognizerForView:(UIView *)view{
@@ -112,26 +106,4 @@
         [self addButtons];
     }
 }
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"点击");
-    [[[self superview] viewWithTag:99].nextResponder touchesBegan:touches withEvent:event];
-}
-
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[[self superview] viewWithTag:99].nextResponder touchesBegan:touches withEvent:event];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    [[[self superview] viewWithTag:99].nextResponder touchesBegan:touches withEvent:event];
-}
-
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event;// recursively calls -pointInside:withEvent:. point is in the receiver's coordinate system
-//{
-//    if ([self pointInside:point withEvent:event]) {
-//        return [[self superview] viewWithTag:99];
-//    }
-//    return self;
-//}
-
 @end
