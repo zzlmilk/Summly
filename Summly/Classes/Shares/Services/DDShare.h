@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DDShare : NSObject
+#import "SinaWeibo.h"
 
+@interface DDShare : NSObject<SinaWeiboDelegate>
+{
+
+}
+
+@property(nonatomic,strong)    SinaWeibo *sinaWeibo;
+
+
+
+
+//sina
+-(void)sinaLogin;
+
+-(void)sinaLoginOut;
 @end

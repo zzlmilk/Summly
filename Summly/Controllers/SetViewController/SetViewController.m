@@ -7,7 +7,7 @@
 //
 
 #import "SetViewController.h"
-
+#import "DDShare.h"
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -159,11 +159,14 @@
 - (void)switchAction:(id)sender
 {
     UISwitch *sinaSwitch = (UISwitch *)sender;
+    DDShare *shareSina = [[DDShare alloc]init];
     if (sinaSwitch.on) {
+        
+        [shareSina sinaLogin];
         
     }
     else{
-        
+        [shareSina sinaLoginOut];
     }
 }
 
