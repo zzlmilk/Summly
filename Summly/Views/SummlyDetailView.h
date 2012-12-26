@@ -13,6 +13,7 @@
 #import "FAFancyMenuView.h"
 #import "FAFancyMenuViewDataSource.h"
 
+
 @interface SummlyDetailView : UIView
 {
     FAFancyMenuViewDataSource *faFancyMenuDataSource;

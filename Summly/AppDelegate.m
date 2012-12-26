@@ -13,7 +13,7 @@
 
 -(UIImageView*)_randomBackground{
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
-    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41];
+    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41+1];
     bgImageView.image = [UIImage imageNamed:randomImageName];
     return bgImageView;
 }
