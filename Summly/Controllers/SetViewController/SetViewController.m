@@ -137,6 +137,7 @@
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.backgroundView = nil;
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
     }
 
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;

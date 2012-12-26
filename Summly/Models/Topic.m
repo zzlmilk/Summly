@@ -15,6 +15,7 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self= [super init];
     if (self) {
+
         self.topicId = [[attributes objectForKey:@"id"] integerValue];
         self.title = [attributes objectForKey:@"title"];
         self.subTitle = [attributes objectForKey:@"subTitle"];
@@ -39,7 +40,7 @@
             if (arr.count>0){
                 NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
                 for (NSDictionary *attributes in arr){
-                    Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                    Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
                     if (t.status==1) {
                         [topics addObject:t];
                     }
@@ -65,7 +66,7 @@
          if (arr.count>0){
             NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
              for (NSDictionary *attributes in arr){
-                 Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                 Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
                  if (t.status==1) {
                      [topics addObject:t];
                  }

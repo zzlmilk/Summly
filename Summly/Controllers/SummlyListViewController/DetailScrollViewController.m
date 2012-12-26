@@ -254,14 +254,14 @@ static DetailScrollViewController *detailInstance=nil;
     if (self.index==_index) {
         NSLog(@"_index%d",_index);
         SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+self.index-1];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
             detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*self.index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
             detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*self.index))/4,0, scrollView.frame.size.width, 183.5);
 
         }];
               
         SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
 
         detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
         detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
@@ -273,7 +273,7 @@ static DetailScrollViewController *detailInstance=nil;
         NSLog(@"else  _index%d",_index);
         
         SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+_index-1];
-        [UIView animateWithDuration:0.3f animations:^{
+        [UIView animateWithDuration:0.1f animations:^{
             
         detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,300,100);
         detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
@@ -281,7 +281,7 @@ static DetailScrollViewController *detailInstance=nil;
         }];
         
         SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-            [UIView animateWithDuration:0.3f animations:^{
+            [UIView animateWithDuration:0.1f animations:^{
 
         detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,scrollView.frame.size.width-20,100 );
         detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
