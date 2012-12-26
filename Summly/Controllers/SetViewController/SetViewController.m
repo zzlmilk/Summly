@@ -38,16 +38,16 @@
     
     
     
-    NSArray *accountArray = [NSArray arrayWithObjects:@"Sina Weibo", nil];
-    NSArray *shareArray = [NSArray arrayWithObjects:@"共享个性化设置", nil];
-    NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
-    NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
+    NSArray *accountArray = [NSArray arrayWithObjects:@"新浪微博", @"微信",nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:@"检查更新：当前版本为1.1",@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆新闻",@"关注@豆豆新闻",nil];
+//    NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
+//    NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
     
-    _countLitsDic = [NSDictionary dictionaryWithObjectsAndKeys:accountArray,@"0", shareArray,@"1", informationArray,@"2",aboutArray,@"3",nil];
+    _countLitsDic = [NSDictionary dictionaryWithObjectsAndKeys:accountArray,@"0", shareArray,@"1",nil];
     
     _keys = [[_countLitsDic allKeys] sortedArrayUsingSelector:@selector(compare:)];
     
-    _nameDic = [NSDictionary dictionaryWithObjectsAndKeys:@"账户",@"0", @"",@"1", @"传递消息",@"2",@"",@"3",nil];
+    _nameDic = [NSDictionary dictionaryWithObjectsAndKeys:@"账号设置",@"0",@"其他",@"1",nil];
     
     listTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     listTable.backgroundColor = [UIColor whiteColor];
@@ -106,6 +106,21 @@
             switchView.on = NO;//设置初始为ON的一边
             [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:switchView];
+            /*
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            WeiboSwitchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+            WeiboSwitchView.on = YES;//设置初始为ON的一边
+            [WeiboSwitchView addTarget:self action:@selector(WeiboSwitchAction) forControlEvents:UIControlEventValueChanged];
+            [cell addSubview:WeiboSwitchView];
+             */
+        }
+        else if(seciton ==0 && row == 1)
+        {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            WeixingSwitchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+            WeixingSwitchView.on = YES;//设置初始为ON的一边
+            [WeixingSwitchView addTarget:self action:@selector(WeixingSwitchAction) forControlEvents:UIControlEventValueChanged];
+            [cell addSubview:WeixingSwitchView];
         }
         else
         {
@@ -137,6 +152,8 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:16];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.text=[_nameDic objectForKey:key];
+//    NSLog(@"key:%@",key);
+//    NSLog(@"heard:%@",[_nameDic objectForKey:key]);
     [myView addSubview:titleLabel];
     return myView;
     
@@ -148,11 +165,25 @@
     NSInteger row = [indexPath row];
     NSInteger section = [indexPath section];
     
-    NSString *key = [_keys objectAtIndex:section];
-    NSArray *nameSection = [_countLitsDic objectForKey:key];
+//    NSString *key = [_keys objectAtIndex:section];
+//    NSArray *nameSection = [_countLitsDic objectForKey:key];
     
-    NSString *sting = [nameSection objectAtIndex:row];
-    NSLog(@"%@",sting);
+//    NSString *sting = [nameSection objectAtIndex:row];
+//    NSLog(@"%@",sting);
+    
+    if (section == 1 ) {
+        switch (row) {
+            case 0:  [self DetectionUpdates];  break;
+            case 1:  [self Tutorial];          break;
+            case 2:  [self About];             break;
+            case 3:  [self Attention];         break;
+            default: NSLog(@"setting Error");  break;
+        }
+    }
+
+    
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -168,6 +199,51 @@
     else{
         [shareSina sinaLoginOut];
     }
+
+}
+//微博绑定开关
+- (void)WeiboSwitchAction
+{
+    if (WeiboSwitchView.on) {
+        NSLog(@"login");
+    }else{
+        NSLog(@"logout");
+    }
+}
+
+//微信绑定开关
+- (void)WeixingSwitchAction
+{
+    
+    if (WeixingSwitchView.on) {
+        NSLog(@"login");
+    }else{
+        NSLog(@"logout");
+    }
+}
+
+//检测更新
+-(void)DetectionUpdates
+{
+
+}
+
+
+//教程
+-(void)Tutorial
+{
+    
+}
+
+//关于
+-(void)About
+{
+}
+
+//关注@
+-(void)Attention
+{
+
 }
 
 

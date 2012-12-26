@@ -122,7 +122,5 @@
 
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"点击了~~");
-}
+
 @end
