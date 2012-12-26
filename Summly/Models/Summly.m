@@ -79,6 +79,8 @@
         NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
         NSArray *responseArr = (NSArray*)responseObject;
         
+        
+        
         for (int i=0;i<responseArr.count;i++) {
             Summly *summly = [[Summly alloc] initWithAttributes:[[responseArr objectAtIndex:i] objectForKey:@"summly"]];
             [summlyArr addObject:summly];
