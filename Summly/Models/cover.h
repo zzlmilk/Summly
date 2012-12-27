@@ -10,4 +10,11 @@
 
 @interface Cover : NSObject
 
+
+-(id)initWithAttributes:(NSDictionary *)attributes;
+
+
+//获取defalut的topic列表
++(void)getDefaultCoverParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block;
+
 @end

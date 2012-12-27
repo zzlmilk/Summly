@@ -7,6 +7,7 @@
 //
 
 #import "FrontSummlyView.h"
+#import "Cover.h"
 #define left 20
 
 @implementation FrontSummlyView
@@ -17,6 +18,13 @@
     if (self) {
         // Initialization code
         int y = self.frame.size.height-225;
+        
+        self.coverArr=[[NSMutableArray alloc] init];
+       [Cover getDefaultCoverParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"123"] ,@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+            self.coverArr=summlys;
+           NSLog(@":cover%@",self.coverArr);
+        }];
+        
         
         //设定当前日期
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
