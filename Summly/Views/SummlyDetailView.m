@@ -18,6 +18,7 @@
     if (self) {
     
         self.summly =_summly;
+        self.userInteractionEnabled=YES;
              //标题
         imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
         NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10+1];

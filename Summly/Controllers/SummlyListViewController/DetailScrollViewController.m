@@ -47,22 +47,7 @@ static DetailScrollViewController *detailInstance=nil;
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    //上滑返回
-    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
-    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
-    [self.view addGestureRecognizer:swipUpGestureUp];
-    
-    //下滑wbview
-    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
-    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
-   [self.view addGestureRecognizer:swipUpGestureDown];
-    
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-    [doubleTap setNumberOfTapsRequired:2];
-    [doubleTap setNumberOfTouchesRequired:2];
-    [self.view addGestureRecognizer:doubleTap];
-    
-
+   
     scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [scrollView setBackgroundColor:[UIColor underPageBackgroundColor]];
     scrollView.userInteractionEnabled=YES;
@@ -76,6 +61,20 @@ static DetailScrollViewController *detailInstance=nil;
     //生成详情
     [self createDetailView:self.summlyArr];
   
+    //上滑返回
+    UISwipeGestureRecognizer *swipUpGestureUp = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(back)];
+    swipUpGestureUp.direction = UISwipeGestureRecognizerDirectionUp;
+    [scrollView addGestureRecognizer:swipUpGestureUp];
+    
+    //下滑wbview
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
+    swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
+    [scrollView addGestureRecognizer:swipUpGestureDown];
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [scrollView addGestureRecognizer:doubleTap];
+    
 
     
 }
