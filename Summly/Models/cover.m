@@ -36,7 +36,10 @@
         if (block) {
             block(summlyArr);
         }
-                NSLog(@"%@",responseObject);
+        if (debug) {
+            NSLog(@"%@",responseObject);
+
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);

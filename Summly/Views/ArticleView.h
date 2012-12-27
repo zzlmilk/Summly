@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Summly.h"
 
 @interface ArticleView : UIView
+{
+    UIView *acticleView;
+}
 
+- (id)initWithFrame:(CGRect)frame summly:(Summly *)_summly;
 @end

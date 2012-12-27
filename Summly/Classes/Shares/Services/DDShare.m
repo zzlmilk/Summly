@@ -92,8 +92,8 @@
 - (void)attentionUs{
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setValue:_sinaWeibo.accessToken forKey:@"access_token"];
-    [parameter setValue:@"1689136077" forKey:@"uid"];
-    [parameter setValue:@"通路快建" forKey:@"screen_name"];
+    [parameter setValue:@"3205758163" forKey:@"uid"];
+    [parameter setValue:@"豆豆科技新闻" forKey:@"screen_name"];
     
     [_sinaWeibo requestWithURL:@"friendships/create.json" params:parameter httpMethod:@"POST" delegate:self];
 

@@ -112,11 +112,11 @@
     NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
     NSMutableArray *arr = [NSMutableArray arrayWithArray:[dic objectForKey:@"topics"]];
     
-    NSMutableDictionary *dicManage =  [NSMutableDictionary dictionaryWithDictionary:[arr objectAtIndex:tag]];
+    NSMutableDictionary *dicManage =  [NSMutableDictionary dictionaryWithDictionary:[[arr objectAtIndex:tag] objectForKey:@"topic"]];
     [dicManage setObject:[NSNumber numberWithBool:isSelect] forKey:@"status"];
     
     [arr removeObjectAtIndex:tag];
-    [arr insertObject:dicManage atIndex:tag];
+    [arr insertObject:[NSDictionary dictionaryWithObject:dicManage forKey:@"topic"] atIndex:tag];
     NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
     
     [lastDic writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];

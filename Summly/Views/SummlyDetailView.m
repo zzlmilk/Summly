@@ -7,6 +7,7 @@
 //
 
 #import "SummlyDetailView.h"
+#import "AFNetworking.h"
 #define MarginDic 10
 
 @implementation SummlyDetailView
@@ -22,7 +23,15 @@
              //标题
         imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
         NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10+1];
-        imageBackView.image = [UIImage imageNamed:randomImageName];
+
+        if (_summly.imageUrl!=nil) {
+            [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
+        }
+        else{
+            imageBackView.image = [UIImage imageNamed:randomImageName];
+        }
+        [imageBackView setContentMode:UIViewContentModeScaleAspectFill];
+        imageBackView.clipsToBounds=YES;
         imageBackView.userInteractionEnabled=YES;
         [self addSubview:imageBackView];
 
@@ -74,6 +83,7 @@
         articleLabel.text = self.summly.describe;
         articleLabel.numberOfLines = 0;
         [articleLabel setBackgroundColor:[UIColor clearColor]];
+        [articleLabel sizeToFit];
         [acticleView addSubview:articleLabel];
      
         [self addSubview:acticleView];
