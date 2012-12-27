@@ -36,11 +36,13 @@ typedef enum {
     
   
     UpScrollView *upScrollView;
-    NSInteger _index;
+    NSInteger _index,_indexLeft,_indexRight;
     
     float lastOffsetX;
     
     FingerSwipOrientation orientation;
+    float origin;
+
 }
 
 +(id)sharedInstance;

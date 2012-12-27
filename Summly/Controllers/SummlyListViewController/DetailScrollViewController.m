@@ -43,7 +43,9 @@ static DetailScrollViewController *detailInstance=nil;
     self.index=[self calculateIndexFromScrollViewOffSet];
 
     _index=self.index;
+    origin=0;
     
+    lastOffsetX=0;
     self.view.backgroundColor = [UIColor whiteColor];
     
     
@@ -140,14 +142,14 @@ static DetailScrollViewController *detailInstance=nil;
 //    if (scrollView.contentOffset.x<0) {
 //        index=-1;
 //    }
-    if (orientation==rightOrentation) {
-        index = (int)(scrollView.contentOffset.x+320)/320;
-        NSLog(@"%d",index);
-    }
-    else{
+//    if (orientation==rightOrentation) {
+//        index = (int)(scrollView.contentOffset.x+320)/320;
+//        NSLog(@"%d",index);
+//    }
+//    else{
         index =(int)scrollView.contentOffset.x/320;
 
-    }
+ //   }
     return index;
 }
 #pragma mark--
@@ -222,42 +224,48 @@ static DetailScrollViewController *detailInstance=nil;
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-    self.index=[self calculateIndexFromScrollViewOffSet];
 
 //    lastOffsetX = _scrollView.contentOffset.x;
-    
+    self.index=[self calculateIndexFromScrollViewOffSet];
+
     if (_scrollView.contentOffset.x>lastOffsetX && _scrollView.dragging==YES) {
         orientation = leftOrentation;
         lastOffsetX = _scrollView.contentOffset.x;
         
+        _indexLeft=self.index;
+        NSLog(@"左边");
     }
     else if(_scrollView.contentOffset.x<lastOffsetX && _scrollView.dragging==YES){
         orientation = rightOrentation;
-        lastOffsetX = _scrollView.contentOffset.x;    
-    }
+        lastOffsetX = _scrollView.contentOffset.x;
         
+        _indexRight = (ceil(_scrollView.contentOffset.x/320.00f));
+        NSLog(@"右边");
+    }
+    
+
     if (_scrollView.decelerating==NO && _scrollView.dragging==YES) {
         
         if (orientation==leftOrentation) {
-            if (self.index==-1) {
-                _index=0;
+
+            [upScrollView setFrame:CGRectMake((_scrollView.contentOffset.x-_indexLeft*320)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+            
+            if (upScrollView.frame.origin.x>=80) {
+                [upScrollView setFrame:CGRectMake(80,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
             }
-            else
-                _index=self.index;
-            
-            [upScrollView setFrame:CGRectMake((_scrollView.contentOffset.x-_index*320)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
-            
-            if (upScrollView.frame.origin.x>=90) {
-                [upScrollView setFrame:CGRectMake(90,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
-            }
-            
-            NSLog(@"左左左%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,self.index);
+
+
+            NSLog(@"左左左%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexLeft);
         }
         else{
-            [upScrollView setFrame:CGRectMake(-((self.index)*320-_scrollView.contentOffset.x)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
             
-            NSLog(@"右右右%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,self.index);
+            [upScrollView setFrame:CGRectMake(-(_indexRight*320-_scrollView.contentOffset.x)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
 
+            if (upScrollView.frame.origin.x<=-30) {
+                [upScrollView setFrame:CGRectMake(-30,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+            }
+
+            NSLog(@"右右右%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexRight);
         }
     }
 
@@ -278,6 +286,9 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
+    lastOffsetX=0;
+}
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 /*
