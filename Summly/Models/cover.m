@@ -31,7 +31,9 @@
         NSLog(@"responseArr:%@",responseArr);
         
 
-        summlyArr = (NSMutableArray *)[responseObject objectForKey:@"cover"];
+        NSDictionary *arr = (NSDictionary *)[responseObject objectForKey:@"cover"];
+        
+        summlyArr = (NSMutableArray *)[arr objectForKey:@"summly"];
         
         if (block) {
             block(summlyArr);
