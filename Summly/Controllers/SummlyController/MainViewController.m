@@ -123,7 +123,7 @@
             NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
             if (arr.count>0){
                 for (NSDictionary *attributes in arr){
-                    Topic *t = [[Topic alloc]initWithAttributes:attributes];
+                    Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
                     [topics addObject:t];
                 }
             }

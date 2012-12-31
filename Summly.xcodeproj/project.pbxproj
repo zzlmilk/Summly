@@ -148,6 +148,8 @@
 		C805878B168198E50017233F /* navigation-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8058789168198E50017233F /* navigation-button@2x.png */; };
 		C805878E16819AA40017233F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C805878D16819AA40017233F /* BaseViewController.m */; };
 		C80587941681B1060017233F /* check-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C80587931681B1060017233F /* check-box@2x.png */; };
+		C8139601168BEBB100F6CA2B /* UpScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8139600168BEBB100F6CA2B /* UpScrollView.m */; };
+		C8139604168BEFA900F6CA2B /* ArticleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8139603168BEFA900F6CA2B /* ArticleView.m */; };
 		C81DFEB4167EB4460040F35B /* summly_close_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */; };
 		C81DFEB8167EB4910040F35B /* tablebackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB6167EB4910040F35B /* tablebackground@2x.png */; };
 		C81DFEB9167EB4910040F35B /* tableseparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C81DFEB7167EB4910040F35B /* tableseparator@2x.png */; };
@@ -345,6 +347,14 @@
 		C805878C16819AA40017233F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = ../BaseViewController.h; sourceTree = "<group>"; };
 		C805878D16819AA40017233F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = ../BaseViewController.m; sourceTree = "<group>"; };
 		C80587931681B1060017233F /* check-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-box@2x.png"; sourceTree = "<group>"; };
+		C81395FA168BE26400F6CA2B /* SYJImageChache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYJImageChache.h; sourceTree = "<group>"; };
+		C81395FB168BE26400F6CA2B /* SYJImageChache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYJImageChache.m; sourceTree = "<group>"; };
+		C81395FC168BE26400F6CA2B /* UIImageView+SYJImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SYJImageCache.h"; sourceTree = "<group>"; };
+		C81395FD168BE26400F6CA2B /* UIImageView+SYJImageCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SYJImageCache.m"; sourceTree = "<group>"; };
+		C81395FF168BEBB100F6CA2B /* UpScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpScrollView.h; sourceTree = "<group>"; };
+		C8139600168BEBB100F6CA2B /* UpScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpScrollView.m; sourceTree = "<group>"; };
+		C8139602168BEFA900F6CA2B /* ArticleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleView.h; sourceTree = "<group>"; };
+		C8139603168BEFA900F6CA2B /* ArticleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleView.m; sourceTree = "<group>"; };
 		C81DFEB3167EB4460040F35B /* summly_close_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summly_close_x@2x.png"; sourceTree = "<group>"; };
 		C81DFEB6167EB4910040F35B /* tablebackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablebackground@2x.png"; sourceTree = "<group>"; };
 		C81DFEB7167EB4910040F35B /* tableseparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableseparator@2x.png"; sourceTree = "<group>"; };
@@ -542,6 +552,10 @@
 				04A47EBD1671DCEB0035B2AA /* SummlyView */,
 				C81DFEE0167F0B8A0040F35B /* SummlyDetailView.h */,
 				C81DFEE1167F0B8A0040F35B /* SummlyDetailView.m */,
+				C81395FF168BEBB100F6CA2B /* UpScrollView.h */,
+				C8139600168BEBB100F6CA2B /* UpScrollView.m */,
+				C8139602168BEFA900F6CA2B /* ArticleView.h */,
+				C8139603168BEFA900F6CA2B /* ArticleView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -694,6 +708,10 @@
 				04E059561674838F00C919DE /* Additions */,
 				04A47EE4167234F80035B2AA /* SummlyAPIClient.h */,
 				04A47EE5167234F80035B2AA /* SummlyAPIClient.m */,
+				C81395FA168BE26400F6CA2B /* SYJImageChache.h */,
+				C81395FB168BE26400F6CA2B /* SYJImageChache.m */,
+				C81395FC168BE26400F6CA2B /* UIImageView+SYJImageCache.h */,
+				C81395FD168BE26400F6CA2B /* UIImageView+SYJImageCache.m */,
 				C81DFECA167ECDAD0040F35B /* CustomNavigationBar.h */,
 				C81DFECB167ECDAD0040F35B /* CustomNavigationBar.m */,
 				C8F4618C16882C7E00D542C6 /* BundleHelp.h */,
@@ -1063,10 +1081,11 @@
 				0491D54D168408B600317C99 /* FAFancyMenuViewDataSource.m in Sources */,
 				0491D559168443EC00317C99 /* REXMail.m in Sources */,
 				C8F4618E16882C7E00D542C6 /* BundleHelp.m in Sources */,
-				AE03CA311688083E0008764A /* View.m in Sources */,
 				04ABA1F9168974AB00BF3404 /* DDShare.m in Sources */,
 				04ABA22716899AF300BF3404 /* FAFancyButton.m in Sources */,
 				04ABA22816899AF300BF3404 /* FAFancyMenuView.m in Sources */,
+				C8139601168BEBB100F6CA2B /* UpScrollView.m in Sources */,
+				C8139604168BEFA900F6CA2B /* ArticleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,7 +1126,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1131,7 +1150,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;

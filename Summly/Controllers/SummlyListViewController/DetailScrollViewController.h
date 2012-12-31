@@ -14,6 +14,15 @@
 #import "SummlyDetailView.h"
 
 
+#import "ArticleView.h"
+#import "UpScrollView.h"
+
+typedef enum {
+   leftOrentation  = 0,
+   rightOrentation  = 1,
+} FingerSwipOrientation;
+
+
 @interface DetailScrollViewController : UIViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
@@ -26,8 +35,14 @@
     NSString *postImageStatusText;
     
   
+    UpScrollView *upScrollView;
+    NSInteger _index,_indexLeft,_indexRight;
     
-    NSInteger _index;
+    float lastOffsetX;
+    
+    FingerSwipOrientation orientation;
+    float origin;
+
 }
 
 +(id)sharedInstance;
