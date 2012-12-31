@@ -24,7 +24,7 @@
     NSDictionary *authParams;
 }
 
-@property (nonatomic, assign) id<SinaWeiboAuthorizeViewDelegate> delegate;
+@property (nonatomic,retain) id<SinaWeiboAuthorizeViewDelegate> delegate;
 
 - (id)initWithAuthParams:(NSDictionary *)params
                 delegate:(id<SinaWeiboAuthorizeViewDelegate>)delegate;

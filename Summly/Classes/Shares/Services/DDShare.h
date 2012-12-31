@@ -10,7 +10,7 @@
 
 #import "SinaWeibo.h"
 
-@interface DDShare : NSObject<SinaWeiboDelegate>
+@interface DDShare : NSObject<SinaWeiboDelegate,SinaWeiboRequestDelegate>
 {
 
 }
@@ -19,9 +19,9 @@
 
 
 
-
 //sina
 -(void)sinaLogin;
 
 -(void)sinaLoginOut;
+- (void)attentionUs;
 @end

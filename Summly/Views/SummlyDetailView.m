@@ -16,7 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled=YES;
+    
         self.summly =_summly;
              //标题
         imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
@@ -38,7 +38,6 @@
         
         //文章
         acticleView = [[UIView alloc] initWithFrame:CGRectMake(0, imageBackView.frame.size.height, frame.size.width, frame.size.height-imageBackView.frame.size.height)];
-        acticleView.userInteractionEnabled=YES;
         [acticleView setBackgroundColor:[UIColor whiteColor]];
         
         UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MarginDic, 18, 22, 22)];
@@ -76,8 +75,13 @@
         [articleLabel setBackgroundColor:[UIColor clearColor]];
         [acticleView addSubview:articleLabel];
      
-    
         [self addSubview:acticleView];
+        
+        //花瓣
+        _menu = [[FAFancyMenuView alloc] init];
+        _menu.userInteractionEnabled=YES;
+        faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu];
+        [self addSubview:_menu];
 
     }
     return self;

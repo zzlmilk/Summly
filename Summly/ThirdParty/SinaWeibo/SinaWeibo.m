@@ -331,6 +331,8 @@
                                     self.appRedirectURI, @"redirect_uri", 
                                     @"mobile", @"display", nil];
             
+            
+            
             SinaWeiboAuthorizeView *authorizeView = \
             [[SinaWeiboAuthorizeView alloc] initWithAuthParams:params
                                                       delegate:self];

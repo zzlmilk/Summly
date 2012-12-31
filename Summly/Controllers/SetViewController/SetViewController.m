@@ -7,7 +7,6 @@
 //
 
 #import "SetViewController.h"
-#import "DDShare.h"
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -30,6 +29,8 @@
     self.title =@"设置";
 	// Do any additional setup after loading the view.
     
+    shareSina = [[DDShare alloc]init];
+
     UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
     [_button setBackgroundImage:[UIImage imageNamed:@"navigation-back-button.png"] forState:UIControlStateNormal];
     [_button setFrame:CGRectMake(0, 0, 50.0f, 30.0f)];
@@ -102,10 +103,14 @@
         
         if (seciton ==0 && row == 0) {
             //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
+            switchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
             switchView.on = NO;//设置初始为ON的一边
             [switchView addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
             [cell addSubview:switchView];
+            
+            if (shareSina.sinaWeibo.accessToken!=nil) {
+                switchView.on = YES;
+            }
             /*
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             WeiboSwitchView = [[UISwitch alloc] initWithFrame:CGRectMake(220, 10, 100, 28)];
@@ -132,6 +137,7 @@
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.backgroundView = nil;
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle= UITableViewCellSelectionStyleNone;
     }
 
     //cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -190,7 +196,6 @@
 - (void)switchAction:(id)sender
 {
     UISwitch *sinaSwitch = (UISwitch *)sender;
-    DDShare *shareSina = [[DDShare alloc]init];
     if (sinaSwitch.on) {
         
         [shareSina sinaLogin];
@@ -244,7 +249,14 @@
 //关注@
 -(void)Attention
 {
-
+    if (shareSina.sinaWeibo.accessToken==nil) {
+        [shareSina sinaLogin];
+    }
+    else{
+        [shareSina attentionUs];
+    }
+    
+    [switchView setOn:YES];
 }
 
 

@@ -17,7 +17,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-#import "DDShare.h"
 @interface MainViewController ()<ItemSummlyActionDelegate,FrontSummlyViewDelegate>
 {
     FrontSummlyView* frontView;
@@ -46,9 +45,7 @@
     self.view.backgroundColor =[UIColor clearColor];
 
     
-    DDShare *s = [[DDShare alloc]init];
-    [s sinaLogin];
-    
+      
     
 	// Do any additional setup after loading the view.
        
