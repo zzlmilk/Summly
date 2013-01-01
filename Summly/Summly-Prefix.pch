@@ -20,3 +20,5 @@
 #define debug 0
 
 #define Plist @"test.plist"
+
+#define Version @"1.0"

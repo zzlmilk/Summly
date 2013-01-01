@@ -20,9 +20,8 @@
         int y = self.frame.size.height-225;
         
         self.coverArr=[[NSDictionary alloc] init];
-       [Cover getDefaultCoverParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"123"] ,@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+       [Cover getDefaultCoverParameters:nil WithBlock:^(NSMutableArray *summlys) {
             self.coverArr=(NSDictionary *)summlys;
-           NSLog(@":cover%@",self.coverArr);
            
            //标题内容
            UITextView *titleLabel=[[UITextView
@@ -108,7 +107,6 @@
                            fromDate:date];
         
         NSInteger weekday = [comps weekday]; // 星期几（注意，周日是“1”，周一是“2”。。。。）
-        NSLog(@" weekday: %d", weekday);
         NSArray *weekdic = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期天",nil];
         
         UILabel *unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 60, 200, 35)];

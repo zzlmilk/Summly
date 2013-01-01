@@ -7,6 +7,7 @@
 //
 
 #import "SetViewController.h"
+#import "Update.h"
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -36,11 +37,11 @@
     [_button setFrame:CGRectMake(0, 0, 50.0f, 30.0f)];
     [_button addTarget:self action:@selector(bactToTopic) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]initWithCustomView:_button];
-    
-    
+//    
+    NSString *version = [NSString stringWithFormat:@"检查更新：当前版本为%@",Version];
     
     NSArray *accountArray = [NSArray arrayWithObjects:@"新浪微博", @"微信",nil];
-    NSArray *shareArray = [NSArray arrayWithObjects:@"检查更新：当前版本为1.1",@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆新闻",@"关注@豆豆新闻",nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:version,@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆新闻",@"关注@豆豆新闻",nil];
 //    NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
 //    NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
     
@@ -230,9 +231,24 @@
 //检测更新
 -(void)DetectionUpdates
 {
-
+    self.currentVersionArr=[[NSDictionary alloc] init];
+    [Update getDefaultVersionParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"ios"] ,@"terminal_info",Version,@"version", nil] WithBlock:^(NSMutableArray *summlys) {
+        self.currentVersionArr=(NSDictionary *)summlys;
+        //NSLog(@":currentVersionArr%@",self.currentVersionArr);
+        
+        NSString *version = [self.currentVersionArr objectForKey:@"versions_info"];
+        if ([version isEqualToString:version]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"当前已是最新版本" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+        }else{
+            NSString *url = [self.currentVersionArr objectForKey:@"url"];
+            //url = @"http://www.baidu.com";
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",url]]];
+        }
+        
+    }];
 }
-
+ 
 
 //教程
 -(void)Tutorial
