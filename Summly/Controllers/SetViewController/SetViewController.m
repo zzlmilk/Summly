@@ -8,6 +8,7 @@
 
 #import "SetViewController.h"
 #import "Update.h"
+#import "AboutViewController.h"
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -232,7 +233,7 @@
 -(void)DetectionUpdates
 {
     self.currentVersionArr=[[NSDictionary alloc] init];
-    [Update getDefaultVersionParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"ios"] ,@"terminal_info",Version,@"version", nil] WithBlock:^(NSMutableArray *summlys) {
+    [Update getDefaultVersionParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"ios"] ,@"terminal_info", nil] WithBlock:^(NSMutableArray *summlys) {
         self.currentVersionArr=(NSDictionary *)summlys;
         //NSLog(@":currentVersionArr%@",self.currentVersionArr);
         
@@ -259,7 +260,8 @@
 //关于
 -(void)About
 {
-    
+    AboutViewController *aboutViewController = [[AboutViewController alloc]init];
+    [self.navigationController pushViewController:aboutViewController animated:YES];
 }
 
 //关注@

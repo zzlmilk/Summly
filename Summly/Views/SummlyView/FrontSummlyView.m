@@ -139,8 +139,8 @@
         //        [self addSubview:backImageView];
         
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,25,34,34)];
-        [backButton setBackgroundImage:[UIImage imageNamed:@"cover-arrow@2x.png"] forState:UIControlStateNormal];
+        backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,25,40,34)];
+        [backButton setBackgroundImage:[UIImage imageNamed:@"cover-arrow-new@2x.png"] forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(backbuttonCheck) forControlEvents:UIControlEventTouchDown];
         [self addSubview:backButton];
     }
