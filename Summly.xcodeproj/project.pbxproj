@@ -123,6 +123,7 @@
 		04ABA249168AC61B00BF3404 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABA22C16899B1F00BF3404 /* SinaWeibo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04ABA24A168AC61B00BF3404 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABA22E16899B1F00BF3404 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04ABA24B168AC61B00BF3404 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABA23116899B1F00BF3404 /* SinaWeiboRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		04B2134716969F0B00D6F33D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B2134616969F0B00D6F33D /* AboutViewController.m */; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
 		896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA704167DE6C2006DBE88 /* petal-email@2x.png */; };
 		896AA70A167DE6C2006DBE88 /* petal-facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */; };
@@ -319,6 +320,8 @@
 		04ABA23116899B1F00BF3404 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		04ABA23716899B3600BF3404 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		04ABA23816899B3600BF3404 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		04B2134516969F0B00D6F33D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		04B2134616969F0B00D6F33D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		04E05958167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.h"; sourceTree = "<group>"; };
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
 		896AA704167DE6C2006DBE88 /* petal-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-email@2x.png"; sourceTree = "<group>"; };
@@ -432,6 +435,8 @@
 			children = (
 				04831CC0167C525A00BE99AB /* SetViewController.h */,
 				04831CC1167C525A00BE99AB /* SetViewController.m */,
+				04B2134516969F0B00D6F33D /* AboutViewController.h */,
+				04B2134616969F0B00D6F33D /* AboutViewController.m */,
 			);
 			path = SetViewController;
 			sourceTree = "<group>";
@@ -1086,6 +1091,7 @@
 				04ABA22816899AF300BF3404 /* FAFancyMenuView.m in Sources */,
 				C8139601168BEBB100F6CA2B /* UpScrollView.m in Sources */,
 				C8139604168BEFA900F6CA2B /* ArticleView.m in Sources */,
+				04B2134716969F0B00D6F33D /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

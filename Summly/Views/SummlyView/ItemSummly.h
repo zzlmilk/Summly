@@ -47,6 +47,7 @@ typedef enum {
 }
 
 
+
 @property(nonatomic,strong)Topic *topic;
 
 @property(nonatomic)ItemSummlyType  itemSummlyType;
@@ -55,6 +56,7 @@ typedef enum {
 @property(nonatomic)BOOL canRefish;  //是否可拖拉刷新 default Yes
 @property(nonatomic)BOOL canMove;    //是否可移动    default Yes
 @property(nonatomic)BOOL isSelect; //是否选中
+
 
 
 @property (nonatomic, weak) id<ItemSummlyActionDelegate>  actionDelegate;
