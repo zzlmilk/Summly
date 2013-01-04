@@ -15,6 +15,7 @@
 @interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
 
+    
 }
 
 @end
