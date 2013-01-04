@@ -23,5 +23,6 @@
 @property (nonatomic, retain) NSDictionary *nameDic;
 @property (nonatomic, retain) NSArray *keys;
 @property (nonatomic, retain) UITableView *listTable;
+@property(nonatomic,strong) NSDictionary *currentVersionArr;
 
 @end

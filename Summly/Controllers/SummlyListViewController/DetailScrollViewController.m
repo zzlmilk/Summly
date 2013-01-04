@@ -60,6 +60,7 @@ static DetailScrollViewController *detailInstance=nil;
     scrollView.tag=99;
     [self.view addSubview:scrollView];
 
+    
     //生成详情
     [self createDetailView:self.summlyArr];
   
@@ -114,6 +115,7 @@ static DetailScrollViewController *detailInstance=nil;
 - (void)setScrollOffset:(NSInteger)index{
     [scrollView setContentOffset:CGPointMake(self.view.frame.size.width*index, 0)];
 }
+
 
 //pop动画
 - (void)popControllerAnimate{
