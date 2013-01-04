@@ -13,7 +13,7 @@
 
 +(NSDictionary *)getDictionaryFromPlist:(NSString *)path;
 +(NSString *)getBundlePath:(NSString *)path;
-
++(void)removeBundlePath:(NSString *)path;
 //+(NSArray *)getArrayFromPlist;
 //+(void)writeToFile;
 

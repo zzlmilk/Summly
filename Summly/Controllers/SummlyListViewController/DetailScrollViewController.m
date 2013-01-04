@@ -248,24 +248,53 @@ static DetailScrollViewController *detailInstance=nil;
         
         if (orientation==leftOrentation) {
 
-            [upScrollView setFrame:CGRectMake((_scrollView.contentOffset.x-_indexLeft*320)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+            if (upScrollView.frame.origin.x<0) {
+                [upScrollView setFrame:CGRectMake((_scrollView.contentOffset.x-_indexRight*320)/3,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                
+                NSLog(@"左左左%f",upScrollView.frame.origin.x);
+
+            }
+            else{
+                [upScrollView setFrame:CGRectMake((_scrollView.contentOffset.x-_indexLeft*320)/3,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                NSLog(@"左左左%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexLeft);
+
+               
+            }
             
-            if (upScrollView.frame.origin.x>=80) {
-                [upScrollView setFrame:CGRectMake(80,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+            if ((int)(upScrollView.frame.origin.x)%320==0) {
+                [UIView animateWithDuration:0.3f animations:^{
+                    [upScrollView setFrame:CGRectMake(0,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                }];
             }
 
+            if (upScrollView.frame.origin.x>=80) {
+                [upScrollView setFrame:CGRectMake(80,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
 
-            NSLog(@"左左左%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexLeft);
+            }
         }
         else{
             
-            [upScrollView setFrame:CGRectMake(-(_indexRight*320-_scrollView.contentOffset.x)/2,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
 
-            if (upScrollView.frame.origin.x<=-30) {
-                [upScrollView setFrame:CGRectMake(-30,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+            if (upScrollView.frame.origin.x<=-20) {
+                [upScrollView setFrame:CGRectMake(-20,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
             }
 
-            NSLog(@"右右右%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexRight);
+            if (upScrollView.frame.origin.x>0) {
+                [upScrollView setFrame:CGRectMake(-(_scrollView.contentOffset.x-_indexLeft*320)/5,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                NSLog(@"右upScrollView%f",upScrollView.frame.origin.x);
+
+            }
+            else{
+                [upScrollView setFrame:CGRectMake(-(_indexRight*320-_scrollView.contentOffset.x)/5,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                
+                NSLog(@"右右右%f,upScrollView%f index%d",_scrollView.contentOffset.x,upScrollView.frame.origin.x,_indexRight);
+              
+            }
+            if ((int)(upScrollView.frame.origin.x)%320==0) {
+                [UIView animateWithDuration:0.3f animations:^{
+                    [upScrollView setFrame:CGRectMake(0,0, upScrollView.frame.size.width, upScrollView.frame.size.height)];
+                }];
+            }
         }
     }
 
@@ -287,7 +316,7 @@ static DetailScrollViewController *detailInstance=nil;
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
-    lastOffsetX=0;
+   // lastOffsetX=0;
 }
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
