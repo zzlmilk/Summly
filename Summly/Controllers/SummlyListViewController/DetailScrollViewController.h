@@ -42,7 +42,7 @@ typedef enum {
     
     FingerSwipOrientation orientation;
     float origin;
-
+    BOOL scrollKey;
 }
 
 +(id)sharedInstance;

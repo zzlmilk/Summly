@@ -58,11 +58,8 @@
         }
         //路径下document下是否存在
         if (![fileManager fileExistsAtPath:filename]) {
-            NSString *str= [[NSBundle mainBundle] pathForResource:@"topics" ofType:@"txt"];
-            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithContentsOfFile:str];
             
-            
-            BOOL success = [dic writeToFile:filename atomically:YES];
+            BOOL success = [responseObject writeToFile:filename atomically:YES];
             NSLog(@"filewrite--success%d",success);
         }
     
