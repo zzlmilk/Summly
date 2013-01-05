@@ -19,6 +19,7 @@
 @property(nonatomic,strong)NSString *imageUrl;
 @property(nonatomic,strong)NSString *sourceUrl;
 @property(nonatomic,strong)NSString *interval;
+@property(nonatomic,strong)NSMutableString *time;
 
 
 - (id)initWithAttributes:(NSDictionary *)attributes;

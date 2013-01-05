@@ -93,19 +93,19 @@ static DetailScrollViewController *detailInstance=nil;
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
     
-    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
-    upScrollView.pagingEnabled=YES;
-    upScrollView.showsHorizontalScrollIndicator = YES;
-//    upScrollView.summlyArrs=summlys;
-    [scrollView addSubview:upScrollView];
+//    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
+//    upScrollView.pagingEnabled=YES;
+//    upScrollView.showsHorizontalScrollIndicator = YES;
+////    upScrollView.summlyArrs=summlys;
+//    [scrollView addSubview:upScrollView];
 
-    for (int i=0; i<5; i++) {
-//        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
-//        detailView.tag = i+10;
-//        [scrollView insertSubview:detailView atIndex:summlys.count-i];
-            
-        ArticleView *articleView = [[ArticleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, upScrollView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-183.5) summly:[summlys objectAtIndex:i]];
-        [scrollView addSubview:articleView];
+    for (int i=0; i<summlys.count; i++) {
+        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
+        detailView.tag = i+10;
+        [scrollView insertSubview:detailView atIndex:summlys.count-i];
+        
+//        ArticleView *articleView = [[ArticleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, upScrollView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-183.5) summly:[summlys objectAtIndex:i]];
+//        [scrollView addSubview:articleView];
     }
     
       
@@ -225,7 +225,7 @@ static DetailScrollViewController *detailInstance=nil;
     return YES;
 }
 
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
 
 //    lastOffsetX = _scrollView.contentOffset.x;
@@ -287,7 +287,7 @@ static DetailScrollViewController *detailInstance=nil;
 
     }
 }
-
+*/
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
     lastOffsetX=0;
