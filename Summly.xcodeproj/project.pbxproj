@@ -124,6 +124,9 @@
 		04ABA24A168AC61B00BF3404 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABA22E16899B1F00BF3404 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04ABA24B168AC61B00BF3404 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ABA23116899B1F00BF3404 /* SinaWeiboRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04E0595A167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */; };
+		891E14331697FFF90030400C /* tutorials1.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E14301697FFF90030400C /* tutorials1.png */; };
+		891E14341697FFF90030400C /* tutorials2.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E14311697FFF90030400C /* tutorials2.png */; };
+		891E14351697FFF90030400C /* tutorials3.png in Resources */ = {isa = PBXBuildFile; fileRef = 891E14321697FFF90030400C /* tutorials3.png */; };
 		896AA709167DE6C2006DBE88 /* petal-email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA704167DE6C2006DBE88 /* petal-email@2x.png */; };
 		896AA70A167DE6C2006DBE88 /* petal-facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */; };
 		896AA70B167DE6C2006DBE88 /* petal-save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 896AA706167DE6C2006DBE88 /* petal-save@2x.png */; };
@@ -328,6 +331,9 @@
 		04ABA23816899B3600BF3404 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		04E05958167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.h"; sourceTree = "<group>"; };
 		04E05959167483CD00C919DE /* UIGestureRecognizer+SummlyScrollerViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+SummlyScrollerViewAdditions.m"; sourceTree = "<group>"; };
+		891E14301697FFF90030400C /* tutorials1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials1.png; sourceTree = "<group>"; };
+		891E14311697FFF90030400C /* tutorials2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials2.png; sourceTree = "<group>"; };
+		891E14321697FFF90030400C /* tutorials3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials3.png; sourceTree = "<group>"; };
 		896AA704167DE6C2006DBE88 /* petal-email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-email@2x.png"; sourceTree = "<group>"; };
 		896AA705167DE6C2006DBE88 /* petal-facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-facebook@2x.png"; sourceTree = "<group>"; };
 		896AA706167DE6C2006DBE88 /* petal-save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "petal-save@2x.png"; sourceTree = "<group>"; };
@@ -582,6 +588,7 @@
 		049B8F2D1675FCD700C48250 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				891E142E1697FFA90030400C /* tutorials */,
 				AECCDDA01681505A00D202E0 /* webpng */,
 				C81DFEB5167EB4810040F35B /* tableView */,
 				896AA71D167DEA63006DBE88 /* button */,
@@ -835,6 +842,16 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
+		891E142E1697FFA90030400C /* tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				891E14301697FFF90030400C /* tutorials1.png */,
+				891E14311697FFF90030400C /* tutorials2.png */,
+				891E14321697FFF90030400C /* tutorials3.png */,
+			);
+			name = tutorials;
+			sourceTree = "<group>";
+		};
 		896AA702167DE66C006DBE88 /* FAFancyMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1063,6 +1080,9 @@
 				89849DFA169436EE00866FE9 /* phone@2x.png in Resources */,
 				89849DFC1694375300866FE9 /* about-eparated@2x.png in Resources */,
 				89849E02169459DA00866FE9 /* cover-arrow-new@2x.png in Resources */,
+				891E14331697FFF90030400C /* tutorials1.png in Resources */,
+				891E14341697FFF90030400C /* tutorials2.png in Resources */,
+				891E14351697FFF90030400C /* tutorials3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
