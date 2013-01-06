@@ -15,6 +15,6 @@
 @interface FrontSummlyView : UIView
 
 @property(nonatomic,weak)id delegate;
-@property(nonatomic,strong) NSMutableArray *coverArr;
+@property(nonatomic,strong) NSDictionary *coverArr;
 
 @end

@@ -36,7 +36,7 @@ typedef enum {
     
   
     UpScrollView *upScrollView;
-    NSInteger _index,_indexLeft,_indexRight;
+    NSInteger _indexLeft,_indexRight;
     
     float lastOffsetX;
     

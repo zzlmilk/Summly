@@ -24,14 +24,10 @@
     
     [[SummlyAPIClient sharedClient] getPath:@"cover/index" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        
         NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
-        NSArray *responseArr = (NSArray*)responseObject;
+        NSDictionary *arr = (NSDictionary *)[responseObject objectForKey:@"cover"];
         
-        NSLog(@"responseArr:%@",responseArr);
-        
-
-        summlyArr = (NSMutableArray *)[responseObject objectForKey:@"cover"];
+        summlyArr = (NSMutableArray *)[arr objectForKey:@"summly"];
         
         if (block) {
             block(summlyArr);

@@ -9,7 +9,6 @@
 #import "ArticleViewController.h"
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "WebViewController.h"
 
 #define Margin 15
 
