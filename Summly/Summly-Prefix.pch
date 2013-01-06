@@ -22,3 +22,5 @@
 #define Plist @"topic.plist"
 
 #define Version @"1.0"
+
+#define MAIN_DATABASE_NAME @"summlydatabase.sql"

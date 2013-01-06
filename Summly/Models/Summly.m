@@ -63,6 +63,7 @@
     NSString *temp = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return temp;
 }
+
 //时间差
 - (NSString *)timeIntervalFromNow:(NSDate *)_summlyTime{
     NSString *intervalStr;
@@ -96,31 +97,31 @@
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
     
-    NSArray *summlyArr = [Summly summlysWithParameters:parameters];
+    NSMutableArray *summlyArr = [Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]];
     if (summlyArr.count>0) {
-        block( summlyArr );
+        block(summlyArr);
 
+    }else{
+        [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
+            NSArray *responseArr = (NSArray*)responseObject;
+                    
+            for (int i=0;i<responseArr.count;i++) {
+                Summly *summly = [[Summly alloc] initWithAttributes:[[responseArr objectAtIndex:i] objectForKey:@"summly"]];
+                [summlyArr addObject:summly];
+                [summly insertDB];
+            }
+            if (block) {
+                block(summlyArr);
+            }
+            NSLog(@"%@",responseObject);
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            block([Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]]);
+        }];
     }
-    [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
-        NSArray *responseArr = (NSArray*)responseObject;
-                
-        for (int i=0;i<responseArr.count;i++) {
-            Summly *summly = [[Summly alloc] initWithAttributes:[[responseArr objectAtIndex:i] objectForKey:@"summly"]];
-            [summlyArr addObject:summly];
-            [summly insertDB];
-        }
-        if (block) {
-            block(summlyArr);
-        }
-        NSLog(@"%@",responseObject);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        block([Summly summlysWithParameters:parameters]);
-    }];
-    
 }
 
 
@@ -141,15 +142,18 @@
 }
 
 
-+(NSMutableArray *)summlysWithParameters:(NSDictionary *)parametrs{
++(NSMutableArray *)summlysWithParameters:(NSInteger)topicId{
     
     NSMutableArray *summlys = [[NSMutableArray alloc]initWithCapacity:15];
     
     static Statement *stmt = nil;
-    if (stmt == nil) {
-        stmt = [DBConnection statementWithQuery:"SELECT * FROM summly_table LIMIT 6 "];
+   if (stmt == nil) {
+        stmt = [DBConnection statementWithQuery:"SELECT * FROM summly_table WHERE topic_id=?"];
+       
     }
     
+    [stmt bindInt32:topicId forIndex:1];
+
     while ([stmt step] == SQLITE_ROW) {
         Summly *p = [Summly initWithStatement:stmt] ;
         [summlys addObject:p];
@@ -164,12 +168,12 @@
     if (stmt == nil) {
         stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time) VALUES(?,?,?,?,?,?)"];
     }
-    [stmt bindInt32:self.topicId forIndex:0];
-    [stmt bindString:self.title forIndex:1];
-    [stmt bindString:self.describe forIndex:2];
-    [stmt bindString:self.scource forIndex:3];
-    [stmt bindString:self.imageUrl forIndex:4];
-    [stmt bindString:self.time forIndex:5];
+    [stmt bindInt32:self.topicId forIndex:1];
+    [stmt bindString:self.title forIndex:2];
+    [stmt bindString:self.describe forIndex:3];
+    [stmt bindString:self.scource forIndex:4];
+    [stmt bindString:self.imageUrl forIndex:5];
+    [stmt bindString:self.time forIndex:6];
 
     int step = [stmt step];
     if (step != SQLITE_DONE) {

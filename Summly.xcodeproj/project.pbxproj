@@ -129,6 +129,9 @@
 		89849DFC1694375300866FE9 /* about-eparated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89849DFB1694375200866FE9 /* about-eparated@2x.png */; };
 		89849E02169459DA00866FE9 /* cover-arrow-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89849E01169459D800866FE9 /* cover-arrow-new@2x.png */; };
 		89D6B5FA16932CD9004341CB /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D6B5F916932CD9004341CB /* Update.m */; };
+		AE544F201699175C0048E6F7 /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF52A16998C13004262B1 /* Statement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE544F211699175C0048E6F7 /* DBConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF52C16998C13004262B1 /* DBConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE544F281699191F0048E6F7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */; };
 		AEA03BDC1697BE4800F15536 /* navigation-back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA03BDB1697BE4800F15536 /* navigation-back-button@2x.png */; };
 		AEA03C1F1697C9F600F15536 /* publisherIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA03C1E1697C9F500F15536 /* publisherIcon@2x.png */; };
 		AEA03C251697D1F800F15536 /* summly_close_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEA03C241697D1F800F15536 /* summly_close_x@2x.png */; };
@@ -328,6 +331,8 @@
 		89849E01169459D800866FE9 /* cover-arrow-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-arrow-new@2x.png"; sourceTree = "<group>"; };
 		89D6B5F816932CD8004341CB /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
 		89D6B5F916932CD9004341CB /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		AE544F29169922460048E6F7 /* summlydatabase.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = summlydatabase.sql; sourceTree = "<group>"; };
 		AEA03BDB1697BE4800F15536 /* navigation-back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation-back-button@2x.png"; sourceTree = "<group>"; };
 		AEA03C1E1697C9F500F15536 /* publisherIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publisherIcon@2x.png"; sourceTree = "<group>"; };
 		AEA03C241697D1F800F15536 /* summly_close_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summly_close_x@2x.png"; sourceTree = "<group>"; };
@@ -369,7 +374,6 @@
 		C82CF51B16996696004262B1 /* icon_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_2@2x.png"; sourceTree = "<group>"; };
 		C82CF51D169966A3004262B1 /* icon_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_4@2x.png"; sourceTree = "<group>"; };
 		C82CF52016996951004262B1 /* cell-add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-add@2x.png"; sourceTree = "<group>"; };
-		C82CF52316997A1D004262B1 /* summlydatabase.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = summlydatabase.sqlite; sourceTree = "<group>"; };
 		C82CF52916998C13004262B1 /* Statement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
 		C82CF52A16998C13004262B1 /* Statement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Statement.m; sourceTree = "<group>"; };
 		C82CF52B16998C13004262B1 /* DBConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBConnection.h; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE544F281699191F0048E6F7 /* libsqlite3.0.dylib in Frameworks */,
 				0491D55B1684443B00317C99 /* MessageUI.framework in Frameworks */,
 				047FF8691680B9F400A990C6 /* AudioToolbox.framework in Frameworks */,
 				04A47EEA16730B1B0035B2AA /* MobileCoreServices.framework in Frameworks */,
@@ -489,6 +494,7 @@
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
+				AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */,
 				049A8B4B166CFF7400569250 /* Summly */,
 				049A8B44166CFF7400569250 /* Frameworks */,
 				049A8B42166CFF7400569250 /* Products */,
@@ -906,7 +912,7 @@
 		C82CF52216997A0C004262B1 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				C82CF52316997A1D004262B1 /* summlydatabase.sqlite */,
+				AE544F29169922460048E6F7 /* summlydatabase.sql */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -1093,6 +1099,8 @@
 				049A8B52166CFF7400569250 /* main.m in Sources */,
 				049A8B56166CFF7400569250 /* AppDelegate.m in Sources */,
 				04A47EDB167233B60035B2AA /* AFHTTPClient.m in Sources */,
+				AE544F201699175C0048E6F7 /* Statement.m in Sources */,
+				AE544F211699175C0048E6F7 /* DBConnection.m in Sources */,
 				04A47EDC167233B60035B2AA /* AFHTTPRequestOperation.m in Sources */,
 				04A47EDD167233B60035B2AA /* AFImageRequestOperation.m in Sources */,
 				04A47EDE167233B60035B2AA /* AFJSONRequestOperation.m in Sources */,

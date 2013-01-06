@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "DBConnection.h"
 
 @implementation AppDelegate
 
@@ -38,8 +39,10 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
+    [DBConnection getSharedDatabase];
+
+//    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
     
-       
     return YES;
 }
 
