@@ -22,8 +22,8 @@
 
 +(NSDictionary *)getDictionaryFromPlist:(NSString *)_path{
         
-    NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [paths objectAtIndex:0];
+//    NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *filename = [path stringByAppendingPathComponent:_path];
     
     NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:filename];  //读取数据
@@ -31,6 +31,12 @@
     return dic;
 }
 
++(void)removeBundlePath:(NSString *)path{
+    
+    
+
+
+}
 
 
 

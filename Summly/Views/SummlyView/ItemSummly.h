@@ -35,11 +35,11 @@ typedef enum {
     UIImageView *bgImageView;
     UIImageView *overBgImageView;
     UIImageView *selectImageView ;
-    
+    UIImageView *iconImageView;
     
     CGColorRef itemColorRef;
     
-    
+    NSString *randomImageName;
     
     CFURLRef		soundFileURLRef;
 	SystemSoundID	soundFileObject;

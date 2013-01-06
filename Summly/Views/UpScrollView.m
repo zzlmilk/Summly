@@ -35,12 +35,12 @@
     [imageBackView setBackgroundColor:[UIColor yellowColor]];
     NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10+1];
     
-//    if (_summly.imageUrl!=nil) {
-//        [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
-//    }
-  //  else{
-        imageBackView.image = [UIImage imageNamed:randomImageName];
-//    }
+     if (_summly.imageUrl!=nil) {
+        [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
+     }
+    else{
+       imageBackView.image = [UIImage imageNamed:randomImageName];
+     }
     [imageBackView setContentMode:UIViewContentModeScaleAspectFill];
     imageBackView.clipsToBounds=YES;
     imageBackView.userInteractionEnabled=YES;
