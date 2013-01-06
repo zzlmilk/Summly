@@ -35,53 +35,60 @@
     if ([fileManager fileExistsAtPath:filename]) {
         NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
         
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
-            if (arr.count>0){
-                NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
-                for (NSDictionary *attributes in arr){
-                    Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
-                    if (t.status==1) {
-                        [topics addObject:t];
+            if ([dic isKindOfClass:[NSDictionary class]]) {
+                NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
+                if (arr.count>0){
+                    NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+                    for (NSDictionary *attributes in arr){
+                        Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
+                        if (t.status==1) {
+                            [topics addObject:t];
                     }
                 }
-                
                 block(topics);
             }
         }
-
     }
-      
-    else{ [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (debug) {
-            NSLog(@"%@",responseObject);
-        }
-        //路径下document下是否存在
-        if (![fileManager fileExistsAtPath:filename]) {
-            
-            BOOL success = [responseObject writeToFile:filename atomically:YES];
-            NSLog(@"filewrite--success%d",success);
-        }
     
-         NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
-         if (arr.count>0){
-            NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
-             for (NSDictionary *attributes in arr){
-                 Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
-                 if (t.status==1) {
-                     [topics addObject:t];
-                 }
-             }
-             
-                block(topics);
-         }
+    else{
+        [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (debug) {
+                NSLog(@"%@",responseObject);
+            }
+            //路径下document下是否存在
+            if (![fileManager fileExistsAtPath:filename]) {
+                
+                 NSString *error;
+                
+                NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:responseObject format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+                
+                BOOL success = [dicData writeToFile:filename atomically:YES];
+                if (!success) {
+                    NSLog(@"%@",error);
+                }
+                
+                NSLog(@"filewrite--success%d",success);
+            }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (debug) {
-            NSLog(@"%@",error);
-        }
-        block(nil);
-    }];
+             NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
+             if (arr.count>0){
+                NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+                 for (NSDictionary *attributes in arr){
+                     Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
+                     if (t.status==1) {
+                         [topics addObject:t];
+                     }
+                 }
+                 
+                    block(topics);
+             }
+        
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (debug) {
+                NSLog(@"%@",error);
+            }
+            block(nil);
+        }];
     }
 }
 @end
