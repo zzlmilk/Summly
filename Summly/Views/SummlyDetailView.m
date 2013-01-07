@@ -24,6 +24,8 @@
 
         sinaShare = [[DDShare alloc] init];
         
+        weixingShare = [[DDWeixing alloc] init];
+        
         self.summly =_summly;
         self.userInteractionEnabled=YES;
              //标题
@@ -124,6 +126,7 @@
     //微信
     else if (index==2) {
         
+        [weixingShare sendImageContent];
     }
     //收藏
     else if (index==3) {        
