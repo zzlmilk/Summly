@@ -26,7 +26,21 @@
         self.sourceUrl = [attributes objectForKey:@"url"];
         self.imageUrl = [attributes objectForKey:@"imageUrl"];
         
-        _summlyTime =  [self stringDateToNSDate:[attributes objectForKey:@"time"]];
+        self.time = [attributes objectForKey:@"time"];
+        NSMutableString *timeNow;
+        timeNow = self.time;
+        NSRange range = NSMakeRange(4, 1);
+
+        [self.time stringByReplacingOccurrencesOfString:self.time withString:@"年" options:NSLiteralSearch range:range];
+//        [timeNow replaceCharactersInRange:NSMakeRange(4,1) withString:@"年"];
+//        
+//        [timeNow replaceCharactersInRange:NSMakeRange(7,1) withString:@"月"];
+//
+        [timeNow stringByAppendingFormat:@"日"];
+
+        self.time=timeNow;
+        
+        _summlyTime =  [self stringDateToNSDate:self.time];
         self.interval = [self timeIntervalFromNow:_summlyTime];
         
     }

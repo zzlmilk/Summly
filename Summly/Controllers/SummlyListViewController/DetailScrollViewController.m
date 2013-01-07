@@ -15,6 +15,7 @@
 @interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
 
+    
 }
 
 @end
@@ -92,19 +93,19 @@ static DetailScrollViewController *detailInstance=nil;
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
     
-    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
-    upScrollView.pagingEnabled=YES;
-    upScrollView.showsHorizontalScrollIndicator = YES;
-//    upScrollView.summlyArrs=summlys;
-    [scrollView addSubview:upScrollView];
+//    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
+//    upScrollView.pagingEnabled=YES;
+//    upScrollView.showsHorizontalScrollIndicator = YES;
+////    upScrollView.summlyArrs=summlys;
+//    [scrollView addSubview:upScrollView];
 
-    for (int i=0; i<5; i++) {
-//        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
-//        detailView.tag = i+10;
-//        [scrollView insertSubview:detailView atIndex:summlys.count-i];
-            
-        ArticleView *articleView = [[ArticleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, upScrollView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-183.5) summly:[summlys objectAtIndex:i]];
-        [scrollView addSubview:articleView];
+    for (int i=0; i<summlys.count; i++) {
+        SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
+        detailView.tag = i+10;
+        [scrollView insertSubview:detailView atIndex:summlys.count-i];
+        
+//        ArticleView *articleView = [[ArticleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, upScrollView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-183.5) summly:[summlys objectAtIndex:i]];
+//        [scrollView addSubview:articleView];
     }
     
       
@@ -224,7 +225,7 @@ static DetailScrollViewController *detailInstance=nil;
     return YES;
 }
 
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
 
 //    lastOffsetX = _scrollView.contentOffset.x;
@@ -286,102 +287,11 @@ static DetailScrollViewController *detailInstance=nil;
 
     }
 }
-
+*/
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
     lastOffsetX=0;
 }
-#pragma mark--
-#pragma mark-- ScrollViewDelegate
-/*
-- (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
-    [self followerDismiss];
-    
-    
-    self.index=[self calculateIndexFromScrollViewOffSet];
-
-
-    if (self.index==_index) {
-        NSLog(@"_index%d",_index);
-        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+self.index];
-        [UIView animateWithDuration:0.3f animations:^{
-            detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*self.index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
-            detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*self.index))/4,0, scrollView.frame.size.width, 183.5);
-        }];
-        
-        SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+1+_index];
-        [UIView animateWithDuration:0.3f animations:^{
-
-        detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
-        detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-        }];
-
-    }
-   else{
-       _index=self.index;
-       NSLog(@"else  _index%d",_index);
-
-       SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-       [UIView animateWithDuration:0.3f animations:^{
-
-       detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,300,100);
-       detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-                                         }];
-       SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+1+_index];
-           [UIView animateWithDuration:0.3f animations:^{
-
-       detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,scrollView.frame.size.width-20,100 );
-       detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-           }];
-   }
-
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)_scrollView willDecelerate:(BOOL)decelerate{
-//    NSLog(@"calculate---%d",[self calculateIndexFromScrollViewOffSet]);
-    if (self.index==_index) {
-        NSLog(@"_index%d",_index);
-        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+self.index-1];
-        [UIView animateWithDuration:0.3f animations:^{
-            detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*self.index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
-            detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*self.index))/4,0, scrollView.frame.size.width, 183.5);
-            
-        }];
-        
-        SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-        [UIView animateWithDuration:0.3f animations:^{
-            
-            detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index))/2, 183.5-110,scrollView.frame.size.width-20,100 );
-            detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-        }];
-        
-    }
-    else{
-        _index=self.index;
-        NSLog(@"else  _index%d",_index);
-        
-        SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+_index-1];
-        [UIView animateWithDuration:0.3f animations:^{
-            
-            detailView.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,300,100);
-            detailView.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-            
-        }];
-        
-        SummlyDetailView *detailView1 =(SummlyDetailView*)[scrollView viewWithTag:10+_index];
-        [UIView animateWithDuration:0.3f animations:^{
-            
-            detailView1.titleLabel.frame = CGRectMake(10+(_scrollView.contentOffset.x-(320*_index)/2), 183.5-110,scrollView.frame.size.width-20,100 );
-            detailView1.imageBackView.frame = CGRectMake((_scrollView.contentOffset.x-(320*_index))/4,0, scrollView.frame.size.width, 183.5);
-        }];
-    }
-
-}
-
-*/
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
-//   
-//}
 
 - (void)didReceiveMemoryWarning
 {

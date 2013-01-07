@@ -12,7 +12,7 @@
 #import "WebViewController.h"
 
 #define Margin 15
-
+#define MarginDic 10
 @interface ArticleViewController ()
 
 @end
@@ -48,46 +48,59 @@
     [self.view addSubview:scrollView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin, Margin, self.view.frame.size.width-Margin*2, 100)];
-    [titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
+    [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:22]];
     titleLabel.numberOfLines=0;
     titleLabel.text = self.summly.title;
     [titleLabel sizeThatFits:CGSizeMake(self.view.frame.size.width-Margin*2, 160)];
-    [self.view addSubview:titleLabel];
-
-    UILabel *pulisherLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y, 100, 16)];
-    [pulisherLabel setFont:[UIFont boldSystemFontOfSize:12]];
+    [titleLabel setTextColor:[UIColor colorWithRed:51/255.0f green:51/255.0f blue:51/255.0f alpha:1.0f]];
+    [titleLabel sizeToFit];
+    [scrollView addSubview:titleLabel];
+    
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y+MarginDic, 30, 12)];
+    [iconImageView setImage:[UIImage imageNamed:@"publisherIcon.png"]];
+    iconImageView.userInteractionEnabled=YES;
+    [scrollView addSubview:iconImageView];
+    
+    UILabel *pulisherLabel = [[UILabel alloc] initWithFrame:CGRectMake(iconImageView.frame.size.width+iconImageView.frame.origin.x+MarginDic, titleLabel.frame.size.height+titleLabel.frame.origin.y+MarginDic, 100, 16)];
+    pulisherLabel.userInteractionEnabled=YES;
+    //        [pulisherLabel setFont:[UIFont boldSystemFontOfSize:11]];
+    [pulisherLabel setFont:[UIFont fontWithName:@"Heiti SC" size:11]];
     if (self.summly.scource.length==0) {
         pulisherLabel.text = @"雅虎通讯";
     }
     else{
         pulisherLabel.text = self.summly.scource;
     }
+    [pulisherLabel setTextColor:[UIColor colorWithRed:128/255.0f green:128/255.0f blue:128/255.0f alpha:1.0f]];
     [pulisherLabel setBackgroundColor:[UIColor clearColor]];
-    [pulisherLabel setTextColor:[UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1.0f]];
     [pulisherLabel sizeToFit];
-    [self.view addSubview:pulisherLabel];
+    [scrollView addSubview:pulisherLabel];
+    
+    UILabel *timeIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(pulisherLabel.frame.size.width+pulisherLabel.frame.origin.x+MarginDic, pulisherLabel.frame.origin.y-1, 100, 16)];
+    timeIntervalLabel.userInteractionEnabled=YES;
+    [timeIntervalLabel setFont:[UIFont systemFontOfSize:11]];
+    [timeIntervalLabel setTextColor:[UIColor colorWithRed:0/255.0f green:0/255.0f blue:70/255.0f alpha:1.0f]];
+    timeIntervalLabel.text=self.summly.time;
+    [timeIntervalLabel sizeToFit];
+    [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
+    [scrollView addSubview:timeIntervalLabel];
 
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin,pulisherLabel.frame.size.height+pulisherLabel.frame.origin.y+Margin , self.view.frame.size.width-Margin*2, 400)];
     [textLabel setBackgroundColor:[UIColor clearColor]];
-    [textLabel setFont:[UIFont systemFontOfSize:13]];
     textLabel.numberOfLines=0;
     textLabel.text = self.summly.describe;
+    [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
+    [textLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
     [textLabel sizeToFit];
     [self.view addSubview:textLabel];
-
-    UIButton *webViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [webViewBtn setBackgroundImage:[UIImage imageNamed:@"webviewBtn.png"] forState:UIControlStateNormal];
-    [webViewBtn setFrame:CGRectMake(self.view.frame.size.width-18-10, pulisherLabel.frame.origin.y, 18, 18)];
-    [webViewBtn addTarget:self action:@selector(webViewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:webViewBtn];
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-55, 0, 55, 52)];
+    [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-38, 0, 38, 40)];
     [dismissBtn setBackgroundImage:[UIImage imageNamed:@"summly_close_x.png"] forState:UIControlStateNormal];
     [dismissBtn addTarget:self action:@selector(dismissBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:dismissBtn];
-    
+    [scrollView addSubview:dismissBtn];
+
     if (textLabel.frame.size.height+textLabel.frame.origin.y+Margin<self.view.frame.size.height) {
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
     }
@@ -110,6 +123,7 @@
 //    WebViewController *webViewController = [[WebViewController alloc] init];
 //    webViewController.summly=self.summly;
 //    [self.navigationController pushViewController:webViewController animated:NO];
+    [self popToDetailScrollVC];
 
 }
 
