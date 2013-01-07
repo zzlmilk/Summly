@@ -15,5 +15,6 @@
 }
 
 - (void)sendImageContent;
+- (void)sendMusicContent;
 
 @end

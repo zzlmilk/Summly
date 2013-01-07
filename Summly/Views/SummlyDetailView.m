@@ -114,7 +114,7 @@
 -(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
     NSLog(@"%d",index);
     //新浪分享 内容待定
-    if (index==1) {
+    if (index==0) {
         if (sinaShare.sinaWeibo.accessToken==nil) {
             [sinaShare sinaLogin];
             [sinaShare shareContentToSinaWeibo:@""];
@@ -124,9 +124,9 @@
         
     }
     //微信
-    else if (index==2) {
+    else if (index==1) {
         
-        [weixingShare sendImageContent];
+        [weixingShare sendMusicContent];
     }
     //收藏
     else if (index==3) {        
@@ -150,7 +150,7 @@
 
     }
     //email
-    else if(index==4){
+    else if(index==2){
     
     
     }
