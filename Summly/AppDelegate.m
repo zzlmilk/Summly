@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "DBConnection.h"
 
 @implementation AppDelegate
 
@@ -27,6 +28,8 @@
     [self.window addSubview:[self _randomBackground]];
 
     
+    
+    
     MainViewController *summlyVC = [[MainViewController alloc]init];
     _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
@@ -36,8 +39,10 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
+    [DBConnection getSharedDatabase];
+
+//    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
     
-       
     return YES;
 }
 

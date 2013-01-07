@@ -19,6 +19,8 @@
 //debug 1 开启  0 关闭
 #define debug 0
 
-#define Plist @"test.plist"
+#define Plist @"topic.plist"
 
 #define Version @"1.0"
+
+#define MAIN_DATABASE_NAME @"summlydatabase.sql"

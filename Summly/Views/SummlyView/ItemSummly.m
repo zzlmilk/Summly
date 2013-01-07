@@ -54,15 +54,19 @@
         case home:
         {
             self.canMove = NO;
-            bgImageView.image = [UIImage imageNamed:@"cell-cover-page"];
+            bgImageView.image = [UIImage imageNamed:@"cl_1.png"];
             
+            iconImageView.image=[UIImage imageNamed:@"icon_1.png"];
         }
             break;
         case add:
         {
             self.canMove = NO;
+            
+            iconImageView.image=[UIImage imageNamed:@""];
+
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
-            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon@2x"]];
+            UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add.png"]];
             addImageView.frame =CGRectMake(self.frame.size.width/2-34, self.frame.size.height/2-34/2, 34, 34);
             [bgImageView addSubview:addImageView];
         }
@@ -70,26 +74,33 @@
         case manage:{
             self.canMove = NO;
 //            self.canRefish=NO;
-            
+            iconImageView.image=[UIImage imageNamed:@""];
+
             titleLabel.frame=CGRectMake(50, 39, 300, 20);
             describeLabel.text=nil;
-                        
+            
+            
             selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
+            
+            UIImageView *jiantou = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou.png"]];
+            [jiantou setFrame:CGRectMake(250, 45, 6.5, 11)];
+            [bgImageView addSubview:jiantou];
         }
             break;
         case manageAdd:{
             self.canMove = NO;
 //            self.canRefish=NO;
 
-            
+            iconImageView.image=[UIImage imageNamed:@""];
+
             titleLabel.text=nil;
             describeLabel.text=nil;
+            
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
-            bgImageView.userInteractionEnabled =YES;
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add-icon.png"]];
                         addImageView.userInteractionEnabled =YES;
-            addImageView.frame =CGRectMake(20, 32, 34, 34);
+            addImageView.frame =CGRectMake(20, 31, 36, 36);
             [bgImageView addSubview:addImageView];
             
             UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 39, 160, 20)];
@@ -102,8 +113,9 @@
         }
         break;
         case saved:{
-            bgImageView.image = [UIImage imageNamed:@"cell-saved"];
+            bgImageView.image = [UIImage imageNamed:@"cl_7.png"];
 
+            iconImageView.image = [UIImage imageNamed:@"icon_4.png"];
         }
         default:
         break;
@@ -114,7 +126,7 @@
 - (void)changeBackView:(BOOL)isSelected{
     
     if (isSelected==YES) {
-        bgImageView.image = [UIImage imageNamed:@"cell-keyword"];
+        bgImageView.image =[UIImage imageNamed: randomImageName];
         [selectImageView setImage:[UIImage imageNamed:@"check-box-checked.png"]];
 
     }
@@ -158,13 +170,13 @@
         self.userInteractionEnabled=YES;
         bgImageView= [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
         bgImageView.userInteractionEnabled=YES;
-        bgImageView.image = [UIImage imageNamed:@"cell-keyword@2x"];
+        randomImageName = [NSString stringWithFormat:@"cl_%d.png", arc4random() % 4+3];
+        bgImageView.image = [UIImage imageNamed:randomImageName];
         [self addSubview:bgImageView];
-        
         
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 45, 300, 20)];
         titleLabel.text = @"titile";
-        titleLabel.font = [UIFont systemFontOfSize:18];
+        titleLabel.font = [UIFont systemFontOfSize:13];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.backgroundColor = [UIColor clearColor];
         [bgImageView addSubview:titleLabel];
@@ -173,20 +185,19 @@
         
         describeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 65, 300, 20)];
         describeLabel.text = @"describeLabel";
-        describeLabel.font = [UIFont systemFontOfSize:16];
+        describeLabel.font = [UIFont systemFontOfSize:11];
         describeLabel.textColor = [UIColor whiteColor];
         describeLabel.backgroundColor = [UIColor clearColor];
+        describeLabel.alpha=0.85f;
         [bgImageView addSubview:describeLabel];
         
         
+        iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(264, 38, 20, 20)];
+        iconImageView.contentMode=UIViewContentModeScaleAspectFit;
+        iconImageView.image = [UIImage imageNamed:@"icon_3.png"];
+        [bgImageView addSubview:iconImageView];
         
-        
-       
-        
-
-        
-        
-                    
+    
     }
     return self;
 }
@@ -217,14 +228,39 @@
     
 }
 
+//算弧度
+-(double)radians:(double)degrees
+{
+    return degrees * M_PI/180;
+}
 
 
+- (void)changeImage{
+    if (_itemSummlyType==saved) {
+        iconImageView.image = [UIImage imageNamed:@"icon_4.png"];
+    }
+    else{
+        iconImageView.image = [UIImage imageNamed:@"icon_3.png"];
+    }
+}
 
+//刷新
 -(void)reloadSummly{
     NSLog(@"reload");
     
+    iconImageView.image = [UIImage imageNamed:@"load.png"];
+            
+    [UIView beginAnimations:@"rotate" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:1.5f];
+    [UIView setAnimationRepeatCount:1];
+    iconImageView.layer.anchorPoint = CGPointMake(0.5,0.5);
+    iconImageView.transform = CGAffineTransformMakeRotation([self radians:-180]);
+    [UIView commitAnimations];    
+    
     //add voice
     AudioServicesPlaySystemSound (soundFileObject);
+    
     
     
   //  [SVProgressHUD show];
@@ -245,6 +281,8 @@
        [layer addAnimation:animation forKey:nil];
     
     
+    
+    [self performSelector:@selector(changeImage) withObject:nil afterDelay:1.5f];
 
     
 }

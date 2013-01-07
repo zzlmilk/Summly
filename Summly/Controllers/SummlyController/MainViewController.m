@@ -116,7 +116,7 @@
     else if(itemSummly.itemSummlyType ==add){
         TopicViewController *topViewController = [[TopicViewController alloc]init];
         
-        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:@"test.plist"];
+        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
         NSMutableArray *topics = [NSMutableArray array];
 
         if ([dic isKindOfClass:[NSDictionary class]]) {

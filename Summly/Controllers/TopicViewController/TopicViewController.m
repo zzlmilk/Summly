@@ -53,8 +53,8 @@
     
     UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];
     [_button setBackgroundImage:[UIImage imageNamed:@"navigation-button.png"] forState:UIControlStateNormal];
-    [_button setImage:[UIImage imageNamed:@"navigation-bar-settings-icon.png"] forState:UIControlStateNormal];
-    [_button setImageEdgeInsets:UIEdgeInsetsMake(2, 13, 4, 13)];
+//    [_button setImage:[UIImage imageNamed:@"navigation-bar-settings-icon.png"] forState:UIControlStateNormal];
+//    [_button setImageEdgeInsets:UIEdgeInsetsMake(2, 13, 4, 13)];
     [_button setFrame:CGRectMake(0, 0, 50.0f, 30.0f)];
     [_button addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc]initWithCustomView:_button];
@@ -119,7 +119,8 @@
     [arr insertObject:[NSDictionary dictionaryWithObject:dicManage forKey:@"topic"] atIndex:tag];
     NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
     
-    [lastDic writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];
+    NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:lastDic format:NSPropertyListXMLFormat_v1_0 errorDescription:nil];
+    [dicData writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];
 }
 
 - (void)didReceiveMemoryWarning

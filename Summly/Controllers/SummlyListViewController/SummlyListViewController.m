@@ -94,9 +94,13 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", summly.scource,summly.interval];
     [cell.detailTextLabel setTextColor:[UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.85f]];
     [cell.detailTextLabel setFont:[UIFont fontWithName:@"Heiti SC" size:10]];
+<<<<<<< HEAD
     
 //    cell.detailTextLabel.shadowColor = [UIColor blackColor];
 //    cell.detailTextLabel.shadowOffset = CGSizeMake(0, 0.8);
+=======
+
+>>>>>>> b5c5ee2d1f2ceb92793d7b841c177f9c08566223
 
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tablebackground.png"]];
     cell.selectedBackgroundView=imageView;
