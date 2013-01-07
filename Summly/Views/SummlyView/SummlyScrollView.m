@@ -100,7 +100,6 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         [self addSubview:starSummly];
         [self.summlyItems addObject:starSummly];
     }
-
     
     Topic *addtopic = [[Topic alloc]init];
     addItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
@@ -111,8 +110,6 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self addSubview:addItemSummly];
     [self.summlyItems addObject:addItemSummly];
     
-    
-       
     
     self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
 

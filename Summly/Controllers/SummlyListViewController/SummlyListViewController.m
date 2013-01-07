@@ -77,7 +77,9 @@
             detailScrollVC = [[DetailScrollViewController alloc] init];
             detailScrollVC.summlyArr = self.summlysArr;
         }];
-    }      
+
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{

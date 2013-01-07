@@ -126,8 +126,7 @@
         
     }
     //收藏
-    else if (index==3) {
-    
+    else if (index==3) {        
         NSArray *getDic;
         
         BOOL isExist = [BundleHelp fileManagerfileExistsAtPath:SUMMLY_NAME];
@@ -136,6 +135,7 @@
             NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
             getDic = [NSArray arrayWithContentsOfFile:filename];
             [mutableArr addObjectsFromArray:getDic];
+
             NSLog(@"%@",self.summly.summlyDic);
 
             [mutableArr addObject:self.summly.summlyDic];
