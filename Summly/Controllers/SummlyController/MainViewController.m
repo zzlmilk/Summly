@@ -142,12 +142,16 @@
          */
     }
     
-    
-    
     else{
         
         SummlyListViewController *summlyListViewController = [[SummlyListViewController alloc]init];
         summlyListViewController.topic = itemSummly.topic;
+        if (itemSummly.itemSummlyType==saved) {
+            summlyListViewController.isFav = YES;
+        }
+        else
+            summlyListViewController.isFav = NO;
+        
         [self.navigationController pushViewController:summlyListViewController animated:YES];
     }
 }

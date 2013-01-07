@@ -24,4 +24,8 @@
 
 -(void)sinaLoginOut;
 - (void)attentionUs;
+
+//发送微博
+- (void)shareContentToSinaWeibo:(NSString *)status;
+
 @end
