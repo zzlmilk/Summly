@@ -495,6 +495,7 @@
 		049A8B36166CFF7400569250 = {
 			isa = PBXGroup;
 			children = (
+				AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */,
 				049A8B4B166CFF7400569250 /* Summly */,
 				049A8B44166CFF7400569250 /* Frameworks */,
 				049A8B42166CFF7400569250 /* Products */,
@@ -914,6 +915,7 @@
 			children = (
 				AE544F29169922460048E6F7 /* summlydatabase.sql */,
 				C8E80DF6169A6214000E077D /* updateSummly.sql */,
+
 			);
 			name = DB;
 			sourceTree = "<group>";

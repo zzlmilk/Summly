@@ -126,6 +126,7 @@
             if (block) {
                 block(summlyArr);
             }
+
 //            NSLog(@"%@",responseObject);
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

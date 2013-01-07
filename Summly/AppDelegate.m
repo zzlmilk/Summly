@@ -11,6 +11,7 @@
 #import "DBConnection.h"
 #import "BundleHelp.h"
 
+
 @implementation AppDelegate
 
 -(UIImageView*)_randomBackground{
@@ -41,10 +42,9 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
     [DBConnection getSharedDatabase];
-    
-   // [BundleHelp moveOldPathToNewPath];
 
     [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
+
     
     return YES;
 }
