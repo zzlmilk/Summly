@@ -10,6 +10,7 @@
 
 @interface Summly : NSObject
 
+@property(nonatomic,strong) NSDictionary *summlyDic;
 @property(nonatomic) NSInteger topicId;
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *describe;

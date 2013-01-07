@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "DBConnection.h"
+#import "BundleHelp.h"
+
 
 @implementation AppDelegate
 
@@ -41,7 +43,8 @@
 
     [DBConnection getSharedDatabase];
 
-//    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
+    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
+
     
     return YES;
 }

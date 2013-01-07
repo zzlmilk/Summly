@@ -42,6 +42,14 @@
     [_sinaWeibo logOut];
 }
 
+- (void)shareContentToSinaWeibo:(NSString *)status{
+    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+    [parameter setValue:_sinaWeibo.accessToken forKey:@"access_token"];
+    [parameter setValue:status forKey:@"status"];
+    
+    [_sinaWeibo requestWithURL:@"statuses/update.json" params:parameter httpMethod:@"POST" delegate:self];
+
+}
 
 - (void)removeAuthData
 {

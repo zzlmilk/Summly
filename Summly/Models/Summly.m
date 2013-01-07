@@ -18,26 +18,37 @@
     self = [super init];
     if (self) {
 
+        self.summlyDic= attributes;
         self.topicId = [[attributes objectForKey:@"topic_id"] intValue];
         self.title = [attributes objectForKey:@"title"];
         self.describe =  [self removeSpace:[attributes objectForKey:@"content"]];
-        if (self.scource.length==0) {
-            self.scource = @"雅虎通讯";
-        }else{
-            self.scource = [attributes objectForKey:@"source"];//来源
-        }
-        self.sourceUrl = [attributes objectForKey:@"url"];
-        self.imageUrl = [attributes objectForKey:@"imageUrl"];
         
-        self.time = [attributes objectForKey:@"time"];
-        
-        _summlyTime =  [self stringDateToNSDate:self.time];
 
-        //年-月-日
-        self.time = [self stringReplace];
-        
-        self.interval = [self timeIntervalFromNow:_summlyTime];
-        
+        if (![[attributes objectForKey:@"source"]isKindOfClass:[NSString class]] || [[attributes objectForKey:@"source"]isEqualToString:@""])
+            self.scource = @"雅虎通讯";
+        else
+            self.scource = [attributes objectForKey:@"source"];//来源
+
+        if (![[attributes objectForKey:@"url"]isKindOfClass:[NSString class]])
+            self.sourceUrl = @"";
+        else
+            self.sourceUrl = [attributes objectForKey:@"url"];
+
+        if (![[attributes objectForKey:@"imageUrl"] isKindOfClass:[NSString class]])
+            self.imageUrl =@"http";
+        else
+            self.imageUrl = [attributes objectForKey:@"imageUrl"];
+
+        if (![[attributes objectForKey:@"time"]isKindOfClass:[NSString class]])
+            self.time = @"";
+        else{
+            self.time = [attributes objectForKey:@"time"];
+            _summlyTime =  [self stringDateToNSDate:self.time];
+            //年-月-日
+            self.time = [self stringReplace];
+            self.interval = [self timeIntervalFromNow:_summlyTime];
+
+        }
     }
     
     return self;
@@ -115,7 +126,8 @@
             if (block) {
                 block(summlyArr);
             }
-            NSLog(@"%@",responseObject);
+
+//            NSLog(@"%@",responseObject);
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"%@",error);
@@ -131,11 +143,12 @@
     Summly *s   = [[Summly alloc] init] ;
     
     s.topicId = [stmt getInt32:0];
-    s.title = [stmt getString:2];
-    s.describe = [stmt getString:3];
-    s.scource = [stmt getString:4];
-    s.imageUrl = [stmt getString:5];
+    s.title = [stmt getString:1];
+    s.describe = [stmt getString:2];
+    s.scource = [stmt getString:3];
+    s.imageUrl = [stmt getString:4];
     s.time = [stmt getString:5];
+    s.interval =[stmt getString:6];
 
     return s;
     
@@ -166,15 +179,17 @@
 -(void)insertDB{
     static Statement *stmt = nil;
     if (stmt == nil) {
-        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time) VALUES(?,?,?,?,?,?)"];
+        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval) VALUES(?,?,?,?,?,?,?)"];
     }
+
     [stmt bindInt32:self.topicId forIndex:1];
     [stmt bindString:self.title forIndex:2];
     [stmt bindString:self.describe forIndex:3];
     [stmt bindString:self.scource forIndex:4];
     [stmt bindString:self.imageUrl forIndex:5];
     [stmt bindString:self.time forIndex:6];
-
+    [stmt bindString:interval forIndex:7];
+    
     int step = [stmt step];
     if (step != SQLITE_DONE) {
 		NSLog(@"insert error errorcode =%d ",step);

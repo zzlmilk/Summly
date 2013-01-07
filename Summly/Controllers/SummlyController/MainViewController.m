@@ -80,9 +80,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    
+    [summlyScrollView  restUI];
+
     if (self.isRestUI) {
-        [summlyScrollView  restUI];
         [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
             if (topics) {
                 topicsArr = topics;
@@ -91,8 +91,12 @@
             }
         }];
     }
+    else{
+        
+        [summlyScrollView generateItems:[NSMutableArray arrayWithArray:topicsArr]];
 
-    
+
+    }
     summlyScrollView.contentOffset=CGPointMake(0, 0);
      [self.navigationController setNavigationBarHidden:YES];        
 }
@@ -142,12 +146,16 @@
          */
     }
     
-    
-    
     else{
         
         SummlyListViewController *summlyListViewController = [[SummlyListViewController alloc]init];
         summlyListViewController.topic = itemSummly.topic;
+        if (itemSummly.itemSummlyType==saved) {
+            summlyListViewController.isFav = YES;
+        }
+        else
+            summlyListViewController.isFav = NO;
+        
         [self.navigationController pushViewController:summlyListViewController animated:YES];
     }
 }

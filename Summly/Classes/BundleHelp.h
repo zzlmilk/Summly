@@ -14,7 +14,9 @@
 +(NSDictionary *)getDictionaryFromPlist:(NSString *)path;
 +(NSString *)getBundlePath:(NSString *)path;
 +(void)removeBundlePath:(NSString *)path;
++(void)moveOldPathToNewPath;
 //+(NSArray *)getArrayFromPlist;
-//+(void)writeToFile;
++(void)writeToFile:(id)dic toPath:(NSString *)_path;
++(BOOL)fileManagerfileExistsAtPath:(NSString *)_path;
 
 @end

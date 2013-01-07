@@ -121,7 +121,7 @@ const char *optimize_sql = "VACUUM; ANALYZE";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:MAIN_DATABASE_NAME];    
     
-//    [DBConnection migrate:@"dbsyj1.0.sql" to:@"dbsyj1.1.sql" queries:@"update_v1.0_to_v1.1.sql"];
+    [DBConnection migrate:@"summlydatabase.sql" to:@"summlydatabase.sql" queries:@"updateSummly.sql"];
     
     if (force) {
         [fileManager removeItemAtPath:writableDBPath error:&error];

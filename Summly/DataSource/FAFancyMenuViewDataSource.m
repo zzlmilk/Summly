@@ -11,11 +11,12 @@
 
 @implementation FAFancyMenuViewDataSource
 
--(id)initWithMeun:(FAFancyMenuView *)menu{
+
+-(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate{
     self = [super init];
     if (self) {
-           NSArray *images = @[[UIImage imageNamed:@"petal-twitter.png"],[UIImage imageNamed:@"petal-facebook.png"],[UIImage imageNamed:@"petal-email.png"],[UIImage imageNamed:@"petal-save.png"]];
-        menu.delegate =self;
+           NSArray *images = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
+        menu.delegate =delegate;
         menu.buttonImages = images;
         
         
@@ -24,9 +25,14 @@
 }
 
 
--(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-        NSLog(@"%d",index);
-}
+//-(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
+//        NSLog(@"%d",index);
+//    if (index) {
+//        <#statements#>
+//    }
+//    
+//    
+//}
 
 
 

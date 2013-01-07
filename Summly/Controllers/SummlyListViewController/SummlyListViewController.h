@@ -15,8 +15,10 @@
 {
     NSInteger topicId;
     DetailScrollViewController *detailScrollVC;
-
+    NSMutableArray *_summlys;
+    
 }
 @property(nonatomic,strong)Topic *topic;
 @property(nonatomic,strong) NSMutableArray *summlysArr;
+@property(nonatomic) BOOL isFav;
 @end
