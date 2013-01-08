@@ -17,60 +17,29 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
     if (self) {
-
+        
         self.summlyDic= attributes;
         self.topicId = [[attributes objectForKey:@"topic_id"] intValue];
         self.title = [attributes objectForKey:@"title"];
         self.describe =  [self removeSpace:[attributes objectForKey:@"content"]];
         
-
+        self.idenId = [[attributes objectForKey:@"id"] intValue];
+        
         if (![[attributes objectForKey:@"source"]isKindOfClass:[NSString class]] || [[attributes objectForKey:@"source"]isEqualToString:@""])
             self.scource = @"雅虎通讯";
         else
             self.scource = [attributes objectForKey:@"source"];//来源
-<<<<<<< HEAD
-        }
-        self.sourceUrl = [attributes objectForKey:@"url"];
-        self.imageUrl = [attributes objectForKey:@"imageUrl"];
         
-        self.time = [attributes objectForKey:@"time"];
-<<<<<<< HEAD
-        NSMutableString *timeNow;
-        timeNow = self.time;
-        NSRange range = NSMakeRange(4, 1);
-
-        [self.time stringByReplacingOccurrencesOfString:self.time withString:@"年" options:NSLiteralSearch range:range];
-//        [timeNow replaceCharactersInRange:NSMakeRange(4,1) withString:@"年"];
-//        
-//        [timeNow replaceCharactersInRange:NSMakeRange(7,1) withString:@"月"];
-//
-        [timeNow stringByAppendingFormat:@"日"];
-
-        self.time=timeNow;
-        
-        _summlyTime =  [self stringDateToNSDate:self.time];
-=======
-        
-        _summlyTime =  [self stringDateToNSDate:self.time];
-
-        //年-月-日
-        self.time = [self stringReplace];
-        
->>>>>>> b5c5ee2d1f2ceb92793d7b841c177f9c08566223
-        self.interval = [self timeIntervalFromNow:_summlyTime];
-        
-=======
-
         if (![[attributes objectForKey:@"url"]isKindOfClass:[NSString class]])
             self.sourceUrl = @"";
         else
             self.sourceUrl = [attributes objectForKey:@"url"];
-
+        
         if (![[attributes objectForKey:@"imageUrl"] isKindOfClass:[NSString class]])
-            self.imageUrl =@"http";
+            self.imageUrl =@"";
         else
             self.imageUrl = [attributes objectForKey:@"imageUrl"];
-
+        
         if (![[attributes objectForKey:@"time"]isKindOfClass:[NSString class]])
             self.time = @"";
         else{
@@ -79,9 +48,8 @@
             //年-月-日
             self.time = [self stringReplace];
             self.interval = [self timeIntervalFromNow:_summlyTime];
-
+            
         }
->>>>>>> 8b62815848c40caf62bd8abd15124b2776f5cbd7
     }
     
     return self;
@@ -90,13 +58,13 @@
 //年-月-日
 - (NSString *)stringReplace{
     NSString *timeNow;
-
+    
     NSRange range = NSMakeRange(4, 1);
     NSRange range1 = NSMakeRange(7, 1);
     
     timeNow = [self.time stringByReplacingOccurrencesOfString:@"-" withString:@"年" options:NSCaseInsensitiveSearch range:range];
     timeNow = [timeNow stringByReplacingOccurrencesOfString:@"-" withString:@"月" options:NSBackwardsSearch range:range1];
-
+    
     timeNow = [timeNow stringByAppendingFormat:@"日"];
     
     return timeNow;
@@ -135,7 +103,7 @@
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat: @"yyyy-MM-dd"];
     NSDate *date = [formatter dateFromString:string];
-
+    
     return date;
 }
 
@@ -144,13 +112,13 @@
     NSMutableArray *summlyArr = [Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]];
     if (summlyArr.count>0) {
         block(summlyArr);
-
+        
     }else{
         [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
             NSArray *responseArr = (NSArray*)responseObject;
-                    
+            
             for (int i=0;i<responseArr.count;i++) {
                 Summly *summly = [[Summly alloc] initWithAttributes:[[responseArr objectAtIndex:i] objectForKey:@"summly"]];
                 [summlyArr addObject:summly];
@@ -159,11 +127,11 @@
             if (block) {
                 block(summlyArr);
             }
-
-//            NSLog(@"%@",responseObject);
+            
+            //            NSLog(@"%@",responseObject);
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"%@",error);
+            NSLog(@"%@",error);
             block([Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]]);
         }];
     }
@@ -182,7 +150,7 @@
     s.imageUrl = [stmt getString:4];
     s.time = [stmt getString:5];
     s.interval =[stmt getString:6];
-
+    s.idenId = [stmt getInt32:7];
     return s;
     
 }
@@ -193,13 +161,13 @@
     NSMutableArray *summlys = [[NSMutableArray alloc]initWithCapacity:15];
     
     static Statement *stmt = nil;
-   if (stmt == nil) {
+    if (stmt == nil) {
         stmt = [DBConnection statementWithQuery:"SELECT * FROM summly_table WHERE topic_id=?"];
-       
+        
     }
     
     [stmt bindInt32:topicId forIndex:1];
-
+    
     while ([stmt step] == SQLITE_ROW) {
         Summly *p = [Summly initWithStatement:stmt] ;
         [summlys addObject:p];
@@ -212,9 +180,9 @@
 -(void)insertDB{
     static Statement *stmt = nil;
     if (stmt == nil) {
-        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval) VALUES(?,?,?,?,?,?,?)"];
+        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
     }
-
+    
     [stmt bindInt32:self.topicId forIndex:1];
     [stmt bindString:self.title forIndex:2];
     [stmt bindString:self.describe forIndex:3];
@@ -222,6 +190,8 @@
     [stmt bindString:self.imageUrl forIndex:5];
     [stmt bindString:self.time forIndex:6];
     [stmt bindString:interval forIndex:7];
+    [stmt bindInt32:self.idenId forIndex:8];
+    
     
     int step = [stmt step];
     if (step != SQLITE_DONE) {

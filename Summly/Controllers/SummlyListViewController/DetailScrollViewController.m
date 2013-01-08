@@ -89,11 +89,7 @@ static DetailScrollViewController *detailInstance=nil;
 
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> b5c5ee2d1f2ceb92793d7b841c177f9c08566223
 //    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
 //    upScrollView.pagingEnabled=YES;
 //    upScrollView.showsHorizontalScrollIndicator = YES;
@@ -225,10 +221,8 @@ static DetailScrollViewController *detailInstance=nil;
     return YES;
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b5c5ee2d1f2ceb92793d7b841c177f9c08566223
+
 /*
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
 
@@ -329,11 +323,10 @@ static DetailScrollViewController *detailInstance=nil;
 }
 */
 
-<<<<<<< HEAD
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
     lastOffsetX=0;
 }
-=======
+
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 /*
@@ -418,7 +411,6 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 */
->>>>>>> b5c5ee2d1f2ceb92793d7b841c177f9c08566223
 
 - (void)didReceiveMemoryWarning
 {
