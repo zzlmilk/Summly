@@ -138,7 +138,7 @@
             getDic = [NSArray arrayWithContentsOfFile:filename];
             [mutableArr addObjectsFromArray:getDic];
 
-            NSLog(@"%@",self.summly.summlyDic);
+//            NSLog(@"%@",self.summly.summlyDic);
 
             [mutableArr addObject:self.summly.summlyDic];
         }
