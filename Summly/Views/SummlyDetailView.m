@@ -88,16 +88,15 @@
         [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
         [acticleView addSubview:timeIntervalLabel];
         
-        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-25)];
+        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
         [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
         articleLabel.text = self.summly.describe;
         articleLabel.numberOfLines = 0;
+        articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [articleLabel setBackgroundColor:[UIColor clearColor]];
         [articleLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
-        [articleLabel sizeToFit];
         [acticleView addSubview:articleLabel];
-     
         [self addSubview:acticleView];
         
         //花瓣
@@ -151,7 +150,7 @@
     }
     //email
     else if(index==2){
-    
+        
     
     }
 }

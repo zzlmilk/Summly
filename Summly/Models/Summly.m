@@ -23,7 +23,8 @@
         self.title = [attributes objectForKey:@"title"];
         self.describe =  [self removeSpace:[attributes objectForKey:@"content"]];
         
-
+        self.idenId = [[attributes objectForKey:@"id"] intValue];
+        
         if (![[attributes objectForKey:@"source"]isKindOfClass:[NSString class]] || [[attributes objectForKey:@"source"]isEqualToString:@""])
             self.scource = @"雅虎通讯";
         else
@@ -35,7 +36,7 @@
             self.sourceUrl = [attributes objectForKey:@"url"];
 
         if (![[attributes objectForKey:@"imageUrl"] isKindOfClass:[NSString class]])
-            self.imageUrl =@"http";
+            self.imageUrl =@"";
         else
             self.imageUrl = [attributes objectForKey:@"imageUrl"];
 
@@ -149,7 +150,7 @@
     s.imageUrl = [stmt getString:4];
     s.time = [stmt getString:5];
     s.interval =[stmt getString:6];
-
+    s.idenId = [stmt getInt32:7];
     return s;
     
 }
@@ -179,7 +180,7 @@
 -(void)insertDB{
     static Statement *stmt = nil;
     if (stmt == nil) {
-        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval) VALUES(?,?,?,?,?,?,?)"];
+        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
     }
 
     [stmt bindInt32:self.topicId forIndex:1];
@@ -189,6 +190,8 @@
     [stmt bindString:self.imageUrl forIndex:5];
     [stmt bindString:self.time forIndex:6];
     [stmt bindString:interval forIndex:7];
+    [stmt bindInt32:self.idenId forIndex:8];
+
     
     int step = [stmt step];
     if (step != SQLITE_DONE) {

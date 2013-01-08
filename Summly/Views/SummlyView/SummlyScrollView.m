@@ -74,6 +74,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     homeItemSummly.topic  = homeTopic;
     homeItemSummly.itemSummlyType  = home;
     homeItemSummly.actionDelegate = delegate;
+    homeItemSummly.userInteractionEnabled=YES;
     [self addSubview:homeItemSummly];
     [self.summlyItems addObject:homeItemSummly];
     

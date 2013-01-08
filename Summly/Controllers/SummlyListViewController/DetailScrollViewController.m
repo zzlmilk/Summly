@@ -9,7 +9,7 @@
 #import "DetailScrollViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-
+#import "SummlyDetailUniteView.h"
 
 @interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
@@ -90,19 +90,17 @@ static DetailScrollViewController *detailInstance=nil;
 //生成详情
 - (void)createDetailView:(NSArray *)summlys{
 
-//    upScrollView = [[UpScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, 183.5) summlys:summlys];
-//    upScrollView.pagingEnabled=YES;
-//    upScrollView.showsHorizontalScrollIndicator = YES;
-////    upScrollView.summlyArrs=summlys;
-//    [scrollView addSubview:upScrollView];
+//    SummlyDetailUniteView *summlyDetailUniteView = [[SummlyDetailUniteView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width*summlys.count, self.view.frame.size.height) summlys:summlys];
+//    summlyDetailUniteView.pagingEnabled=YES;
+////    summlyDetailUniteView.showsHorizontalScrollIndicator = YES;
+////    summlyDetailUniteView.showsVerticalScrollIndicator = YES;
+//    [scrollView addSubview:summlyDetailUniteView];
 
     for (int i=0; i<summlys.count; i++) {
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
         [scrollView insertSubview:detailView atIndex:summlys.count-i];
-        
-//        ArticleView *articleView = [[ArticleView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, upScrollView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-183.5) summly:[summlys objectAtIndex:i]];
-//        [scrollView addSubview:articleView];
+
     }
     
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width*summlys.count, self.view.frame.size.height);
@@ -138,16 +136,16 @@ static DetailScrollViewController *detailInstance=nil;
 - (NSInteger)calculateIndexFromScrollViewOffSet{
     NSInteger index = 0;
     
-//    if (scrollView.contentOffset.x<0) {
-//        index=-1;
-//    }
-//    if (orientation==rightOrentation) {
-//        index = (int)(scrollView.contentOffset.x+320)/320;
-//    }
-//    else{
+    if (scrollView.contentOffset.x<0) {
+        index=-1;
+    }
+    if (orientation==rightOrentation) {
+        index = (int)(scrollView.contentOffset.x+320)/320;
+    }
+    else{
         index =(int)scrollView.contentOffset.x/320;
 
-//    }
+    }
     return index;
 }
 
@@ -220,6 +218,7 @@ static DetailScrollViewController *detailInstance=nil;
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     return YES;
 }
+
 
 
 /*
@@ -322,12 +321,14 @@ static DetailScrollViewController *detailInstance=nil;
 }
 */
 
+/*
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
-/*
+
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
     [self followerDismiss];
-    
+    NSLog(@"calculate---%d",[self calculateIndexFromScrollViewOffSet]);
+
     self.index=[self calculateIndexFromScrollViewOffSet];
 
 //    if (self.index==_index) {
@@ -365,7 +366,6 @@ static DetailScrollViewController *detailInstance=nil;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)_scrollView willDecelerate:(BOOL)decelerate{
-    NSLog(@"calculate---%d",[self calculateIndexFromScrollViewOffSet]);
 //    if (self.index==_index) {
 //        NSLog(@"self.index%d,_index%d",self.index,_index );
         SummlyDetailView *detailView =(SummlyDetailView*)[scrollView viewWithTag:10+self.index-1];
@@ -404,7 +404,6 @@ static DetailScrollViewController *detailInstance=nil;
 //    }
 
 }
-
 */
 
 - (void)didReceiveMemoryWarning
