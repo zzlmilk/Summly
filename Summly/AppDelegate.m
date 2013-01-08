@@ -34,6 +34,7 @@
     
     [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
     
+    
     MainViewController *summlyVC = [[MainViewController alloc]init];
     _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     

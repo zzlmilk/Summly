@@ -304,7 +304,7 @@
 #pragma mark --- UIScrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (!_itemSummlyType==home && !_itemSummlyType==add) {
+    if (_itemSummlyType==keywordEmpty) {
         if( scrollView.contentOffset.x <= -self.maxOffset){
             [self reloadSummly];
 
@@ -330,8 +330,8 @@
 
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{    
-    if (_itemSummlyType==home) {
-//        UITapGestureRecognizer *tapGestureRecognizer;
+    if (_itemSummlyType==home || _itemSummlyType==add) {
+
         if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
             return YES;
         }
