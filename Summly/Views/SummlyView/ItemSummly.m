@@ -54,6 +54,9 @@
         case home:
         {
             self.canMove = NO;
+
+            self.canRefish=NO;
+            
             bgImageView.image = [UIImage imageNamed:@"cl_1.png"];
             
             iconImageView.image=[UIImage imageNamed:@"icon_1.png"];
@@ -113,9 +116,9 @@
         }
         break;
         case saved:{
-            bgImageView.image = [UIImage imageNamed:@"cl_7.png"];
+            bgImageView.image = [UIImage imageNamed:@"cl_7"];
 
-            iconImageView.image = [UIImage imageNamed:@"icon_4.png"];
+            iconImageView.image = [UIImage imageNamed:@"icon_4"];
         }
         default:
         break;

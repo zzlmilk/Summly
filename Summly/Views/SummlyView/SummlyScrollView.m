@@ -12,6 +12,8 @@
 #import "Summly.h"
 #import "Topic.h"
 
+#import "BundleHelp.h"
+
 #define  INVALID_POSITION -1
 static const CGFloat kDefaultAnimationDuration = 0.3;
 static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction;
@@ -58,6 +60,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
 
 -(void)generateItems:(NSMutableArray *)topics{
     
+    [self.summlyItems removeAllObjects];
         
     Topic *homeTopic = [[Topic alloc]init];
     homeTopic.title = @"封面页";
@@ -83,6 +86,20 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         [self.summlyItems addObject:item];
     }
     
+    if ([self isHaveSavedItemSummly]) {
+        Topic *starTopic = [[Topic alloc]init];
+        starTopic.title = @"已保存摘要";
+        starTopic.subTitle=@"Saved Summary";
+        starTopic.status = 0;
+        
+        ItemSummly *starSummly = [[ItemSummly alloc] initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
+        starSummly.index=self.summlyItems.count;
+        starSummly.topic  = starTopic;
+        starSummly.itemSummlyType=saved;
+        starSummly.actionDelegate =delegate;
+        [self addSubview:starSummly];
+        [self.summlyItems addObject:starSummly];
+    }
     
     Topic *addtopic = [[Topic alloc]init];
     addItemSummly = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
@@ -94,26 +111,21 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self.summlyItems addObject:addItemSummly];
     
     
-    Topic *starTopic = [[Topic alloc]init];
-    starTopic.title = @"已保存摘要";
-    starTopic.subTitle=@"了解最新及趋势摘要";
-    starTopic.status = 0;
-
-    ItemSummly *starSummly = [[ItemSummly alloc] initWithFrame:[self _defaulItemSize:self.summlyItems.count]];
-    starSummly.index=self.summlyItems.count;
-    starSummly.topic  = starTopic;
-    starSummly.itemSummlyType=saved;
-    starSummly.actionDelegate =delegate;
-    [self addSubview:addItemSummly];
-    [self.summlyItems addObject:addItemSummly];
-    
-    
     self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
 
     
 }
 
+-(BOOL)isHaveSavedItemSummly{
 
+    NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
+    NSArray *arr = [NSArray arrayWithContentsOfFile:filename];
+
+    if (arr.count>0) {
+        return YES;
+    }
+    return NO;
+}
 
 -(void)generateOneItem:(Topic *)topic{
      //add item is the last item

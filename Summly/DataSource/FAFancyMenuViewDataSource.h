@@ -16,7 +16,6 @@
     
 }
 
-
--(id)initWithMeun:(FAFancyMenuView*)menu;
+-(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate;
 
 @end

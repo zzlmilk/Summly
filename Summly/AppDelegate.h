@@ -10,7 +10,6 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-   
 }
 
 

@@ -15,6 +15,7 @@
     
 }
 
++ (void)migrate:(NSString*)dbname to:(NSString*)newdbname queries:(NSString*)query_file;
 + (void)createEditableCopyOfDatabaseIfNeeded:(BOOL)force;
 + (void)deletePinsCache;
 

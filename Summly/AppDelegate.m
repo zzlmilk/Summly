@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "DBConnection.h"
+#import "BundleHelp.h"
+
 
 @implementation AppDelegate
 
@@ -41,8 +43,8 @@
 
     [DBConnection getSharedDatabase];
 
-//    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
-    
+    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
+
     return YES;
 }
 
@@ -76,7 +78,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-
 
 @end

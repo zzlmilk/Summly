@@ -8,6 +8,8 @@
 
 #import "SummlyDetailView.h"
 #import "AFNetworking.h"
+#import "BundleHelp.h"
+
 #define MarginDic 10
 
 @implementation SummlyDetailView
@@ -18,6 +20,12 @@
     self = [super initWithFrame:frame];
     if (self) {
     
+        mutableArr = [NSMutableArray array];
+
+        sinaShare = [[DDShare alloc] init];
+        
+        weixingShare = [[DDWeixing alloc] init];
+        
         self.summly =_summly;
         self.userInteractionEnabled=YES;
              //标题
@@ -95,11 +103,57 @@
         //花瓣
         _menu = [[FAFancyMenuView alloc] init];
         _menu.userInteractionEnabled=YES;
-        faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu];
+        faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self];
         [self addSubview:_menu];
 
     }
     return self;
+}
+
+//花瓣按钮
+-(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
+    NSLog(@"%d",index);
+    //新浪分享 内容待定
+    if (index==0) {
+        if (sinaShare.sinaWeibo.accessToken==nil) {
+            [sinaShare sinaLogin];
+            [sinaShare shareContentToSinaWeibo:@""];
+        }
+        else
+            [sinaShare shareContentToSinaWeibo:@""];
+        
+    }
+    //微信
+    else if (index==1) {
+        
+        [weixingShare sendMusicContent];
+    }
+    //收藏
+    else if (index==3) {        
+        NSArray *getDic;
+        
+        BOOL isExist = [BundleHelp fileManagerfileExistsAtPath:SUMMLY_NAME];
+        
+        if (isExist) {
+            NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
+            getDic = [NSArray arrayWithContentsOfFile:filename];
+            [mutableArr addObjectsFromArray:getDic];
+
+            NSLog(@"%@",self.summly.summlyDic);
+
+            [mutableArr addObject:self.summly.summlyDic];
+        }
+        else
+            [mutableArr addObject:self.summly.summlyDic];
+                    
+        [BundleHelp writeToFile:mutableArr toPath:SUMMLY_NAME];
+
+    }
+    //email
+    else if(index==2){
+    
+    
+    }
 }
 
 

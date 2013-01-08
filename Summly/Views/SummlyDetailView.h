@@ -13,10 +13,17 @@
 #import "FAFancyMenuView.h"
 #import "FAFancyMenuViewDataSource.h"
 
+#import "DDShare.h"
 
-@interface SummlyDetailView : UIView
+#import "DDWeixing.h"
+
+
+@interface SummlyDetailView : UIView<FAFancyMenuViewDelegate>
 {
     FAFancyMenuViewDataSource *faFancyMenuDataSource;
+    NSMutableArray *mutableArr;
+    DDShare *sinaShare;
+    DDWeixing *weixingShare;
 }
 
 @property(nonatomic,strong) UILabel *titleLabel;

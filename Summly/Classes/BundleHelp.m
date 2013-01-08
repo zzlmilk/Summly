@@ -7,6 +7,7 @@
 //
 
 #import "BundleHelp.h"
+#import "DBConnection.h"
 
 @implementation BundleHelp
 
@@ -27,7 +28,9 @@
     NSString *filename = [path stringByAppendingPathComponent:_path];
     
     NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:filename];  //读取数据
-    
+    NSLog(@"filename---%@",filename);
+    NSLog(@"dic---%@",dic);
+
     return dic;
 }
 
@@ -38,6 +41,39 @@
 
 }
 
++(void)moveOldPathToNewPath{
 
+    NSError *error;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentPath = [[self class] getBundlePath:MAIN_DATABASE_NAME];
+
+    NSString  *oldDBPath = [[NSBundle mainBundle] pathForResource:@"summlydatabase" ofType:@"sql"];
+    
+    BOOL success = [fileManager moveItemAtPath:oldDBPath toPath:documentPath error:&error];
+
+    NSLog(@"error%@,%d",error,success);
+}
+
++(void)writeToFile:(id)dic toPath:(NSString *)_path{
+//    NSString *error;
+    NSString *document = [[self class] getBundlePath:_path];
+
+    BOOL writeSuccess = [dic writeToFile:document atomically:YES ];
+
+    NSLog(@"writeSuccess%d",writeSuccess);
+}
+
++(BOOL)fileManagerfileExistsAtPath:(NSString *)_path{
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *document = [[self class] getBundlePath:_path];
+    
+    if ([fileManager fileExistsAtPath:document]) {
+        return YES;
+    }
+
+    return NO;
+}
 
 @end

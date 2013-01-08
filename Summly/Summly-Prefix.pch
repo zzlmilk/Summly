@@ -23,4 +23,7 @@
 
 #define Version @"1.0"
 
+
+#define SUMMLY_NAME @"summly.plist"
+
 #define MAIN_DATABASE_NAME @"summlydatabase.sql"

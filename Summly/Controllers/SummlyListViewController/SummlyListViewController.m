@@ -10,8 +10,7 @@
 #import "SummlyListViewController.h"
 #import "Summly.h"
 #import <QuartzCore/QuartzCore.h>
-
-
+#import "BundleHelp.h"
 
 
 @interface SummlyListViewController ()
@@ -24,8 +23,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-           }
+
+
+    }
     return self;
 }
 
@@ -37,6 +37,8 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
+    _summlys = [NSMutableArray array];
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -45,23 +47,39 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
 
+    if (self.isFav) {
+        NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
+        NSArray *arr = [NSArray arrayWithContentsOfFile:filename];
 
-    
-    [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.topic.topicId] ,@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
-        
-        
-        self.summlysArr=summlys;
+        for (int i=0; i<arr.count; i++) {
+            
+            Summly *summly = [[Summly alloc] initWithAttributes:[arr objectAtIndex:i]];
+            [_summlys addObject:summly];
+        }
+        self.summlysArr = _summlys;
         [tableView reloadData];
-        
 
         //生成detailView
         detailScrollVC = [[DetailScrollViewController alloc] init];
         detailScrollVC.summlyArr = self.summlysArr;
-    }];
 
-  
+    }
+    else
+    {
+        [Summly getSummlysParameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",self.topic.topicId] ,@"topic_id", nil] WithBlock:^(NSMutableArray *summlys) {
+            
+            
+            self.summlysArr=summlys;
+            [tableView reloadData];
+            
 
-      
+            //生成detailView
+            detailScrollVC = [[DetailScrollViewController alloc] init];
+            detailScrollVC.summlyArr = self.summlysArr;
+        }];
+
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{

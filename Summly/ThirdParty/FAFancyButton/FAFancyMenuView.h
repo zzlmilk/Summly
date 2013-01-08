@@ -17,6 +17,7 @@
 @property (nonatomic, assign) id<FAFancyMenuViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *buttonImages;
 @property (nonatomic) BOOL onScreen;
+@property (nonatomic) BOOL isSelect;
 - (void)show;
 - (void)hide;
 - (void)handleTap:(UITapGestureRecognizer *)tap;
