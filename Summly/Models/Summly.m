@@ -17,7 +17,7 @@
 -(id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
     if (self) {
-
+        
         self.summlyDic= attributes;
         self.topicId = [[attributes objectForKey:@"topic_id"] intValue];
         self.title = [attributes objectForKey:@"title"];
@@ -29,17 +29,17 @@
             self.scource = @"雅虎通讯";
         else
             self.scource = [attributes objectForKey:@"source"];//来源
-
+        
         if (![[attributes objectForKey:@"url"]isKindOfClass:[NSString class]])
             self.sourceUrl = @"";
         else
             self.sourceUrl = [attributes objectForKey:@"url"];
-
+        
         if (![[attributes objectForKey:@"imageUrl"] isKindOfClass:[NSString class]])
             self.imageUrl =@"";
         else
             self.imageUrl = [attributes objectForKey:@"imageUrl"];
-
+        
         if (![[attributes objectForKey:@"time"]isKindOfClass:[NSString class]])
             self.time = @"";
         else{
@@ -48,7 +48,7 @@
             //年-月-日
             self.time = [self stringReplace];
             self.interval = [self timeIntervalFromNow:_summlyTime];
-
+            
         }
     }
     
@@ -58,13 +58,13 @@
 //年-月-日
 - (NSString *)stringReplace{
     NSString *timeNow;
-
+    
     NSRange range = NSMakeRange(4, 1);
     NSRange range1 = NSMakeRange(7, 1);
     
     timeNow = [self.time stringByReplacingOccurrencesOfString:@"-" withString:@"年" options:NSCaseInsensitiveSearch range:range];
     timeNow = [timeNow stringByReplacingOccurrencesOfString:@"-" withString:@"月" options:NSBackwardsSearch range:range1];
-
+    
     timeNow = [timeNow stringByAppendingFormat:@"日"];
     
     return timeNow;
@@ -103,7 +103,7 @@
     [formatter setTimeZone:timeZone];
     [formatter setDateFormat: @"yyyy-MM-dd"];
     NSDate *date = [formatter dateFromString:string];
-
+    
     return date;
 }
 
@@ -112,13 +112,13 @@
     NSMutableArray *summlyArr = [Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]];
     if (summlyArr.count>0) {
         block(summlyArr);
-
+        
     }else{
         [[SummlyAPIClient sharedClient] getPath:@"summly/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
             NSArray *responseArr = (NSArray*)responseObject;
-                    
+            
             for (int i=0;i<responseArr.count;i++) {
                 Summly *summly = [[Summly alloc] initWithAttributes:[[responseArr objectAtIndex:i] objectForKey:@"summly"]];
                 [summlyArr addObject:summly];
@@ -127,11 +127,11 @@
             if (block) {
                 block(summlyArr);
             }
-
-//            NSLog(@"%@",responseObject);
+            
+            //            NSLog(@"%@",responseObject);
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"%@",error);
+            NSLog(@"%@",error);
             block([Summly summlysWithParameters:[[parameters objectForKey:@"topic_id"] intValue]]);
         }];
     }
@@ -161,13 +161,13 @@
     NSMutableArray *summlys = [[NSMutableArray alloc]initWithCapacity:15];
     
     static Statement *stmt = nil;
-   if (stmt == nil) {
+    if (stmt == nil) {
         stmt = [DBConnection statementWithQuery:"SELECT * FROM summly_table WHERE topic_id=?"];
-       
+        
     }
     
     [stmt bindInt32:topicId forIndex:1];
-
+    
     while ([stmt step] == SQLITE_ROW) {
         Summly *p = [Summly initWithStatement:stmt] ;
         [summlys addObject:p];
@@ -182,7 +182,7 @@
     if (stmt == nil) {
         stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
     }
-
+    
     [stmt bindInt32:self.topicId forIndex:1];
     [stmt bindString:self.title forIndex:2];
     [stmt bindString:self.describe forIndex:3];

@@ -322,6 +322,10 @@ static DetailScrollViewController *detailInstance=nil;
 */
 
 /*
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)_scrollView{
+    lastOffsetX=0;
+}
+
 #pragma mark--
 #pragma mark-- ScrollViewDelegate
 

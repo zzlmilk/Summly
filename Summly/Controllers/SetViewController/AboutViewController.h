@@ -2,7 +2,7 @@
 //  AboutViewController.h
 //  Summly
 //
-//  Created by Mars on 13-1-2.
+//  Created by zzlmilk on 13-1-4.
 //  Copyright (c) 2013年 zzlmilk. All rights reserved.
 //
 
