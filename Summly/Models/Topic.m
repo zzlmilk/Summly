@@ -53,7 +53,7 @@
     else{
         [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (debug) {
-                NSLog(@"%@",responseObject);
+//                NSLog(@"%@",responseObject);
             }
             //路径下document下是否存在
             if (![fileManager fileExistsAtPath:filename]) {

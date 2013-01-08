@@ -48,15 +48,8 @@
     [self.view addSubview:tableView];
 
     if (self.isFav) {
-        NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
-        NSArray *arr = [NSArray arrayWithContentsOfFile:filename];
-
-        for (int i=0; i<arr.count; i++) {
-            
-            Summly *summly = [[Summly alloc] initWithAttributes:[arr objectAtIndex:i]];
-            [_summlys addObject:summly];
-        }
-        self.summlysArr = _summlys;
+       
+        self.summlysArr = [Summly summlysFaviWithParameters];
         [tableView reloadData];
 
         //生成detailView

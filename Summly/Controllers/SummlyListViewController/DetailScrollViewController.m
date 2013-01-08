@@ -219,7 +219,10 @@ static DetailScrollViewController *detailInstance=nil;
     return YES;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)_scrollView{
+    self.index=[self calculateIndexFromScrollViewOffSet];
 
+}
 
 /*
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView{

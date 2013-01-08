@@ -58,6 +58,7 @@
 //    NSString *error;
     NSString *document = [[self class] getBundlePath:_path];
 
+//    NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:dic format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
     BOOL writeSuccess = [dic writeToFile:document atomically:YES ];
 
     NSLog(@"writeSuccess%d",writeSuccess);

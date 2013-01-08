@@ -26,4 +26,7 @@
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *summlys))block;
 -(void)insertDB;
+-(void)insertFavDB:(Summly *)_summly;
+- (void)deleteFaviDB:(Summly *)_summly;
++(NSMutableArray *)summlysFaviWithParameters;
 @end

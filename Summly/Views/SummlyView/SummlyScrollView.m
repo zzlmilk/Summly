@@ -87,7 +87,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         [self.summlyItems addObject:item];
     }
     
-    if ([self isHaveSavedItemSummly]) {
+    NSArray *summlys = [Summly summlysFaviWithParameters];
+    if ([summlys count]>0) {
         Topic *starTopic = [[Topic alloc]init];
         starTopic.title = @"已保存摘要";
         starTopic.subTitle=@"Saved Summary";

@@ -154,6 +154,29 @@
     return s;
     
 }
+-(void)insertDB{
+    static Statement *stmt = nil;
+    if (stmt == nil) {
+        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
+    }
+    
+    [stmt bindInt32:self.topicId forIndex:1];
+    [stmt bindString:self.title forIndex:2];
+    [stmt bindString:self.describe forIndex:3];
+    [stmt bindString:self.scource forIndex:4];
+    [stmt bindString:self.imageUrl forIndex:5];
+    [stmt bindString:self.time forIndex:6];
+    [stmt bindString:interval forIndex:7];
+    [stmt bindInt32:self.idenId forIndex:8];
+    
+    
+    int step = [stmt step];
+    if (step != SQLITE_DONE) {
+		NSLog(@"insert error errorcode =%d ",step);
+    }
+    [stmt reset];
+    
+}
 
 
 +(NSMutableArray *)summlysWithParameters:(NSInteger)topicId{
@@ -177,10 +200,13 @@
     
 }
 
--(void)insertDB{
+#pragma mark--
+#pragma mark-- 收藏
+-(void)insertFavDB:(Summly *)_summly{
+    
     static Statement *stmt = nil;
     if (stmt == nil) {
-        stmt = [DBConnection statementWithQuery:"INSERT INTO summly_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
+        stmt = [DBConnection statementWithQuery:"INSERT INTO collect_table (topic_id,title,content,source,image_url,time,interval,identifieId) VALUES(?,?,?,?,?,?,?,?)"];
     }
     
     [stmt bindInt32:self.topicId forIndex:1];
@@ -191,15 +217,50 @@
     [stmt bindString:self.time forIndex:6];
     [stmt bindString:interval forIndex:7];
     [stmt bindInt32:self.idenId forIndex:8];
-
+    
     
     int step = [stmt step];
     if (step != SQLITE_DONE) {
 		NSLog(@"insert error errorcode =%d ",step);
     }
     [stmt reset];
+}
+
+- (void)deleteFaviDB:(Summly *)_summly{
+    static Statement *stmt = nil;
+    if (stmt == nil) {
+        stmt = [DBConnection statementWithQuery:"DELETE FROM collect_table WHERE  identifieId= ?"];
+    }
+    
+    [stmt bindInt32:self.idenId forIndex:1];
+    
+    int step = [stmt step];
+    if (step != SQLITE_DONE) {
+		NSLog(@"insert error errorcode =%d ",step);
+    }
+    [stmt reset];
+}
+
++(NSMutableArray *)summlysFaviWithParameters{
+    
+    NSMutableArray *summlys = [[NSMutableArray alloc]init];
+    
+    static Statement *stmt = nil;
+    if (stmt == nil) {
+        stmt = [DBConnection statementWithQuery:"SELECT * FROM collect_table"];
+    }
+    
+//    [stmt bindInt32:identifieId forIndex:8];
+    
+    while ([stmt step] == SQLITE_ROW) {
+        Summly *p = [Summly initWithStatement:stmt] ;
+        [summlys addObject:p];
+    }
+    [stmt reset];
+    return summlys;
     
 }
+
 
 
 @end

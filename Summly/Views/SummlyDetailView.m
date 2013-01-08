@@ -20,6 +20,7 @@
     self = [super initWithFrame:frame];
     if (self) {
     
+
         mutableArr = [NSMutableArray array];
 
         sinaShare = [[DDShare alloc] init];
@@ -100,9 +101,12 @@
         [self addSubview:acticleView];
         
         //花瓣
+//        NSArray *imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
+//        NSArray *imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave"]];
         _menu = [[FAFancyMenuView alloc] init];
         _menu.userInteractionEnabled=YES;
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self];
+//        _menu.buttonImages=images;
         [self addSubview:_menu];
 
     }
@@ -129,29 +133,34 @@
     }
     //收藏
     else if (index==3) {        
-        NSArray *getDic;
-        
-        BOOL isExist = [BundleHelp fileManagerfileExistsAtPath:SUMMLY_NAME];
-        
-        if (isExist) {
-            NSString *filename = [BundleHelp getBundlePath:SUMMLY_NAME];
-            getDic = [NSArray arrayWithContentsOfFile:filename];
-            [mutableArr addObjectsFromArray:getDic];
 
-//            NSLog(@"%@",self.summly.summlyDic);
+        BOOL isFav=NO;
+        NSMutableArray *identiIdArr = [NSMutableArray array];
 
-            [mutableArr addObject:self.summly.summlyDic];
+        NSArray *summlyArr = [Summly summlysFaviWithParameters];
+        for (int i=0; i<summlyArr.count; i++) {
+            Summly *sum = [summlyArr objectAtIndex:i];
+            [identiIdArr addObject:[NSNumber numberWithInt:sum.idenId]];
+            NSNumber *idenId;
+            for (idenId in identiIdArr) {
+                if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
+                    [self.summly deleteFaviDB:sum];
+                    isFav=YES;
+//                    NSLog(@"已收藏%d",self.summly.idenId);
+                }
+                
+            }
         }
-        else
-            [mutableArr addObject:self.summly.summlyDic];
-                    
-        [BundleHelp writeToFile:mutableArr toPath:SUMMLY_NAME];
+
+        if(isFav==NO){
+//            NSLog(@"未收藏");
+            [self.summly insertFavDB:summly];
+        }
 
     }
     //email
     else if(index==2){
         
-    
     }
 }
 
