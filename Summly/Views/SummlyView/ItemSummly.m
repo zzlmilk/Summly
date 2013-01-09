@@ -56,6 +56,9 @@
             self.canMove = NO;
 
             self.canRefish=NO;
+            UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(54, 0, 2, 200)];
+            [verticalLine setImage:[UIImage imageNamed:@"verticalLine.png"]];
+            [bgImageView addSubview:verticalLine];
             
             bgImageView.image = [UIImage imageNamed:@"cl_1.png"];
             
@@ -86,9 +89,9 @@
             selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
             
-            UIImageView *jiantou = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou.png"]];
-            [jiantou setFrame:CGRectMake(250, 45, 6.5, 11)];
-            [bgImageView addSubview:jiantou];
+//            UIImageView *jiantou = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou.png"]];
+//            [jiantou setFrame:CGRectMake(250, 45, 6.5, 11)];
+//            [bgImageView addSubview:jiantou];
         }
             break;
         case manageAdd:{
@@ -179,7 +182,7 @@
         
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 45, 300, 20)];
         titleLabel.text = @"titile";
-        titleLabel.font = [UIFont systemFontOfSize:13];
+        titleLabel.font = [UIFont systemFontOfSize:15];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.backgroundColor = [UIColor clearColor];
         [bgImageView addSubview:titleLabel];

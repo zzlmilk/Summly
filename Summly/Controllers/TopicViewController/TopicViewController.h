@@ -13,6 +13,10 @@
 
 @interface TopicViewController : BaseViewController<ItemSummlyActionDelegate>{
     UIScrollView *scrollView;
+    
+    UIButton *imgTutorials1Button;
+    UIButton *imgTutorials2Button;
+    UIButton *imgTutorials3Button;
 }
 
 
