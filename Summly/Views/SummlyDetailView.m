@@ -44,12 +44,12 @@
         imageBackView.userInteractionEnabled=YES;
         [self addSubview:imageBackView];
 
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, imageBackView.frame.size.height-110, frame.size.width-20, 100)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, imageBackView.frame.size.height-110+40, frame.size.width-20, 60)];
         titleLabel.userInteractionEnabled=YES;
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setNumberOfLines:0];
 //        [titleLabel setFont:[UIFont systemFontOfSize:20]];
-        [titleLabel setFont:[UIFont fontWithName:@"Hei SC" size:20]];
+        [titleLabel setFont:[UIFont fontWithName:@"Hei SC" size:25]];
         [titleLabel setTextColor:[UIColor whiteColor]];
 //        titleLabel.shadowColor = [UIColor blackColor];
 //        titleLabel.shadowOffset = CGSizeMake(0, 0.8);
@@ -91,7 +91,7 @@
         
         UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
-        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
+        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:17]];
         articleLabel.text = self.summly.describe;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
