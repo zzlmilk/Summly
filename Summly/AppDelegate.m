@@ -30,6 +30,9 @@
     [self.window addSubview:[self _randomBackground]];
 
     
+    [DBConnection getSharedDatabase];
+    
+    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
     
     
     MainViewController *summlyVC = [[MainViewController alloc]init];
@@ -41,11 +44,8 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
-    [DBConnection getSharedDatabase];
-
-    [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
-
     
+
     return YES;
 }
 
@@ -79,7 +79,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-
 
 @end

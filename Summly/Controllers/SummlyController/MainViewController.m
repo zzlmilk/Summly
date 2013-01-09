@@ -115,6 +115,8 @@
 #pragma mark ---- ItemSummlyActionDelegate
 -(void)ItemSummlydidTap:(ItemSummly *)itemSummly{
     if (itemSummly.itemSummlyType == home) {
+        
+        
         [mainSummlyView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
     else if(itemSummly.itemSummlyType ==add){

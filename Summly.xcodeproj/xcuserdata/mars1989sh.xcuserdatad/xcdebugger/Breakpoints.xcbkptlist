@@ -8,14 +8,52 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Summly/Controllers/SetViewController/SetViewController.m"
-         timestampString = "378811658.13945"
+         timestampString = "379272511.067555"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "281"
-         endingLineNumber = "281"
-         landmarkName = "-bactToTopic"
+         startingLineNumber = "288"
+         endingLineNumber = "288"
+         landmarkName = "-DetectionUpdates"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Summly/DataSource/FAFancyMenuViewDataSource.m"
+         timestampString = "379262380.958804"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "@implementation FAFancyMenuViewDataSource"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Summly/Views/SummlyDetailView.m"
+         timestampString = "379263583.841983"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
+         landmarkName = "-fancyMenu:didSelectedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Summly/Classes/Shares/Services/DDWeixing.m"
+         timestampString = "379263706.26536"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "14"
+         endingLineNumber = "14"
+         landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
-
 </Bucket>

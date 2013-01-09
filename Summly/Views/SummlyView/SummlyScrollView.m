@@ -74,6 +74,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     homeItemSummly.topic  = homeTopic;
     homeItemSummly.itemSummlyType  = home;
     homeItemSummly.actionDelegate = delegate;
+    homeItemSummly.userInteractionEnabled=YES;
     [self addSubview:homeItemSummly];
     [self.summlyItems addObject:homeItemSummly];
     
@@ -86,7 +87,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         [self.summlyItems addObject:item];
     }
     
-    if ([self isHaveSavedItemSummly]) {
+    NSArray *summlys = [Summly summlysFaviWithParameters];
+    if ([summlys count]>0) {
         Topic *starTopic = [[Topic alloc]init];
         starTopic.title = @"已保存摘要";
         starTopic.subTitle=@"Saved Summary";

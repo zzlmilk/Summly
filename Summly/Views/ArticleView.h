@@ -11,8 +11,8 @@
 
 @interface ArticleView : UIView
 {
-    UIView *acticleView;
+    
 }
 
-- (id)initWithFrame:(CGRect)frame summly:(Summly *)_summly;
+- (id)initWithFrame:(CGRect)frame summlys:(NSArray *)_summlys;
 @end

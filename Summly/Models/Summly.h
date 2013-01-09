@@ -21,9 +21,12 @@
 @property(nonatomic,strong)NSString *interval;
 @property(nonatomic,strong)NSString *time;
 
-
+@property(nonatomic) NSInteger idenId;
 - (id)initWithAttributes:(NSDictionary *)attributes;
 
 +(void)getSummlysParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *summlys))block;
 -(void)insertDB;
+-(void)insertFavDB:(Summly *)_summly;
+- (void)deleteFaviDB:(Summly *)_summly;
++(NSMutableArray *)summlysFaviWithParameters;
 @end

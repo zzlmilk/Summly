@@ -46,7 +46,7 @@
     scrollView.pagingEnabled=YES;
     [self.view addSubview:scrollView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin, Margin, self.view.frame.size.width-Margin*2, 100)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin, 38, self.view.frame.size.width-Margin*2, 100)];
     [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:22]];
     titleLabel.numberOfLines=0;
     titleLabel.text = self.summly.title;
@@ -84,15 +84,18 @@
     [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
     [scrollView addSubview:timeIntervalLabel];
 
+    UIImageView *lineImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, timeIntervalLabel.frame.size.height+timeIntervalLabel.frame.origin.y+Margin, 300,1)];
+    lineImage.image= [UIImage imageNamed:@"fengexian.png"];
+    [scrollView addSubview:lineImage];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin,pulisherLabel.frame.size.height+pulisherLabel.frame.origin.y+Margin , self.view.frame.size.width-Margin*2, 400)];
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, 400)];
     [textLabel setBackgroundColor:[UIColor clearColor]];
     textLabel.numberOfLines=0;
     textLabel.text = self.summly.describe;
     [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
     [textLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
     [textLabel sizeToFit];
-    [self.view addSubview:textLabel];
+    [scrollView addSubview:textLabel];
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-38, 0, 38, 40)];
