@@ -121,8 +121,8 @@
 		89849DFA169436EE00866FE9 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89849DF9169436ED00866FE9 /* phone@2x.png */; };
 		89849DFC1694375300866FE9 /* about-eparated@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89849DFB1694375200866FE9 /* about-eparated@2x.png */; };
 		89849E02169459DA00866FE9 /* cover-arrow-new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89849E01169459D800866FE9 /* cover-arrow-new@2x.png */; };
-		89CF546216A15C88006C7ED0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF546116A15C88006C7ED0 /* libsqlite3.0.dylib */; };
 		89CF546516A15CFD006C7ED0 /* summlydatabase.sql in Resources */ = {isa = PBXBuildFile; fileRef = 89CF546416A15CFD006C7ED0 /* summlydatabase.sql */; };
+		89CF54E716A1D124006C7ED0 /* TutorialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CF54E616A1D124006C7ED0 /* TutorialsViewController.m */; };
 		89D6B5FA16932CD9004341CB /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D6B5F916932CD9004341CB /* Update.m */; };
 		AE071B8F169D06F400530F95 /* verticalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE071B8E169D06F400530F95 /* verticalLine@2x.png */; };
 		AE544F201699175C0048E6F7 /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF52A16998C13004262B1 /* Statement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -337,12 +337,12 @@
 		89849DF9169436ED00866FE9 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		89849DFB1694375200866FE9 /* about-eparated@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-eparated@2x.png"; sourceTree = "<group>"; };
 		89849E01169459D800866FE9 /* cover-arrow-new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover-arrow-new@2x.png"; sourceTree = "<group>"; };
-		89CF546116A15C88006C7ED0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		89CF546416A15CFD006C7ED0 /* summlydatabase.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = summlydatabase.sql; sourceTree = "<group>"; };
+		89CF54E516A1D124006C7ED0 /* TutorialsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialsViewController.h; sourceTree = "<group>"; };
+		89CF54E616A1D124006C7ED0 /* TutorialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialsViewController.m; sourceTree = "<group>"; };
 		89D6B5F816932CD8004341CB /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
 		89D6B5F916932CD9004341CB /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
 		AE071B8E169D06F400530F95 /* verticalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verticalLine@2x.png"; sourceTree = "<group>"; };
-		AE071B91169D0B9400530F95 /* summlydatabase.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = summlydatabase.sql; sourceTree = "<group>"; };
 		AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = "<absolute>"; };
 		AE768D0516A08F1A007D173B /* cell-add-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-add-icon@2x.png"; sourceTree = "<group>"; };
 		AE768D0716A08F83007D173B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -477,6 +477,8 @@
 				04831CC1167C525A00BE99AB /* SetViewController.m */,
 				89849DF1169433BB00866FE9 /* AboutViewController.h */,
 				89849DF2169433BB00866FE9 /* AboutViewController.m */,
+				89CF54E516A1D124006C7ED0 /* TutorialsViewController.h */,
+				89CF54E616A1D124006C7ED0 /* TutorialsViewController.m */,
 			);
 			path = SetViewController;
 			sourceTree = "<group>";
@@ -1208,6 +1210,7 @@
 				C8F27390169BB1DE0081266C /* TitleView.m in Sources */,
 				AE897C5416A112E00017BDE1 /* TextLayoutLabel.m in Sources */,
 				C8F27394169BB5C30081266C /* SummlyDetailUniteView.m in Sources */,
+				89CF54E716A1D124006C7ED0 /* TutorialsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "SetViewController.h"
 #import "Update.h"
 #import "AboutViewController.h"
+#import "TutorialsViewController.h"
 @interface SetViewController ()
 @property (nonatomic, strong) FAFancyMenuView *menu;
 @end
@@ -65,31 +66,31 @@
     
     //添加教程图片
     
-    imgTutorials1Button = [UIButton buttonWithType:UIButtonTypeCustom];
-    imgTutorials1Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
-    [imgTutorials1Button setBackgroundImage:[UIImage imageNamed:@"tutorials1.png"] forState:UIControlStateNormal];
-    [imgTutorials1Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
-    imgTutorials1Button.hidden = YES;
-    imgTutorials1Button.tag = 1;
-    [self.view addSubview:imgTutorials1Button];
-    
-    
-    imgTutorials2Button = [UIButton buttonWithType:UIButtonTypeCustom];
-    imgTutorials2Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
-    [imgTutorials2Button setBackgroundImage:[UIImage imageNamed:@"tutorials2.png"] forState:UIControlStateNormal];
-    [imgTutorials2Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
-    imgTutorials2Button.hidden = YES;
-    imgTutorials2Button.tag = 2;
-    [self.view addSubview:imgTutorials2Button];
-    
-    
-    imgTutorials3Button = [UIButton buttonWithType:UIButtonTypeCustom];
-    imgTutorials3Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
-    [imgTutorials3Button setBackgroundImage:[UIImage imageNamed:@"tutorials3.png"] forState:UIControlStateNormal];
-    [imgTutorials3Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
-    imgTutorials3Button.hidden = YES;
-    imgTutorials3Button.tag = 3;
-    [self.view addSubview:imgTutorials3Button];
+//    imgTutorials1Button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    imgTutorials1Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
+//    [imgTutorials1Button setBackgroundImage:[UIImage imageNamed:@"tutorials1.png"] forState:UIControlStateNormal];
+//    [imgTutorials1Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+//    imgTutorials1Button.hidden = YES;
+//    imgTutorials1Button.tag = 1;
+//    [self.view addSubview:imgTutorials1Button];
+//    
+//    
+//    imgTutorials2Button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    imgTutorials2Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
+//    [imgTutorials2Button setBackgroundImage:[UIImage imageNamed:@"tutorials2.png"] forState:UIControlStateNormal];
+//    [imgTutorials2Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+//    imgTutorials2Button.hidden = YES;
+//    imgTutorials2Button.tag = 2;
+//    [self.view addSubview:imgTutorials2Button];
+//    
+//    
+//    imgTutorials3Button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    imgTutorials3Button = [[UIButton alloc]initWithFrame:CGRectMake(-1,-45,321,460)];
+//    [imgTutorials3Button setBackgroundImage:[UIImage imageNamed:@"tutorials3.png"] forState:UIControlStateNormal];
+//    [imgTutorials3Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+//    imgTutorials3Button.hidden = YES;
+//    imgTutorials3Button.tag = 3;
+//    [self.view addSubview:imgTutorials3Button];
     
     
 }
@@ -292,25 +293,27 @@
 //教程
 -(void)Tutorial
 {
-    imgTutorials1Button.hidden = NO;
+    //imgTutorials1Button.hidden = NO;
+    TutorialsViewController *tutorialsViewController = [[TutorialsViewController alloc]init];
+    [self.navigationController pushViewController:tutorialsViewController animated:NO];
 }
-
--(void)checkTutorials :(UIButton *)button
-{
-    if (button.tag == 1) {
-        imgTutorials1Button.hidden = YES;
-        imgTutorials2Button.hidden = NO;
-        imgTutorials3Button.hidden = YES;
-    }else if(button.tag == 2){
-        imgTutorials1Button.hidden = YES;
-        imgTutorials2Button.hidden = YES;
-        imgTutorials3Button.hidden = NO;
-    }else if(button.tag == 3){
-        imgTutorials1Button.hidden = YES;
-        imgTutorials2Button.hidden = YES;
-        imgTutorials3Button.hidden = YES;
-    }
-}
+//
+//-(void)checkTutorials :(UIButton *)button
+//{
+//    if (button.tag == 1) {
+//        imgTutorials1Button.hidden = YES;
+//        imgTutorials2Button.hidden = NO;
+//        imgTutorials3Button.hidden = YES;
+//    }else if(button.tag == 2){
+//        imgTutorials1Button.hidden = YES;
+//        imgTutorials2Button.hidden = YES;
+//        imgTutorials3Button.hidden = NO;
+//    }else if(button.tag == 3){
+//        imgTutorials1Button.hidden = YES;
+//        imgTutorials2Button.hidden = YES;
+//        imgTutorials3Button.hidden = YES;
+//    }
+//}
 
 
 //关于
