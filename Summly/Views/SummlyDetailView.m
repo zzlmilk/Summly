@@ -19,7 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-    
+        isFavorite=NO;
 
         mutableArr = [NSMutableArray array];
 
@@ -100,13 +100,14 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
+        
         //花瓣
-//        NSArray *imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
-//        NSArray *imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave"]];
+        imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
+        imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave"]];
+
         _menu = [[FAFancyMenuView alloc] init];
         _menu.userInteractionEnabled=YES;
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self];
-//        _menu.buttonImages=images;
         [self addSubview:_menu];
 
     }
@@ -115,7 +116,6 @@
 
 //花瓣按钮
 -(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    NSLog(@"%d",index);
     //新浪分享 内容待定
     if (index==0) {
         if (sinaShare.sinaWeibo.accessToken==nil) {
@@ -133,29 +133,35 @@
     }
     //收藏
     else if (index==3) {        
-
-        BOOL isFav=NO;
-        NSMutableArray *identiIdArr = [NSMutableArray array];
-
-        NSArray *summlyArr = [Summly summlysFaviWithParameters];
-        for (int i=0; i<summlyArr.count; i++) {
-            Summly *sum = [summlyArr objectAtIndex:i];
-            [identiIdArr addObject:[NSNumber numberWithInt:sum.idenId]];
-            NSNumber *idenId;
-            for (idenId in identiIdArr) {
-                if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
-                    [self.summly deleteFaviDB:sum];
-                    isFav=YES;
-//                    NSLog(@"已收藏%d",self.summly.idenId);
-                }
-                
-            }
+        isFavorite = [self isFavDidSearchIdFromSql];//已经收藏删除
+        
+        if (isFavorite) {
+//            _menu.buttonImages=imagesUnSave;
         }
-
-        if(isFav==NO){
-//            NSLog(@"未收藏");
+        else if(isFavorite==NO){//未收藏
+            NSLog(@"收藏");
+//            _menu.buttonImages=imagesSave;
             [self.summly insertFavDB:summly];
         }
+        
+        
+//        NSMutableArray *identiIdArr = [NSMutableArray array];
+//        NSArray *summlyArr = [Summly summlysFaviWithParameters];
+//        for (int i=0; i<summlyArr.count; i++) {
+//            Summly *sum = [summlyArr objectAtIndex:i];
+//            [identiIdArr addObject:[NSNumber numberWithInt:sum.idenId]];
+//            NSNumber *idenId;
+//            for (idenId in identiIdArr) {
+//                if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
+//                    [self.summly deleteFaviDB:sum];
+//                    isFav=YES;
+////                    NSLog(@"已收藏%d",self.summly.idenId);
+//                }
+//                
+//            }
+//        }
+
+
 
     }
     //email
@@ -164,6 +170,29 @@
     }
 }
 
+//搜索是否搜藏，返回yes，已收藏
+- (BOOL)isFavDidSearchIdFromSql{
+    BOOL isFav=NO;
+
+    NSMutableArray *identiIdArr = [NSMutableArray array];
+    
+    NSArray *summlyArr = [Summly summlysFaviWithParameters];
+    for (int i=0; i<summlyArr.count; i++) {
+        Summly *sum = [summlyArr objectAtIndex:i];
+        [identiIdArr addObject:[NSNumber numberWithInt:sum.idenId]];
+        NSNumber *idenId;
+        for (idenId in identiIdArr) {
+            if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
+                [self.summly deleteFaviDB:sum];
+                isFav=YES;
+                NSLog(@"删除%d",self.summly.idenId);
+            }
+            
+        }
+    }
+
+    return isFav;
+}
 
 - (void)dismissDetailViewAnimate:(void (^)())block{
 

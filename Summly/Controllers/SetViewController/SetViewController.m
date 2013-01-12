@@ -39,7 +39,7 @@
     [_button addTarget:self action:@selector(bactToTopic) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc]initWithCustomView:_button];
     //
-    NSString *version = [NSString stringWithFormat:@"检查更新：当前版本为%@",Version];
+    NSString *version = [NSString stringWithFormat:@"检查更新：当前版本为%@",VersionSummly];
     
     NSArray *accountArray = [NSArray arrayWithObjects:@"新浪微博", @"微信",nil];
     NSArray *shareArray = [NSArray arrayWithObjects:version,@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆新闻",@"关注@豆豆新闻",nil];
