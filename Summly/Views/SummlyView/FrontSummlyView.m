@@ -17,7 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        int y = self.frame.size.height-225;
+        int y = self.frame.size.height-205;
         
         self.coverArr=[[NSDictionary alloc] init];
        [Cover getDefaultCoverParameters:nil WithBlock:^(NSMutableArray *summlys) {
@@ -84,7 +84,7 @@
         UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 0, 140, 66)];
         timeLabel.backgroundColor = [UIColor clearColor];
         timeLabel.text = day;
-        timeLabel.font = [UIFont fontWithName:@"Trebuchet-BoldItalic" size:60];
+        timeLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:60];
         
         
         timeLabel.textColor = [UIColor whiteColor];
@@ -107,8 +107,7 @@
                            fromDate:date];
         
         NSInteger weekday = [comps weekday]; // 星期几（注意，周日是“1”，周一是“2”。。。。）
-        NSArray *weekdic = [[NSArray alloc] initWithObjects:@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期天",nil];
-        
+        NSArray *weekdic = [[NSArray alloc] initWithObjects:@"星期天",@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",nil];
         UILabel *unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 60, 200, 35)];
         unreadLabel.backgroundColor = [UIColor clearColor];
         unreadLabel.text = [weekdic objectAtIndex:weekday-1];
