@@ -73,7 +73,7 @@
     lineSpaceStyle.valueSize = sizeof(lineSpace);
     lineSpaceStyle.value =&lineSpace;
     //设置文本段间距
-    CGFloat paragraphSpacing = 5.0;
+    CGFloat paragraphSpacing = 0;
     CTParagraphStyleSetting paragraphSpaceStyle;
     paragraphSpaceStyle.spec = kCTParagraphStyleSpecifierParagraphSpacing;
     paragraphSpaceStyle.valueSize = sizeof(CGFloat);

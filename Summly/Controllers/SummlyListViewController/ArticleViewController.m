@@ -94,7 +94,7 @@
     
     CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:15] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
     float textHeight = (int)size.height/17*4 +size.height;
-    NSLog(@"textLabelHeight %f",size.height);
+//    NSLog(@"textLabelHeight %f",size.height);
     TextLayoutLabel *textLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, textHeight)];
     [textLabel setBackgroundColor:[UIColor yellowColor]];
     textLabel.numberOfLines=0;
