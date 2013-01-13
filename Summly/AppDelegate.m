@@ -29,12 +29,17 @@
    
     [self.window addSubview:[self _randomBackground]];
 
-    
-    [DBConnection getSharedDatabase];
-    
+//    isFirst = [[[NSUserDefaults standardUserDefaults] objectForKey:@"isFirst"] boolValue];
+//    
+//    if (isFirst==NO) {
     [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
-    
-    
+    [DBConnection getSharedDatabase];
+        
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirst"];
+//
+//    }
+       
+
 //    MainViewController *summlyVC = [[MainViewController alloc]init];
 //    _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     

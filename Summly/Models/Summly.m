@@ -35,7 +35,8 @@
         else
             self.sourceUrl = [attributes objectForKey:@"url"];
         
-        if (![[attributes objectForKey:@"imageUrl"] isKindOfClass:[NSString class]])
+        NSString *imgUrl = [attributes objectForKey:@"imageUrl"];
+        if (![imgUrl isKindOfClass:[NSString class]] || imgUrl.length<1)
             self.imageUrl =@"";
         else
             self.imageUrl = [attributes objectForKey:@"imageUrl"];

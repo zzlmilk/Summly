@@ -108,7 +108,10 @@ static DetailScrollViewController *detailInstance=nil;
 
 //到达某篇文章
 - (void)setScrollOffset:(NSInteger)index{
+    
     [scrollView setContentOffset:CGPointMake(self.view.frame.size.width*index, 0)];
+    NSLog(@"index %f, contentOffset %f",self.view.frame.size.width*index, scrollView.contentOffset.x);
+
 }
 
 

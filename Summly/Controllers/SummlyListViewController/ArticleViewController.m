@@ -10,6 +10,7 @@
 #import "SummlyDetailView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "TextLayoutLabel.h"
 #define Margin 15
 #define MarginDic 10
 @interface ArticleViewController ()
@@ -88,13 +89,19 @@
     lineImage.image= [UIImage imageNamed:@"fengexian.png"];
     [scrollView addSubview:lineImage];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, 400)];
-    [textLabel setBackgroundColor:[UIColor clearColor]];
+    NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *commentStr = [self.summly.describe stringByTrimmingCharactersInSet:characterSet];
+    
+    CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:15] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
+    float textHeight = (int)size.height/17*4 +size.height;
+    NSLog(@"textLabelHeight %f",size.height);
+    TextLayoutLabel *textLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, textHeight)];
+    [textLabel setBackgroundColor:[UIColor yellowColor]];
     textLabel.numberOfLines=0;
     textLabel.text = self.summly.describe;
     [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
     [textLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
-    [textLabel sizeToFit];
+//    [textLabel sizeToFit];
     [scrollView addSubview:textLabel];
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];

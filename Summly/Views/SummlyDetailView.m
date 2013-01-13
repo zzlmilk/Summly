@@ -120,10 +120,10 @@
     if (index==0) {
         if (sinaShare.sinaWeibo.accessToken==nil) {
             [sinaShare sinaLogin];
-            [sinaShare shareContentToSinaWeibo:@""];
+            [sinaShare shareContentToSinaWeibo:self.summly.title];
         }
         else
-            [sinaShare shareContentToSinaWeibo:@""];
+            [sinaShare shareContentToSinaWeibo:self.summly.title];
         
     }
     //微信

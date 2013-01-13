@@ -48,7 +48,7 @@ typedef enum {
 +(id)sharedInstance;
 
 - (void)setScrollOffset:(NSInteger)index;
-
+@property(nonatomic,strong)     UIScrollView *scrollView;
 @property(nonatomic,strong) NSArray *summlyArr;
 @property(nonatomic) NSInteger index;
 @end
