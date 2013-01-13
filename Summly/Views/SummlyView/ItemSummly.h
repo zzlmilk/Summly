@@ -36,6 +36,7 @@ typedef enum {
     UIImageView *overBgImageView;
     UIImageView *selectImageView ;
     UIImageView *iconImageView;
+    UIImageView *doudouImageView;
     
     CGColorRef itemColorRef;
     

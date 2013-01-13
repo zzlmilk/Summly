@@ -21,7 +21,7 @@
 
 #define Plist @"topic.plist"
 
-#define Version @"1.0"
+#define VersionSummly @"1.0"
 
 
 #define SUMMLY_NAME @"summly.plist"

@@ -79,6 +79,35 @@
         [scrollView addSubview:item];
     }
     scrollView.contentSize = CGSizeMake(self.view.frame.size.width, (ItemSummlyHeight+DistanceMargin)*(self.topicsArr.count+2)-30);
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];;
+    //添加教程图片
+    
+    imgTutorials1Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    imgTutorials1Button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height)];
+    [imgTutorials1Button setBackgroundImage:[UIImage imageNamed:@"tutorials1.png"] forState:UIControlStateNormal];
+    [imgTutorials1Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+    imgTutorials1Button.hidden = YES;
+    imgTutorials1Button.tag = 1;
+    [window addSubview:imgTutorials1Button];
+    
+    
+    imgTutorials2Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    imgTutorials2Button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height)];
+    [imgTutorials2Button setBackgroundImage:[UIImage imageNamed:@"tutorials2.png"] forState:UIControlStateNormal];
+    [imgTutorials2Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+    imgTutorials2Button.hidden = YES;
+    imgTutorials2Button.tag = 2;
+    [window addSubview:imgTutorials2Button];
+    
+    
+    imgTutorials3Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    imgTutorials3Button = [[UIButton alloc]initWithFrame:CGRectMake(0,0,320,self.view.frame.size.height)];
+    [imgTutorials3Button setBackgroundImage:[UIImage imageNamed:@"tutorials3.png"] forState:UIControlStateNormal];
+    [imgTutorials3Button addTarget:self action:@selector(checkTutorials:) forControlEvents:UIControlEventTouchDown];
+    imgTutorials3Button.hidden = YES;
+    imgTutorials3Button.tag = 3;
+    [window addSubview:imgTutorials3Button];
 }
 
 
@@ -89,12 +118,37 @@
     [self.navigationController pushViewController:topViewController animated:YES];
 }
 
+//教程
+-(void)Tutorial
+{
+    imgTutorials1Button.hidden = NO;
+}
+
+-(void)checkTutorials :(UIButton *)button
+{
+    if (button.tag == 1) {
+        imgTutorials1Button.hidden = YES;
+        imgTutorials2Button.hidden = NO;
+        imgTutorials3Button.hidden = YES;
+    }else if(button.tag == 2){
+        imgTutorials1Button.hidden = YES;
+        imgTutorials2Button.hidden = YES;
+        imgTutorials3Button.hidden = NO;
+    }else if(button.tag == 3){
+        imgTutorials1Button.hidden = YES;
+        imgTutorials2Button.hidden = YES;
+        imgTutorials3Button.hidden = YES;
+    }
+}
+
+
 #pragma mark--
 #pragma mark-- ItemSummlydelegate
 -(void)ItemSummlydidTap:(ItemSummly * )itemSummly{
     if (itemSummly.itemSummlyType==manageAdd) {
         
-        NSLog(@"产生新话题");
+        [self Tutorial];
+    
     }
     else if(itemSummly.itemSummlyType==manage){
         itemSummly.topic.status = !itemSummly.topic.status;

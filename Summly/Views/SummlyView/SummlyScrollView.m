@@ -63,8 +63,8 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self.summlyItems removeAllObjects];
         
     Topic *homeTopic = [[Topic alloc]init];
-    homeTopic.title = @"封面页";
-    homeTopic.subTitle=@"了解最新及趋势摘要";
+    homeTopic.title = @"封面页   CoverPage";
+    homeTopic.subTitle=@"向右扫动刷新所有内容";
     homeTopic.status = 0;
     
     

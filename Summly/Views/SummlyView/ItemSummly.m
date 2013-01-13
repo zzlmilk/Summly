@@ -56,10 +56,13 @@
             self.canMove = NO;
 
             self.canRefish=NO;
+            UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(98.5, 13, 1, 100)];
+            [verticalLine setImage:[UIImage imageNamed:@"verticalLine.png"]];
+            [bgImageView addSubview:verticalLine];
             
             bgImageView.image = [UIImage imageNamed:@"cl_1.png"];
             
-            iconImageView.image=[UIImage imageNamed:@"icon_1.png"];
+            iconImageView.image=[UIImage imageNamed:@""];
         }
             break;
         case add:
@@ -67,7 +70,8 @@
             self.canMove = NO;
             
             iconImageView.image=[UIImage imageNamed:@""];
-
+            doudouImageView.image=[UIImage imageNamed:@""];
+            
             bgImageView.image = [UIImage imageNamed:@"action-cell"];
             UIImageView *addImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell-add.png"]];
             addImageView.frame =CGRectMake(self.frame.size.width/2-34, self.frame.size.height/2-34/2, 34, 34);
@@ -78,17 +82,17 @@
             self.canMove = NO;
 //            self.canRefish=NO;
             iconImageView.image=[UIImage imageNamed:@""];
-
-            titleLabel.frame=CGRectMake(50, 39, 300, 20);
-            describeLabel.text=nil;
+            doudouImageView.image=[UIImage imageNamed:@""];
             
+            titleLabel.frame=CGRectMake(50, 33, 300, 20);
+            describeLabel.frame=CGRectMake(titleLabel.frame.origin.x, 55, 300, 20);
             
             selectImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 37, 23, 24)];
             [bgImageView addSubview:selectImageView];
             
-            UIImageView *jiantou = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou.png"]];
-            [jiantou setFrame:CGRectMake(250, 45, 6.5, 11)];
-            [bgImageView addSubview:jiantou];
+//            UIImageView *jiantou = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"jiantou.png"]];
+//            [jiantou setFrame:CGRectMake(250, 45, 6.5, 11)];
+//            [bgImageView addSubview:jiantou];
         }
             break;
         case manageAdd:{
@@ -96,7 +100,8 @@
 //            self.canRefish=NO;
 
             iconImageView.image=[UIImage imageNamed:@""];
-
+            doudouImageView.image=[UIImage imageNamed:@""];
+            
             titleLabel.text=nil;
             describeLabel.text=nil;
             
@@ -108,9 +113,9 @@
             
             UILabel *defineLabel = [[UILabel alloc] initWithFrame:CGRectMake(addImageView.frame.size.width+addImageView.frame.origin.x+LeftMargin, 39, 160, 20)];
             [defineLabel setFont:[UIFont systemFontOfSize:16]];
-            [defineLabel setText:@"点击这里创建新话题"];
+            [defineLabel setText:@"点击查看使用教程"];
             [defineLabel setBackgroundColor:[UIColor clearColor]];
-            [defineLabel setTextColor:[UIColor colorWithRed:98/255.0f green:98/255.0f blue:98/255.0f alpha:1.0f]];
+            [defineLabel setTextColor:[UIColor colorWithRed:172/255.0f green:172/255.0f blue:172/255.0f alpha:1.0f]];
             [bgImageView addSubview:defineLabel];
 
         }
@@ -130,11 +135,15 @@
     
     if (isSelected==YES) {
         bgImageView.image =[UIImage imageNamed: randomImageName];
+        titleLabel.textColor = [UIColor whiteColor];
+        describeLabel.textColor = [UIColor whiteColor];
         [selectImageView setImage:[UIImage imageNamed:@"check-box-checked.png"]];
 
     }
     else{
         bgImageView.image = [UIImage imageNamed:@"action-cell"];
+        titleLabel.textColor = [UIColor colorWithRed:172/255.0f green:172/255.0f blue:172/255.0f alpha:1.0f];
+        describeLabel.textColor=titleLabel.textColor;
         [selectImageView setImage:[UIImage imageNamed:@"check-box.png"]];
     }
   
@@ -177,18 +186,21 @@
         bgImageView.image = [UIImage imageNamed:randomImageName];
         [self addSubview:bgImageView];
         
-        titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 45, 300, 20)];
+        doudouImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 45, 26, 26)];
+        [doudouImageView setImage:[UIImage imageNamed:@"doudou.png"]];
+        [bgImageView addSubview:doudouImageView];
+        
+        
+        titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10+doudouImageView.frame.size.width+doudouImageView.frame.origin.x, 45, 300, 20)];
         titleLabel.text = @"titile";
-        titleLabel.font = [UIFont systemFontOfSize:13];
+        titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:16];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.backgroundColor = [UIColor clearColor];
-        [bgImageView addSubview:titleLabel];
+        [bgImageView addSubview:titleLabel];        
         
-        
-        
-        describeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 65, 300, 20)];
+        describeLabel = [[UILabel alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, 65, 300, 20)];
         describeLabel.text = @"describeLabel";
-        describeLabel.font = [UIFont systemFontOfSize:11];
+        describeLabel.font = [UIFont fontWithName:@"Heiti SC" size:12];
         describeLabel.textColor = [UIColor whiteColor];
         describeLabel.backgroundColor = [UIColor clearColor];
         describeLabel.alpha=0.85f;

@@ -24,6 +24,8 @@
     NSMutableArray *mutableArr;
     DDShare *sinaShare;
     DDWeixing *weixingShare;
+    BOOL isFavorite;
+    NSArray *imagesSave,*imagesUnSave;
 }
 
 @property(nonatomic,strong) UILabel *titleLabel;

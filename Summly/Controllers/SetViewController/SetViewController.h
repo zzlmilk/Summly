@@ -17,9 +17,9 @@
     DDShare *shareSina;
     UISwitch *switchView;
     
-    UIButton *imgTutorials1Button;
-    UIButton *imgTutorials2Button;
-    UIButton *imgTutorials3Button;
+//    UIButton *imgTutorials1Button;
+//    UIButton *imgTutorials2Button;
+//    UIButton *imgTutorials3Button;
     
 }
 
