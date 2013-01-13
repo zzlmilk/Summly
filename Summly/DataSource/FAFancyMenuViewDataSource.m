@@ -12,14 +12,20 @@
 @implementation FAFancyMenuViewDataSource
 
 
--(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate{
+-(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate isFavorite:(BOOL)isFavorite{
     self = [super init];
     if (self) {
-           NSArray *images = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
+
+        NSArray *images = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
+        NSArray *imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
+
         menu.delegate =delegate;
-        menu.buttonImages = images;
         
-        
+        if (isFavorite) {
+            menu.buttonImages = imagesUnSave;
+        }else{
+            menu.buttonImages=images;
+        }
         
     }
     return self;

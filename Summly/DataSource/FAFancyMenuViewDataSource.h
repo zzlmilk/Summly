@@ -16,6 +16,6 @@
     
 }
 
--(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate;
+-(id)initWithMeun:(FAFancyMenuView *)menu delegate:(id)delegate isFavorite:(BOOL)isFavorite;
 
 @end

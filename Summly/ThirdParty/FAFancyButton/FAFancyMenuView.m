@@ -105,9 +105,9 @@
 }
 
 - (void)setButtonImages:(NSArray *)buttonImages{
-    if (_buttonImages != buttonImages){
+//    if (_buttonImages != buttonImages){
         _buttonImages = buttonImages;
         [self addButtons];
-    }
+//    }
 }
 @end
