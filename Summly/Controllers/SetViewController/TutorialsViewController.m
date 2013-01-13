@@ -75,8 +75,18 @@ int kNumberOfPages = 3;
     if ((NSNull *)view == [NSNull null]) {
 		//UIImage *image = [dataSource imageAtIndex:page];
         
-        NSString *imageName = [NSString stringWithFormat:@"tutorials%d.png",page+1];
-        UIImage *image =  [UIImage imageNamed:imageName];
+        
+        UIImage *image = Nil;
+        if (self.view.frame.size.height > 480) {
+            NSString *imageName = [NSString stringWithFormat:@"tutorials%d.png",page+1];
+            image =  [UIImage imageNamed:imageName];
+            NSLog(@"iphone5");
+        }else{
+            NSString *imageName = [NSString stringWithFormat:@"tutorials%d.png",page+1];
+            image =  [UIImage imageNamed:imageName];
+            NSLog(@"iphone4");
+        }
+
         
         view = [[UIImageView alloc] initWithImage:image];
         [imageViews replaceObjectAtIndex:page withObject:view];
