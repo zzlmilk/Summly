@@ -100,7 +100,7 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
-       isFavorite =  [self isFavDidSearchIdFromSql];
+       isFavorite =  [self isFavDidSearchIdFromSql];//是否存在
         imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
         _menu.buttonImages = imagesUnSave;
         imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
@@ -136,8 +136,8 @@
         isFavorite = [self isFavDidSearchIdFromSql];//已经收藏删除
         
         if (isFavorite) {
-            _menu.buttonImages=imagesSave;
             NSLog(@"删除%d",self.summly.idenId);
+            _menu.buttonImages=imagesSave;
             [self.summly deleteFaviDB:summly];
         }
         else if(isFavorite==NO){//未收藏
@@ -145,7 +145,6 @@
             _menu.buttonImages=imagesUnSave;
             [self.summly insertFavDB:summly];
         }
-        
         
 //        NSMutableArray *identiIdArr = [NSMutableArray array];
 //        NSArray *summlyArr = [Summly summlysFaviWithParameters];
@@ -157,6 +156,7 @@
 //                if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
 //                    [self.summly deleteFaviDB:sum];
 //                    isFav=YES;
+////                    NSLog(@"已收藏%d",self.summly.idenId);
 //                }
 //                
 //            }
@@ -185,6 +185,7 @@
         for (idenId in identiIdArr) {
             if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
                 isFav=YES;
+
             }
             
         }

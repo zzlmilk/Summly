@@ -7,6 +7,7 @@
 //
 
 #import "TutorialsViewController.h"
+#import "MainViewController.h"
 
 @interface TutorialsViewController ()
 
@@ -21,7 +22,6 @@ int kNumberOfPages = 3;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
         int pageControlHeight = 10;
 		scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -42, self.view.frame.size.width, self.view.frame.size.height - pageControlHeight)];
 		pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - pageControlHeight-50, self.view.frame.size.width, pageControlHeight)];
@@ -58,6 +58,7 @@ int kNumberOfPages = 3;
 		// load the page on either side to avoid flashes when the user starts scrolling
 		[self loadScrollViewWithPage:0];
 		[self loadScrollViewWithPage:1];
+
         
     }
     return self;
@@ -157,8 +158,6 @@ int kNumberOfPages = 3;
 - (void)viewDidLoad
 {
     self.navigationController.navigationBarHidden = YES;
-
-    
     
     UIButton *btnleft = [UIButton buttonWithType: UIButtonTypeCustom];
     btnleft.frame = CGRectMake(0, 0, 50, 30);
@@ -170,11 +169,82 @@ int kNumberOfPages = 3;
     
     UIButton *btnright = [UIButton buttonWithType: UIButtonTypeCustom];
     btnright.frame = CGRectMake(260, 8, 50, 30);
+
+    
     [btnright setTitle:@"X" forState:UIControlStateNormal];
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:btnright];
     self.navigationItem.rightBarButtonItem = rightBtn;
     [btnright addTarget:self action:@selector(cellBack) forControlEvents:UIControlEventTouchUpInside];
 	// Do any additional setup after loading the view.
+    
+//    [btnright setTitle:@"BB" forState:UIControlStateNormal];
+//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:btnright];
+//    self.navigationItem.rightBarButtonItem = rightBtn;
+//    [btnright addTarget:self action:@selector(cellBack) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(260, -20, 50, 50);
+
+    [btn setTitle:@"" forState:UIButtonTypeCustom];
+    [btn addTarget:self action:@selector(zoomInAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    //添加视图
+    NSString *Isloging = ([[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"])?[[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"]:@"";
+    int size =0;
+    if([Isloging intValue] ==1)
+    {
+        size = 20;
+    }else{
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"isloging"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    int pageControlHeight = 10;
+    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20+size, self.view.frame.size.width, self.view.frame.size.height - pageControlHeight)];
+    pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - pageControlHeight-20, self.view.frame.size.width, pageControlHeight)];
+    
+    [self.view addSubview:scrollView];
+    [self.view addSubview:pageControl];
+    [self.view addSubview:btn];
+    
+
+
+    NSMutableArray *views = [[NSMutableArray alloc] init];
+    for (unsigned i = 0; i < kNumberOfPages; i++) {
+        [views addObject:[NSNull null]];
+    }
+    self.imageViews = views;
+    
+    
+    // a page is the width of the scroll view
+    scrollView.pagingEnabled = YES;
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * kNumberOfPages, scrollView.frame.size.height);
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.scrollsToTop = NO;
+    scrollView.delegate = self;
+    
+    pageControl.numberOfPages = kNumberOfPages;
+    pageControl.currentPage = 0;
+    pageControl.backgroundColor = [UIColor blackColor];
+    
+    // pages are created on demand
+    // load the visible page
+    // load the page on either side to avoid flashes when the user starts scrolling
+    [self loadScrollViewWithPage:0];
+    [self loadScrollViewWithPage:1];
+
+	// Do any additional setup after loading the view.
+}
+
+-(void)zoomInAction
+{
+    NSLog(@"button");
+    MainViewController *summlyVC = [[MainViewController alloc]init];
+    [self.navigationController pushViewController:summlyVC animated:NO];
+    
 }
 
 
