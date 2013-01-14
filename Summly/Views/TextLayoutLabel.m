@@ -37,6 +37,7 @@
 
 -(void) drawTextInRect:(CGRect)requestedRect
 {
+//    CTFramesetterSuggestFrameSizeWithConstraints
     //创建AttributeString
     NSMutableAttributedString *string =[[NSMutableAttributedString alloc]initWithString:self.text];
     //设置字体及大小

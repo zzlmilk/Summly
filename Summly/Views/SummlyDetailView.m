@@ -13,6 +13,8 @@
 
 #define MarginDic 10
 
+#define rangeLength 20*10
+
 @implementation SummlyDetailView
 @synthesize summly,imageBackView,titleLabel,acticleView;
 
@@ -89,11 +91,16 @@
         [timeIntervalLabel sizeToFit];
         [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
         [acticleView addSubview:timeIntervalLabel];
-        
+         
+        NSString *contentStr =self.summly.describe;
+        contentStr = [contentStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+        NSString *content  = [contentStr substringWithRange:NSMakeRange(0, rangeLength-10)];
+        content = [content stringByAppendingFormat:@"..."];
+        NSLog(@"count%d,%@",contentStr.length,content);
         TextLayoutLabel *articleLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
         [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
-        articleLabel.text = self.summly.describe;
+        articleLabel.text = content;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [articleLabel setBackgroundColor:[UIColor clearColor]];
@@ -111,6 +118,7 @@
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self isFavorite:isFavorite];
         [self addSubview:_menu];
 
+        
     }
     return self;
 }
