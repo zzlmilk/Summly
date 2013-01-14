@@ -9,6 +9,7 @@
 #import "SummlyDetailView.h"
 #import "AFNetworking.h"
 #import "BundleHelp.h"
+#import "TextLayoutLabel.h"
 
 #define MarginDic 10
 
@@ -89,9 +90,9 @@
         [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
         [acticleView addSubview:timeIntervalLabel];
         
-        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
+        TextLayoutLabel *articleLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
-        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:17]];
+        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
         articleLabel.text = self.summly.describe;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -136,12 +137,16 @@
         isFavorite = [self isFavDidSearchIdFromSql];//已经收藏删除
         
         if (isFavorite) {
-            NSLog(@"删除%d",self.summly.idenId);
+            if (zoeDebug) {
+                NSLog(@"删除%d",self.summly.idenId);
+            }
             _menu.buttonImages=imagesSave;
             [self.summly deleteFaviDB:summly];
         }
         else if(isFavorite==NO){//未收藏
-            NSLog(@"收藏");
+            if (zoeDebug) {
+                NSLog(@"收藏");
+            }
             _menu.buttonImages=imagesUnSave;
             [self.summly insertFavDB:summly];
         }
