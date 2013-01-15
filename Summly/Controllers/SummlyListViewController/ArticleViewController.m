@@ -56,7 +56,7 @@
     [titleLabel sizeToFit];
     [scrollView addSubview:titleLabel];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y+MarginDic, 30, 12)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y, 57/2, 57/2)];
     [iconImageView setImage:[UIImage imageNamed:@"publisherIcon.png"]];
     iconImageView.userInteractionEnabled=YES;
     [scrollView addSubview:iconImageView];

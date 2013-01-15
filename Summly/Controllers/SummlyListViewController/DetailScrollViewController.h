@@ -26,7 +26,7 @@ typedef enum {
 @interface DetailScrollViewController : UIViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
-    UIScrollView *scrollView;
+    UIScrollView *bgScrollView;
     
     
     NSDictionary *userInfo;

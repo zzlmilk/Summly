@@ -18,6 +18,7 @@
 
 //debug 1 开启  0 关闭
 #define debug 0
+#define zoeDebug 0
 
 #define Plist @"topic.plist"
 

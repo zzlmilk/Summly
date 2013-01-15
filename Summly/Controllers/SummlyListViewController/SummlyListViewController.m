@@ -39,6 +39,10 @@
     
     _summlys = [NSMutableArray array];
     
+//    UIImageView *listBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"listBg.png"]];
+//    [listBg setFrame:CGRectMake(0, -44, self.view.frame.size.width, self.view.frame.size.height)];
+//    [self.view addSubview:listBg];
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -47,6 +51,7 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
 
+    
     if (self.isFav) {
        
         self.summlysArr = [Summly summlysFaviWithParameters];

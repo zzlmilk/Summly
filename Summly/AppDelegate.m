@@ -27,6 +27,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor clearColor];
    
+    UIImageView *listBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"manageBg.png"]];
+    [listBg setFrame:CGRectMake(0, -44, self.window.frame.size.width, self.window.frame.size.height)];
+    [self.window addSubview:listBg];
+
     [self.window addSubview:[self _randomBackground]];
 
     [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];

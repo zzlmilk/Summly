@@ -9,8 +9,11 @@
 #import "SummlyDetailView.h"
 #import "AFNetworking.h"
 #import "BundleHelp.h"
+#import "CoreTextLabel.h"
 
 #define MarginDic 10
+
+#define rangeLength 20*10
 
 @implementation SummlyDetailView
 @synthesize summly,imageBackView,titleLabel,acticleView;
@@ -60,7 +63,7 @@
         acticleView = [[UIView alloc] initWithFrame:CGRectMake(0, imageBackView.frame.size.height, frame.size.width, frame.size.height-imageBackView.frame.size.height)];
         [acticleView setBackgroundColor:[UIColor whiteColor]];
         
-        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MarginDic, 18, 30, 12)];
+        UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(MarginDic, 4, 57/2, 57/2)];
         [iconImageView setImage:[UIImage imageNamed:@"publisherIcon.png"]];
         iconImageView.userInteractionEnabled=YES;
         [acticleView addSubview:iconImageView];
@@ -88,11 +91,15 @@
         [timeIntervalLabel sizeToFit];
         [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
         [acticleView addSubview:timeIntervalLabel];
+         
+        NSString *contentStr =self.summly.describe;
+        contentStr = [contentStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *content  = [contentStr substringWithRange:NSMakeRange(0, rangeLength-10)];
         
-        UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
+        CoreTextLabel *articleLabel = [[CoreTextLabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*2, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
         [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
-        articleLabel.text = self.summly.describe;
+        articleLabel.text = content;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [articleLabel setBackgroundColor:[UIColor clearColor]];
@@ -100,7 +107,7 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
-       isFavorite =  [self isFavDidSearchIdFromSql];//是否存在
+       isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
         imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
         _menu.buttonImages = imagesUnSave;
         imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
@@ -110,6 +117,9 @@
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self isFavorite:isFavorite];
         [self addSubview:_menu];
 
+        UIImageView *fingerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"click.png"]];
+        [fingerImageView setFrame:CGRectMake(260, self.frame.size.height-10-40, 73/2, 40)];
+        [self addSubview:fingerImageView];
     }
     return self;
 }
@@ -136,33 +146,19 @@
         isFavorite = [self isFavDidSearchIdFromSql];//已经收藏删除
         
         if (isFavorite) {
-            NSLog(@"删除%d",self.summly.idenId);
+            if (zoeDebug) {
+                NSLog(@"删除%d",self.summly.idenId);
+            }
             _menu.buttonImages=imagesSave;
             [self.summly deleteFaviDB:summly];
         }
         else if(isFavorite==NO){//未收藏
-            NSLog(@"收藏");
+            if (zoeDebug) {
+                NSLog(@"收藏");
+            }
             _menu.buttonImages=imagesUnSave;
             [self.summly insertFavDB:summly];
         }
-        
-//        NSMutableArray *identiIdArr = [NSMutableArray array];
-//        NSArray *summlyArr = [Summly summlysFaviWithParameters];
-//        for (int i=0; i<summlyArr.count; i++) {
-//            Summly *sum = [summlyArr objectAtIndex:i];
-//            [identiIdArr addObject:[NSNumber numberWithInt:sum.idenId]];
-//            NSNumber *idenId;
-//            for (idenId in identiIdArr) {
-//                if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
-//                    [self.summly deleteFaviDB:sum];
-//                    isFav=YES;
-////                    NSLog(@"已收藏%d",self.summly.idenId);
-//                }
-//                
-//            }
-//        }
-
-
 
     }
     //email
