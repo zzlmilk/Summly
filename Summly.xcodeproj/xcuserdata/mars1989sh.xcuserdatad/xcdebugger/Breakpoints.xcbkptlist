@@ -7,19 +7,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Summly/Controllers/SetViewController/SetViewController.m"
-         timestampString = "379272511.067555"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "288"
-         endingLineNumber = "288"
-         landmarkName = "-DetectionUpdates"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Summly/DataSource/FAFancyMenuViewDataSource.m"
          timestampString = "379262380.958804"
          startingColumnNumber = "9223372036854775807"
@@ -40,19 +27,6 @@
          startingLineNumber = "129"
          endingLineNumber = "129"
          landmarkName = "-fancyMenu:didSelectedButtonAtIndex:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Summly/Classes/Shares/Services/DDWeixing.m"
-         timestampString = "379263706.26536"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "14"
-         endingLineNumber = "14"
-         landmarkName = "-init"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

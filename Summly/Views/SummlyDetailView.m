@@ -91,7 +91,7 @@
         
         UILabel *articleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*3, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
-        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:17]];
+        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
         articleLabel.text = self.summly.describe;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -100,14 +100,14 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
-        
-        //花瓣
+       isFavorite =  [self isFavDidSearchIdFromSql];//是否存在
+        imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
+        _menu.buttonImages = imagesUnSave;
         imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
-        imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave"]];
-
+        //花瓣
         _menu = [[FAFancyMenuView alloc] init];
         _menu.userInteractionEnabled=YES;
-        faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self];
+        faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self isFavorite:isFavorite];
         [self addSubview:_menu];
 
     }
@@ -120,10 +120,10 @@
     if (index==0) {
         if (sinaShare.sinaWeibo.accessToken==nil) {
             [sinaShare sinaLogin];
-            [sinaShare shareContentToSinaWeibo:@""];
+            [sinaShare shareContentToSinaWeibo:self.summly.title];
         }
         else
-            [sinaShare shareContentToSinaWeibo:@""];
+            [sinaShare shareContentToSinaWeibo:self.summly.title];
         
     }
     //微信
@@ -136,14 +136,15 @@
         isFavorite = [self isFavDidSearchIdFromSql];//已经收藏删除
         
         if (isFavorite) {
-//            _menu.buttonImages=imagesUnSave;
+            NSLog(@"删除%d",self.summly.idenId);
+            _menu.buttonImages=imagesSave;
+            [self.summly deleteFaviDB:summly];
         }
         else if(isFavorite==NO){//未收藏
             NSLog(@"收藏");
-//            _menu.buttonImages=imagesSave;
+            _menu.buttonImages=imagesUnSave;
             [self.summly insertFavDB:summly];
         }
-        
         
 //        NSMutableArray *identiIdArr = [NSMutableArray array];
 //        NSArray *summlyArr = [Summly summlysFaviWithParameters];
@@ -183,9 +184,8 @@
         NSNumber *idenId;
         for (idenId in identiIdArr) {
             if ([[NSNumber numberWithInt:self.summly.idenId] isEqualToNumber:idenId]) {
-                [self.summly deleteFaviDB:sum];
                 isFav=YES;
-                NSLog(@"删除%d",self.summly.idenId);
+
             }
             
         }

@@ -10,7 +10,7 @@
 #import "MainViewController.h"
 #import "DBConnection.h"
 #import "BundleHelp.h"
-
+#import "TutorialsViewController.h"
 
 @implementation AppDelegate
 
@@ -29,14 +29,28 @@
    
     [self.window addSubview:[self _randomBackground]];
 
-    
-    [DBConnection getSharedDatabase];
-    
     [DBConnection createEditableCopyOfDatabaseIfNeeded:NO];
+    [DBConnection getSharedDatabase];
+       
+
+//    MainViewController *summlyVC = [[MainViewController alloc]init];
+//    _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
     
-    MainViewController *summlyVC = [[MainViewController alloc]init];
-    _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
+    NSString *Isloging = ([[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"])?[[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"]:@"";
+    
+    NSLog(@"Isloging:%@",Isloging);
+    
+    if ([Isloging intValue]!=1) {
+        TutorialsViewController *summlyVC = [[TutorialsViewController alloc]init];
+        _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
+        
+    }else{
+        MainViewController *summlyVC = [[MainViewController alloc]init];
+        _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
+    }
+        
+    
     
     [self.window setRootViewController:_navController];
     

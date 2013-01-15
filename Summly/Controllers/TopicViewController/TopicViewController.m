@@ -37,8 +37,8 @@
     self.title =@"添加话题";
     
     
-    MainViewController* m = (MainViewController*)[self.navigationController.viewControllers objectAtIndex:0];
-    m.isRestUI = YES;
+//    MainViewController* m = (MainViewController*)[self.navigationController.viewControllers objectAtIndex:0];
+//    m.isRestUI = YES;
     
     self.view.backgroundColor=[UIColor clearColor];
     
