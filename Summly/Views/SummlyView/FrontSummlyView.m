@@ -111,21 +111,21 @@
         UILabel *unreadLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 60, 200, 35)];
         unreadLabel.backgroundColor = [UIColor clearColor];
         unreadLabel.text = [weekdic objectAtIndex:weekday-1];
-        unreadLabel.font = [UIFont fontWithName:@"Thonburi" size:35];
+        unreadLabel.font = [UIFont fontWithName:@"Thonburi" size:33];
         unreadLabel.textColor = [UIColor whiteColor];
         [self addSubview:unreadLabel];
         
         
-        UILabel *doudouLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 97, 140, 14)];
+        UILabel *doudouLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 114, 140, 14)];
         doudouLabel.backgroundColor = [UIColor clearColor];
         doudouLabel.text = @"DOU DOU Technologies";
-        doudouLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:11];
+        doudouLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:10];
         doudouLabel.textColor = [UIColor whiteColor];
         [self addSubview:doudouLabel];
         
-        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 114, 170, 13)];
+        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 99, 200, 13)];
         summaryLabel.backgroundColor = [UIColor clearColor];
-        summaryLabel.text = @"豆豆科技新闻";
+        summaryLabel.text = @"豆 豆 科 技 咨 讯";
         summaryLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:13];
         summaryLabel.textColor = [UIColor whiteColor];
         [self addSubview:summaryLabel];
@@ -138,10 +138,15 @@
         //        [self addSubview:backImageView];
         
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,25,40,34)];
+        backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,25,35,30)];
         [backButton setBackgroundImage:[UIImage imageNamed:@"cover-arrow-new@2x.png"] forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(backbuttonCheck) forControlEvents:UIControlEventTouchDown];
         [self addSubview:backButton];
+        
+        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,y + 145,40,40)];
+        trendingImageView.image = [UIImage imageNamed:@"cove-logo.png"];//加载入图片
+        [self addSubview:trendingImageView];
+        
     }
     
     return self;

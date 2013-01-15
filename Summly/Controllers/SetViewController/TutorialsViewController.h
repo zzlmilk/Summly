@@ -17,6 +17,7 @@
 	
 	// To be used when scrolls originate from the UIPageControl
     BOOL pageControlUsed;
+    int kNumberOfPages;
 }
 
 @property (nonatomic, strong) NSMutableArray *imageViews;

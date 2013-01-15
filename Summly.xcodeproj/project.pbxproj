@@ -124,6 +124,7 @@
 		89CF546516A15CFD006C7ED0 /* summlydatabase.sql in Resources */ = {isa = PBXBuildFile; fileRef = 89CF546416A15CFD006C7ED0 /* summlydatabase.sql */; };
 		89CF54E716A1D124006C7ED0 /* TutorialsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CF54E616A1D124006C7ED0 /* TutorialsViewController.m */; };
 		89D6B5FA16932CD9004341CB /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D6B5F916932CD9004341CB /* Update.m */; };
+		89F7A77B16A5B30000B9D11C /* cove-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 89F7A77A16A5B30000B9D11C /* cove-logo.png */; };
 		AE071B8F169D06F400530F95 /* verticalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE071B8E169D06F400530F95 /* verticalLine@2x.png */; };
 		AE544F201699175C0048E6F7 /* Statement.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF52A16998C13004262B1 /* Statement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE544F211699175C0048E6F7 /* DBConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C82CF52C16998C13004262B1 /* DBConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -347,6 +348,7 @@
 		89CF54E616A1D124006C7ED0 /* TutorialsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialsViewController.m; sourceTree = "<group>"; };
 		89D6B5F816932CD8004341CB /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
 		89D6B5F916932CD9004341CB /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		89F7A77A16A5B30000B9D11C /* cove-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cove-logo.png"; sourceTree = "<group>"; };
 		AE071B8E169D06F400530F95 /* verticalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verticalLine@2x.png"; sourceTree = "<group>"; };
 		AE544F271699191F0048E6F7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libsqlite3.0.dylib; sourceTree = "<absolute>"; };
 		AE66188A16A4EBED0006DEB3 /* CoreTextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextLabel.h; sourceTree = "<group>"; };
@@ -932,6 +934,7 @@
 				896AA71E167DEA76006DBE88 /* cover-arrow@2x.png */,
 				89849E01169459D800866FE9 /* cover-arrow-new@2x.png */,
 				896AA724167DF741006DBE88 /* trending-label@2x.png */,
+				89F7A77A16A5B30000B9D11C /* cove-logo.png */,
 			);
 			name = button;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				AE66189716A4FAFC0006DEB3 /* manageBg@2x.png in Resources */,
 				AE66189A16A4FBE00006DEB3 /* 新闻图 01.jpg in Resources */,
 				AE66189B16A4FBE00006DEB3 /* 新闻图 00.jpg in Resources */,
+				89F7A77B16A5B30000B9D11C /* cove-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

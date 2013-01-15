@@ -16,7 +16,6 @@
 
 @implementation TutorialsViewController
 @synthesize imageViews;
-int kNumberOfPages = 3;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -100,6 +99,11 @@ int kNumberOfPages = 3;
 // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     pageControlUsed = NO;
+    int page = pageControl.currentPage;
+    //第4页的时候跳转
+    if (page == 3){
+        [self zoomInAction];return;
+    }
 }
 
 - (IBAction)changePage:(id)sender {
@@ -156,9 +160,11 @@ int kNumberOfPages = 3;
     if([Isloging intValue] ==1)
     {
         size = 20;
+        kNumberOfPages =3;
     }else{
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"isloging"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        kNumberOfPages =4;
     }
     
     int pageControlHeight = 10;
