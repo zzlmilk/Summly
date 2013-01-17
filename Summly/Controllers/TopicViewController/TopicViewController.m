@@ -155,26 +155,32 @@
         BOOL isSelect = itemSummly.topic.status;
         [itemSummly changeBackView:isSelect];
         
-        [self updatePlist:isSelect tag:itemSummly.tag];
+        [self updatePlist:isSelect tag:itemSummly plistString:PlistManage];
+        [self updatePlist:isSelect tag:itemSummly plistString:Plist];
+
     }
-    
 }
 
-//更新status状态--更新plist
-- (void)updatePlist:(BOOL)isSelect tag:(NSInteger)tag{
-
-    NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
+//更新status状态--更新plist      //首页plist顺序置顶  
+- (void)updatePlist:(BOOL)isSelect tag:(ItemSummly*)itemSummly plistString:(NSString *)plistStr{
+    
+    NSInteger _tag = itemSummly.tag;
+    NSDictionary *dic = [BundleHelp getDictionaryFromPlist:plistStr];
     NSMutableArray *arr = [NSMutableArray arrayWithArray:[dic objectForKey:@"topics"]];
     
-    NSMutableDictionary *dicManage =  [NSMutableDictionary dictionaryWithDictionary:[[arr objectAtIndex:tag] objectForKey:@"topic"]];
+    NSMutableDictionary *dicManage =  [NSMutableDictionary dictionaryWithDictionary:[[arr objectAtIndex:itemSummly.tag] objectForKey:@"topic"]];
     [dicManage setObject:[NSNumber numberWithBool:isSelect] forKey:@"status"];
     
-    [arr removeObjectAtIndex:tag];
-    [arr insertObject:[NSDictionary dictionaryWithObject:dicManage forKey:@"topic"] atIndex:tag];
+    [arr removeObjectAtIndex:itemSummly.tag];
+    
+    if ([plistStr isEqualToString:Plist] && isSelect==YES) {
+        _tag=0;
+    }
+    [arr insertObject:[NSDictionary dictionaryWithObject:dicManage forKey:@"topic"] atIndex:_tag];
     NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
     
     NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:lastDic format:NSPropertyListXMLFormat_v1_0 errorDescription:nil];
-    [dicData writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];
+    [dicData writeToFile:[BundleHelp getBundlePath:plistStr] atomically:YES];
 }
 
 - (void)didReceiveMemoryWarning

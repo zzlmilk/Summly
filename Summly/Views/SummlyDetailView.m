@@ -36,12 +36,12 @@
         imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
         NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10+1];
 
-        if (_summly.imageUrl!=nil) {
-            [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
-        }
-        else{
+      //  if (_summly.imageUrl!=nil) {
+       //     [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
+      //  }
+      //  else{
             imageBackView.image = [UIImage imageNamed:randomImageName];
-        }
+      //  }
         [imageBackView setContentMode:UIViewContentModeScaleAspectFill];
         imageBackView.clipsToBounds=YES;
         imageBackView.userInteractionEnabled=YES;

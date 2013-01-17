@@ -54,8 +54,8 @@
         case home:
         {
             self.canMove = NO;
-
             self.canRefish=NO;
+            
             UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(98.5, 13, 1, 100)];
             [verticalLine setImage:[UIImage imageNamed:@"verticalLine.png"]];
             [bgImageView addSubview:verticalLine];
@@ -121,10 +121,17 @@
         }
         break;
         case saved:{
+            self.canMove=NO;
             bgImageView.image = [UIImage imageNamed:@"cl_7"];
 
             iconImageView.image = [UIImage imageNamed:@"icon_4"];
         }
+        case approve:{
+        
+            bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
+
+        }
+        break;
         default:
         break;
     }
@@ -134,14 +141,14 @@
 - (void)changeBackView:(BOOL)isSelected{
     
     if (isSelected==YES) {
-        bgImageView.image =[UIImage imageNamed: randomImageName];
+        bgImageView.image =[UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
         titleLabel.textColor = [UIColor whiteColor];
         describeLabel.textColor = [UIColor whiteColor];
         [selectImageView setImage:[UIImage imageNamed:@"check-box-checked.png"]];
 
     }
     else{
-        bgImageView.image = [UIImage imageNamed:@"action-cell"];
+        bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_unselected_%d.png",self.topic.topicId,randomInt]];
         titleLabel.textColor = [UIColor colorWithRed:172/255.0f green:172/255.0f blue:172/255.0f alpha:1.0f];
         describeLabel.textColor=titleLabel.textColor;
         [selectImageView setImage:[UIImage imageNamed:@"check-box.png"]];
@@ -171,19 +178,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        
-        
+        randomInt = arc4random()%2;
                
         [self commonInit];
         [self _initVoice];
         
-    
-        
         self.userInteractionEnabled=YES;
         bgImageView= [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 300, 100)];
         bgImageView.userInteractionEnabled=YES;
-        randomImageName = [NSString stringWithFormat:@"cl_%d.png", arc4random() % 4+3];
-        bgImageView.image = [UIImage imageNamed:randomImageName];
+        bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
         [self addSubview:bgImageView];
         
         doudouImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 45, 26, 26)];

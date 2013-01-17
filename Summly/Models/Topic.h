@@ -29,7 +29,7 @@ typedef enum {
 
 
 //获取defalut的topic列表
-+(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *topics))block;
++(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *topics,NSMutableArray *topicsManage))block;
 
 
 @end

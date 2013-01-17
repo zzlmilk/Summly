@@ -82,6 +82,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         ItemSummly *item = [[ItemSummly alloc]initWithFrame:[self _defaulItemSize:i+1]];
         item.index =i+1;
         item.topic = [topics objectAtIndex:i];
+        item.itemSummlyType=approve;
         item.actionDelegate =delegate;
         [self addSubview:item];
         [self.summlyItems addObject:item];
@@ -267,6 +268,10 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     
     CGPoint point = [gestureRecognizer locationInView:self];
     int toIndex = [self itemPositionFromLocation:point];
+    ItemSummly *item = [_summlyItems objectAtIndex:toIndex];
+    if (!item.canMove) {
+        return;
+    }
     
     if (toIndex !=-1 || toIndex != _sortFuturePosition) {
         if (_sortMovingItem)
@@ -287,10 +292,10 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
              ];
             
             
-            
+            NSLog(@"Moving from--%d toIndex--%d",_sortFuturePosition,toIndex);
+
             [_summlyItems exchangeObjectAtIndex:_sortFuturePosition withObjectAtIndex:toIndex];
             _sortFuturePosition = toIndex;
-            
         }
         
     }
@@ -374,6 +379,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             NSLog(@"press long failed");
             break;
         case UIGestureRecognizerStateChanged:
+            
             [self itemSummlyDidMovedGestureRecongnzier:gestureRecognizer];
             break;
         default:

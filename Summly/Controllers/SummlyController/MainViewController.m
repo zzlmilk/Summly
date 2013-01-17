@@ -76,27 +76,48 @@
     
 }
 
+- (void)getTopicListFrom:(NSString *)plistStr{
+
+
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [summlyScrollView  restUI];
 
-    if (self.isRestUI) {
-        [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics) {
+//    if (self.isRestUI) {
+        [Topic getDefaultTopicsParameters:nil WithBlock:^(NSMutableArray *topics,NSMutableArray *topicsManage) {
             if (topics) {
-                topicsArr = topics;
+                topicsArr = topicsManage;
                 [summlyScrollView generateItems:topics];
-                self.isRestUI = NO;
+//                self.isRestUI = NO;
             }
         }];
-    }
-    else{
-        
-        [summlyScrollView generateItems:[NSMutableArray arrayWithArray:topicsArr]];
-
-
-    }
+//    }
+//    else{
+////        NSString *filename = [BundleHelp getBundlePath:Plist];
+//        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
+//
+//        if ([dic isKindOfClass:[NSDictionary class]]) {
+//            NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
+//            if (arr.count>0){
+//                NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+//                for (NSDictionary *attributes in arr){
+//                    Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
+//                    if (t.status==1) {
+//                        [topics addObject:t];
+//                    }
+//                }
+//
+//            }
+//        }
+//        
+//        [summlyScrollView generateItems:[NSMutableArray arrayWithArray:topics]];
+//
+//        self.topicsArr=topics;
+//
+//    }
     summlyScrollView.contentOffset=CGPointMake(0, 0);
      [self.navigationController setNavigationBarHidden:YES];        
 }
@@ -121,25 +142,7 @@
     }
     else if(itemSummly.itemSummlyType ==add){
         TopicViewController *topViewController = [[TopicViewController alloc]init];
-        
-        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
-        NSMutableArray *topics = [NSMutableArray array];
-
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
-            if (arr.count>0){
-                for (NSDictionary *attributes in arr){
-                    Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
-                    [topics addObject:t];
-                }
-            }
-            
-        }
-
-        topViewController.topicsArr=topics;
-
-//        topViewController.topicsArr=topicsArr;
-        
+        topViewController.topicsArr=topicsArr;
         [self.navigationController pushViewController:topViewController animated:YES];        
         /*
         Topic *t = [[Topic alloc]init];

@@ -23,7 +23,9 @@ typedef enum {
     home = 5,
     add = 6,
     manage=7,
-    manageAdd =8
+    manageAdd =8,
+    approve = 9
+    
 } ItemSummlyType;  //不同的类型有不同的背景图片
 
 
@@ -40,7 +42,7 @@ typedef enum {
     
     CGColorRef itemColorRef;
     
-    NSString *randomImageName;
+    NSInteger randomInt;
     
     CFURLRef		soundFileURLRef;
 	SystemSoundID	soundFileObject;

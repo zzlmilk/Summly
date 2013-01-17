@@ -26,69 +26,95 @@
 }
 
 
-+(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
++(void)getDefaultTopicsParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *, NSMutableArray *))block{
+    NSMutableArray *topics,*topicsManage;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filename = [BundleHelp getBundlePath:Plist];
+    NSString *fileNameManage = [BundleHelp getBundlePath:PlistManage];
     
     //路径下document下是否存在 存在读取，不存在写入
     if ([fileManager fileExistsAtPath:filename]) {
-        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
-        
-            if ([dic isKindOfClass:[NSDictionary class]]) {
-                NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
-                if (arr.count>0){
-                    NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
-                    for (NSDictionary *attributes in arr){
-                        Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
-                        if (t.status==1) {
-                            [topics addObject:t];
-                    }
-                }
-                block(topics);
-            }
-        }
+        NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];//首页plist
+        NSDictionary *dicMage = [BundleHelp getDictionaryFromPlist:PlistManage];
+                    
+        topics =  [[self class] dicnoaryInitWithItem:dic plistStr:Plist];
+        topicsManage = [[self class] dicnoaryInitWithItem:dicMage plistStr:PlistManage];
+        block(topics,topicsManage);
+
     }
-    
     else{
         [[SummlyAPIClient sharedClient] getPath:@"topic/index" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (debug) {
 //                NSLog(@"%@",responseObject);
             }
-            //路径下document下是否存在
-            if (![fileManager fileExistsAtPath:filename]) {
-                
-                 NSString *error;
-                
-                NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:responseObject format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
-                
-                BOOL success = [dicData writeToFile:filename atomically:YES];
-                if (!success) {
-                    NSLog(@"%@",error);
-                }
-                
-                NSLog(@"filewrite--success%d",success);
-            }
-        
+            
+            [[self class] writeToFileFileManager:fileManager fileName:filename writeData:responseObject];//写入主页数据
+            [[self class] writeToFileFileManager:fileManager fileName:fileNameManage writeData:responseObject];//写入topic管理界面数据
+
              NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
              if (arr.count>0){
                 NSMutableArray *topics = [NSMutableArray arrayWithCapacity:arr.count];
+                NSMutableArray *topicsManage = [NSMutableArray arrayWithCapacity:arr.count];
+
                  for (NSDictionary *attributes in arr){
                      Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
                      if (t.status==1) {
                          [topics addObject:t];
                      }
+                     [topicsManage addObject:t];
                  }
                  
-                    block(topics);
+                block(topics,topicsManage);
              }
         
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (debug) {
                 NSLog(@"%@",error);
             }
-            block(nil);
+            block(topics,topicsManage);
         }];
     }
+}
+
+//字典写入plist
++(void)writeToFileFileManager:(NSFileManager *)fileManager fileName:(NSString *)filename writeData:(id)responseObject{
+
+    //路径下document下是否存在
+    if (![fileManager fileExistsAtPath:filename]) {
+        
+        NSString *error;
+        
+        NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:responseObject format:NSPropertyListXMLFormat_v1_0 errorDescription:&error];
+        
+        BOOL success = [dicData writeToFile:filename atomically:YES];
+        if (!success) {
+            NSLog(@"%@",error);
+        }
+        
+        NSLog(@"filewrite--success%d",success);
+    }
+
+}
+
++(NSMutableArray *)dicnoaryInitWithItem:(NSDictionary *)dic plistStr:(NSString *)plistStr{
+    NSMutableArray *topics;
+    if ([dic isKindOfClass:[NSDictionary class]]) {
+        NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
+        if (arr.count>0){
+            topics = [NSMutableArray arrayWithCapacity:arr.count];
+            for (NSDictionary *attributes in arr){
+                Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
+                if ([plistStr isEqualToString:Plist]) {
+                    if (t.status==1) {
+                        [topics addObject:t];
+                    }
+                }
+                else
+                    [topics addObject:t];
+            }
+        }
+    }
+    return topics;
 }
 @end
