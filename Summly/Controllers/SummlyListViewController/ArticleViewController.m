@@ -79,7 +79,7 @@
     UILabel *timeIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(pulisherLabel.frame.size.width+pulisherLabel.frame.origin.x+MarginDic, pulisherLabel.frame.origin.y-1, 100, 16)];
     timeIntervalLabel.userInteractionEnabled=YES;
     [timeIntervalLabel setFont:[UIFont systemFontOfSize:11]];
-    [timeIntervalLabel setTextColor:[UIColor colorWithRed:0/255.0f green:0/255.0f blue:70/255.0f alpha:1.0f]];
+    [timeIntervalLabel setTextColor:[UIColor colorWithRed:180/255.0f green:180/255.0f blue:180/255.0f alpha:1.0f]];
     timeIntervalLabel.text=self.summly.time;
     [timeIntervalLabel sizeToFit];
     [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
@@ -93,7 +93,7 @@
     NSString *commentStr = [self.summly.describe stringByTrimmingCharactersInSet:characterSet];
     
     CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:15] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
-    float textHeight = (int)size.height/17*4 +size.height;
+    float textHeight = (int)size.height/17*6 +size.height;
 //    NSLog(@"textLabelHeight %f",size.height);
     TextLayoutLabel *textLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, textHeight)];
     [textLabel setBackgroundColor:[UIColor clearColor]];

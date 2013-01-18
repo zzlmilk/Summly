@@ -31,15 +31,15 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *filename = [BundleHelp getBundlePath:Plist];
-    NSString *fileNameManage = [BundleHelp getBundlePath:PlistManage];
+//    NSString *fileNameManage = [BundleHelp getBundlePath:PlistManage];
     
     //路径下document下是否存在 存在读取，不存在写入
     if ([fileManager fileExistsAtPath:filename]) {
         NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];//首页plist
-        NSDictionary *dicMage = [BundleHelp getDictionaryFromPlist:PlistManage];
-                    
+//        NSDictionary *dicMage = [BundleHelp getDictionaryFromPlist:PlistManage];
+        
         topics =  [[self class] dicnoaryInitWithItem:dic plistStr:Plist];
-        topicsManage = [[self class] dicnoaryInitWithItem:dicMage plistStr:PlistManage];
+        topicsManage = [[self class] dicnoaryInitWithItem:dic plistStr:PlistManage];
         block(topics,topicsManage);
 
     }
@@ -50,7 +50,7 @@
             }
             
             [[self class] writeToFileFileManager:fileManager fileName:filename writeData:responseObject];//写入主页数据
-            [[self class] writeToFileFileManager:fileManager fileName:fileNameManage writeData:responseObject];//写入topic管理界面数据
+//            [[self class] writeToFileFileManager:fileManager fileName:fileNameManage writeData:responseObject];//写入topic管理界面数据
 
              NSArray *arr  = (NSArray *)[responseObject objectForKey:@"topics"];
              if (arr.count>0){
@@ -103,15 +103,20 @@
         NSArray *arr  = (NSArray *)[dic objectForKey:@"topics"];
         if (arr.count>0){
             topics = [NSMutableArray arrayWithCapacity:arr.count];
+//                int i =0;
             for (NSDictionary *attributes in arr){
                 Topic *t = [[Topic alloc]initWithAttributes:[attributes objectForKey:@"topic"]];
+                            
                 if ([plistStr isEqualToString:Plist]) {
                     if (t.status==1) {
                         [topics addObject:t];
                     }
                 }
                 else
+                {
                     [topics addObject:t];
+                }
+//                i ++;
             }
         }
     }

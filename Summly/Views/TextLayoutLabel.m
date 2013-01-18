@@ -18,7 +18,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.characterSpacing = 2.0f;
-        self.linesSpacing = 6.0f;
+        self.linesSpacing = 8.0f;
     }
     return self;
 }

@@ -81,7 +81,9 @@
         case manage:{
             self.canMove = NO;
 //            self.canRefish=NO;
+          
             iconImageView.image=[UIImage imageNamed:@""];
+
             doudouImageView.image=[UIImage imageNamed:@""];
             
             titleLabel.frame=CGRectMake(50, 33, 300, 20);
@@ -122,12 +124,16 @@
         break;
         case saved:{
             self.canMove=NO;
-            bgImageView.image = [UIImage imageNamed:@"cl_7"];
+            bgImageView.image = [UIImage imageNamed:@"cl_7.png"];
 
             iconImageView.image = [UIImage imageNamed:@"icon_4"];
         }
+        break;
         case approve:{
         
+            if (self.topic.topicId>4) {
+                iconImageView.image = [UIImage imageNamed:@"icon_2.png"];
+            }
             bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
 
         }
@@ -257,9 +263,11 @@
     if (_itemSummlyType==saved) {
         iconImageView.image = [UIImage imageNamed:@"icon_4.png"];
     }
-    else{
-        iconImageView.image = [UIImage imageNamed:@"icon_3.png"];
-    }
+    else
+        if (self.topic.topicId>4) {
+            iconImageView.image = [UIImage imageNamed:@"icon_2.png"];
+        }else
+            iconImageView.image = [UIImage imageNamed:@"icon_3.png"];
 }
 
 //刷新
@@ -319,7 +327,7 @@
 #pragma mark --- UIScrollViewDelegate
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (_itemSummlyType==keywordEmpty) {
+    if (_itemSummlyType==approve || _itemSummlyType==saved) {
         if( scrollView.contentOffset.x <= -self.maxOffset){
             [self reloadSummly];
 

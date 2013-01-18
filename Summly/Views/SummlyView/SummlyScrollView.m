@@ -293,7 +293,10 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             
             
             NSLog(@"Moving from--%d toIndex--%d",_sortFuturePosition,toIndex);
-
+            if (_sortFuturePosition != toIndex) {
+                [self changePlistAccordingToLocationFrom:(_sortFuturePosition-1) to:(toIndex-1)];
+            }
+            
             [_summlyItems exchangeObjectAtIndex:_sortFuturePosition withObjectAtIndex:toIndex];
             _sortFuturePosition = toIndex;
         }
@@ -386,6 +389,27 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
             NSLog(@"press long else");
             break;
     }
+}
+
+//交换位置
+- (void)changePlistAccordingToLocationFrom:(NSInteger)currentIndex to:(NSInteger)toIndex{
+    
+    NSDictionary *dic = [BundleHelp getDictionaryFromPlist:Plist];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:[dic objectForKey:@"topics"]];
+    
+    NSMutableDictionary *dicFrom =  [NSMutableDictionary dictionaryWithDictionary:[[arr objectAtIndex:currentIndex] objectForKey:@"topic"]];
+    NSMutableDictionary *dicTo =  [NSMutableDictionary dictionaryWithDictionary:[[arr objectAtIndex:toIndex] objectForKey:@"topic"]];
+
+    [arr removeObjectAtIndex:currentIndex];
+    [arr removeObjectAtIndex:toIndex];
+
+    [arr insertObject:[NSDictionary dictionaryWithObject:dicFrom forKey:@"topic"] atIndex:toIndex];
+    [arr insertObject:[NSDictionary dictionaryWithObject:dicTo forKey:@"topic"] atIndex:currentIndex];
+
+    NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
+    
+    NSData *dicData = [NSPropertyListSerialization dataFromPropertyList:lastDic format:NSPropertyListXMLFormat_v1_0 errorDescription:nil];
+    [dicData writeToFile:[BundleHelp getBundlePath:Plist] atomically:YES];
 }
 
 

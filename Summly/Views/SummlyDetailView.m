@@ -16,7 +16,7 @@
 #define rangeLength 20*10
 
 @implementation SummlyDetailView
-@synthesize summly,imageBackView,titleLabel,acticleView;
+@synthesize summly,imageBackView,titleBg,acticleView;
 
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)_summly
 {
@@ -34,7 +34,7 @@
         self.userInteractionEnabled=YES;
              //标题
         imageBackView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, frame.size.width, 183.5)];
-        NSString *randomImageName = [NSString stringWithFormat:@"grad%d@2x.png", arc4random() % 10+1];
+        NSString *randomImageName = [NSString stringWithFormat:@"grad%d.png", arc4random()%6+1];
 
       //  if (_summly.imageUrl!=nil) {
        //     [imageBackView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_summly.imageUrl]] placeholderImage:[UIImage imageNamed:randomImageName]];
@@ -47,18 +47,20 @@
         imageBackView.userInteractionEnabled=YES;
         [self addSubview:imageBackView];
 
-        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, imageBackView.frame.size.height-110+40, frame.size.width-20, 60)];
+        titleBg = [[UIView alloc] initWithFrame:CGRectMake(0, imageBackView.frame.size.height-110+50, frame.size.width, 60)];
+        [titleBg setBackgroundColor:[UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.25f]];
+        [self addSubview:titleBg];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(MarginDic, 0, frame.size.width-20, 60)];
         titleLabel.userInteractionEnabled=YES;
         [titleLabel setBackgroundColor:[UIColor clearColor]];
-        [titleLabel setNumberOfLines:0];
-//        [titleLabel setFont:[UIFont systemFontOfSize:20]];
-        [titleLabel setFont:[UIFont fontWithName:@"Hei SC" size:25]];
+        [titleLabel setNumberOfLines:2];
+        titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:22]];
         [titleLabel setTextColor:[UIColor whiteColor]];
-//        titleLabel.shadowColor = [UIColor blackColor];
-//        titleLabel.shadowOffset = CGSizeMake(0, 0.8);
         titleLabel.text = self.summly.title;
-        [self addSubview:titleLabel];
-        
+        [titleBg addSubview:titleLabel];
+                
         //文章
         acticleView = [[UIView alloc] initWithFrame:CGRectMake(0, imageBackView.frame.size.height, frame.size.width, frame.size.height-imageBackView.frame.size.height)];
         [acticleView setBackgroundColor:[UIColor whiteColor]];
@@ -86,7 +88,7 @@
         UILabel *timeIntervalLabel = [[UILabel alloc] initWithFrame:CGRectMake(pulisherLabel.frame.size.width+pulisherLabel.frame.origin.x+MarginDic, pulisherLabel.frame.origin.y-1, 100, 16)];
         timeIntervalLabel.userInteractionEnabled=YES;
         [timeIntervalLabel setFont:[UIFont systemFontOfSize:11]];
-        [timeIntervalLabel setTextColor:[UIColor colorWithRed:0/255.0f green:0/255.0f blue:70/255.0f alpha:1.0f]];
+        [timeIntervalLabel setTextColor:[UIColor colorWithRed:180/255.0f green:180/255.0f blue:180/255.0f alpha:1.0f]];
         timeIntervalLabel.text=self.summly.time;
         [timeIntervalLabel sizeToFit];
         [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
@@ -96,9 +98,9 @@
         contentStr = [contentStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         NSString *content  = [contentStr substringWithRange:NSMakeRange(0, rangeLength-10)];
         
-        CoreTextLabel *articleLabel = [[CoreTextLabel alloc] initWithFrame:CGRectMake(MarginDic, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*2, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
+        CoreTextLabel *articleLabel = [[CoreTextLabel alloc] initWithFrame:CGRectMake(MarginDic+2, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*2, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
-        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
+        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.5]];
         articleLabel.text = content;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -107,7 +109,7 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
-       isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
+        isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
         imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
         _menu.buttonImages = imagesUnSave;
         imagesSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"save.png"]];
@@ -159,7 +161,6 @@
             _menu.buttonImages=imagesUnSave;
             [self.summly insertFavDB:summly];
         }
-
     }
     //email
     else if(index==2){
@@ -193,7 +194,7 @@
 - (void)dismissDetailViewAnimate:(void (^)())block{
 
     [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionTransitionCurlUp animations:^{
-        [titleLabel setFrame:CGRectMake(10, -imageBackView.frame.size.height+73.5, 300,100)];
+        [titleBg setFrame:CGRectMake(0, -(imageBackView.frame.size.height-110+50),320, 60)];
 
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionTransitionCurlUp animations:^{
@@ -214,7 +215,7 @@
 
 -(void)showDetailViewAnimate{
     [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        [titleLabel setFrame:CGRectMake(MarginDic,  73.5f, 300, 100)];
+        [titleBg setFrame:CGRectMake(0,imageBackView.frame.size.height-110+50, 320, 60)];
         [imageBackView setFrame:CGRectMake(0, 0,  320, 183.5)];
     } completion:^(BOOL finished) {
     }];

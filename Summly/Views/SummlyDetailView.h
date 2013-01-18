@@ -28,7 +28,7 @@
     NSArray *imagesSave,*imagesUnSave;
 }
 
-@property(nonatomic,strong) UILabel *titleLabel;
+@property(nonatomic,strong) UIView *titleBg;
 @property(nonatomic,strong) UIView *acticleView;
 @property(nonatomic,strong) UIImageView *imageBackView;
 @property(nonatomic,strong) Summly *summly;

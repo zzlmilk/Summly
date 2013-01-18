@@ -54,11 +54,18 @@
     {
         alignment = kCTRightTextAlignment;
     }
+    
     CTParagraphStyleSetting alignmentStyle;
     alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;
     alignmentStyle.valueSize = sizeof(alignment);
     alignmentStyle.value = &alignment;
     
+    
+    CTParagraphStyleSetting lineBreakMode;
+    CTLineBreakMode lineBreak = kCTLineBreakByCharWrapping; //换行模式
+    lineBreakMode.spec = kCTParagraphStyleSpecifierLineBreakMode;
+    lineBreakMode.value = &lineBreak;
+    lineBreakMode.valueSize = sizeof(CTLineBreakMode);
 //    CTLineBreakMode lineBreakMode = kCTLineBreakByCharWrapping;
         
     //设置文本行间距

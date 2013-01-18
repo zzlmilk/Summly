@@ -17,54 +17,54 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        int y = self.frame.size.height-205;
+        int y = self.frame.size.height-180;
         
         self.coverArr=[[NSDictionary alloc] init];
        [Cover getDefaultCoverParameters:nil WithBlock:^(NSMutableArray *summlys) {
             self.coverArr=(NSDictionary *)summlys;
            
            //标题内容
-           UITextView *titleLabel=[[UITextView
-                                    alloc] initWithFrame:CGRectMake(left-10, y+35, 230, 100)];
-           titleLabel.scrollEnabled = YES;
-           titleLabel.editable = NO;//禁止编辑
+           UILabel *titleLabel=[[UILabel
+                                    alloc] initWithFrame:CGRectMake(20, y+35, 230, 48)];
            //titleLabel.text = @"Mailbox：Sparrow 和 Clear 附身的 iPhone 邮件客户端";
            titleLabel.text = [self.coverArr objectForKey:@"title"];
            titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
            titleLabel.backgroundColor = nil;
+           titleLabel.numberOfLines=2;
+           titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
            titleLabel.textColor = [UIColor whiteColor];
-           titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:22];
+           [titleLabel setBackgroundColor:[UIColor clearColor]];
+           titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:20];
            [self addSubview: titleLabel];
            
            
            
-           
            //分隔按钮
-           UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,y + 125,120,20)];
-           trendingImageView.image = [UIImage imageNamed:@"trending-label@2x.png"];//加载入图片
+           UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,titleLabel.frame.size.height+titleLabel.frame.origin.y+5,120,23)];
+           trendingImageView.image = [UIImage imageNamed:@"trending-label.png"];//加载入图片
            [self addSubview:trendingImageView];
            
            
-           UILabel *consourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y +135, 120, 17)];
+           UILabel *consourceLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, trendingImageView.frame.size.height+trendingImageView.frame.origin.y-10, 120, 17)];
            consourceLabel.backgroundColor = [UIColor clearColor];
            consourceLabel.text = @"近日趋势";
-           consourceLabel.font = [UIFont fontWithName:@"Thonburi" size:15];
+           consourceLabel.font = [UIFont fontWithName:@"Heiti SC" size:15];
            consourceLabel.textColor = [UIColor whiteColor];
            [self addSubview:consourceLabel];
            
            
-           UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y + 155, 140, 13)];
+           UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, consourceLabel.frame.size.height+consourceLabel.frame.origin.y+5, 140, 13)];
            mediaLabel.backgroundColor = [UIColor clearColor];
            mediaLabel.text = @"http://www.ifanr.com";
-           mediaLabel.font = [UIFont systemFontOfSize:11];
+           mediaLabel.font = [UIFont fontWithName:@"Heiti SC" size:11];
            mediaLabel.textColor = [UIColor whiteColor];
            [self addSubview:mediaLabel];
            
            
-           UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, y + 170, 120, 13)];
+           UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, mediaLabel.frame.size.height+mediaLabel.frame.origin.y+2, 120, 13)];
            typeLabel.backgroundColor = [UIColor clearColor];
            typeLabel.text = @"Technology";
-           typeLabel.font = [UIFont systemFontOfSize:11];
+           typeLabel.font = [UIFont fontWithName:@"Heiti SC" size:11];
            typeLabel.textColor = [UIColor whiteColor];
            [self addSubview:typeLabel];
            
@@ -119,11 +119,11 @@
         UILabel *doudouLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 114, 140, 14)];
         doudouLabel.backgroundColor = [UIColor clearColor];
         doudouLabel.text = @"DOU DOU Technologies";
-        doudouLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:10];
+        doudouLabel.font = [UIFont fontWithName:@"Heiti SC" size:10];
         doudouLabel.textColor = [UIColor whiteColor];
         [self addSubview:doudouLabel];
         
-        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 99, 200, 13)];
+        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 99, 200, 15)];
         summaryLabel.backgroundColor = [UIColor clearColor];
         summaryLabel.text = @"豆 豆 科 技 咨 讯";
         summaryLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:13];
@@ -143,7 +143,7 @@
         [backButton addTarget:self action:@selector(backbuttonCheck) forControlEvents:UIControlEventTouchDown];
         [self addSubview:backButton];
         
-        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,y + 145,40,40)];
+        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,400,37.5,37.5)];
         trendingImageView.image = [UIImage imageNamed:@"cove-logo.png"];//加载入图片
         [self addSubview:trendingImageView];
         

@@ -25,6 +25,7 @@ typedef enum {
 @property(nonatomic)NSInteger status;
 
 
+
 -(id)initWithAttributes:(NSDictionary *)attributes;
 
 

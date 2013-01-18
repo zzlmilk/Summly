@@ -155,7 +155,7 @@
         BOOL isSelect = itemSummly.topic.status;
         [itemSummly changeBackView:isSelect];
         
-        [self updatePlist:isSelect tag:itemSummly plistString:PlistManage];
+//        [self updatePlist:isSelect tag:itemSummly plistString:PlistManage];
         [self updatePlist:isSelect tag:itemSummly plistString:Plist];
 
     }
@@ -173,9 +173,9 @@
     
     [arr removeObjectAtIndex:itemSummly.tag];
     
-    if ([plistStr isEqualToString:Plist] && isSelect==YES) {
-        _tag=0;
-    }
+//    if ([plistStr isEqualToString:Plist] && isSelect==YES) {
+ //       _tag=0;
+//    }
     [arr insertObject:[NSDictionary dictionaryWithObject:dicManage forKey:@"topic"] atIndex:_tag];
     NSMutableDictionary *lastDic = [NSMutableDictionary dictionaryWithObject:arr forKey:@"topics"];
     
