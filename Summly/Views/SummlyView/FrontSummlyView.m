@@ -84,7 +84,7 @@
         UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 0, 140, 66)];
         timeLabel.backgroundColor = [UIColor clearColor];
         timeLabel.text = day;
-        timeLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:60];
+        timeLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:60];
         
         
         timeLabel.textColor = [UIColor whiteColor];
@@ -94,7 +94,7 @@
         UILabel *riLabel = [[UILabel alloc]initWithFrame:CGRectMake(left+70, 25, 170, 32)];
         riLabel.backgroundColor = [UIColor clearColor];
         riLabel.text = @"日";
-        riLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:30];
+        riLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:28];
         riLabel.textColor = [UIColor whiteColor];
         [self addSubview:riLabel];
         
@@ -116,16 +116,20 @@
         [self addSubview:unreadLabel];
         
         
-        UILabel *doudouLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 114, 140, 14)];
+        UILabel *doudouLabel = [[UILabel alloc]initWithFrame:CGRectMake(left+2, 114, 140, 14)];
         doudouLabel.backgroundColor = [UIColor clearColor];
         doudouLabel.text = @"DOU DOU Technologies";
         doudouLabel.font = [UIFont fontWithName:@"Heiti SC" size:10];
         doudouLabel.textColor = [UIColor whiteColor];
+
         [self addSubview:doudouLabel];
         
-        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, 99, 200, 15)];
+        
+        UILabel *summaryLabel = [[UILabel alloc]initWithFrame:CGRectMake(left+2, 99, 140, 15)];
         summaryLabel.backgroundColor = [UIColor clearColor];
-        summaryLabel.text = @"豆 豆 科 技 咨 讯";
+        summaryLabel.text = @"豆  豆  科  技  咨  讯";
+
+        [summaryLabel sizeThatFits:CGSizeMake(140, 15)];
         summaryLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:13];
         summaryLabel.textColor = [UIColor whiteColor];
         [self addSubview:summaryLabel];

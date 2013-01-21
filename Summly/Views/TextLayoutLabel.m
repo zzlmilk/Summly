@@ -95,6 +95,10 @@
     CGContextSetTextMatrix(context , CGAffineTransformIdentity);
     CGContextTranslateCTM(context , 0 ,self.bounds.size.height);
     CGContextScaleCTM(context, 1.0 ,-1.0);
+    
+//    CFRange range = CFRangeMake(0, string.length);
+//    CGSize size = CTFramesetterSuggestFrameSizeWithConstraints(framesetter,CFRangeMake(0, 0),NULL, CGSizeMake(300, CGFLOAT_MAX), &range);
+//    NSLog(@"size--%@",NSStringFromCGSize(size));
     //画出文本
     CTFrameDraw(leftFrame,context);
     //释放

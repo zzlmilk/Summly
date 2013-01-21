@@ -8,7 +8,7 @@
 
 #import "CoreTextLabel.h"
 
-#define lastLine 9
+#define lastLine 10
 #define lineWith 220
 @implementation CoreTextLabel
 @synthesize characterSpacing = characterSpacing_;
@@ -91,7 +91,7 @@
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)string);
     CGMutablePathRef leftColumnPath = CGPathCreateMutable();
     CGPathAddRect(leftColumnPath, NULL ,CGRectMake(0 , 0 ,self.bounds.size.width , self.bounds.size.height));
-    CTFrameRef leftFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, [string length]), leftColumnPath , NULL);
+    CTFrameRef leftFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), leftColumnPath , NULL);
     //翻转坐标系统（文本原来是倒的要翻转下）
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetTextMatrix(context , CGAffineTransformIdentity);
@@ -104,7 +104,7 @@
     CTFrameGetLineOrigins(leftFrame,CFRangeMake(0,lineNumber), lineOrigins);
     
     for(int lineIndex = 0;lineIndex < lineNumber;lineIndex++){
-        if (lineIndex!=lastLine) {
+        if (lineIndex!=lineNumber-1) {
         CGPoint lineOrigin = lineOrigins[lineIndex];
         CTLineRef line = CFArrayGetValueAtIndex(lines,lineIndex);
         CGContextSetTextPosition(context,lineOrigin.x,lineOrigin.y);

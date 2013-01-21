@@ -119,8 +119,8 @@
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self isFavorite:isFavorite];
         [self addSubview:_menu];
 
-        UIImageView *fingerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"click.png"]];
-        [fingerImageView setFrame:CGRectMake(260, self.frame.size.height-10-40, 73/2, 40)];
+        UIImageView *fingerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"click"]];
+        [fingerImageView setFrame:CGRectMake(270, self.frame.size.height-5-40, 73/2, 45)];
         [self addSubview:fingerImageView];
     }
     return self;

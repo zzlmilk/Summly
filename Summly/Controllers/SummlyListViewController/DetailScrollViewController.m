@@ -40,8 +40,10 @@ static DetailScrollViewController *detailInstance=nil;
 {
     [super viewDidLoad];
     
-    self.index=[self calculateIndexFromScrollViewOffSet];
+//    self.index=[self calculateIndexFromScrollViewOffSet];
+//    NSLog(@"self.index %f, contentOffset %f",self.view.frame.size.width*self.index, bgScrollView.contentOffset.x);
 
+//    [self setScrollOffset:self.index];
 //    _index=self.index;
     origin=0;
     
@@ -77,7 +79,8 @@ static DetailScrollViewController *detailInstance=nil;
     [bgScrollView addGestureRecognizer:doubleTap];
     
 
-    
+    [bgScrollView setContentOffset:CGPointMake(self.view.frame.size.width*self.index, 0)];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -85,6 +88,8 @@ static DetailScrollViewController *detailInstance=nil;
     if (self.navigationController.navigationBarHidden == NO) {
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
+    
+
 }
 
 //生成详情
@@ -110,8 +115,6 @@ static DetailScrollViewController *detailInstance=nil;
 - (void)setScrollOffset:(NSInteger)index{
     
     [bgScrollView setContentOffset:CGPointMake(self.view.frame.size.width*index, 0)];
-    
-    NSLog(@"index %f, contentOffset %f",self.view.frame.size.width*index, bgScrollView.contentOffset.x);
 
 }
 

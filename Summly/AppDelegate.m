@@ -16,7 +16,7 @@
 
 -(UIImageView*)_randomBackground{
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
-    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d@2x.jpg", arc4random() % 41+1];
+    NSString *randomImageName = [NSString stringWithFormat:@"cover_%d.jpg", arc4random()%5+1];
     bgImageView.image = [UIImage imageNamed:randomImageName];
     return bgImageView;
 }
@@ -43,7 +43,7 @@
     
     NSString *Isloging = ([[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"])?[[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"]:@"";
     
-    NSLog(@"Isloging:%@",Isloging);
+//    NSLog(@"Isloging:%@",Isloging);
     
     if ([Isloging intValue]!=1) {
         TutorialsViewController *summlyVC = [[TutorialsViewController alloc]init];
