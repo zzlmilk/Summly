@@ -232,6 +232,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+//微博绑定开关
 - (void)switchAction:(id)sender
 {
     UISwitch *sinaSwitch = (UISwitch *)sender;
@@ -244,15 +245,6 @@
         [shareSina sinaLoginOut];
     }
     
-}
-//微博绑定开关
-- (void)WeiboSwitchAction
-{
-    if (WeiboSwitchView.on) {
-        NSLog(@"login");
-    }else{
-        NSLog(@"logout");
-    }
 }
 
 //微信绑定开关

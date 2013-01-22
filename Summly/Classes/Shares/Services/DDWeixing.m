@@ -8,13 +8,17 @@
 
 #import "DDWeixing.h"
 #import "WXApi.h"
+
+#define APPID @"wx24b1b14c06dd884e"
+#define AppKey @"e0cf5d53e97c5e06d334ad4f944e7544"
+
 @implementation DDWeixing
 
 
 -(id)init{
     if (self = [super init]) {
         _scene = WXSceneSession;
-        [WXApi registerApp:@"wxd930ea5d5a258f4f"];
+        [WXApi registerApp:APPID];
     }
     return self;
 }

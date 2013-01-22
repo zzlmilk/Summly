@@ -7,9 +7,9 @@
 //
 
 //sina
-#define kAppKey @"2129179294"
-#define kAppSecret @"69e5bc752981df2ca68ec6716980582a"
-#define kAppRedirectURI  @"http://a.875.cn"
+#define kAppKey @"3256272261"
+#define kAppSecret @"2f24a0ac64e80a4a7c5fc195222a58b1"
+#define kAppRedirectURI  @"http://www.emakes.net"
 
 #import "DDShare.h"
 
