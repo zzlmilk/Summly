@@ -1421,7 +1421,7 @@
 		049A8B60166CFF7400569250 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qiu (9GA96YL6C5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
@@ -1431,7 +1431,7 @@
 					"\"$(SRCROOT)/Summly/ThirdParty\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D46A57B0-2A30-4DF0-BF6E-F1FED8446FB3";
+				PROVISIONING_PROFILE = "AACF1230-218A-4F94-9E4E-978D2A6B13CF";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1440,7 +1440,7 @@
 		049A8B61166CFF7400569250 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhou zhiling (DM2YH9QP6D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Li Qiu (9GA96YL6C5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Summly/Summly-Prefix.pch";
 				INFOPLIST_FILE = "Summly/Summly-Info.plist";
@@ -1450,7 +1450,7 @@
 					"\"$(SRCROOT)/Summly/ThirdParty\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D46A57B0-2A30-4DF0-BF6E-F1FED8446FB3";
+				PROVISIONING_PROFILE = "AACF1230-218A-4F94-9E4E-978D2A6B13CF";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
