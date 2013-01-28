@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 #import "BundleHelp.h"
 #import "CoreTextLabel.h"
+#import "REXMail.h"
+#import "DetailScrollViewController.h"
 
 #define MarginDic 10
 
@@ -100,7 +102,7 @@
         
         CoreTextLabel *articleLabel = [[CoreTextLabel alloc] initWithFrame:CGRectMake(MarginDic+2, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*2, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
-        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.5]];
+        [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.5]];
         articleLabel.text = contentStr;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -108,6 +110,7 @@
         [articleLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
+        
         
         isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
         imagesUnSave = @[[UIImage imageNamed:@"sina.png"],[UIImage imageNamed:@"weixin.png"],[UIImage imageNamed:@"send_email.png"],[UIImage imageNamed:@"petal-unsave.png"]];
@@ -118,17 +121,19 @@
         _menu.userInteractionEnabled=YES;
         faFancyMenuDataSource = [[FAFancyMenuViewDataSource alloc]initWithMeun:_menu delegate:self isFavorite:isFavorite];
         [self addSubview:_menu];
+        
 
         UIImageView *fingerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"click"]];
         [fingerImageView setFrame:CGRectMake(270, self.frame.size.height-5-40, 73/2, 45)];
         [self addSubview:fingerImageView];
+        
     }
     return self;
 }
 
 //花瓣按钮
 -(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
-    //新浪分享 内容待定
+    //新浪分享
     if (index==0) {
         if (sinaShare.sinaWeibo.accessToken==nil) {
             [sinaShare sinaLogin];
@@ -164,7 +169,8 @@
     }
     //email
     else if(index==2){
-        
+        [self performSelector:@selector(sendEmail) withObject:self afterDelay:0.2f];
+
     }
 }
 
@@ -189,6 +195,13 @@
     }
 
     return isFav;
+}
+
+- (void)sendEmail{
+    REXMail *sendMail = [[REXMail alloc] init];
+    [self.controller addChildViewController:sendMail];
+    [sendMail sendMailInApp];
+
 }
 
 - (void)dismissDetailViewAnimate:(void (^)())block{

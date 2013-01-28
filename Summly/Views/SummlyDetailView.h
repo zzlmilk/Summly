@@ -33,7 +33,7 @@
 @property(nonatomic,strong) UIImageView *imageBackView;
 @property(nonatomic,strong) Summly *summly;
 @property(nonatomic,strong)  FAFancyMenuView *menu;
-
+@property(nonatomic,weak) UIViewController *controller;
 
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)summly;
 - (void)dismissDetailViewAnimate:(void (^)())block;

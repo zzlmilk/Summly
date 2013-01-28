@@ -106,6 +106,7 @@ static DetailScrollViewController *detailInstance=nil;
     for (int i=0; i<summlys.count; i++) {
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
+        detailView.controller = self;
         [bgScrollView insertSubview:detailView atIndex:summlys.count-i];
 
     }

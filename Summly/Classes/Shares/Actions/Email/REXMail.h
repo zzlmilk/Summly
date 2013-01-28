@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface REXMail : NSObject<MFMailComposeViewControllerDelegate>
+@interface REXMail : UIViewController<MFMailComposeViewControllerDelegate>
 {
-    
 }
 
-- (BOOL)sendMail;
+- (void)sendMailInApp;
 
 @end

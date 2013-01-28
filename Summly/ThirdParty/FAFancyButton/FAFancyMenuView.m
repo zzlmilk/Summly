@@ -17,7 +17,7 @@
     NSInteger i = 0;
     CGFloat degree = 360.f/self.buttonImages.count;
     for (UIImage *image in self.buttonImages){
-        FAFancyButton *fancyButton = [[FAFancyButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - image.size.width/2, 0, image.size.width, image.size.height)];
+        FAFancyButton *fancyButton = [[FAFancyButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2 - image.size.width/2, 0, image.size.width+18, image.size.height+20)];
         [fancyButton setBackgroundImage:image forState:UIControlStateNormal];
         fancyButton.degree = i*degree;
         fancyButton.hidden = YES;

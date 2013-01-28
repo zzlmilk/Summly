@@ -138,23 +138,7 @@
 
 }
 
-//-(void)checkTutorials :(UIButton *)button
-//{
-//    if (button.tag == 1) {
-//        imgTutorials1Button.hidden = YES;
-//        imgTutorials2Button.hidden = NO;
-//        imgTutorials3Button.hidden = YES;
-//    }else if(button.tag == 2){
-//        imgTutorials1Button.hidden = YES;
-//        imgTutorials2Button.hidden = YES;
-//        imgTutorials3Button.hidden = NO;
-//    }else if(button.tag == 3){
-//        imgTutorials1Button.hidden = YES;
-//        imgTutorials2Button.hidden = YES;
-//        imgTutorials3Button.hidden = YES;
-//    }
-//}
-//
+
 
 #pragma mark--
 #pragma mark-- ItemSummlydelegate

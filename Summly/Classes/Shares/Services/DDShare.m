@@ -76,7 +76,8 @@
 }
 
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error{
-
+    
+    [_sinaWeibo logIn];
     NSLog(@"失败error--%@",error.userInfo);
 }
 - (void)request:(SinaWeiboRequest *)request didReceiveRawData:(NSData *)data{

@@ -22,13 +22,14 @@ static AppDelegate *instance=nil;
 }
 
 
-
 -(UIImageView*)_randomBackground{
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
     NSString *randomImageName = [NSString stringWithFormat:@"cover_%d.jpg", arc4random()%5+1];
     bgImageView.image = [UIImage imageNamed:randomImageName];
     return bgImageView;
 }
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

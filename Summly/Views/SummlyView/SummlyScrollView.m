@@ -114,9 +114,7 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
     [self.summlyItems addObject:addItemSummly];
     
     
-    self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);
-
-    
+    self.contentSize = CGSizeMake(self.bounds.size.width,addItemSummly.frame.size.height+addItemSummly.frame.origin.y+self.itemSpacing);    
 }
 
 -(BOOL)isHaveSavedItemSummly{
@@ -201,9 +199,6 @@ static const UIViewAnimationOptions kDefaultAnimationOptions = UIViewAnimationOp
         
         
         //[self generateItems];
-        
-       
-        
         
     }
     return self;

@@ -121,6 +121,7 @@
         [self addSubview:timeLabel];
         
         
+        
         UILabel *riLabel = [[UILabel alloc]initWithFrame:CGRectMake(left+70, 25, 170, 32)];
         riLabel.backgroundColor = [UIColor clearColor];
         riLabel.text = @"日";
@@ -133,8 +134,8 @@
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *comps;
         comps =[calendar components:(NSWeekCalendarUnit | NSWeekdayCalendarUnit |NSWeekdayOrdinalCalendarUnit)
-                
                            fromDate:date];
+        
         
         NSInteger weekday = [comps weekday]; // 星期几（注意，周日是“1”，周一是“2”。。。。）
         NSArray *weekdic = [[NSArray alloc] initWithObjects:@"星期天",@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",nil];
@@ -159,17 +160,13 @@
         summaryLabel.backgroundColor = [UIColor clearColor];
         summaryLabel.text = @"豆  豆  科  技  咨  讯";
 
+        
         [summaryLabel sizeThatFits:CGSizeMake(140, 15)];
         summaryLabel.font = [UIFont fontWithName:@"Thonburi-Bold" size:13];
         summaryLabel.textColor = [UIColor whiteColor];
         [self addSubview:summaryLabel];
         
         
-                
-        //回退按钮
-        //        UIImageView  *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(270,10,34,34)];
-        //        backImageView.image = [UIImage imageNamed:@"cover-arrow@2x.png"];//加载入图片
-        //        [self addSubview:backImageView];
         
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         backButton = [[UIButton alloc]initWithFrame:CGRectMake(270,25,35,30)];
@@ -177,11 +174,13 @@
         [backButton addTarget:self action:@selector(backbuttonCheck) forControlEvents:UIControlEventTouchDown];
         [self addSubview:backButton];
         
-        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,self.frame.size.height-80,37.5,37.5)];
+        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,self.frame.size.height-65,37.5,37.5)];
         trendingImageView.image = [UIImage imageNamed:@"cove-logo.png"];//加载入图片
         [self addSubview:trendingImageView];
         
+        
     }
+    
     
     return self;
 }

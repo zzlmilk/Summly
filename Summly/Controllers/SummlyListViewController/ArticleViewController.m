@@ -92,17 +92,18 @@
     NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *commentStr = [self.summly.describe stringByTrimmingCharactersInSet:characterSet];
     
-    CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:15] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
+    CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:18.5] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
     float textHeight = (int)size.height/17*6 +size.height;
 //    NSLog(@"textLabelHeight %f",size.height);
     TextLayoutLabel *textLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, textHeight)];
     [textLabel setBackgroundColor:[UIColor clearColor]];
     textLabel.numberOfLines=0;
     textLabel.text = self.summly.describe;
-    [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15]];
+    [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:18.5]];
     [textLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
 //    [textLabel sizeToFit];
     [scrollView addSubview:textLabel];
+    
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-38, 0, 38, 40)];
