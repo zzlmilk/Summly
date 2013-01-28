@@ -21,13 +21,21 @@
 
 @end
 
-@implementation TopicViewController
+static TopicViewController *instance=nil;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+@implementation TopicViewController
++(id)sharedInstance{
+    
+    return instance;
+}
+
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        
+        instance =self;
     }
     return self;
 }
@@ -134,6 +142,7 @@
 {
 //    imgTutorials1Button.hidden = NO;
     TutorialsViewController *tutorialsViewController = [[TutorialsViewController alloc]init];
+    tutorialsViewController.tutorialEnd=isSummyListVC;
     [self.navigationController pushViewController:tutorialsViewController animated:NO];
 
 }

@@ -57,6 +57,7 @@ static AppDelegate *instance=nil;
     
     if ([Isloging intValue]!=1) {
         TutorialsViewController *summlyVC = [[TutorialsViewController alloc]init];
+        summlyVC.tutorialEnd=isMaiVC;
         _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
         
     }else{

@@ -8,7 +8,8 @@
 
 #import "TutorialsViewController.h"
 #import "MainViewController.h"
-
+#import "TopicViewController.h"
+#import "SetViewController.h"
 
 @interface TutorialsViewController ()
 
@@ -208,11 +209,21 @@
 -(void)zoomInAction
 {
     NSLog(@"button");
-    MainViewController *summlyVC = [[MainViewController alloc]init];
-    [self.navigationController pushViewController:summlyVC animated:NO];
-    
+    if (self.tutorialEnd==isMaiVC) {
+        MainViewController *summlyVC = [[MainViewController alloc]init];
+        [self.navigationController pushViewController:summlyVC animated:NO];
+    }
+    else if(self.tutorialEnd == isSummyListVC){
+        TopicViewController *summlyListVC =[TopicViewController sharedInstance];
+        [summlyListVC.navigationController setNavigationBarHidden:NO];
+        [self.navigationController popToViewController:summlyListVC animated:NO];
+    }
+    else if(self.tutorialEnd == isSetVC){
+        SetViewController *setVC = [SetViewController sharedInstance];
+        [setVC.navigationController setNavigationBarHidden:NO];
+        [self.navigationController popToViewController:setVC animated:NO];
+    }
 }
-
 -(void)cellBack
 {
     [self.navigationController popViewControllerAnimated:NO];

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    isMaiVC=0,
+    isSummyListVC = 1,
+    isSetVC =2
+} isTutorialEnd;
+
 @interface TutorialsViewController : UIViewController<UIScrollViewDelegate> {
 	UIScrollView *scrollView;
 	UIPageControl *pageControl;
@@ -21,6 +27,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *imageViews;
+@property(nonatomic) isTutorialEnd tutorialEnd;
 
 
 - (IBAction)changePage:(id)sender;

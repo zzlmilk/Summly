@@ -19,6 +19,7 @@
     UIButton *imgTutorials3Button;
 }
 
++(id)sharedInstance;
 
 @property(nonatomic,strong) NSArray *topicsArr;
 

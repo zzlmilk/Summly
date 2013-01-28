@@ -17,6 +17,22 @@
 @implementation SetViewController
 @synthesize listTable;
 
+static  SetViewController*instance=nil;
+
++(id)sharedInstance{
+    
+    return instance;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        instance=self;
+    }
+    return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -287,6 +303,7 @@
 {
     //imgTutorials1Button.hidden = NO;
     TutorialsViewController *tutorialsViewController = [[TutorialsViewController alloc]init];
+    tutorialsViewController.tutorialEnd = isSetVC;
     [self.navigationController pushViewController:tutorialsViewController animated:NO];
 }
 //

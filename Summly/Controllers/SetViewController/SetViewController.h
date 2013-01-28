@@ -23,7 +23,7 @@
 //    UIButton *imgTutorials3Button;
     
 }
-
++(id)sharedInstance;
 
 @property (nonatomic, retain) NSDictionary *countLitsDic;
 @property (nonatomic, retain) NSDictionary *nameDic;
