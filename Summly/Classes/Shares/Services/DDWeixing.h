@@ -15,6 +15,6 @@
 }
 
 - (void)sendImageContent;
-- (void)sendMusicContent;
+-(void) sendMusicContent:(NSString *)summlyTitle;
 
 @end
