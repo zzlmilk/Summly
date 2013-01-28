@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FAFancyMenuView.h"
 #import "DDShare.h"
+#import "BaseViewController.h"
 
-@interface SetViewController : UIViewController<FAFancyMenuViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface SetViewController : BaseViewController<FAFancyMenuViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UISwitch *WeiboSwitchView;
     UISwitch *WeixingSwitchView;

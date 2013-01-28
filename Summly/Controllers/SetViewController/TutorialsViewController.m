@@ -44,7 +44,7 @@
         
         UIImage *image = Nil;
         if (self.view.frame.size.height > 480) {
-            NSString *imageName = [NSString stringWithFormat:@"tutorials%d.png",page+1];
+            NSString *imageName = [NSString stringWithFormat:@"tutorials%d_i5.png",page+1];
             image =  [UIImage imageNamed:imageName];
             NSLog(@"iphone5");
         }else{

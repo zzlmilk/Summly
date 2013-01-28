@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Summly.h"
 
 @interface Cover : NSObject
 
@@ -15,6 +16,6 @@
 
 
 //获取defalut的topic列表
-+(void)getDefaultCoverParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block;
++(void)getDefaultCoverParameters:(NSDictionary *)parameters WithBlock:(void (^)(Summly *))block;
 
 @end

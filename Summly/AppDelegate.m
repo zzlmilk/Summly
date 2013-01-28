@@ -14,6 +14,15 @@
 
 @implementation AppDelegate
 
+static AppDelegate *instance=nil;
+
++(id)sharedInstance{
+    
+    return instance;
+}
+
+
+
 -(UIImageView*)_randomBackground{
     UIImageView *bgImageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
     NSString *randomImageName = [NSString stringWithFormat:@"cover_%d.jpg", arc4random()%5+1];
@@ -40,22 +49,21 @@
 //    MainViewController *summlyVC = [[MainViewController alloc]init];
 //    _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
     
-    
+
     NSString *Isloging = ([[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"])?[[NSUserDefaults standardUserDefaults] objectForKey:@"isloging"]:@"";
     
-//    NSLog(@"Isloging:%@",Isloging);
+    NSLog(@"Isloging:%@",Isloging);
     
     if ([Isloging intValue]!=1) {
         TutorialsViewController *summlyVC = [[TutorialsViewController alloc]init];
         _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
         
     }else{
-        MainViewController *summlyVC = [[MainViewController alloc]init];
-        _navController = [[UINavigationController alloc]initWithRootViewController:summlyVC];
+        MainViewController *mainVC = [[MainViewController alloc]init];
+        _navController = [[UINavigationController alloc]initWithRootViewController:mainVC];
+        _navController.delegate=mainVC;
     }
         
-    
-    
     [self.window setRootViewController:_navController];
     
     [self.window makeKeyAndVisible];

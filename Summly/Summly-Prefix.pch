@@ -29,3 +29,5 @@
 #define SUMMLY_NAME @"summly.plist"
 
 #define MAIN_DATABASE_NAME @"summlydatabase.sql"
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)

@@ -26,10 +26,12 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSMutableAttributedString *string =[[NSMutableAttributedString alloc]initWithString:self.text];
 
     //创建AttributeString
-    NSString *stringText =[[NSString alloc]initWithString:self.text];
-    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:[stringText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+//    NSString *string =[[NSString alloc]initWithString:self.text];
+
+//    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:[stringText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 
     //设置字体及大小
     CTFontRef helveticaBold = CTFontCreateWithName((__bridge CFStringRef)self.font.fontName,self.font.pointSize,NULL);

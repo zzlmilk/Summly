@@ -96,12 +96,12 @@
          
         NSString *contentStr =self.summly.describe;
         contentStr = [contentStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSString *content  = [contentStr substringWithRange:NSMakeRange(0, rangeLength-10)];
+//        NSString *content  = [contentStr substringWithRange:NSMakeRange(0, rangeLength-10)];
         
         CoreTextLabel *articleLabel = [[CoreTextLabel alloc] initWithFrame:CGRectMake(MarginDic+2, iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic*2, frame.size.width-MarginDic*2, acticleView.frame.size.height-(iconImageView.frame.size.height+iconImageView.frame.origin.y+MarginDic)-35)];
         articleLabel.userInteractionEnabled=YES;
         [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.5]];
-        articleLabel.text = content;
+        articleLabel.text = contentStr;
         articleLabel.numberOfLines = 0;
         articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [articleLabel setBackgroundColor:[UIColor clearColor]];

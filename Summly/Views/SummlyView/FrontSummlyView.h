@@ -7,14 +7,17 @@
 //  mars here
 
 #import <UIKit/UIKit.h>
+#import "Summly.h"
+
 
 @protocol FrontSummlyViewDelegate <NSObject>
 -(void)backbuttonDidSelect;
+-(void)pushToDetailVCDelegate;
 @end
 
 @interface FrontSummlyView : UIView
 
 @property(nonatomic,weak)id delegate;
-@property(nonatomic,strong) NSDictionary *coverArr;
+@property(nonatomic,strong) Summly *summly;
 
 @end

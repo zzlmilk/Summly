@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Summly.h"
+#import "BaseViewController.h"
 
 @protocol ArticleViewControllerDelegate <NSObject>
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface ArticleViewController : UIViewController
+@interface ArticleViewController : BaseViewController
 
 @property(nonatomic,weak) Summly *summly;
 @property(nonatomic) NSInteger index;

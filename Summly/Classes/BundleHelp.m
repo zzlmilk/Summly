@@ -28,7 +28,7 @@
     NSString *filename = [path stringByAppendingPathComponent:_path];
     
     NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:filename];  //读取数据
-    NSLog(@"filename---%@",filename);
+//    NSLog(@"filename---%@",filename);
 //    NSLog(@"dic---%@",dic);
 
     return dic;

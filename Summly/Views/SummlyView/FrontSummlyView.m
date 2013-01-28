@@ -8,9 +8,35 @@
 
 #import "FrontSummlyView.h"
 #import "Cover.h"
+
+
 #define left 20
 
 @implementation FrontSummlyView
+@synthesize summly;
+
+-(void)pushToDetailVC{
+    
+    if ([self.delegate respondsToSelector:@selector(pushToDetailVCDelegate)]) {
+        [self.delegate pushToDetailVCDelegate];
+    }
+
+}
+
+- (NSString *) stringChangeRows:(NSString *)word
+{
+    NSMutableString *Temp = [NSMutableString string];
+    
+    if (word.length<=9) {
+        [Temp appendFormat:@"%@",[word substringWithRange:NSMakeRange(0, word.length)]];
+    }else{
+        [Temp appendFormat:@"%@",[word substringToIndex:9]];
+        [Temp appendFormat:@"\n"];
+        [Temp appendFormat:@"%@",[word substringWithRange:NSMakeRange(10, 9)]];
+        [Temp appendFormat:@"..."];
+    }
+    return Temp;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,28 +45,30 @@
         // Initialization code
         int y = self.frame.size.height-180;
         
-        self.coverArr=[[NSDictionary alloc] init];
-       [Cover getDefaultCoverParameters:nil WithBlock:^(NSMutableArray *summlys) {
-            self.coverArr=(NSDictionary *)summlys;
+//        self.coverArr=[[NSDictionary alloc] init];
+       [Cover getDefaultCoverParameters:nil WithBlock:^(Summly *_summly) {
+           self.summly=_summly;
+//            self.coverArr=(NSDictionary *)summlys;
            
            //标题内容
-           UILabel *titleLabel=[[UILabel
-                                    alloc] initWithFrame:CGRectMake(20, y+35, 230, 48)];
+           UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+           [titleBtn setFrame:CGRectMake(20-5, y+23, 230, 60)];
            //titleLabel.text = @"Mailbox：Sparrow 和 Clear 附身的 iPhone 邮件客户端";
-           titleLabel.text = [self.coverArr objectForKey:@"title"];
-           titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-           titleLabel.backgroundColor = nil;
-           titleLabel.numberOfLines=2;
-           titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
-           titleLabel.textColor = [UIColor whiteColor];
-           [titleLabel setBackgroundColor:[UIColor clearColor]];
-           titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:20];
-           [self addSubview: titleLabel];
+           [titleBtn setTitle:[self stringChangeRows:_summly.title] forState:UIControlStateNormal];
+//           titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+           titleBtn.titleLabel.numberOfLines=2;
+           titleBtn.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+           titleBtn.titleLabel.textColor = [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.9f];
+           [titleBtn.titleLabel setBackgroundColor:[UIColor clearColor]];
+           titleBtn.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:23];
+           titleBtn.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+           [titleBtn addTarget:self action:@selector(pushToDetailVC) forControlEvents:UIControlEventTouchUpInside];
+           [self addSubview: titleBtn];
            
            
            
            //分隔按钮
-           UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,titleLabel.frame.size.height+titleLabel.frame.origin.y+5,120,23)];
+           UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,titleBtn.frame.size.height+titleBtn.frame.origin.y+5,120,23)];
            trendingImageView.image = [UIImage imageNamed:@"trending-label.png"];//加载入图片
            [self addSubview:trendingImageView];
            
@@ -53,20 +81,22 @@
            [self addSubview:consourceLabel];
            
            
-           UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, consourceLabel.frame.size.height+consourceLabel.frame.origin.y+5, 140, 13)];
+           UILabel *mediaLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, consourceLabel.frame.size.height+consourceLabel.frame.origin.y+5, 175, 30)];
            mediaLabel.backgroundColor = [UIColor clearColor];
-           mediaLabel.text = @"http://www.ifanr.com";
+           mediaLabel.text = _summly.describe;
            mediaLabel.font = [UIFont fontWithName:@"Heiti SC" size:11];
+           mediaLabel.numberOfLines=2;
+           mediaLabel.lineBreakMode = UILineBreakModeTailTruncation;
            mediaLabel.textColor = [UIColor whiteColor];
            [self addSubview:mediaLabel];
            
            
-           UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, mediaLabel.frame.size.height+mediaLabel.frame.origin.y+2, 120, 13)];
-           typeLabel.backgroundColor = [UIColor clearColor];
-           typeLabel.text = @"Technology";
-           typeLabel.font = [UIFont fontWithName:@"Heiti SC" size:11];
-           typeLabel.textColor = [UIColor whiteColor];
-           [self addSubview:typeLabel];
+//           UILabel *typeLabel = [[UILabel alloc]initWithFrame:CGRectMake(left, mediaLabel.frame.size.height+mediaLabel.frame.origin.y+2, 120, 13)];
+//           typeLabel.backgroundColor = [UIColor clearColor];
+//           typeLabel.text = @"Technology";
+//           typeLabel.font = [UIFont fontWithName:@"Heiti SC" size:11];
+//           typeLabel.textColor = [UIColor whiteColor];
+//           [self addSubview:typeLabel];
            
 
            
@@ -147,7 +177,7 @@
         [backButton addTarget:self action:@selector(backbuttonCheck) forControlEvents:UIControlEventTouchDown];
         [self addSubview:backButton];
         
-        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,400,37.5,37.5)];
+        UIImageView  *trendingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260,self.frame.size.height-80,37.5,37.5)];
         trendingImageView.image = [UIImage imageNamed:@"cove-logo.png"];//加载入图片
         [self addSubview:trendingImageView];
         

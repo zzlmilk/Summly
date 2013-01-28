@@ -11,6 +11,8 @@
 
 #import "SummlyDetailUniteView.h"
 
+#import "AppDelegate.h"
+
 @interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
 
@@ -80,15 +82,15 @@ static DetailScrollViewController *detailInstance=nil;
     
 
     [bgScrollView setContentOffset:CGPointMake(self.view.frame.size.width*self.index, 0)];
-
 }
+
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+
     if (self.navigationController.navigationBarHidden == NO) {
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
-    
 
 }
 
@@ -207,6 +209,7 @@ static DetailScrollViewController *detailInstance=nil;
         articleVC.delegate=self;
         [self popControllerFadeAnimate];
         [self.navigationController pushViewController:articleVC animated:NO];
+//        [self presentModalViewController:articleVC animated:NO];
     }];
 
 }

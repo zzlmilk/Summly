@@ -16,6 +16,7 @@
 
 #import "ArticleView.h"
 #import "UpScrollView.h"
+//#import "BaseViewController.h"
 
 typedef enum {
    leftOrentation  = 0,
@@ -23,7 +24,7 @@ typedef enum {
 } FingerSwipOrientation;
 
 
-@interface DetailScrollViewController : UIViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
+@interface DetailScrollViewController : BaseViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
 {
     
     UIScrollView *bgScrollView;

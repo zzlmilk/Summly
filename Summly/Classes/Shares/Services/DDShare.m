@@ -9,7 +9,7 @@
 //sina
 #define kAppKey @"3256272261"
 #define kAppSecret @"2f24a0ac64e80a4a7c5fc195222a58b1"
-#define kAppRedirectURI  @"http://www.emakes.net"
+#define kAppRedirectURI  @"https://api.weibo.com/oauth2/default.html"
 
 #import "DDShare.h"
 
@@ -72,7 +72,6 @@
 
 - (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response{
     
-    NSLog(@"关注成功");
 
 }
 
@@ -80,6 +79,16 @@
 
     NSLog(@"失败error--%@",error.userInfo);
 }
+- (void)request:(SinaWeiboRequest *)request didReceiveRawData:(NSData *)data{
+//    NSString *a = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",a);
+    
+}
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result{
+    
+}
+
+
 
 #pragma mark -- SinaWeiboDelegate
 - (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo

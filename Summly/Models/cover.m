@@ -19,18 +19,20 @@
 }
 
 
-+(void)getDefaultCoverParameters:(NSDictionary *)parameters WithBlock:(void (^)(NSMutableArray *))block{
++(void)getDefaultCoverParameters:(NSDictionary *)parameters WithBlock:(void (^)(Summly *))block{
     
     
     [[SummlyAPIClient sharedClient] getPath:@"cover/index" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
-        NSDictionary *arr = (NSDictionary *)[responseObject objectForKey:@"cover"];
+//        NSMutableArray *summlyArr = [[NSMutableArray alloc] init];
+        NSDictionary *arr = [responseObject objectForKey:@"cover"];
         
-        summlyArr = (NSMutableArray *)[arr objectForKey:@"summly"];
+        Summly *summly = [[Summly alloc] initWithAttributes:[arr objectForKey:@"summly"]];
+        
+//        summlyArr = (NSMutableArray *)[arr objectForKey:@"summly"];
         
         if (block) {
-            block(summlyArr);
+            block(summly);
         }
         if (debug) {
             NSLog(@"%@",responseObject);

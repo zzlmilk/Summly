@@ -7,14 +7,14 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Summly/main.m"
-         timestampString = "380528677.178687"
+         filePath = "Summly/Classes/Shares/Services/DDShare.m"
+         timestampString = "380801481.702"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "18"
-         endingLineNumber = "18"
-         landmarkName = "main()"
-         landmarkType = "7">
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "-storeAuthData"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

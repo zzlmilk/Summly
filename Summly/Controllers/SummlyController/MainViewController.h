@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MainSummlyView.h"
+#import "BaseViewController.h"
 
-
-@interface MainViewController : UIViewController
+@interface MainViewController :BaseViewController<UINavigationControllerDelegate>
 {
     MainSummlyView *mainSummlyView;
 

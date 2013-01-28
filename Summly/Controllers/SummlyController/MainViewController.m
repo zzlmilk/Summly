@@ -16,6 +16,7 @@
 #import "BundleHelp.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "DetailScrollViewController.h"
 
 @interface MainViewController ()<ItemSummlyActionDelegate,FrontSummlyViewDelegate>
 {
@@ -43,13 +44,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor clearColor];
-
-    
-      
-    
-	// Do any additional setup after loading the view.
-       
-    
     
     frontView = [[FrontSummlyView  alloc]initWithFrame:self.view.bounds];
     frontView.delegate= self;
@@ -118,13 +112,13 @@
 //        self.topicsArr=topics;
 //
 //    }
-    summlyScrollView.contentOffset=CGPointMake(0, 0);
-     [self.navigationController setNavigationBarHidden:YES];        
+     summlyScrollView.contentOffset=CGPointMake(0, 0);
+     [self.navigationController setNavigationBarHidden:YES];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -132,6 +126,32 @@
 -(void)backbuttonDidSelect{
     [mainSummlyView setContentOffset:CGPointMake(320, 0) animated:YES];
 }
+
+-(void)pushToDetailVCDelegate{
+    NSArray *summlyArr = [NSArray arrayWithObject:frontView.summly];
+
+    DetailScrollViewController *detailScrollVC = [[DetailScrollViewController alloc] init];
+    detailScrollVC.summlyArr = summlyArr;
+    //controller推入动画
+    [self pushControllerAnimate];
+//    NSLog(@"main---%@,%d",self.navigationController,self.navigationController.navigationBarHidden);
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController pushViewController:detailScrollVC animated:NO];
+//    [self presentModalViewController:detailScrollVC animated:NO];
+    
+}
+
+- (void)pushControllerAnimate{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5f;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromBottom;
+    transition.delegate = self;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+}
+
 
 #pragma mark ---- ItemSummlyActionDelegate
 -(void)ItemSummlydidTap:(ItemSummly *)itemSummly{
