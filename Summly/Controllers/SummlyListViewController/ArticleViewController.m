@@ -13,7 +13,7 @@
 #import "TextLayoutLabel.h"
 #import "WebViewController.h"
 
-#define Margin 15
+#define Margin 20
 #define MarginDic 10
 @interface ArticleViewController ()
 
@@ -58,12 +58,12 @@
     [titleLabel sizeToFit];
     [scrollView addSubview:titleLabel];
     
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y, 57/2, 57/2)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLabel.frame.origin.x,titleLabel.frame.size.height+titleLabel.frame.origin.y+10, 57/2, 57/2)];
     [iconImageView setImage:[UIImage imageNamed:@"publisherIcon.png"]];
     iconImageView.userInteractionEnabled=YES;
     [scrollView addSubview:iconImageView];
     
-    UILabel *pulisherLabel = [[UILabel alloc] initWithFrame:CGRectMake(iconImageView.frame.size.width+iconImageView.frame.origin.x+MarginDic, titleLabel.frame.size.height+titleLabel.frame.origin.y+MarginDic, 100, 16)];
+    UILabel *pulisherLabel = [[UILabel alloc] initWithFrame:CGRectMake(iconImageView.frame.size.width+iconImageView.frame.origin.x+MarginDic, titleLabel.frame.size.height+titleLabel.frame.origin.y+MarginDic*2, 100, 16)];
     pulisherLabel.userInteractionEnabled=YES;
     //        [pulisherLabel setFont:[UIFont boldSystemFontOfSize:11]];
     [pulisherLabel setFont:[UIFont fontWithName:@"Heiti SC" size:11]];
@@ -87,43 +87,51 @@
     [timeIntervalLabel setBackgroundColor:[UIColor clearColor]];
     [scrollView addSubview:timeIntervalLabel];
 
-    UIImageView *lineImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, timeIntervalLabel.frame.size.height+timeIntervalLabel.frame.origin.y+Margin, 300,1)];
+    UIImageView *lineImage = [[UIImageView alloc]initWithFrame:CGRectMake(20, timeIntervalLabel.frame.size.height+timeIntervalLabel.frame.origin.y+MarginDic, 280,1)];
     lineImage.image= [UIImage imageNamed:@"fengexian.png"];
     [scrollView addSubview:lineImage];
     
-    NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    NSString *commentStr = [self.summly.describe stringByTrimmingCharactersInSet:characterSet];
-    
+//    NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+//    NSString *commentStr = [self.summly.describe stringByTrimmingCharactersInSet:characterSet];
+    NSString *commentStr = self.summly.describe;
     CGSize size = [commentStr sizeWithFont:[UIFont fontWithName:@"Heiti SC" size:18.5] constrainedToSize:CGSizeMake(self.view.frame.size.width-Margin*2, 99999)];
-    float textHeight = (int)size.height/17*6 +size.height;
+    float textHeight = (int)size.height/15*6 +size.height;
+    
 //    NSLog(@"textLabelHeight %f",size.height);
     TextLayoutLabel *textLabel = [[TextLayoutLabel alloc] initWithFrame:CGRectMake(Margin,lineImage.frame.size.height+lineImage.frame.origin.y+Margin*2 , self.view.frame.size.width-Margin*2, textHeight)];
     [textLabel setBackgroundColor:[UIColor clearColor]];
     textLabel.numberOfLines=0;
-    textLabel.text = self.summly.describe;
+    textLabel.text = commentStr;
+    textLabel.lineBreakMode=NSLineBreakByTruncatingTail;
     [textLabel setFont:[UIFont fontWithName:@"Heiti SC" size:18.5]];
     [textLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
 //    [textLabel sizeToFit];
     [scrollView addSubview:textLabel];
     
     UIButton *pushToWebVCBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [pushToWebVCBtn setFrame:CGRectMake(300, 200, 20, 20)];
-    [pushToWebVCBtn setBackgroundColor:[UIColor yellowColor]];
+    [pushToWebVCBtn setFrame:CGRectMake(276, 100, 20, 17.5)];
+    [pushToWebVCBtn setBackgroundImage:[UIImage imageNamed:@"webview-close-button"] forState:UIControlStateNormal];
     [pushToWebVCBtn addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:pushToWebVCBtn];
 
+    UIButton *pushToWebVCBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pushToWebVCBtn2 setFrame:CGRectMake(276, textLabel.frame.size.height+textLabel.frame.origin.y, 20, 17.5)];
+    [pushToWebVCBtn2 setBackgroundImage:[UIImage imageNamed:@"webview-close-button"] forState:UIControlStateNormal];
+    [pushToWebVCBtn2 addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:pushToWebVCBtn2];
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-38, 0, 38, 40)];
     [dismissBtn setBackgroundImage:[UIImage imageNamed:@"summly_close_x.png"] forState:UIControlStateNormal];
     [dismissBtn addTarget:self action:@selector(dismissBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:dismissBtn];
+    
 
-    if (textLabel.frame.size.height+textLabel.frame.origin.y+Margin<self.view.frame.size.height) {
+    if (textLabel.frame.size.height+textLabel.frame.origin.y+Margin+20<self.view.frame.size.height) {
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
     }
     else
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, textLabel.frame.size.height+textLabel.frame.origin.y+Margin);
+        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, textLabel.frame.size.height+textLabel.frame.origin.y+Margin+20);
 }
 
 - (void)pushToWebVC{

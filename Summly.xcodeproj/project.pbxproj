@@ -117,8 +117,9 @@
 		C82CF51E169966A4004262B1 /* icon_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C82CF51D169966A3004262B1 /* icon_4@2x.png */; };
 		C82CF52116996951004262B1 /* cell-add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C82CF52016996951004262B1 /* cell-add@2x.png */; };
 		C838545416B8EADC000054A3 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C838545316B8EAAA000054A3 /* WebViewController.m */; };
-		C838545616B8ED5E000054A3 /* webview-navigation-backround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C838545516B8ED5E000054A3 /* webview-navigation-backround@2x.png */; };
-		C838545816B8ED97000054A3 /* webview-close-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C838545716B8ED97000054A3 /* webview-close-button@2x.png */; };
+		C838545A16B91847000054A3 /* dimiss@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C838545916B91847000054A3 /* dimiss@2x.png */; };
+		C838545C16B9185B000054A3 /* webview-close-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C838545B16B9185B000054A3 /* webview-close-button@2x.png */; };
+		C838545E16B91866000054A3 /* webview-navigation-backround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C838545D16B91866000054A3 /* webview-navigation-backround@2x.png */; };
 		C85CB0CC16B7964F00BE39AE /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C85CB0CB16B7964F00BE39AE /* libsqlite3.0.dylib */; };
 		C85CB0FA16B7A6F600BE39AE /* 5_unselected_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C85CB0F816B7A6F500BE39AE /* 5_unselected_0@2x.png */; };
 		C85CB0FB16B7A6F600BE39AE /* 5_unselected_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C85CB0F916B7A6F600BE39AE /* 5_unselected_1@2x.png */; };
@@ -383,8 +384,9 @@
 		C82CF52C16998C13004262B1 /* DBConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBConnection.m; sourceTree = "<group>"; };
 		C838545216B8EAAA000054A3 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		C838545316B8EAAA000054A3 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		C838545516B8ED5E000054A3 /* webview-navigation-backround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "webview-navigation-backround@2x.png"; path = "../../webview-navigation-backround@2x.png"; sourceTree = "<group>"; };
-		C838545716B8ED97000054A3 /* webview-close-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-close-button@2x.png"; sourceTree = "<group>"; };
+		C838545916B91847000054A3 /* dimiss@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dimiss@2x.png"; sourceTree = "<group>"; };
+		C838545B16B9185B000054A3 /* webview-close-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-close-button@2x.png"; sourceTree = "<group>"; };
+		C838545D16B91866000054A3 /* webview-navigation-backround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "webview-navigation-backround@2x.png"; sourceTree = "<group>"; };
 		C85CB0CB16B7964F00BE39AE /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		C85CB0F816B7A6F500BE39AE /* 5_unselected_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_unselected_0@2x.png"; sourceTree = "<group>"; };
 		C85CB0F916B7A6F600BE39AE /* 5_unselected_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5_unselected_1@2x.png"; sourceTree = "<group>"; };
@@ -940,8 +942,9 @@
 		896AA71D167DEA63006DBE88 /* button */ = {
 			isa = PBXGroup;
 			children = (
-				C838545716B8ED97000054A3 /* webview-close-button@2x.png */,
-				C838545516B8ED5E000054A3 /* webview-navigation-backround@2x.png */,
+				C838545D16B91866000054A3 /* webview-navigation-backround@2x.png */,
+				C838545916B91847000054A3 /* dimiss@2x.png */,
+				C838545B16B9185B000054A3 /* webview-close-button@2x.png */,
 				C80A851116AD1729007A46D6 /* click@2x.png */,
 				AE768D1516A0A9C1007D173B /* summly_close_x@2x.png */,
 				89849DFB1694375200866FE9 /* about-eparated@2x.png */,
@@ -1166,9 +1169,7 @@
 				049B8F461675FCD700C48250 /* cell-keyword@2x.png in Resources */,
 				049B8F491675FCD700C48250 /* cell-predefined@2x.png in Resources */,
 				049B8F4B1675FCD700C48250 /* cell-saved@2x.png in Resources */,
-				C838545816B8ED97000054A3 /* webview-close-button@2x.png in Resources */,
 				0418DF481678315C007BADC2 /* SVProgressHUD.bundle in Resources */,
-				C838545616B8ED5E000054A3 /* webview-navigation-backround@2x.png in Resources */,
 				896AA71F167DEA76006DBE88 /* cover-arrow@2x.png in Resources */,
 				896AA725167DF741006DBE88 /* trending-label@2x.png in Resources */,
 				C81DFEB8167EB4910040F35B /* tablebackground@2x.png in Resources */,
@@ -1295,6 +1296,9 @@
 				C85CB0FB16B7A6F600BE39AE /* 5_unselected_1@2x.png in Resources */,
 				C8BFED1B16B7AAA4002D2F11 /* 3_selected_1@2x.png in Resources */,
 				C8BFED1D16B7AAE0002D2F11 /* 3_selected_0@2x.png in Resources */,
+				C838545A16B91847000054A3 /* dimiss@2x.png in Resources */,
+				C838545C16B9185B000054A3 /* webview-close-button@2x.png in Resources */,
+				C838545E16B91866000054A3 /* webview-navigation-backround@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

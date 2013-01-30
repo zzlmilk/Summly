@@ -32,23 +32,24 @@
 //    http://www.leiphone.com/tag/app
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.summly.sourceUrl]];
     
-    NSLog(@"%@",self.summly.sourceUrl);
+//    NSLog(@"%@",self.summly.sourceUrl);
     UIImageView *navigationBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"webview-navigation-backround"]];
     navigationBar.userInteractionEnabled=YES;
     [navigationBar setFrame:CGRectMake(0, 0, 320, 45)];
     [self.view addSubview:navigationBar];
     
-    loadLabel = [[UILabel alloc] initWithFrame:CGRectMake(45,10, 230, 26)];
+    loadLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,10, 220, 26)];
     loadLabel.text=@"加载中...";
     [loadLabel setBackgroundColor:[UIColor clearColor]];
     [loadLabel setTextAlignment:UITextAlignmentCenter];
     [navigationBar addSubview:loadLabel];
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backBtn setFrame:CGRectMake(5, 5.5, 34, 34)];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"webview-close-button"] forState:UIControlStateNormal];
+    [backBtn setFrame:CGRectMake(loadLabel.frame.size.width+loadLabel.frame.origin.x+10, 7.5, 30, 30)];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"dimiss"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [navigationBar addSubview:backBtn];
+    
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, navigationBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-45)];
     [webView setBackgroundColor:[UIColor whiteColor]];

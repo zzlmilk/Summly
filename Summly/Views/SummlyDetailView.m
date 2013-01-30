@@ -111,11 +111,11 @@
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
         
-        UIButton *pushToWebVCBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [pushToWebVCBtn setFrame:CGRectMake(300, 200, 20, 20)];
-        [pushToWebVCBtn setBackgroundColor:[UIColor yellowColor]];
-        [pushToWebVCBtn addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:pushToWebVCBtn];
+//        UIButton *pushToWebVCBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [pushToWebVCBtn setFrame:CGRectMake(300, 200, 20, 20)];
+//        [pushToWebVCBtn setBackgroundColor:[UIColor yellowColor]];
+//        [pushToWebVCBtn addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:pushToWebVCBtn];
         
         
         isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
@@ -137,12 +137,12 @@
     return self;
 }
 
-- (void)pushToWebVC{
-    if ([self.delegate respondsToSelector:@selector(detailViewControllerDidPushToWebViewController)]) {
-        
-        [self.delegate performSelector:@selector(detailViewControllerDidPushToWebViewController)];
-    };
-}
+//- (void)pushToWebVC{
+//    if ([self.delegate respondsToSelector:@selector(detailViewControllerDidPushToWebViewController)]) {
+//        
+//        [self.delegate performSelector:@selector(detailViewControllerDidPushToWebViewController)];
+//    };
+//}
 
 //花瓣按钮
 -(void)fancyMenu:(FAFancyMenuView *)menu didSelectedButtonAtIndex:(NSUInteger)index{
