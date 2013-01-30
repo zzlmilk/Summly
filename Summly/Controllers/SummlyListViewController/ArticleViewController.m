@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "TextLayoutLabel.h"
+#import "WebViewController.h"
+
 #define Margin 15
 #define MarginDic 10
 @interface ArticleViewController ()
@@ -104,6 +106,12 @@
 //    [textLabel sizeToFit];
     [scrollView addSubview:textLabel];
     
+    UIButton *pushToWebVCBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pushToWebVCBtn setFrame:CGRectMake(300, 200, 20, 20)];
+    [pushToWebVCBtn setBackgroundColor:[UIColor yellowColor]];
+    [pushToWebVCBtn addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
+    [scrollView addSubview:pushToWebVCBtn];
+
     
     UIButton *dismissBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [dismissBtn setFrame:CGRectMake(self.view.frame.size.width-38, 0, 38, 40)];
@@ -116,6 +124,14 @@
     }
     else
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, textLabel.frame.size.height+textLabel.frame.origin.y+Margin);
+}
+
+- (void)pushToWebVC{
+    [self pushControllerAnimate];
+    
+    WebViewController *webViewController = [[WebViewController alloc] init];
+    webViewController.summly=self.summly;
+    [self.navigationController pushViewController:webViewController animated:NO];
 }
 
 - (void)pushControllerAnimate{
