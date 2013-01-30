@@ -6,6 +6,8 @@
 //  Copyright (c) 2012年 zzlmilk. All rights reserved.
 //
 
+#import<Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 #import "Summly.h"
 
@@ -17,6 +19,11 @@
 
 #import "DDWeixing.h"
 
+@protocol SummlyDetailViewDelegate<NSObject>
+
+-(void)detailViewControllerDidPushToWebViewController;
+
+@end
 
 @interface SummlyDetailView : UIView<FAFancyMenuViewDelegate>
 {
@@ -34,6 +41,7 @@
 @property(nonatomic,strong) Summly *summly;
 @property(nonatomic,strong)  FAFancyMenuView *menu;
 @property(nonatomic,weak) UIViewController *controller;
+@property(nonatomic) id<SummlyDetailViewDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame summly:(Summly *)summly;
 - (void)dismissDetailViewAnimate:(void (^)())block;

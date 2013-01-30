@@ -134,7 +134,7 @@
             if (self.topic.topicId>4) {
                 iconImageView.image = [UIImage imageNamed:@"icon_2.png"];
             }
-            bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
+            bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,0]];
 
         }
         break;
@@ -147,14 +147,14 @@
 - (void)changeBackView:(BOOL)isSelected{
     
     if (isSelected==YES) {
-        bgImageView.image =[UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,randomInt]];
+        bgImageView.image =[UIImage imageNamed:[NSString stringWithFormat:@"%d_selected_%d.png",self.topic.topicId,0]];
         titleLabel.textColor = [UIColor whiteColor];
         describeLabel.textColor = [UIColor whiteColor];
         [selectImageView setImage:[UIImage imageNamed:@"check-box-checked.png"]];
 
     }
     else{
-        bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_unselected_%d.png",self.topic.topicId,randomInt]];
+        bgImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d_unselected_%d.png",self.topic.topicId,0]];
         titleLabel.textColor = [UIColor colorWithRed:172/255.0f green:172/255.0f blue:172/255.0f alpha:1.0f];
         describeLabel.textColor=titleLabel.textColor;
         [selectImageView setImage:[UIImage imageNamed:@"check-box.png"]];

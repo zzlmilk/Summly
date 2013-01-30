@@ -57,7 +57,7 @@
         titleLabel.userInteractionEnabled=YES;
         [titleLabel setBackgroundColor:[UIColor clearColor]];
         [titleLabel setNumberOfLines:2];
-        titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        titleLabel.lineBreakMode = kCTLineBreakByTruncatingTail;
         [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:22]];
         [titleLabel setTextColor:[UIColor whiteColor]];
         titleLabel.text = self.summly.title;
@@ -105,11 +105,17 @@
         [articleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.5]];
         articleLabel.text = contentStr;
         articleLabel.numberOfLines = 0;
-        articleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        articleLabel.lineBreakMode = kCTLineBreakByTruncatingTail;
         [articleLabel setBackgroundColor:[UIColor clearColor]];
         [articleLabel setTextColor:[UIColor colorWithRed:77/255.0f green:77/255.0f blue:77/255.0f alpha:1.0f]];
         [acticleView addSubview:articleLabel];
         [self addSubview:acticleView];
+        
+        UIButton *pushToWebVCBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [pushToWebVCBtn setFrame:CGRectMake(300, 200, 20, 20)];
+        [pushToWebVCBtn setBackgroundColor:[UIColor yellowColor]];
+        [pushToWebVCBtn addTarget:self action:@selector(pushToWebVC) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:pushToWebVCBtn];
         
         
         isFavorite =  [self isFavDidSearchIdFromSql];//是否收藏
@@ -129,6 +135,13 @@
         
     }
     return self;
+}
+
+- (void)pushToWebVC{
+    if ([self.delegate respondsToSelector:@selector(detailViewControllerDidPushToWebViewController)]) {
+        
+        [self.delegate performSelector:@selector(detailViewControllerDidPushToWebViewController)];
+    };
 }
 
 //花瓣按钮

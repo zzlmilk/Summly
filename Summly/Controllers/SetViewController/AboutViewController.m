@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    self.title =@"关于豆豆科技咨询";
+    self.title =@"关于豆豆科技资讯";
     int y = self.view.frame.size.height;
     
 //    UIButton *_button = [UIButton buttonWithType:UIButtonTypeCustom];

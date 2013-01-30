@@ -191,4 +191,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (NSUInteger) supportedInterfaceOrientations{    
+
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (BOOL) shouldAutorotate {
+    return NO;
+}
+
+
 @end

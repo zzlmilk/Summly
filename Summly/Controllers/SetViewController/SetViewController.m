@@ -59,7 +59,7 @@ static  SetViewController*instance=nil;
     NSString *version = [NSString stringWithFormat:@"检查更新：当前版本为%@",VersionSummly];
     
     NSArray *accountArray = [NSArray arrayWithObjects:@"新浪微博", @"微信",nil];
-    NSArray *shareArray = [NSArray arrayWithObjects:version,@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆科技新闻",@"关注@豆豆科技新闻",nil];
+    NSArray *shareArray = [NSArray arrayWithObjects:version,@"使用教程：学习使用豆豆阅读的小技巧。", @"关于豆豆科技资讯",@"关注@豆豆科技资讯",nil];
     //    NSArray *informationArray = [NSArray arrayWithObjects:@"共享应用",@"关注@summly",@"游览该应用", nil];
     //    NSArray *aboutArray = [NSArray arrayWithObjects:@"观看教程",@"关于summly", nil];
     

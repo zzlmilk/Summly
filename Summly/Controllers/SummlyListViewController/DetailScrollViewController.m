@@ -12,6 +12,7 @@
 #import "SummlyDetailUniteView.h"
 
 #import "AppDelegate.h"
+#import "WebViewController.h"
 
 @interface DetailScrollViewController ()<UIGestureRecognizerDelegate>
 {
@@ -42,6 +43,7 @@ static DetailScrollViewController *detailInstance=nil;
 {
     [super viewDidLoad];
     
+    self.index = 0;
 //    self.index=[self calculateIndexFromScrollViewOffSet];
 //    NSLog(@"self.index %f, contentOffset %f",self.view.frame.size.width*self.index, bgScrollView.contentOffset.x);
 
@@ -72,7 +74,7 @@ static DetailScrollViewController *detailInstance=nil;
     [bgScrollView addGestureRecognizer:swipUpGestureUp];
     
     //下滑wbview
-    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToArticleView)];
+    UISwipeGestureRecognizer *swipUpGestureDown = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pushToWebView)];
     swipUpGestureDown.direction = UISwipeGestureRecognizerDirectionDown;
     [bgScrollView addGestureRecognizer:swipUpGestureDown];
     
@@ -107,6 +109,7 @@ static DetailScrollViewController *detailInstance=nil;
         SummlyDetailView *detailView = [[SummlyDetailView alloc] initWithFrame:CGRectMake(self.view.frame.size.width*i, 0, self.view.frame.size.width, self.view.frame.size.height) summly:[summlys objectAtIndex:i]];
         detailView.tag = i+10;
         detailView.controller = self;
+        detailView.delegate=self;
         [bgScrollView insertSubview:detailView atIndex:summlys.count-i];
 
     }
@@ -193,10 +196,15 @@ static DetailScrollViewController *detailInstance=nil;
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
 }
 
-
-//下滑push文章页
--(void)pushToArticleView{
-    [self pushToArticleDetail];
+//下滑WebView
+-(void)pushToWebView{
+//    [self pushToArticleDetail];
+    SummlyDetailView *summlyDetailView =(SummlyDetailView *)[self.view viewWithTag:self.index+10];
+    
+    WebViewController *webViewController = [[WebViewController alloc] init];
+    webViewController.summly=summlyDetailView.summly;
+    [self.navigationController pushViewController:webViewController animated:NO];
+    
 }
 
 //推送到文章页
@@ -215,8 +223,14 @@ static DetailScrollViewController *detailInstance=nil;
 
 }
 
+#pragma mark--
+#pragma mark-- SummlyDetailViewDelegate
+-(void)detailViewControllerDidPushToWebViewController{
+    [self pushToWebView];
+}
 
-
+#pragma mark--
+#pragma mark--SummlyDismissAnimate
 - (void)showDetailViewAnimate{
 
     SummlyDetailView *detailView = (SummlyDetailView*)[bgScrollView viewWithTag:10+self.index];

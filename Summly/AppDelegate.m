@@ -72,12 +72,10 @@ static AppDelegate *instance=nil;
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];//隐藏状态栏
 
-    
+
 
     return YES;
 }
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -107,5 +105,7 @@ static AppDelegate *instance=nil;
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

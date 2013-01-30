@@ -24,7 +24,7 @@ typedef enum {
 } FingerSwipOrientation;
 
 
-@interface DetailScrollViewController : BaseViewController<UIScrollViewDelegate,ArticleViewControllerDelegate>
+@interface DetailScrollViewController : BaseViewController<UIScrollViewDelegate,ArticleViewControllerDelegate,SummlyDetailViewDelegate>
 {
     
     UIScrollView *bgScrollView;
